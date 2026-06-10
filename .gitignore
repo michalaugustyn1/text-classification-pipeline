@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+venv/
+env/
+.venv/
+*.egg-info/
+dist/
+build/
+
+# Data & results (large files, not committed)
+data/
+results/
+configs/results/
+*.csv
+*.pkl
+*.joblib
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Logs & Slurm output
+*.log
+*.out
+*.err
+slurm-*.out
+
+# Apptainer images (built on cluster)
+*.sif
+
+# OS
+.DS_Store
+Thumbs.db

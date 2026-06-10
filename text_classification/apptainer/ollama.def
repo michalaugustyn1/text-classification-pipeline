@@ -1,0 +1,40 @@
+Bootstrap: docker
+From: ollama/ollama:latest
+
+%labels
+    Author      text-classification-pipeline
+    Description Ollama LLM server for zero-shot text classification
+    Version     1.0
+
+%help
+    Ollama LLM server packaged as an Apptainer image.
+    No root required at runtime.
+
+    Build (one-time, on a node where apptainer is available):
+        apptainer build ollama.sif ollama.def
+
+    Start server:
+        apptainer run --nv \
+            --bind $OLLAMA_MODELS_DIR:/root/.ollama/models \
+            ollama.sif serve
+
+    Pull a model (needs server running):
+        apptainer exec --nv \
+            --bind $OLLAMA_MODELS_DIR:/root/.ollama/models \
+            ollama.sif ollama pull llama3
+
+%environment
+    export OLLAMA_HOST=0.0.0.0
+    export OLLAMA_MODELS=/root/.ollama/models
+    # Disable GPU auto-detection if running CPU-only
+    # export CUDA_VISIBLE_DEVICES=""
+
+%post
+    # The base image already has the ollama binary at /usr/bin/ollama.
+    # Nothing extra to install — keep the layer minimal.
+    apt-get clean
+    rm -rf /var/lib/apt/lists/*
+
+%runscript
+    # Default action: start the HTTP server
+    exec ollama serve "$@"
