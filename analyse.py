@@ -1,5 +1,5 @@
 import argparse
-import json
+import io
 import os
 import glob
 import numpy as np
@@ -8,14 +8,17 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import seaborn as sns
-from metrics import NumpyEncoder
+from metrics import load_results
 
 
 def load_runs(path):
-    with open(path) as f: d = json.load(f)
-    runs = d.get("runs", d) if isinstance(d, dict) else d
-    df = pd.DataFrame(runs)
-    df.dropna(subset=["test_accuracy"], inplace=True)
+    _, df = load_results(path)
+    df = df.dropna(subset=["test_accuracy"])
+    cols = ["test_accuracy", "test_f1_macro", "test_f1_weighted",
+            "val_accuracy", "val_f1_macro", "train_time", "inference_test_time"]
+    for c in cols:
+        if c in df.columns:
+            df[c] = pd.to_numeric(df[c], errors="coerce")
     return df
 
 
@@ -25,9 +28,9 @@ def load_scaling_results(scaling_dir):
         n = int(os.path.basename(d).replace("njobs_", ""))
         rf = os.path.join(d, "results_parallel.txt")
         if not os.path.exists(rf): continue
-        with open(rf) as f: data = json.load(f)
-        rows.append({"n_jobs": n,
-                     "total_time": data.get("timing", {}).get("total_wall_time", np.nan)})
+        meta, _ = load_results(rf)
+        t = float(meta.get("total_wall_time", meta.get("total_time", "nan")))
+        rows.append({"n_jobs": n, "total_time": t})
     return pd.DataFrame(rows).sort_values("n_jobs")
 
 
@@ -37,8 +40,9 @@ def load_mpi_scaling_results(scaling_dir):
         n = int(os.path.basename(d).replace("nodes_", ""))
         rf = os.path.join(d, "results_mpi.txt")
         if not os.path.exists(rf): continue
-        with open(rf) as f: data = json.load(f)
-        rows.append({"n_nodes": n, "total_time": data.get("total_time", np.nan)})
+        meta, _ = load_results(rf)
+        t = float(meta.get("total_time", "nan"))
+        rows.append({"n_nodes": n, "total_time": t})
     return pd.DataFrame(rows).sort_values("n_nodes")
 
 
@@ -56,8 +60,8 @@ def plot_time_comparison(result_files, out_path):
     labels, times = [], []
     for label, path in result_files.items():
         if not os.path.exists(path): continue
-        with open(path) as f: d = json.load(f)
-        t = d.get("total_time") or d.get("timing", {}).get("total_wall_time", 0)
+        meta, _ = load_results(path)
+        t = float(meta.get("total_time", meta.get("total_wall_time", 0)))
         labels.append(label); times.append(t / 60)
     if not times: return
     fig, ax = plt.subplots(figsize=(8, 5))
@@ -93,8 +97,8 @@ def compute_speedup_table(result_files, out_path):
     serial_time = None
     for label, path in result_files.items():
         if not os.path.exists(path): continue
-        with open(path) as f: d = json.load(f)
-        t = d.get("total_time") or d.get("timing", {}).get("total_wall_time", np.nan)
+        meta, _ = load_results(path)
+        t = float(meta.get("total_time", meta.get("total_wall_time", np.nan)))
         rows.append({"pipeline": label, "total_time_s": t, "total_time_min": t / 60})
         if label == "Serial": serial_time = t
     if not rows: return

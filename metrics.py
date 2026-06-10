@@ -1,5 +1,6 @@
+import csv
+import io
 import time
-import json
 import logging
 import numpy as np
 from contextlib import contextmanager
@@ -45,24 +46,57 @@ def evaluate(y_true, y_pred, label_names=None):
     }
 
 
-class NumpyEncoder(json.JSONEncoder):
-    def default(self, obj):
-        if isinstance(obj, np.integer):  return int(obj)
-        if isinstance(obj, np.floating): return float(obj)
-        if isinstance(obj, np.ndarray):  return obj.tolist()
-        if USE_GPU:
-            obj = to_numpy(obj)
-            if isinstance(obj, np.ndarray):
-                return obj.tolist()
-        return super().default(obj)
+def _scalar(v):
+    if isinstance(v, np.floating): return float(v)
+    if isinstance(v, np.integer):  return int(v)
+    if USE_GPU:
+        v = to_numpy(np.array(v))
+        if isinstance(v, np.ndarray) and v.ndim == 0:
+            return v.item()
+    return v
 
 
 def save_results(results: dict, path: str):
-    with open(path, "w") as f:
-        json.dump(results, f, indent=2, cls=NumpyEncoder)
+    runs = results.get("runs", [])
+    with open(path, "w", newline="") as f:
+        for k, v in results.items():
+            if k == "runs":
+                continue
+            if isinstance(v, dict):
+                for kk, vv in v.items():
+                    vv = _scalar(vv)
+                    f.write(f"{kk}: {vv:.4f}\n" if isinstance(vv, float) else f"{kk}: {vv}\n")
+            else:
+                v = _scalar(v)
+                f.write(f"{k}: {v:.4f}\n" if isinstance(v, float) else f"{k}: {v}\n")
+        if runs:
+            all_keys = list(dict.fromkeys(k for r in runs for k in r))
+            f.write("\n")
+            writer = csv.DictWriter(f, fieldnames=all_keys, delimiter="\t",
+                                    extrasaction="ignore", restval="")
+            writer.writeheader()
+            for run in runs:
+                row = {}
+                for k, v in run.items():
+                    v = _scalar(v)
+                    row[k] = f"{v:.6f}" if isinstance(v, float) else ("" if v is None else v)
+                writer.writerow(row)
     logger.info("Results saved → %s", path)
 
 
-def load_results(path: str) -> dict:
+def load_results(path: str) -> tuple:
+    meta, lines = {}, []
+    past_meta = False
     with open(path) as f:
-        return json.load(f)
+        for line in f:
+            if not past_meta and line.strip() == "":
+                past_meta = True
+                continue
+            if not past_meta:
+                k, _, v = line.strip().partition(":")
+                meta[k.strip()] = v.strip()
+            else:
+                lines.append(line)
+    import pandas as pd
+    df = pd.read_csv(io.StringIO("".join(lines)), sep="\t") if lines else pd.DataFrame()
+    return meta, df
