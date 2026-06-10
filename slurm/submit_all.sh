@@ -31,11 +31,8 @@ echo "  [4] mpi       → job $JOB_MPI  (after $JOB_PAR)"
 JOB_SCALE=$(submit slurm/run_scaling.sh "$JOB_PAR")
 echo "  [5] scaling   → job $JOB_SCALE  (after $JOB_PAR)"
 
-JOB_LLM=$(submit slurm/run_llm.sh "$JOB_PAR")
-echo "  [6] llm       → job $JOB_LLM  (after $JOB_PAR)"
-
-JOB_ANALYSE=$(submit slurm/run_analyse.sh "${JOB_MPI}:${JOB_SCALE}:${JOB_LLM}")
-echo "  [7] analyse   → job $JOB_ANALYSE  (after $JOB_MPI, $JOB_SCALE, $JOB_LLM)"
+JOB_ANALYSE=$(submit slurm/run_analyse.sh "${JOB_MPI}:${JOB_SCALE}")
+echo "  [6] analyse   → job $JOB_ANALYSE  (after $JOB_MPI, $JOB_SCALE)"
 
 echo ""
 echo "Monitor: watch -n 10 squeue -u \$USER"
