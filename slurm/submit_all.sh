@@ -26,13 +26,16 @@ JOB_PAR=$(submit slurm/run_parallel.sh "$JOB_OPT")
 echo "  [3] parallel  → job $JOB_PAR  (after $JOB_OPT)"
 
 JOB_MPI=$(submit slurm/run_mpi.sh "$JOB_PAR")
-echo "  [4] mpi       → job $JOB_MPI  (after $JOB_PAR)"
+echo "  [4] mpi         → job $JOB_MPI  (after $JOB_PAR)"
 
 JOB_SCALE=$(submit slurm/run_scaling.sh "$JOB_PAR")
-echo "  [5] scaling   → job $JOB_SCALE  (after $JOB_PAR)"
+echo "  [5] scaling     → job $JOB_SCALE  (after $JOB_PAR)"
 
-JOB_ANALYSE=$(submit slurm/run_analyse.sh "${JOB_MPI}:${JOB_SCALE}")
-echo "  [6] analyse   → job $JOB_ANALYSE  (after $JOB_MPI, $JOB_SCALE)"
+JOB_MPI_SCALE=$(submit slurm/run_mpi_scaling.sh "$JOB_PAR")
+echo "  [6] mpi_scaling → job $JOB_MPI_SCALE  (after $JOB_PAR)"
+
+JOB_ANALYSE=$(submit slurm/run_analyse.sh "${JOB_MPI}:${JOB_SCALE}:${JOB_MPI_SCALE}")
+echo "  [7] analyse     → job $JOB_ANALYSE  (after $JOB_MPI, $JOB_SCALE, $JOB_MPI_SCALE)"
 
 echo ""
 echo "Monitor: watch -n 10 squeue -u \$USER"
