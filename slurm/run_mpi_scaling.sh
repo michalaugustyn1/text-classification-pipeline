@@ -22,6 +22,9 @@ module load mpi4py/3.1.4
 source ~/HPAI/text_classification/venv/bin/activate
 export PYTHONPATH=~/HPAI/text_classification
 
+source ~/HPAI/text_classification/slurm/ollama_helper.sh
+ollama_start
+
 N_NODES_ARR=(1 2 4 8)
 NTASKS_ARR=(9 18 36 72)
 
@@ -34,7 +37,8 @@ for i in "${!N_NODES_ARR[@]}"; do
     srun --ntasks=$n_tasks --nodes=$n_nodes \
         python ~/HPAI/text_classification/pipeline_mpi.py \
         --data ~/HPAI/text_classification/data/train_data.txt \
-        --out  "$out_dir"
+        --out  "$out_dir" \
+        --llm
 done
 
 echo "Finished: $(date)"

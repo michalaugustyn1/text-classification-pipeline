@@ -23,7 +23,7 @@ def load_scaling_results(scaling_dir):
     rows = []
     for d in sorted(glob.glob(os.path.join(scaling_dir, "njobs_*"))):
         n = int(os.path.basename(d).replace("njobs_", ""))
-        rf = os.path.join(d, "results_parallel.json")
+        rf = os.path.join(d, "results_parallel.txt")
         if not os.path.exists(rf): continue
         with open(rf) as f: data = json.load(f)
         rows.append({"n_jobs": n,
@@ -35,7 +35,7 @@ def load_mpi_scaling_results(scaling_dir):
     rows = []
     for d in sorted(glob.glob(os.path.join(scaling_dir, "nodes_*"))):
         n = int(os.path.basename(d).replace("nodes_", ""))
-        rf = os.path.join(d, "results_mpi.json")
+        rf = os.path.join(d, "results_mpi.txt")
         if not os.path.exists(rf): continue
         with open(rf) as f: data = json.load(f)
         rows.append({"n_nodes": n, "total_time": data.get("total_time", np.nan)})
@@ -127,10 +127,10 @@ def main():
     os.makedirs(pdir, exist_ok=True)
 
     result_files = {
-        "Serial":    os.path.join(rdir, "results_serial.json"),
-        "Optimized": os.path.join(rdir, "results_optimized.json"),
-        "Parallel":  os.path.join(rdir, "results_parallel.json"),
-        "MPI":       os.path.join(rdir, "results_mpi.json"),
+        "Serial":    os.path.join(rdir, "results_serial.txt"),
+        "Optimized": os.path.join(rdir, "results_optimized.txt"),
+        "Parallel":  os.path.join(rdir, "results_parallel.txt"),
+        "MPI":       os.path.join(rdir, "results_mpi.txt"),
     }
 
     all_dfs = []

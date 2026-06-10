@@ -114,7 +114,7 @@ def main():
     logger.info("Total: %.1f s", timing["total_wall_time"])
     os.makedirs(args.out, exist_ok=True)
     save_results({"timing": timing, "runs": all_results},
-                 os.path.join(args.out, "results_parallel.json"))
+                 os.path.join(args.out, "results_parallel.txt"))
 
 
 if __name__ == "__main__":

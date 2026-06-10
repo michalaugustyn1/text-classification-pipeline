@@ -93,7 +93,7 @@ def main():
     logger.info("Total: %.1f s", total)
     os.makedirs(args.out, exist_ok=True)
     save_results({"total_time": total, "runs": all_results},
-                 os.path.join(args.out, "results_serial.json"))
+                 os.path.join(args.out, "results_serial.txt"))
 
 
 if __name__ == "__main__":

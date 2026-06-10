@@ -94,7 +94,7 @@ def master_process(args):
     total_elapsed = time.perf_counter() - total_start
     os.makedirs(args.out, exist_ok=True)
     save_results({"total_time": total_elapsed, "n_ranks": SIZE, "runs": all_results},
-                 os.path.join(args.out, "results_mpi.json"))
+                 os.path.join(args.out, "results_mpi.txt"))
 
 
 def main():
