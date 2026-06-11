@@ -16,7 +16,6 @@ ollama==0.2.1
 
 # Utilities
 psutil==5.9.6
-mpi4py==3.1.4
 
 # ── GPU / cuML (RAPIDS) ───────────────────────────────────────────────────────
 # cuML is NOT pip-installable — install via conda or the RAPIDS installer:

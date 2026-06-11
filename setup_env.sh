@@ -8,6 +8,8 @@ conda activate myenv
 pip install --upgrade pip setuptools wheel
 pip install -r "$REQ"
 
+conda install -c conda-forge mpi4py -y
+
 python -c "
 import nltk
 nltk.download('stopwords', quiet=True)
