@@ -2,7 +2,7 @@
 
 REQ=~/HPAI/text_classification/requirements.txt
 
-source ~/miniconda3/bin/activate
+source ~/miniconda3/bin/activate myenv
 
 pip install --upgrade pip setuptools wheel
 pip install -r "$REQ"
@@ -24,4 +24,4 @@ print('mpi4py:',  mpi4py.__version__)
 print('All OK.')
 "
 
-echo "Done. Activate with: source ~/miniconda3/bin/activate"
+echo "Done. Activate with: source ~/miniconda3/bin/activate myenv"

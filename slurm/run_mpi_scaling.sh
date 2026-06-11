@@ -19,7 +19,7 @@ module load rapids/24.06 2>/dev/null || true
 module load openmpi/4.1.4 2>/dev/null || true
 module load mpi4py/3.1.4 2>/dev/null || true
 
-source ~/miniconda3/bin/activate
+source ~/miniconda3/bin/activate myenv
 export PYTHONPATH=~/HPAI/text_classification
 
 source ~/HPAI/text_classification/slurm/ollama_helper.sh
