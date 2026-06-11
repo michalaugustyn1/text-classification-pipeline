@@ -15,7 +15,7 @@ MODELS_DIR="${SCRATCH:-$HOME}/.ollama_models"
 OLLAMA_PORT=11435
 
 module purge
-module load gcc/11.2
+module load gcc/11.2 2>/dev/null || true
 
 if [[ ! -f "$SIF_PATH" ]]; then
     apptainer build "$SIF_PATH" "$DEF_PATH"

@@ -11,10 +11,10 @@
 mkdir -p logs results
 
 module purge
-module load python/3.10
-module load gcc/11.2
-module load cuda/11.8
-module load rapids/24.06
+module load python/3.10 2>/dev/null || true
+module load gcc/11.2 2>/dev/null || true
+module load cuda/11.8 2>/dev/null || true
+module load rapids/24.06 2>/dev/null || true
 
 source ~/HPAI/text_classification/venv/bin/activate
 export PYTHONPATH=~/HPAI/text_classification
