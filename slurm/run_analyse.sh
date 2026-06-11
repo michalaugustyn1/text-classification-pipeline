@@ -13,7 +13,8 @@ module purge
 module load python/3.10 2>/dev/null || true
 module load gcc/11.2 2>/dev/null || true
 
-source ~/miniconda3/bin/activate myenv
+source ~/miniconda3/bin/activate
+conda activate myenv
 export PYTHONPATH=~/HPAI/text_classification
 
 time python ~/HPAI/text_classification/analyse.py \

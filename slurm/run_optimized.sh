@@ -16,7 +16,8 @@ module load gcc/11.2 2>/dev/null || true
 module load cuda/11.8 2>/dev/null || true
 module load rapids/24.06 2>/dev/null || true
 
-source ~/miniconda3/bin/activate myenv
+source ~/miniconda3/bin/activate
+conda activate myenv
 export PYTHONPATH=~/HPAI/text_classification
 
 source ~/HPAI/text_classification/slurm/ollama_helper.sh
