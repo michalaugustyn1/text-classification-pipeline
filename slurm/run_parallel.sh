@@ -16,7 +16,7 @@ module load gcc/11.2 2>/dev/null || true
 module load cuda/11.8 2>/dev/null || true
 module load rapids/24.06 2>/dev/null || true
 
-source ~/HPAI/text_classification/venv/bin/activate
+source ~/miniconda3/bin/activate
 export PYTHONPATH=~/HPAI/text_classification
 export OMP_NUM_THREADS=2
 
