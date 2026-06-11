@@ -83,11 +83,14 @@ class XGBoostModelOpt:
         import xgboost as xgb
         self.clf = xgb.XGBClassifier(
             n_estimators=500, max_depth=6, learning_rate=0.1,
-            eval_metric="mlogloss", early_stopping_rounds=20,
+            eval_metric="mlogloss",
             n_jobs=-1, random_state=RANDOM_SEED, verbosity=0)
     def fit(self, X, y, X_val=None, y_val=None):
-        self.clf.fit(X, y, eval_set=[(X_val, y_val)] if X_val is not None else None,
-                     verbose=False)
+        fit_kw = {"verbose": False}
+        if X_val is not None:
+            fit_kw["eval_set"] = [(X_val, y_val)]
+            fit_kw["early_stopping_rounds"] = 20
+        self.clf.fit(X, y, **fit_kw)
         return self
     def predict(self, X): return self.clf.predict(X)
     def predict_proba(self, X): return self.clf.predict_proba(X)

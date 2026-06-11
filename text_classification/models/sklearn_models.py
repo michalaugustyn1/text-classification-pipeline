@@ -1,5 +1,6 @@
 import logging
 import numpy as np
+import scipy.sparse as sp
 
 import sys, os
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
@@ -9,6 +10,11 @@ from configs.config import (
 )
 
 logger = logging.getLogger(__name__)
+
+
+def _todense(X, dtype=None):
+    arr = X.toarray() if sp.issparse(X) else np.asarray(X)
+    return arr.astype(dtype) if dtype is not None else arr
 
 
 def _gpu_available() -> bool:
@@ -89,16 +95,16 @@ class RandomForestModel:
             self.clf = RandomForestClassifier(**params)
 
     def fit(self, X, y):
-        self.clf.fit(_to_cupy(X) if USE_GPU else np.array(X, dtype=np.float32), y)
+        self.clf.fit(_to_cupy(X) if USE_GPU else _todense(X, np.float32), y)
         return self
 
     def predict(self, X):
         return _to_numpy(self.clf.predict(
-            _to_cupy(X) if USE_GPU else np.array(X, dtype=np.float32)))
+            _to_cupy(X) if USE_GPU else _todense(X, np.float32)))
 
     def predict_proba(self, X):
         return _to_numpy(self.clf.predict_proba(
-            _to_cupy(X) if USE_GPU else np.array(X, dtype=np.float32)))
+            _to_cupy(X) if USE_GPU else _todense(X, np.float32)))
 
 
 class XGBoostModel:
@@ -157,7 +163,7 @@ class NaiveBayesModel:
         self.clf = None
 
     def _nn(self, X):
-        X = np.array(X, dtype=np.float32)
+        X = _todense(X, np.float32)
         mn = X.min()
         return X - mn if mn < 0 else X
 
@@ -196,13 +202,13 @@ class KNNModel:
             self.clf = KNeighborsClassifier(**params)
 
     def fit(self, X, y):
-        self.clf.fit(_to_cupy(X) if USE_GPU else np.array(X), y); return self
+        self.clf.fit(_to_cupy(X) if USE_GPU else _todense(X), y); return self
 
     def predict(self, X):
-        return _to_numpy(self.clf.predict(_to_cupy(X) if USE_GPU else np.array(X)))
+        return _to_numpy(self.clf.predict(_to_cupy(X) if USE_GPU else _todense(X)))
 
     def predict_proba(self, X):
-        return _to_numpy(self.clf.predict_proba(_to_cupy(X) if USE_GPU else np.array(X)))
+        return _to_numpy(self.clf.predict_proba(_to_cupy(X) if USE_GPU else _todense(X)))
 
 
 class MLPModel:
@@ -214,13 +220,13 @@ class MLPModel:
         self.clf = MLPClassifier(**{**MLP_PARAMS, **kwargs})
 
     def fit(self, X, y):
-        self.clf.fit(np.array(X), y); return self
+        self.clf.fit(_todense(X), y); return self
 
     def predict(self, X):
-        return self.clf.predict(np.array(X))
+        return self.clf.predict(_todense(X))
 
     def predict_proba(self, X):
-        return self.clf.predict_proba(np.array(X))
+        return self.clf.predict_proba(_todense(X))
 
 
 ALL_SKLEARN_MODELS = {

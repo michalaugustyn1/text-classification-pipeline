@@ -9,7 +9,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 from configs.config import (
     LLM_SAMPLE_SIZE, LLM_TIMEOUT,
     OLLAMA_BASE_URL, OLLAMA_LLAMA_MODEL, OLLAMA_MISTRAL_MODEL,
-    RANDOM_SEED,
+    RANDOM_SEED, LABEL_NAMES,
 )
 
 _env_host = os.environ.get("OLLAMA_HOST", "")
@@ -68,8 +68,9 @@ class OllamaClassifier:
         self.name        = model_name.replace(":", "_")
 
     def fit(self, X, y, label_encoder=None):
-        self.class_names = (list(label_encoder.classes_) if label_encoder
-                            else [str(c) for c in sorted(set(y))])
+        raw = list(label_encoder.classes_) if label_encoder else sorted(set(y))
+        self.class_names = [LABEL_NAMES.get(int(c), str(c)) if str(c).isdigit() else str(c)
+                            for c in raw]
         if not check_ollama_server(self.base_url):
             raise RuntimeError(
                 f"Ollama server not reachable at {self.base_url}.\n"

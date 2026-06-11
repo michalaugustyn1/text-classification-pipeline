@@ -41,6 +41,9 @@ MLP_PARAMS = {"hidden_layer_sizes": (256, 128), "activation": "relu",
                "max_iter": 300, "random_state": RANDOM_SEED,
                "early_stopping": True, "validation_fraction": 0.1}
 
+# BBC News label mapping (sunilthite Kaggle dataset: labels stored as 0–4)
+LABEL_NAMES = {0: "business", 1: "entertainment", 2: "politics", 3: "sport", 4: "tech"}
+
 LLM_SAMPLE_SIZE      = 500
 LLM_TIMEOUT          = 120
 OLLAMA_BASE_URL      = "http://localhost:11434"
