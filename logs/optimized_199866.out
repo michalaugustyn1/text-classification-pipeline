@@ -4,3 +4,8 @@ ERROR: Unable to locate a modulefile for 'cuda/11.8'
 ERROR: Unable to locate a modulefile for 'rapids/24.06'
 [GIN] 2026/06/12 - 13:03:13 | 200 |    8.433662ms |             ::1 | GET      "/api/tags"
 Ollama ready (2s)
+[GIN] 2026/06/12 - 13:17:14 | 200 |    3.562092ms |             ::1 | GET      "/api/tags"
+[GIN] 2026/06/12 - 13:23:48 | 200 |         6m34s |             ::1 | POST     "/api/chat"
+[GIN] 2026/06/12 - 13:24:04 | 200 |    4.330628ms |             ::1 | GET      "/api/tags"
+[GIN] 2026/06/12 - 13:30:44 | 200 |         6m39s |             ::1 | POST     "/api/chat"
+Finished: Fri 12 Jun 13:31:00 CEST 2026

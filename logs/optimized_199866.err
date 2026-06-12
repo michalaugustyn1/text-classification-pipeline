@@ -64,3 +64,1443 @@ time=2026-06-12T13:03:13.517+02:00 level=INFO source=routes.go:2031 msg="vram-ba
 2026-06-12 13:07:30,244 INFO [optimized_pipeline] === tfidf × random_forest ===
 2026-06-12 13:07:30,245 ERROR [optimized_pipeline] FAILED [tfidf × random_forest]: setting an array element with a sequence.
 2026-06-12 13:07:30,245 INFO [optimized_pipeline] === tfidf × xgboost ===
+2026-06-12 13:12:31,384 INFO [metrics] train took 301.1395 s
+2026-06-12 13:12:31,408 INFO [metrics] inference_test took 0.0216 s
+2026-06-12 13:12:31,423 INFO [optimized_pipeline] [tfidf × xgboost]  acc=0.2315  f1=0.0976  train=301.14s
+2026-06-12 13:12:31,423 INFO [optimized_pipeline] === tfidf × svm ===
+/home/ma480128/miniconda3/envs/myenv/lib/python3.10/site-packages/sklearn/svm/_classes.py:32: FutureWarning: The default value of `dual` will change from `True` to `'auto'` in 1.5. Set the value of `dual` explicitly to suppress the warning.
+  warnings.warn(
+/home/ma480128/miniconda3/envs/myenv/lib/python3.10/site-packages/sklearn/svm/_classes.py:32: FutureWarning: The default value of `dual` will change from `True` to `'auto'` in 1.5. Set the value of `dual` explicitly to suppress the warning.
+  warnings.warn(
+/home/ma480128/miniconda3/envs/myenv/lib/python3.10/site-packages/sklearn/svm/_classes.py:32: FutureWarning: The default value of `dual` will change from `True` to `'auto'` in 1.5. Set the value of `dual` explicitly to suppress the warning.
+  warnings.warn(
+2026-06-12 13:12:31,835 INFO [metrics] train took 0.4115 s
+2026-06-12 13:12:31,840 INFO [metrics] inference_test took 0.0047 s
+2026-06-12 13:12:31,852 INFO [optimized_pipeline] [tfidf × svm]  acc=0.9798  f1=0.9796  train=0.41s
+2026-06-12 13:12:31,852 INFO [optimized_pipeline] === tfidf × naive_bayes ===
+2026-06-12 13:12:31,852 ERROR [optimized_pipeline] FAILED [tfidf × naive_bayes]: setting an array element with a sequence.
+2026-06-12 13:12:31,852 INFO [optimized_pipeline] === tfidf × knn ===
+2026-06-12 13:12:31,853 ERROR [optimized_pipeline] FAILED [tfidf × knn]: setting an array element with a sequence.
+2026-06-12 13:12:31,853 INFO [optimized_pipeline] === tfidf × mlp ===
+2026-06-12 13:12:31,853 ERROR [optimized_pipeline] FAILED [tfidf × mlp]: setting an array element with a sequence.
+2026-06-12 13:12:31,854 INFO [optimized_pipeline] Cache hit → /lu/tetyda/home/ma480128/HPAI/text_classification/saved_models/feature_cache/ngram_40b6ec3aeed7.pkl
+2026-06-12 13:12:31,900 INFO [optimized_pipeline] === ngram × logistic_regression ===
+2026-06-12 13:12:32,160 INFO [metrics] train took 0.2605 s
+2026-06-12 13:12:32,161 INFO [metrics] inference_test took 0.0007 s
+2026-06-12 13:12:32,173 INFO [optimized_pipeline] [ngram × logistic_regression]  acc=0.9528  f1=0.9517  train=0.26s
+2026-06-12 13:12:32,173 INFO [optimized_pipeline] === ngram × random_forest ===
+2026-06-12 13:12:32,173 ERROR [optimized_pipeline] FAILED [ngram × random_forest]: setting an array element with a sequence.
+2026-06-12 13:12:32,173 INFO [optimized_pipeline] === ngram × xgboost ===
+2026-06-12 13:16:44,984 INFO [metrics] train took 252.8104 s
+2026-06-12 13:16:45,009 INFO [metrics] inference_test took 0.0241 s
+2026-06-12 13:16:45,023 INFO [optimized_pipeline] [ngram × xgboost]  acc=0.1730  f1=0.0590  train=252.81s
+2026-06-12 13:16:45,040 INFO [optimized_pipeline] === ngram × svm ===
+/home/ma480128/miniconda3/envs/myenv/lib/python3.10/site-packages/sklearn/svm/_classes.py:32: FutureWarning: The default value of `dual` will change from `True` to `'auto'` in 1.5. Set the value of `dual` explicitly to suppress the warning.
+  warnings.warn(
+/home/ma480128/miniconda3/envs/myenv/lib/python3.10/site-packages/sklearn/svm/_classes.py:32: FutureWarning: The default value of `dual` will change from `True` to `'auto'` in 1.5. Set the value of `dual` explicitly to suppress the warning.
+  warnings.warn(
+/home/ma480128/miniconda3/envs/myenv/lib/python3.10/site-packages/sklearn/svm/_classes.py:32: FutureWarning: The default value of `dual` will change from `True` to `'auto'` in 1.5. Set the value of `dual` explicitly to suppress the warning.
+  warnings.warn(
+2026-06-12 13:16:45,345 INFO [metrics] train took 0.3044 s
+2026-06-12 13:16:45,348 INFO [metrics] inference_test took 0.0033 s
+2026-06-12 13:16:45,360 INFO [optimized_pipeline] [ngram × svm]  acc=0.9708  f1=0.9705  train=0.30s
+2026-06-12 13:16:45,360 INFO [optimized_pipeline] === ngram × naive_bayes ===
+2026-06-12 13:16:45,361 ERROR [optimized_pipeline] FAILED [ngram × naive_bayes]: setting an array element with a sequence.
+2026-06-12 13:16:45,361 INFO [optimized_pipeline] === ngram × knn ===
+2026-06-12 13:16:45,361 ERROR [optimized_pipeline] FAILED [ngram × knn]: setting an array element with a sequence.
+2026-06-12 13:16:45,361 INFO [optimized_pipeline] === ngram × mlp ===
+2026-06-12 13:16:45,362 ERROR [optimized_pipeline] FAILED [ngram × mlp]: setting an array element with a sequence.
+2026-06-12 13:16:45,363 INFO [optimized_pipeline] Cache hit → /lu/tetyda/home/ma480128/HPAI/text_classification/saved_models/feature_cache/word2vec_692ca5296e8e.pkl
+2026-06-12 13:16:45,395 INFO [optimized_pipeline] === word2vec × logistic_regression ===
+2026-06-12 13:16:47,593 INFO [metrics] train took 2.1978 s
+2026-06-12 13:16:47,593 INFO [metrics] inference_test took 0.0003 s
+2026-06-12 13:16:47,606 INFO [optimized_pipeline] [word2vec × logistic_regression]  acc=0.9101  f1=0.9076  train=2.20s
+2026-06-12 13:16:47,606 INFO [optimized_pipeline] === word2vec × random_forest ===
+2026-06-12 13:16:50,354 INFO [metrics] train took 2.7474 s
+2026-06-12 13:16:50,389 INFO [metrics] inference_test took 0.0356 s
+2026-06-12 13:16:50,402 INFO [optimized_pipeline] [word2vec × random_forest]  acc=0.8876  f1=0.8844  train=2.75s
+2026-06-12 13:16:50,403 INFO [optimized_pipeline] === word2vec × xgboost ===
+2026-06-12 13:16:55,503 INFO [metrics] train took 5.1000 s
+2026-06-12 13:16:55,510 INFO [metrics] inference_test took 0.0067 s
+2026-06-12 13:16:55,522 INFO [optimized_pipeline] [word2vec × xgboost]  acc=0.8921  f1=0.8904  train=5.10s
+2026-06-12 13:16:55,522 INFO [optimized_pipeline] === word2vec × svm ===
+/home/ma480128/miniconda3/envs/myenv/lib/python3.10/site-packages/sklearn/svm/_classes.py:32: FutureWarning: The default value of `dual` will change from `True` to `'auto'` in 1.5. Set the value of `dual` explicitly to suppress the warning.
+  warnings.warn(
+/home/ma480128/miniconda3/envs/myenv/lib/python3.10/site-packages/sklearn/svm/_classes.py:32: FutureWarning: The default value of `dual` will change from `True` to `'auto'` in 1.5. Set the value of `dual` explicitly to suppress the warning.
+  warnings.warn(
+/home/ma480128/miniconda3/envs/myenv/lib/python3.10/site-packages/sklearn/svm/_classes.py:32: FutureWarning: The default value of `dual` will change from `True` to `'auto'` in 1.5. Set the value of `dual` explicitly to suppress the warning.
+  warnings.warn(
+2026-06-12 13:16:56,061 INFO [metrics] train took 0.5379 s
+2026-06-12 13:16:56,063 INFO [metrics] inference_test took 0.0025 s
+2026-06-12 13:16:56,075 INFO [optimized_pipeline] [word2vec × svm]  acc=0.9011  f1=0.8978  train=0.54s
+2026-06-12 13:16:56,075 INFO [optimized_pipeline] === word2vec × naive_bayes ===
+2026-06-12 13:16:56,081 INFO [metrics] train took 0.0053 s
+2026-06-12 13:16:56,087 INFO [metrics] inference_test took 0.0062 s
+2026-06-12 13:16:56,099 INFO [optimized_pipeline] [word2vec × naive_bayes]  acc=0.7820  f1=0.7554  train=0.01s
+2026-06-12 13:16:56,099 INFO [optimized_pipeline] === word2vec × knn ===
+2026-06-12 13:16:56,100 INFO [metrics] train took 0.0007 s
+2026-06-12 13:16:56,143 INFO [metrics] inference_test took 0.0431 s
+2026-06-12 13:16:56,156 INFO [optimized_pipeline] [word2vec × knn]  acc=0.8809  f1=0.8770  train=0.00s
+2026-06-12 13:16:56,156 INFO [optimized_pipeline] === word2vec × mlp ===
+2026-06-12 13:16:56,806 INFO [metrics] train took 0.6501 s
+2026-06-12 13:16:56,808 INFO [metrics] inference_test took 0.0015 s
+2026-06-12 13:16:56,821 INFO [optimized_pipeline] [word2vec × mlp]  acc=0.8517  f1=0.8476  train=0.65s
+2026-06-12 13:16:56,822 INFO [optimized_pipeline] Cache hit → /lu/tetyda/home/ma480128/HPAI/text_classification/saved_models/feature_cache/doc2vec_a24f1a2b855f.pkl
+2026-06-12 13:16:56,852 INFO [optimized_pipeline] === doc2vec × logistic_regression ===
+2026-06-12 13:17:05,135 INFO [metrics] train took 8.2826 s
+2026-06-12 13:17:05,135 INFO [metrics] inference_test took 0.0004 s
+2026-06-12 13:17:05,148 INFO [optimized_pipeline] [doc2vec × logistic_regression]  acc=0.9506  f1=0.9504  train=8.28s
+2026-06-12 13:17:05,148 INFO [optimized_pipeline] === doc2vec × random_forest ===
+2026-06-12 13:17:07,862 INFO [metrics] train took 2.7143 s
+2026-06-12 13:17:07,897 INFO [metrics] inference_test took 0.0342 s
+2026-06-12 13:17:07,909 INFO [optimized_pipeline] [doc2vec × random_forest]  acc=0.9393  f1=0.9384  train=2.71s
+2026-06-12 13:17:07,909 INFO [optimized_pipeline] === doc2vec × xgboost ===
+2026-06-12 13:17:12,954 INFO [metrics] train took 5.0447 s
+2026-06-12 13:17:12,961 INFO [metrics] inference_test took 0.0069 s
+2026-06-12 13:17:12,974 INFO [optimized_pipeline] [doc2vec × xgboost]  acc=0.9258  f1=0.9248  train=5.04s
+2026-06-12 13:17:12,974 INFO [optimized_pipeline] === doc2vec × svm ===
+/home/ma480128/miniconda3/envs/myenv/lib/python3.10/site-packages/sklearn/svm/_classes.py:32: FutureWarning: The default value of `dual` will change from `True` to `'auto'` in 1.5. Set the value of `dual` explicitly to suppress the warning.
+  warnings.warn(
+/home/ma480128/miniconda3/envs/myenv/lib/python3.10/site-packages/sklearn/svm/_classes.py:32: FutureWarning: The default value of `dual` will change from `True` to `'auto'` in 1.5. Set the value of `dual` explicitly to suppress the warning.
+  warnings.warn(
+/home/ma480128/miniconda3/envs/myenv/lib/python3.10/site-packages/sklearn/svm/_classes.py:32: FutureWarning: The default value of `dual` will change from `True` to `'auto'` in 1.5. Set the value of `dual` explicitly to suppress the warning.
+  warnings.warn(
+2026-06-12 13:17:13,559 INFO [metrics] train took 0.5853 s
+2026-06-12 13:17:13,562 INFO [metrics] inference_test took 0.0026 s
+2026-06-12 13:17:13,574 INFO [optimized_pipeline] [doc2vec × svm]  acc=0.9371  f1=0.9359  train=0.59s
+2026-06-12 13:17:13,574 INFO [optimized_pipeline] === doc2vec × naive_bayes ===
+2026-06-12 13:17:13,577 INFO [metrics] train took 0.0021 s
+2026-06-12 13:17:13,583 INFO [metrics] inference_test took 0.0063 s
+2026-06-12 13:17:13,596 INFO [optimized_pipeline] [doc2vec × naive_bayes]  acc=0.8337  f1=0.8179  train=0.00s
+2026-06-12 13:17:13,596 INFO [optimized_pipeline] === doc2vec × knn ===
+2026-06-12 13:17:13,597 INFO [metrics] train took 0.0007 s
+2026-06-12 13:17:13,641 INFO [metrics] inference_test took 0.0440 s
+2026-06-12 13:17:13,653 INFO [optimized_pipeline] [doc2vec × knn]  acc=0.9461  f1=0.9445  train=0.00s
+2026-06-12 13:17:13,653 INFO [optimized_pipeline] === doc2vec × mlp ===
+2026-06-12 13:17:14,151 INFO [metrics] train took 0.4981 s
+2026-06-12 13:17:14,153 INFO [metrics] inference_test took 0.0013 s
+2026-06-12 13:17:14,165 INFO [optimized_pipeline] [doc2vec × mlp]  acc=0.9438  f1=0.9430  train=0.50s
+time=2026-06-12T13:17:14.944+02:00 level=INFO source=sched.go:1148 msg="disabling mmap for llama-server load by default" model=/home/ma480128/.ollama_models/blobs/sha256-6a0746a1ec1aef3e7ec53868f220ff6e389f6f8ef87a01d77c96807de94ca2aa reason=cpu
+time=2026-06-12T13:17:14.944+02:00 level=INFO source=server.go:109 msg="using llama-server for model" model=/home/ma480128/.ollama_models/blobs/sha256-6a0746a1ec1aef3e7ec53868f220ff6e389f6f8ef87a01d77c96807de94ca2aa
+time=2026-06-12T13:17:14.944+02:00 level=INFO source=llama_server.go:403 msg="starting llama-server" cmd="/usr/lib/ollama/llama-server --model /home/ma480128/.ollama_models/blobs/sha256-6a0746a1ec1aef3e7ec53868f220ff6e389f6f8ef87a01d77c96807de94ca2aa --port 43670 --host 127.0.0.1 --no-webui --offline -c 4096 -np 1 --log-verbosity 4 --no-log-prefix --no-log-timestamps --no-jinja --chat-template chatml --no-mmap --flash-attn auto -b 512 -ub 512 --context-shift --keep 24"
+time=2026-06-12T13:17:14.945+02:00 level=INFO source=sched.go:613 msg="system memory" total="755.8 GiB" free="731.4 GiB" free_swap="4.0 GiB"
+time=2026-06-12T13:17:14.945+02:00 level=INFO source=llama_server.go:886 msg="loading model via llama-server" model=/home/ma480128/.ollama_models/blobs/sha256-6a0746a1ec1aef3e7ec53868f220ff6e389f6f8ef87a01d77c96807de94ca2aa
+time=2026-06-12T13:17:14.945+02:00 level=INFO source=llama_server.go:1131 msg="waiting for llama-server to start responding"
+time=2026-06-12T13:17:14.960+02:00 level=INFO source=llama_server.go:1186 msg="waiting for llama-server to become available" status="llm server not responding"
+common_params_print_info: build 1 (6f3a9f3de) with GNU 11.2.1 for Linux x86_64
+log_info: verbosity = 4 (adjust with the `-lv N` CLI arg)
+device_info:
+  - CPU     : Intel(R) Xeon(R) CPU E5-2670 v3 @ 2.30GHz (773949 MiB, 773949 MiB free)
+system_info: n_threads = 24 (n_threads_batch = 24) / 24 | CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | AVX2 = 1 | F16C = 1 | FMA = 1 | BMI2 = 1 | LLAMAFILE = 1 | REPACK = 1 | 
+srv          init: using 23 threads for HTTP server
+srv          init: The UI is disabled
+srv          init: Use --ui/--no-ui (or deprecated --webui/--no-webui) to enable/disable
+srv         start: binding port with default address family
+srv  llama_server: loading model
+srv    load_model: loading model '/home/ma480128/.ollama_models/blobs/sha256-6a0746a1ec1aef3e7ec53868f220ff6e389f6f8ef87a01d77c96807de94ca2aa'
+common_init_result: fitting params to device memory ...
+common_init_result: (for bugs during this step try to reproduce them with -fit off, or provide --verbose logs if the bug only occurs with -fit on)
+common_params_fit_impl: getting device memory data for initial parameters:
+time=2026-06-12T13:17:15.213+02:00 level=INFO source=llama_server.go:1186 msg="waiting for llama-server to become available" status="llm server loading model"
+common_memory_breakdown_print: | memory breakdown [MiB] | total   free    self   model   context   compute    unaccounted |
+common_memory_breakdown_print: |   - Host               |                 1325 =   693 +     512 +     120                |
+common_memory_breakdown_print: |   - CPU_REPACK         |                 3744 =  3744 +       0 +       0                |
+common_params_fit_impl: projected to use 1325 MiB of host memory vs. 773949 MiB of total host memory
+common_params_fit_impl: will leave 772623 >= 1024 MiB of system memory, no changes needed
+common_fit_params: successfully fit params to free device memory
+common_fit_params: fitting params to free memory took 0.48 seconds
+llama_model_loader: loaded meta data with 22 key-value pairs and 291 tensors from /home/ma480128/.ollama_models/blobs/sha256-6a0746a1ec1aef3e7ec53868f220ff6e389f6f8ef87a01d77c96807de94ca2aa (version GGUF V3 (latest))
+llama_model_loader: Dumping metadata keys/values. Note: KV overrides do not apply in this output.
+llama_model_loader: - kv   0:                       general.architecture str              = llama
+llama_model_loader: - kv   1:                               general.name str              = Meta-Llama-3-8B-Instruct
+llama_model_loader: - kv   2:                          llama.block_count u32              = 32
+llama_model_loader: - kv   3:                       llama.context_length u32              = 8192
+llama_model_loader: - kv   4:                     llama.embedding_length u32              = 4096
+llama_model_loader: - kv   5:                  llama.feed_forward_length u32              = 14336
+llama_model_loader: - kv   6:                 llama.attention.head_count u32              = 32
+llama_model_loader: - kv   7:              llama.attention.head_count_kv u32              = 8
+llama_model_loader: - kv   8:                       llama.rope.freq_base f32              = 500000.000000
+llama_model_loader: - kv   9:     llama.attention.layer_norm_rms_epsilon f32              = 0.000010
+llama_model_loader: - kv  10:                          general.file_type u32              = 2
+llama_model_loader: - kv  11:                           llama.vocab_size u32              = 128256
+llama_model_loader: - kv  12:                 llama.rope.dimension_count u32              = 128
+llama_model_loader: - kv  13:                       tokenizer.ggml.model str              = gpt2
+llama_model_loader: - kv  14:                         tokenizer.ggml.pre str              = llama-bpe
+llama_model_loader: - kv  15:                      tokenizer.ggml.tokens arr[str,128256]  = ["!", "\"", "#", "$", "%", "&", "'", ...
+llama_model_loader: - kv  16:                  tokenizer.ggml.token_type arr[i32,128256]  = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ...
+llama_model_loader: - kv  17:                      tokenizer.ggml.merges arr[str,280147]  = ["Ġ Ġ", "Ġ ĠĠĠ", "ĠĠ ĠĠ", "...
+llama_model_loader: - kv  18:                tokenizer.ggml.bos_token_id u32              = 128000
+llama_model_loader: - kv  19:                tokenizer.ggml.eos_token_id u32              = 128009
+llama_model_loader: - kv  20:                    tokenizer.chat_template str              = {% set loop_messages = messages %}{% ...
+llama_model_loader: - kv  21:               general.quantization_version u32              = 2
+llama_model_loader: - type  f32:   65 tensors
+llama_model_loader: - type q4_0:  225 tensors
+llama_model_loader: - type q6_K:    1 tensors
+print_info: file format = GGUF V3 (latest)
+print_info: file type   = Q4_0
+print_info: file size   = 4.33 GiB (4.64 BPW) 
+load: 0 unused tokens
+load: printing all EOG tokens:
+load:   - 128001 ('<|end_of_text|>')
+load:   - 128009 ('<|eot_id|>')
+load: special tokens cache size = 256
+load: token to piece cache size = 0.8000 MB
+print_info: arch                  = llama
+print_info: vocab_only            = 0
+print_info: no_alloc              = 0
+print_info: n_ctx_train           = 8192
+print_info: n_embd                = 4096
+print_info: n_embd_inp            = 4096
+print_info: n_layer               = 32
+print_info: n_head                = 32
+print_info: n_head_kv             = 8
+print_info: n_rot                 = 128
+print_info: n_swa                 = 0
+print_info: is_swa_any            = 0
+print_info: n_embd_head_k         = 128
+print_info: n_embd_head_v         = 128
+print_info: n_gqa                 = 4
+print_info: n_embd_k_gqa          = 1024
+print_info: n_embd_v_gqa          = 1024
+print_info: f_norm_eps            = 0.0e+00
+print_info: f_norm_rms_eps        = 1.0e-05
+print_info: f_clamp_kqv           = 0.0e+00
+print_info: f_max_alibi_bias      = 0.0e+00
+print_info: f_logit_scale         = 0.0e+00
+print_info: f_attn_scale          = 0.0e+00
+print_info: f_attn_value_scale    = 0.0000
+print_info: n_ff                  = 14336
+print_info: n_expert              = 0
+print_info: n_expert_used         = 0
+print_info: n_expert_groups       = 0
+print_info: n_group_used          = 0
+print_info: causal attn           = 1
+print_info: pooling type          = -1
+print_info: rope type             = 0
+print_info: rope scaling          = linear
+print_info: freq_base_train       = 500000.0
+print_info: freq_scale_train      = 1
+print_info: n_ctx_orig_yarn       = 8192
+print_info: rope_yarn_log_mul     = 0.0000
+print_info: rope_finetuned        = unknown
+print_info: model type            = 8B
+print_info: model params          = 8.03 B
+print_info: general.name          = Meta-Llama-3-8B-Instruct
+print_info: vocab type            = BPE
+print_info: n_vocab               = 128256
+print_info: n_merges              = 280147
+print_info: BOS token             = 128000 '<|begin_of_text|>'
+print_info: EOS token             = 128009 '<|eot_id|>'
+print_info: EOT token             = 128009 '<|eot_id|>'
+print_info: LF token              = 198 'Ċ'
+print_info: EOG token             = 128001 '<|end_of_text|>'
+print_info: EOG token             = 128009 '<|eot_id|>'
+print_info: max token length      = 256
+load_tensors: loading model tensors, this can take a while... (mmap = false, direct_io = false)
+load_tensors:          CPU model buffer size =   693.80 MiB
+load_tensors:   CPU_REPACK model buffer size =  3744.00 MiB
+.......................................................................................
+common_init_result: added <|end_of_text|> logit bias = -inf
+common_init_result: added <|eot_id|> logit bias = -inf
+llama_context: constructing llama_context
+llama_context: n_seq_max     = 1
+llama_context: n_ctx         = 4096
+llama_context: n_ctx_seq     = 4096
+llama_context: n_batch       = 512
+llama_context: n_ubatch      = 512
+llama_context: causal_attn   = 1
+llama_context: flash_attn    = auto
+llama_context: kv_unified    = false
+llama_context: freq_base     = 500000.0
+llama_context: freq_scale    = 1
+llama_context: n_rs_seq      = 0
+llama_context: n_outputs_max = 1
+llama_context: n_ctx_seq (4096) < n_ctx_train (8192) -- the full capacity of the model will not be utilized
+llama_context:        CPU  output buffer size =     0.49 MiB
+llama_kv_cache:        CPU KV buffer size =   512.00 MiB
+llama_kv_cache: size =  512.00 MiB (  4096 cells,  32 layers,  1/1 seqs), K (f16):  256.00 MiB, V (f16):  256.00 MiB
+llama_kv_cache: attn_rot_k = 0, n_embd_head_k_all = 128
+llama_kv_cache: attn_rot_v = 0, n_embd_head_k_all = 128
+sched_reserve: reserving ...
+sched_reserve: Flash Attention was auto, set to enabled
+sched_reserve: resolving fused Gated Delta Net support:
+sched_reserve: fused Gated Delta Net (autoregressive) enabled
+sched_reserve: fused Gated Delta Net (chunked) enabled
+sched_reserve:        CPU compute buffer size =   120.01 MiB
+sched_reserve: graph nodes  = 998
+sched_reserve: graph splits = 1
+sched_reserve: reserve took 6.33 ms, sched copies = 1
+common_init_from_params: warming up the model with an empty run - please wait ... (--no-warmup to disable)
+srv    load_model: initializing slots, n_slots = 1
+common_speculative_init: no implementations specified for speculative decoding
+slot   load_model: id  0 | task -1 | new slot, n_ctx = 4096
+srv    load_model: prompt cache is enabled, size limit: 8192 MiB
+srv    load_model: use `--cache-ram 0` to disable the prompt cache
+srv    load_model: for more info see https://github.com/ggml-org/llama.cpp/pull/16391
+srv    load_model: context checkpoints enabled, max = 32, min spacing = 256
+srv          init: --cache-idle-slots requires --kv-unified, disabling
+init: chat template, example_format: '<|im_start|>system
+You are a helpful assistant<|im_end|>
+<|im_start|>user
+Hello<|im_end|>
+<|im_start|>assistant
+Hi there<|im_end|>
+<|im_start|>user
+How are you?<|im_end|>
+<|im_start|>assistant
+'
+srv          init: init: chat template, thinking = 0
+srv  llama_server: model loaded
+srv  llama_server: server is listening on http://127.0.0.1:43670
+srv  update_slots: all slots are idle
+time=2026-06-12T13:20:00.854+02:00 level=INFO source=llama_server.go:1198 msg="llama-server started in 165.91 seconds"
+time=2026-06-12T13:20:00.966+02:00 level=INFO source=images.go:354 msg="template selection" model=registry.ollama.ai/library/llama3:latest selected=go_template renderer="" parser="" go_template=[completion] chat_template=[completion] harmony=null renderer_parser=null
+time=2026-06-12T13:20:00.966+02:00 level=INFO source=sched.go:729 msg="loaded runners" count=1
+time=2026-06-12T13:20:00.966+02:00 level=INFO source=llama_server.go:1131 msg="waiting for llama-server to start responding"
+time=2026-06-12T13:20:00.967+02:00 level=INFO source=llama_server.go:1198 msg="llama-server started in 166.02 seconds"
+srv  log_server_r: done request: POST /tokenize 127.0.0.1 200
+slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = -1
+srv  get_availabl: updating prompt cache
+srv          load:  - looking for better prompt, base f_keep = -1.000, sim = 0.000
+srv        update:  - cache state: 0 prompts, 0.000 MiB (limits: 8192.000 MiB, 4096 tokens, 8589934592 est)
+srv  get_availabl: prompt cache update took 0.01 ms
+slot launch_slot_: id  0 | task -1 | sampler chain: logits -> penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> ?min-p -> ?xtc -> temp-ext -> dist 
+slot launch_slot_: id  0 | task -1 | sampler params: 
+	repeat_last_n = 64, repeat_penalty = 1.100, frequency_penalty = 0.000, presence_penalty = 0.000
+	dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 4096
+	top_k = 40, top_p = 0.900, min_p = 0.000, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.800
+	mirostat = 0, mirostat_lr = 0.100, mirostat_ent = 5.000, adaptive_target = -1.000, adaptive_decay = 0.900
+slot launch_slot_: id  0 | task 0 | processing task, is_child = 0
+slot update_slots: id  0 | task 0 | new prompt, n_ctx_slot = 4096, n_keep = 24, task.n_tokens = 11
+slot update_slots: id  0 | task 0 | cached n_tokens = 0, memory_seq_rm [0, end)
+slot init_sampler: id  0 | task 0 | init sampler, took 0.01 ms, tokens: text = 11, total = 11
+srv  log_server_r: done request: POST /completion 127.0.0.1 200
+slot print_timing: id  0 | task 0 | prompt eval time =   77449.60 ms /    11 tokens ( 7040.87 ms per token,     0.14 tokens per second)
+slot print_timing: id  0 | task 0 |        eval time =  150193.07 ms /     3 tokens (50064.36 ms per token,     0.02 tokens per second)
+slot print_timing: id  0 | task 0 |       total time =  227642.67 ms /    14 tokens
+slot print_timing: id  0 | task 0 |    graphs reused =          2
+2026-06-12 13:23:48,615 INFO [httpx] HTTP Request: POST http://localhost:11866/api/chat "HTTP/1.1 200 OK"
+2026-06-12 13:23:48,615 INFO [models] 'llama3' ready. 5 classes.
+2026-06-12 13:23:48,615 INFO [metrics] train took 394.4505 s
+2026-06-12 13:23:48,616 INFO [models]   [llama3] 0 / 445 …
+slot      release: id  0 | task 0 | stop processing: n_tokens = 13, truncated = 0
+srv  update_slots: all slots are idle
+2026-06-12 13:23:48,653 WARNING [models]   Ollama error on doc 0: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:48,690 WARNING [models]   Ollama error on doc 1: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:48,727 WARNING [models]   Ollama error on doc 2: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:48,763 WARNING [models]   Ollama error on doc 3: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:48,800 WARNING [models]   Ollama error on doc 4: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:48,836 WARNING [models]   Ollama error on doc 5: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:48,873 WARNING [models]   Ollama error on doc 6: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:48,910 WARNING [models]   Ollama error on doc 7: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:48,947 WARNING [models]   Ollama error on doc 8: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:48,983 WARNING [models]   Ollama error on doc 9: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:49,020 WARNING [models]   Ollama error on doc 10: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:49,056 WARNING [models]   Ollama error on doc 11: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:49,093 WARNING [models]   Ollama error on doc 12: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:49,129 WARNING [models]   Ollama error on doc 13: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:49,166 WARNING [models]   Ollama error on doc 14: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:49,202 WARNING [models]   Ollama error on doc 15: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:49,239 WARNING [models]   Ollama error on doc 16: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:49,275 WARNING [models]   Ollama error on doc 17: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:49,314 WARNING [models]   Ollama error on doc 18: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:49,351 WARNING [models]   Ollama error on doc 19: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:49,387 WARNING [models]   Ollama error on doc 20: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:49,424 WARNING [models]   Ollama error on doc 21: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:49,460 WARNING [models]   Ollama error on doc 22: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:49,496 WARNING [models]   Ollama error on doc 23: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:49,535 WARNING [models]   Ollama error on doc 24: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:49,571 WARNING [models]   Ollama error on doc 25: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:49,608 WARNING [models]   Ollama error on doc 26: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:49,644 WARNING [models]   Ollama error on doc 27: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:49,681 WARNING [models]   Ollama error on doc 28: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:49,718 WARNING [models]   Ollama error on doc 29: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:49,754 WARNING [models]   Ollama error on doc 30: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:49,791 WARNING [models]   Ollama error on doc 31: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:49,827 WARNING [models]   Ollama error on doc 32: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:49,864 WARNING [models]   Ollama error on doc 33: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:49,901 WARNING [models]   Ollama error on doc 34: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:49,937 WARNING [models]   Ollama error on doc 35: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:49,973 WARNING [models]   Ollama error on doc 36: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:50,010 WARNING [models]   Ollama error on doc 37: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:50,047 WARNING [models]   Ollama error on doc 38: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:50,083 WARNING [models]   Ollama error on doc 39: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:50,119 WARNING [models]   Ollama error on doc 40: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:50,156 WARNING [models]   Ollama error on doc 41: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:50,192 WARNING [models]   Ollama error on doc 42: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:50,229 WARNING [models]   Ollama error on doc 43: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:50,265 WARNING [models]   Ollama error on doc 44: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:50,304 WARNING [models]   Ollama error on doc 45: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:50,344 WARNING [models]   Ollama error on doc 46: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:50,383 WARNING [models]   Ollama error on doc 47: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:50,423 WARNING [models]   Ollama error on doc 48: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:50,462 WARNING [models]   Ollama error on doc 49: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:50,462 INFO [models]   [llama3] 50 / 445 …
+2026-06-12 13:23:50,501 WARNING [models]   Ollama error on doc 50: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:50,540 WARNING [models]   Ollama error on doc 51: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:50,579 WARNING [models]   Ollama error on doc 52: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:50,618 WARNING [models]   Ollama error on doc 53: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:50,658 WARNING [models]   Ollama error on doc 54: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:50,695 WARNING [models]   Ollama error on doc 55: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:50,732 WARNING [models]   Ollama error on doc 56: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:50,768 WARNING [models]   Ollama error on doc 57: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:50,805 WARNING [models]   Ollama error on doc 58: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:50,841 WARNING [models]   Ollama error on doc 59: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:50,878 WARNING [models]   Ollama error on doc 60: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:50,915 WARNING [models]   Ollama error on doc 61: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:50,952 WARNING [models]   Ollama error on doc 62: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:50,988 WARNING [models]   Ollama error on doc 63: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:51,026 WARNING [models]   Ollama error on doc 64: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:51,063 WARNING [models]   Ollama error on doc 65: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:51,100 WARNING [models]   Ollama error on doc 66: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:51,136 WARNING [models]   Ollama error on doc 67: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:51,172 WARNING [models]   Ollama error on doc 68: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:51,209 WARNING [models]   Ollama error on doc 69: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:51,245 WARNING [models]   Ollama error on doc 70: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:51,282 WARNING [models]   Ollama error on doc 71: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:51,318 WARNING [models]   Ollama error on doc 72: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:51,355 WARNING [models]   Ollama error on doc 73: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:51,392 WARNING [models]   Ollama error on doc 74: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:51,428 WARNING [models]   Ollama error on doc 75: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:51,464 WARNING [models]   Ollama error on doc 76: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:51,501 WARNING [models]   Ollama error on doc 77: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:51,540 WARNING [models]   Ollama error on doc 78: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:51,576 WARNING [models]   Ollama error on doc 79: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:51,612 WARNING [models]   Ollama error on doc 80: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:51,649 WARNING [models]   Ollama error on doc 81: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:51,685 WARNING [models]   Ollama error on doc 82: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:51,722 WARNING [models]   Ollama error on doc 83: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:51,758 WARNING [models]   Ollama error on doc 84: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:51,795 WARNING [models]   Ollama error on doc 85: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:51,831 WARNING [models]   Ollama error on doc 86: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:51,868 WARNING [models]   Ollama error on doc 87: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:51,904 WARNING [models]   Ollama error on doc 88: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:51,940 WARNING [models]   Ollama error on doc 89: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:51,977 WARNING [models]   Ollama error on doc 90: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:52,013 WARNING [models]   Ollama error on doc 91: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:52,049 WARNING [models]   Ollama error on doc 92: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:52,086 WARNING [models]   Ollama error on doc 93: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:52,122 WARNING [models]   Ollama error on doc 94: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:52,158 WARNING [models]   Ollama error on doc 95: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:52,195 WARNING [models]   Ollama error on doc 96: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:52,231 WARNING [models]   Ollama error on doc 97: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:52,267 WARNING [models]   Ollama error on doc 98: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:52,304 WARNING [models]   Ollama error on doc 99: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:52,304 INFO [models]   [llama3] 100 / 445 …
+2026-06-12 13:23:52,340 WARNING [models]   Ollama error on doc 100: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:52,377 WARNING [models]   Ollama error on doc 101: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:52,414 WARNING [models]   Ollama error on doc 102: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:52,451 WARNING [models]   Ollama error on doc 103: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:52,488 WARNING [models]   Ollama error on doc 104: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:52,524 WARNING [models]   Ollama error on doc 105: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:52,562 WARNING [models]   Ollama error on doc 106: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:52,600 WARNING [models]   Ollama error on doc 107: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:52,637 WARNING [models]   Ollama error on doc 108: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:52,674 WARNING [models]   Ollama error on doc 109: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:52,711 WARNING [models]   Ollama error on doc 110: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:52,747 WARNING [models]   Ollama error on doc 111: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:52,784 WARNING [models]   Ollama error on doc 112: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:52,821 WARNING [models]   Ollama error on doc 113: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:52,858 WARNING [models]   Ollama error on doc 114: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:52,894 WARNING [models]   Ollama error on doc 115: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:52,931 WARNING [models]   Ollama error on doc 116: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:52,968 WARNING [models]   Ollama error on doc 117: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:53,004 WARNING [models]   Ollama error on doc 118: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:53,041 WARNING [models]   Ollama error on doc 119: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:53,078 WARNING [models]   Ollama error on doc 120: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:53,115 WARNING [models]   Ollama error on doc 121: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:53,151 WARNING [models]   Ollama error on doc 122: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:53,188 WARNING [models]   Ollama error on doc 123: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:53,224 WARNING [models]   Ollama error on doc 124: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:53,260 WARNING [models]   Ollama error on doc 125: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:53,297 WARNING [models]   Ollama error on doc 126: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:53,334 WARNING [models]   Ollama error on doc 127: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:53,370 WARNING [models]   Ollama error on doc 128: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:53,407 WARNING [models]   Ollama error on doc 129: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:53,444 WARNING [models]   Ollama error on doc 130: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:53,481 WARNING [models]   Ollama error on doc 131: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:53,517 WARNING [models]   Ollama error on doc 132: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:53,554 WARNING [models]   Ollama error on doc 133: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:53,591 WARNING [models]   Ollama error on doc 134: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:53,628 WARNING [models]   Ollama error on doc 135: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:53,664 WARNING [models]   Ollama error on doc 136: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:53,701 WARNING [models]   Ollama error on doc 137: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:53,740 WARNING [models]   Ollama error on doc 138: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:53,776 WARNING [models]   Ollama error on doc 139: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:53,813 WARNING [models]   Ollama error on doc 140: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:53,849 WARNING [models]   Ollama error on doc 141: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:53,886 WARNING [models]   Ollama error on doc 142: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:53,922 WARNING [models]   Ollama error on doc 143: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:53,959 WARNING [models]   Ollama error on doc 144: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:53,995 WARNING [models]   Ollama error on doc 145: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:54,032 WARNING [models]   Ollama error on doc 146: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:54,069 WARNING [models]   Ollama error on doc 147: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:54,105 WARNING [models]   Ollama error on doc 148: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:54,141 WARNING [models]   Ollama error on doc 149: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:54,141 INFO [models]   [llama3] 150 / 445 …
+2026-06-12 13:23:54,178 WARNING [models]   Ollama error on doc 150: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:54,214 WARNING [models]   Ollama error on doc 151: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:54,251 WARNING [models]   Ollama error on doc 152: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:54,287 WARNING [models]   Ollama error on doc 153: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:54,323 WARNING [models]   Ollama error on doc 154: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:54,360 WARNING [models]   Ollama error on doc 155: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:54,396 WARNING [models]   Ollama error on doc 156: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:54,433 WARNING [models]   Ollama error on doc 157: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:54,470 WARNING [models]   Ollama error on doc 158: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:54,506 WARNING [models]   Ollama error on doc 159: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:54,543 WARNING [models]   Ollama error on doc 160: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:54,579 WARNING [models]   Ollama error on doc 161: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:54,615 WARNING [models]   Ollama error on doc 162: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:54,652 WARNING [models]   Ollama error on doc 163: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:54,689 WARNING [models]   Ollama error on doc 164: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:54,725 WARNING [models]   Ollama error on doc 165: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:54,762 WARNING [models]   Ollama error on doc 166: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:54,798 WARNING [models]   Ollama error on doc 167: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:54,836 WARNING [models]   Ollama error on doc 168: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:54,874 WARNING [models]   Ollama error on doc 169: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:54,910 WARNING [models]   Ollama error on doc 170: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:54,947 WARNING [models]   Ollama error on doc 171: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:54,983 WARNING [models]   Ollama error on doc 172: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:55,020 WARNING [models]   Ollama error on doc 173: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:55,057 WARNING [models]   Ollama error on doc 174: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:55,093 WARNING [models]   Ollama error on doc 175: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:55,130 WARNING [models]   Ollama error on doc 176: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:55,166 WARNING [models]   Ollama error on doc 177: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:55,202 WARNING [models]   Ollama error on doc 178: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:55,239 WARNING [models]   Ollama error on doc 179: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:55,275 WARNING [models]   Ollama error on doc 180: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:55,312 WARNING [models]   Ollama error on doc 181: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:55,348 WARNING [models]   Ollama error on doc 182: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:55,384 WARNING [models]   Ollama error on doc 183: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:55,421 WARNING [models]   Ollama error on doc 184: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:55,457 WARNING [models]   Ollama error on doc 185: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:55,493 WARNING [models]   Ollama error on doc 186: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:55,530 WARNING [models]   Ollama error on doc 187: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:55,566 WARNING [models]   Ollama error on doc 188: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:55,603 WARNING [models]   Ollama error on doc 189: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:55,639 WARNING [models]   Ollama error on doc 190: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:55,675 WARNING [models]   Ollama error on doc 191: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:55,712 WARNING [models]   Ollama error on doc 192: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:55,748 WARNING [models]   Ollama error on doc 193: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:55,784 WARNING [models]   Ollama error on doc 194: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:55,820 WARNING [models]   Ollama error on doc 195: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:55,856 WARNING [models]   Ollama error on doc 196: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:55,892 WARNING [models]   Ollama error on doc 197: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:55,928 WARNING [models]   Ollama error on doc 198: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:55,965 WARNING [models]   Ollama error on doc 199: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:55,965 INFO [models]   [llama3] 200 / 445 …
+2026-06-12 13:23:56,003 WARNING [models]   Ollama error on doc 200: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:56,039 WARNING [models]   Ollama error on doc 201: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:56,075 WARNING [models]   Ollama error on doc 202: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:56,111 WARNING [models]   Ollama error on doc 203: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:56,147 WARNING [models]   Ollama error on doc 204: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:56,184 WARNING [models]   Ollama error on doc 205: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:56,220 WARNING [models]   Ollama error on doc 206: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:56,256 WARNING [models]   Ollama error on doc 207: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:56,292 WARNING [models]   Ollama error on doc 208: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:56,328 WARNING [models]   Ollama error on doc 209: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:56,364 WARNING [models]   Ollama error on doc 210: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:56,400 WARNING [models]   Ollama error on doc 211: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:56,436 WARNING [models]   Ollama error on doc 212: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:56,472 WARNING [models]   Ollama error on doc 213: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:56,508 WARNING [models]   Ollama error on doc 214: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:56,545 WARNING [models]   Ollama error on doc 215: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:56,581 WARNING [models]   Ollama error on doc 216: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:56,617 WARNING [models]   Ollama error on doc 217: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:56,653 WARNING [models]   Ollama error on doc 218: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:56,689 WARNING [models]   Ollama error on doc 219: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:56,725 WARNING [models]   Ollama error on doc 220: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:56,761 WARNING [models]   Ollama error on doc 221: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:56,797 WARNING [models]   Ollama error on doc 222: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:56,833 WARNING [models]   Ollama error on doc 223: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:56,870 WARNING [models]   Ollama error on doc 224: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:56,906 WARNING [models]   Ollama error on doc 225: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:56,942 WARNING [models]   Ollama error on doc 226: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:56,978 WARNING [models]   Ollama error on doc 227: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:57,014 WARNING [models]   Ollama error on doc 228: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:57,051 WARNING [models]   Ollama error on doc 229: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:57,087 WARNING [models]   Ollama error on doc 230: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:57,126 WARNING [models]   Ollama error on doc 231: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:57,162 WARNING [models]   Ollama error on doc 232: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:57,198 WARNING [models]   Ollama error on doc 233: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:57,234 WARNING [models]   Ollama error on doc 234: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:57,270 WARNING [models]   Ollama error on doc 235: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:57,306 WARNING [models]   Ollama error on doc 236: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:57,343 WARNING [models]   Ollama error on doc 237: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:57,379 WARNING [models]   Ollama error on doc 238: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:57,415 WARNING [models]   Ollama error on doc 239: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:57,451 WARNING [models]   Ollama error on doc 240: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:57,488 WARNING [models]   Ollama error on doc 241: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:57,524 WARNING [models]   Ollama error on doc 242: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:57,560 WARNING [models]   Ollama error on doc 243: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:57,596 WARNING [models]   Ollama error on doc 244: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:57,633 WARNING [models]   Ollama error on doc 245: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:57,669 WARNING [models]   Ollama error on doc 246: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:57,705 WARNING [models]   Ollama error on doc 247: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:57,742 WARNING [models]   Ollama error on doc 248: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:57,778 WARNING [models]   Ollama error on doc 249: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:57,778 INFO [models]   [llama3] 250 / 445 …
+2026-06-12 13:23:57,814 WARNING [models]   Ollama error on doc 250: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:57,850 WARNING [models]   Ollama error on doc 251: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:57,887 WARNING [models]   Ollama error on doc 252: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:57,923 WARNING [models]   Ollama error on doc 253: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:57,959 WARNING [models]   Ollama error on doc 254: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:57,995 WARNING [models]   Ollama error on doc 255: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:58,032 WARNING [models]   Ollama error on doc 256: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:58,068 WARNING [models]   Ollama error on doc 257: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:58,104 WARNING [models]   Ollama error on doc 258: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:58,141 WARNING [models]   Ollama error on doc 259: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:58,178 WARNING [models]   Ollama error on doc 260: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:58,216 WARNING [models]   Ollama error on doc 261: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:58,253 WARNING [models]   Ollama error on doc 262: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:58,289 WARNING [models]   Ollama error on doc 263: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:58,326 WARNING [models]   Ollama error on doc 264: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:58,362 WARNING [models]   Ollama error on doc 265: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:58,399 WARNING [models]   Ollama error on doc 266: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:58,435 WARNING [models]   Ollama error on doc 267: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:58,472 WARNING [models]   Ollama error on doc 268: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:58,508 WARNING [models]   Ollama error on doc 269: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:58,545 WARNING [models]   Ollama error on doc 270: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:58,581 WARNING [models]   Ollama error on doc 271: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:58,618 WARNING [models]   Ollama error on doc 272: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:58,655 WARNING [models]   Ollama error on doc 273: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:58,691 WARNING [models]   Ollama error on doc 274: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:58,728 WARNING [models]   Ollama error on doc 275: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:58,765 WARNING [models]   Ollama error on doc 276: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:58,801 WARNING [models]   Ollama error on doc 277: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:58,838 WARNING [models]   Ollama error on doc 278: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:58,874 WARNING [models]   Ollama error on doc 279: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:58,911 WARNING [models]   Ollama error on doc 280: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:58,947 WARNING [models]   Ollama error on doc 281: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:58,984 WARNING [models]   Ollama error on doc 282: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:59,020 WARNING [models]   Ollama error on doc 283: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:59,057 WARNING [models]   Ollama error on doc 284: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:59,094 WARNING [models]   Ollama error on doc 285: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:59,130 WARNING [models]   Ollama error on doc 286: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:59,167 WARNING [models]   Ollama error on doc 287: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:59,204 WARNING [models]   Ollama error on doc 288: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:59,240 WARNING [models]   Ollama error on doc 289: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:59,277 WARNING [models]   Ollama error on doc 290: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:59,314 WARNING [models]   Ollama error on doc 291: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:59,351 WARNING [models]   Ollama error on doc 292: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:59,389 WARNING [models]   Ollama error on doc 293: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:59,426 WARNING [models]   Ollama error on doc 294: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:59,462 WARNING [models]   Ollama error on doc 295: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:59,499 WARNING [models]   Ollama error on doc 296: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:59,535 WARNING [models]   Ollama error on doc 297: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:59,572 WARNING [models]   Ollama error on doc 298: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:59,609 WARNING [models]   Ollama error on doc 299: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:59,609 INFO [models]   [llama3] 300 / 445 …
+2026-06-12 13:23:59,645 WARNING [models]   Ollama error on doc 300: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:59,682 WARNING [models]   Ollama error on doc 301: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:59,718 WARNING [models]   Ollama error on doc 302: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:59,755 WARNING [models]   Ollama error on doc 303: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:59,792 WARNING [models]   Ollama error on doc 304: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:59,828 WARNING [models]   Ollama error on doc 305: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:59,865 WARNING [models]   Ollama error on doc 306: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:59,902 WARNING [models]   Ollama error on doc 307: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:59,939 WARNING [models]   Ollama error on doc 308: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:23:59,975 WARNING [models]   Ollama error on doc 309: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:00,012 WARNING [models]   Ollama error on doc 310: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:00,048 WARNING [models]   Ollama error on doc 311: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:00,085 WARNING [models]   Ollama error on doc 312: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:00,121 WARNING [models]   Ollama error on doc 313: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:00,158 WARNING [models]   Ollama error on doc 314: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:00,194 WARNING [models]   Ollama error on doc 315: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:00,231 WARNING [models]   Ollama error on doc 316: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:00,268 WARNING [models]   Ollama error on doc 317: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:00,304 WARNING [models]   Ollama error on doc 318: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:00,341 WARNING [models]   Ollama error on doc 319: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:00,379 WARNING [models]   Ollama error on doc 320: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:00,415 WARNING [models]   Ollama error on doc 321: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:00,452 WARNING [models]   Ollama error on doc 322: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:00,490 WARNING [models]   Ollama error on doc 323: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:00,527 WARNING [models]   Ollama error on doc 324: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:00,563 WARNING [models]   Ollama error on doc 325: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:00,600 WARNING [models]   Ollama error on doc 326: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:00,636 WARNING [models]   Ollama error on doc 327: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:00,673 WARNING [models]   Ollama error on doc 328: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:00,710 WARNING [models]   Ollama error on doc 329: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:00,746 WARNING [models]   Ollama error on doc 330: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:00,783 WARNING [models]   Ollama error on doc 331: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:00,819 WARNING [models]   Ollama error on doc 332: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:00,856 WARNING [models]   Ollama error on doc 333: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:00,893 WARNING [models]   Ollama error on doc 334: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:00,929 WARNING [models]   Ollama error on doc 335: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:00,966 WARNING [models]   Ollama error on doc 336: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:01,002 WARNING [models]   Ollama error on doc 337: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:01,039 WARNING [models]   Ollama error on doc 338: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:01,075 WARNING [models]   Ollama error on doc 339: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:01,112 WARNING [models]   Ollama error on doc 340: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:01,148 WARNING [models]   Ollama error on doc 341: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:01,185 WARNING [models]   Ollama error on doc 342: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:01,221 WARNING [models]   Ollama error on doc 343: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:01,258 WARNING [models]   Ollama error on doc 344: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:01,294 WARNING [models]   Ollama error on doc 345: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:01,330 WARNING [models]   Ollama error on doc 346: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:01,367 WARNING [models]   Ollama error on doc 347: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:01,403 WARNING [models]   Ollama error on doc 348: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:01,440 WARNING [models]   Ollama error on doc 349: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:01,440 INFO [models]   [llama3] 350 / 445 …
+2026-06-12 13:24:01,476 WARNING [models]   Ollama error on doc 350: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:01,513 WARNING [models]   Ollama error on doc 351: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:01,549 WARNING [models]   Ollama error on doc 352: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:01,585 WARNING [models]   Ollama error on doc 353: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:01,624 WARNING [models]   Ollama error on doc 354: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:01,661 WARNING [models]   Ollama error on doc 355: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:01,698 WARNING [models]   Ollama error on doc 356: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:01,735 WARNING [models]   Ollama error on doc 357: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:01,771 WARNING [models]   Ollama error on doc 358: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:01,808 WARNING [models]   Ollama error on doc 359: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:01,844 WARNING [models]   Ollama error on doc 360: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:01,881 WARNING [models]   Ollama error on doc 361: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:01,917 WARNING [models]   Ollama error on doc 362: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:01,954 WARNING [models]   Ollama error on doc 363: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:01,991 WARNING [models]   Ollama error on doc 364: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:02,028 WARNING [models]   Ollama error on doc 365: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:02,065 WARNING [models]   Ollama error on doc 366: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:02,101 WARNING [models]   Ollama error on doc 367: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:02,138 WARNING [models]   Ollama error on doc 368: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:02,174 WARNING [models]   Ollama error on doc 369: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:02,210 WARNING [models]   Ollama error on doc 370: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:02,247 WARNING [models]   Ollama error on doc 371: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:02,283 WARNING [models]   Ollama error on doc 372: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:02,320 WARNING [models]   Ollama error on doc 373: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:02,356 WARNING [models]   Ollama error on doc 374: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:02,393 WARNING [models]   Ollama error on doc 375: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:02,429 WARNING [models]   Ollama error on doc 376: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:02,465 WARNING [models]   Ollama error on doc 377: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:02,502 WARNING [models]   Ollama error on doc 378: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:02,539 WARNING [models]   Ollama error on doc 379: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:02,575 WARNING [models]   Ollama error on doc 380: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:02,611 WARNING [models]   Ollama error on doc 381: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:02,648 WARNING [models]   Ollama error on doc 382: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:02,687 WARNING [models]   Ollama error on doc 383: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:02,723 WARNING [models]   Ollama error on doc 384: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:02,759 WARNING [models]   Ollama error on doc 385: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:02,795 WARNING [models]   Ollama error on doc 386: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:02,832 WARNING [models]   Ollama error on doc 387: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:02,869 WARNING [models]   Ollama error on doc 388: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:02,905 WARNING [models]   Ollama error on doc 389: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:02,941 WARNING [models]   Ollama error on doc 390: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:02,978 WARNING [models]   Ollama error on doc 391: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:03,014 WARNING [models]   Ollama error on doc 392: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:03,051 WARNING [models]   Ollama error on doc 393: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:03,087 WARNING [models]   Ollama error on doc 394: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:03,123 WARNING [models]   Ollama error on doc 395: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:03,160 WARNING [models]   Ollama error on doc 396: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:03,197 WARNING [models]   Ollama error on doc 397: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:03,236 WARNING [models]   Ollama error on doc 398: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:03,273 WARNING [models]   Ollama error on doc 399: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:03,273 INFO [models]   [llama3] 400 / 445 …
+2026-06-12 13:24:03,309 WARNING [models]   Ollama error on doc 400: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:03,345 WARNING [models]   Ollama error on doc 401: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:03,381 WARNING [models]   Ollama error on doc 402: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:03,418 WARNING [models]   Ollama error on doc 403: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:03,454 WARNING [models]   Ollama error on doc 404: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:03,490 WARNING [models]   Ollama error on doc 405: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:03,527 WARNING [models]   Ollama error on doc 406: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:03,563 WARNING [models]   Ollama error on doc 407: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:03,600 WARNING [models]   Ollama error on doc 408: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:03,636 WARNING [models]   Ollama error on doc 409: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:03,673 WARNING [models]   Ollama error on doc 410: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:03,709 WARNING [models]   Ollama error on doc 411: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:03,746 WARNING [models]   Ollama error on doc 412: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:03,782 WARNING [models]   Ollama error on doc 413: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:03,819 WARNING [models]   Ollama error on doc 414: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:03,855 WARNING [models]   Ollama error on doc 415: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:03,892 WARNING [models]   Ollama error on doc 416: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:03,928 WARNING [models]   Ollama error on doc 417: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:03,965 WARNING [models]   Ollama error on doc 418: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:04,002 WARNING [models]   Ollama error on doc 419: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:04,038 WARNING [models]   Ollama error on doc 420: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:04,075 WARNING [models]   Ollama error on doc 421: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:04,111 WARNING [models]   Ollama error on doc 422: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:04,148 WARNING [models]   Ollama error on doc 423: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:04,185 WARNING [models]   Ollama error on doc 424: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:04,221 WARNING [models]   Ollama error on doc 425: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:04,259 WARNING [models]   Ollama error on doc 426: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:04,298 WARNING [models]   Ollama error on doc 427: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:04,335 WARNING [models]   Ollama error on doc 428: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:04,372 WARNING [models]   Ollama error on doc 429: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:04,411 WARNING [models]   Ollama error on doc 430: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:04,448 WARNING [models]   Ollama error on doc 431: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:04,485 WARNING [models]   Ollama error on doc 432: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:04,522 WARNING [models]   Ollama error on doc 433: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:04,559 WARNING [models]   Ollama error on doc 434: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:04,596 WARNING [models]   Ollama error on doc 435: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:04,633 WARNING [models]   Ollama error on doc 436: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:04,670 WARNING [models]   Ollama error on doc 437: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:04,707 WARNING [models]   Ollama error on doc 438: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:04,743 WARNING [models]   Ollama error on doc 439: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:04,780 WARNING [models]   Ollama error on doc 440: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:04,817 WARNING [models]   Ollama error on doc 441: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:04,854 WARNING [models]   Ollama error on doc 442: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:04,891 WARNING [models]   Ollama error on doc 443: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:04,927 WARNING [models]   Ollama error on doc 444: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:24:04,928 INFO [metrics] inference_test took 16.3122 s
+time=2026-06-12T13:24:05.066+02:00 level=INFO source=sched.go:1148 msg="disabling mmap for llama-server load by default" model=/home/ma480128/.ollama_models/blobs/sha256-f5074b1221da0f5a2910d33b642efa5b9eb58cfdddca1c79e16d7ad28aa2b31f reason=cpu
+time=2026-06-12T13:24:05.066+02:00 level=INFO source=server.go:109 msg="using llama-server for model" model=/home/ma480128/.ollama_models/blobs/sha256-f5074b1221da0f5a2910d33b642efa5b9eb58cfdddca1c79e16d7ad28aa2b31f
+time=2026-06-12T13:24:05.066+02:00 level=INFO source=llama_server.go:403 msg="starting llama-server" cmd="/usr/lib/ollama/llama-server --model /home/ma480128/.ollama_models/blobs/sha256-f5074b1221da0f5a2910d33b642efa5b9eb58cfdddca1c79e16d7ad28aa2b31f --port 45236 --host 127.0.0.1 --no-webui --offline -c 4096 -np 1 --log-verbosity 4 --no-log-prefix --no-log-timestamps --no-jinja --chat-template chatml --no-mmap --flash-attn auto -b 512 -ub 512 --context-shift --keep 4"
+time=2026-06-12T13:24:05.066+02:00 level=INFO source=sched.go:613 msg="system memory" total="755.8 GiB" free="726.4 GiB" free_swap="4.0 GiB"
+time=2026-06-12T13:24:05.066+02:00 level=INFO source=llama_server.go:886 msg="loading model via llama-server" model=/home/ma480128/.ollama_models/blobs/sha256-f5074b1221da0f5a2910d33b642efa5b9eb58cfdddca1c79e16d7ad28aa2b31f
+time=2026-06-12T13:24:05.066+02:00 level=INFO source=llama_server.go:1131 msg="waiting for llama-server to start responding"
+time=2026-06-12T13:24:05.083+02:00 level=INFO source=llama_server.go:1186 msg="waiting for llama-server to become available" status="llm server not responding"
+common_params_print_info: build 1 (6f3a9f3de) with GNU 11.2.1 for Linux x86_64
+log_info: verbosity = 4 (adjust with the `-lv N` CLI arg)
+device_info:
+  - CPU     : Intel(R) Xeon(R) CPU E5-2670 v3 @ 2.30GHz (773949 MiB, 773949 MiB free)
+system_info: n_threads = 24 (n_threads_batch = 24) / 24 | CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | AVX2 = 1 | F16C = 1 | FMA = 1 | BMI2 = 1 | LLAMAFILE = 1 | REPACK = 1 | 
+srv          init: using 23 threads for HTTP server
+srv          init: The UI is disabled
+srv          init: Use --ui/--no-ui (or deprecated --webui/--no-webui) to enable/disable
+srv         start: binding port with default address family
+srv  llama_server: loading model
+srv    load_model: loading model '/home/ma480128/.ollama_models/blobs/sha256-f5074b1221da0f5a2910d33b642efa5b9eb58cfdddca1c79e16d7ad28aa2b31f'
+common_init_result: fitting params to device memory ...
+common_init_result: (for bugs during this step try to reproduce them with -fit off, or provide --verbose logs if the bug only occurs with -fit on)
+common_params_fit_impl: getting device memory data for initial parameters:
+common_memory_breakdown_print: | memory breakdown [MiB] | total   free    self   model   context   compute    unaccounted |
+common_memory_breakdown_print: |   - Host               |                 1597 =   965 +     512 +     120                |
+common_memory_breakdown_print: |   - CPU_REPACK         |                 3204 =  3204 +       0 +       0                |
+common_params_fit_impl: projected to use 1597 MiB of host memory vs. 773949 MiB of total host memory
+common_params_fit_impl: will leave 772351 >= 1024 MiB of system memory, no changes needed
+common_fit_params: successfully fit params to free device memory
+common_fit_params: fitting params to free memory took 0.08 seconds
+llama_model_loader: loaded meta data with 25 key-value pairs and 291 tensors from /home/ma480128/.ollama_models/blobs/sha256-f5074b1221da0f5a2910d33b642efa5b9eb58cfdddca1c79e16d7ad28aa2b31f (version GGUF V3 (latest))
+llama_model_loader: Dumping metadata keys/values. Note: KV overrides do not apply in this output.
+llama_model_loader: - kv   0:                       general.architecture str              = llama
+llama_model_loader: - kv   1:                               general.name str              = Mistral-7B-Instruct-v0.3
+llama_model_loader: - kv   2:                          llama.block_count u32              = 32
+llama_model_loader: - kv   3:                       llama.context_length u32              = 32768
+llama_model_loader: - kv   4:                     llama.embedding_length u32              = 4096
+llama_model_loader: - kv   5:                  llama.feed_forward_length u32              = 14336
+llama_model_loader: - kv   6:                 llama.attention.head_count u32              = 32
+llama_model_loader: - kv   7:              llama.attention.head_count_kv u32              = 8
+llama_model_loader: - kv   8:                       llama.rope.freq_base f32              = 1000000.000000
+llama_model_loader: - kv   9:     llama.attention.layer_norm_rms_epsilon f32              = 0.000010
+llama_model_loader: - kv  10:                          general.file_type u32              = 15
+llama_model_loader: - kv  11:                           llama.vocab_size u32              = 32768
+llama_model_loader: - kv  12:                 llama.rope.dimension_count u32              = 128
+llama_model_loader: - kv  13:                       tokenizer.ggml.model str              = llama
+llama_model_loader: - kv  14:                         tokenizer.ggml.pre str              = default
+llama_model_loader: - kv  15:                      tokenizer.ggml.tokens arr[str,32768]   = ["<unk>", "<s>", "</s>", "[INST]", "[...
+llama_model_loader: - kv  16:                      tokenizer.ggml.scores arr[f32,32768]   = [0.000000, 0.000000, 0.000000, 0.0000...
+llama_model_loader: - kv  17:                  tokenizer.ggml.token_type arr[i32,32768]   = [2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, ...
+llama_model_loader: - kv  18:                tokenizer.ggml.bos_token_id u32              = 1
+llama_model_loader: - kv  19:                tokenizer.ggml.eos_token_id u32              = 2
+llama_model_loader: - kv  20:            tokenizer.ggml.unknown_token_id u32              = 0
+llama_model_loader: - kv  21:               tokenizer.ggml.add_bos_token bool             = true
+llama_model_loader: - kv  22:               tokenizer.ggml.add_eos_token bool             = false
+llama_model_loader: - kv  23:                    tokenizer.chat_template str              = {{ bos_token }}{% for message in mess...
+llama_model_loader: - kv  24:               general.quantization_version u32              = 2
+llama_model_loader: - type  f32:   65 tensors
+llama_model_loader: - type q4_K:  193 tensors
+llama_model_loader: - type q6_K:   33 tensors
+print_info: file format = GGUF V3 (latest)
+print_info: file type   = Q4_K - Medium
+print_info: file size   = 4.07 GiB (4.83 BPW) 
+load: 0 unused tokens
+load: printing all EOG tokens:
+load:   - 2 ('</s>')
+load: special tokens cache size = 771
+load: token to piece cache size = 0.1731 MB
+print_info: arch                  = llama
+print_info: vocab_only            = 0
+print_info: no_alloc              = 0
+print_info: n_ctx_train           = 32768
+print_info: n_embd                = 4096
+print_info: n_embd_inp            = 4096
+print_info: n_layer               = 32
+print_info: n_head                = 32
+print_info: n_head_kv             = 8
+print_info: n_rot                 = 128
+print_info: n_swa                 = 0
+print_info: is_swa_any            = 0
+print_info: n_embd_head_k         = 128
+print_info: n_embd_head_v         = 128
+print_info: n_gqa                 = 4
+print_info: n_embd_k_gqa          = 1024
+print_info: n_embd_v_gqa          = 1024
+print_info: f_norm_eps            = 0.0e+00
+print_info: f_norm_rms_eps        = 1.0e-05
+print_info: f_clamp_kqv           = 0.0e+00
+print_info: f_max_alibi_bias      = 0.0e+00
+print_info: f_logit_scale         = 0.0e+00
+print_info: f_attn_scale          = 0.0e+00
+print_info: f_attn_value_scale    = 0.0000
+print_info: n_ff                  = 14336
+print_info: n_expert              = 0
+print_info: n_expert_used         = 0
+print_info: n_expert_groups       = 0
+print_info: n_group_used          = 0
+print_info: causal attn           = 1
+print_info: pooling type          = -1
+print_info: rope type             = 0
+print_info: rope scaling          = linear
+print_info: freq_base_train       = 1000000.0
+print_info: freq_scale_train      = 1
+print_info: n_ctx_orig_yarn       = 32768
+print_info: rope_yarn_log_mul     = 0.0000
+print_info: rope_finetuned        = unknown
+print_info: model type            = 7B
+print_info: model params          = 7.25 B
+print_info: general.name          = Mistral-7B-Instruct-v0.3
+print_info: vocab type            = SPM
+print_info: n_vocab               = 32768
+print_info: n_merges              = 0
+print_info: BOS token             = 1 '<s>'
+print_info: EOS token             = 2 '</s>'
+print_info: UNK token             = 0 '<unk>'
+print_info: LF token              = 781 '<0x0A>'
+print_info: EOG token             = 2 '</s>'
+print_info: max token length      = 48
+load_tensors: loading model tensors, this can take a while... (mmap = false, direct_io = false)
+load_tensors:          CPU model buffer size =   965.52 MiB
+load_tensors:   CPU_REPACK model buffer size =  3204.00 MiB
+..time=2026-06-12T13:24:05.334+02:00 level=INFO source=llama_server.go:1186 msg="waiting for llama-server to become available" status="llm server loading model"
+..............................................................................................
+common_init_result: added </s> logit bias = -inf
+llama_context: constructing llama_context
+llama_context: n_seq_max     = 1
+llama_context: n_ctx         = 4096
+llama_context: n_ctx_seq     = 4096
+llama_context: n_batch       = 512
+llama_context: n_ubatch      = 512
+llama_context: causal_attn   = 1
+llama_context: flash_attn    = auto
+llama_context: kv_unified    = false
+llama_context: freq_base     = 1000000.0
+llama_context: freq_scale    = 1
+llama_context: n_rs_seq      = 0
+llama_context: n_outputs_max = 1
+llama_context: n_ctx_seq (4096) < n_ctx_train (32768) -- the full capacity of the model will not be utilized
+llama_context:        CPU  output buffer size =     0.12 MiB
+llama_kv_cache:        CPU KV buffer size =   512.00 MiB
+llama_kv_cache: size =  512.00 MiB (  4096 cells,  32 layers,  1/1 seqs), K (f16):  256.00 MiB, V (f16):  256.00 MiB
+llama_kv_cache: attn_rot_k = 0, n_embd_head_k_all = 128
+llama_kv_cache: attn_rot_v = 0, n_embd_head_k_all = 128
+sched_reserve: reserving ...
+sched_reserve: Flash Attention was auto, set to enabled
+sched_reserve: resolving fused Gated Delta Net support:
+sched_reserve: fused Gated Delta Net (autoregressive) enabled
+sched_reserve: fused Gated Delta Net (chunked) enabled
+sched_reserve:        CPU compute buffer size =   120.01 MiB
+sched_reserve: graph nodes  = 998
+sched_reserve: graph splits = 1
+sched_reserve: reserve took 6.99 ms, sched copies = 1
+common_init_from_params: warming up the model with an empty run - please wait ... (--no-warmup to disable)
+srv    load_model: initializing slots, n_slots = 1
+common_speculative_init: no implementations specified for speculative decoding
+slot   load_model: id  0 | task -1 | new slot, n_ctx = 4096
+srv    load_model: prompt cache is enabled, size limit: 8192 MiB
+srv    load_model: use `--cache-ram 0` to disable the prompt cache
+srv    load_model: for more info see https://github.com/ggml-org/llama.cpp/pull/16391
+srv    load_model: context checkpoints enabled, max = 32, min spacing = 256
+srv          init: --cache-idle-slots requires --kv-unified, disabling
+init: chat template, example_format: '<|im_start|>system
+You are a helpful assistant<|im_end|>
+<|im_start|>user
+Hello<|im_end|>
+<|im_start|>assistant
+Hi there<|im_end|>
+<|im_start|>user
+How are you?<|im_end|>
+<|im_start|>assistant
+'
+srv          init: init: chat template, thinking = 0
+srv  llama_server: model loaded
+srv  llama_server: server is listening on http://127.0.0.1:45236
+srv  update_slots: all slots are idle
+time=2026-06-12T13:26:55.481+02:00 level=INFO source=llama_server.go:1198 msg="llama-server started in 170.41 seconds"
+time=2026-06-12T13:26:55.499+02:00 level=INFO source=images.go:354 msg="template selection" model=registry.ollama.ai/library/mistral:latest selected=go_template renderer="" parser="" go_template="[completion tools]" chat_template=[completion] harmony=null renderer_parser=null
+time=2026-06-12T13:26:55.499+02:00 level=INFO source=sched.go:729 msg="loaded runners" count=2
+time=2026-06-12T13:26:55.499+02:00 level=INFO source=llama_server.go:1131 msg="waiting for llama-server to start responding"
+time=2026-06-12T13:26:55.500+02:00 level=INFO source=llama_server.go:1198 msg="llama-server started in 170.43 seconds"
+srv  log_server_r: done request: POST /tokenize 127.0.0.1 200
+slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = -1
+srv  get_availabl: updating prompt cache
+srv          load:  - looking for better prompt, base f_keep = -1.000, sim = 0.000
+srv        update:  - cache state: 0 prompts, 0.000 MiB (limits: 8192.000 MiB, 4096 tokens, 8589934592 est)
+srv  get_availabl: prompt cache update took 0.07 ms
+slot launch_slot_: id  0 | task -1 | sampler chain: logits -> penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> ?min-p -> ?xtc -> temp-ext -> dist 
+slot launch_slot_: id  0 | task -1 | sampler params: 
+	repeat_last_n = 64, repeat_penalty = 1.100, frequency_penalty = 0.000, presence_penalty = 0.000
+	dry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = 4096
+	top_k = 40, top_p = 0.900, min_p = 0.000, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.800
+	mirostat = 0, mirostat_lr = 0.100, mirostat_ent = 5.000, adaptive_target = -1.000, adaptive_decay = 0.900
+slot launch_slot_: id  0 | task 0 | processing task, is_child = 0
+slot update_slots: id  0 | task 0 | new prompt, n_ctx_slot = 4096, n_keep = 4, task.n_tokens = 5
+srv  log_server_r: done request: POST /completion 127.0.0.1 200
+slot update_slots: id  0 | task 0 | cached n_tokens = 0, memory_seq_rm [0, end)
+slot init_sampler: id  0 | task 0 | init sampler, took 0.02 ms, tokens: text = 5, total = 5
+slot print_timing: id  0 | task 0 | prompt eval time =   78758.13 ms /     5 tokens (15751.63 ms per token,     0.06 tokens per second)
+slot print_timing: id  0 | task 0 |        eval time =  150501.85 ms /     3 tokens (50167.28 ms per token,     0.02 tokens per second)
+slot print_timing: id  0 | task 0 |       total time =  229259.99 ms /     8 tokens
+slot print_timing: id  0 | task 0 |    graphs reused =          2
+2026-06-12 13:30:44,764 INFO [httpx] HTTP Request: POST http://localhost:11866/api/chat "HTTP/1.1 200 OK"
+2026-06-12 13:30:44,764 INFO [models] 'mistral' ready. 5 classes.
+2026-06-12 13:30:44,765 INFO [metrics] train took 399.8244 s
+2026-06-12 13:30:44,765 INFO [models]   [mistral] 0 / 445 …
+slot      release: id  0 | task 0 | stop processing: n_tokens = 7, truncated = 0
+srv  update_slots: all slots are idle
+2026-06-12 13:30:44,800 WARNING [models]   Ollama error on doc 0: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:44,834 WARNING [models]   Ollama error on doc 1: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:44,868 WARNING [models]   Ollama error on doc 2: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:44,903 WARNING [models]   Ollama error on doc 3: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:44,937 WARNING [models]   Ollama error on doc 4: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:44,971 WARNING [models]   Ollama error on doc 5: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:45,006 WARNING [models]   Ollama error on doc 6: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:45,040 WARNING [models]   Ollama error on doc 7: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:45,074 WARNING [models]   Ollama error on doc 8: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:45,109 WARNING [models]   Ollama error on doc 9: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:45,143 WARNING [models]   Ollama error on doc 10: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:45,178 WARNING [models]   Ollama error on doc 11: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:45,213 WARNING [models]   Ollama error on doc 12: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:45,247 WARNING [models]   Ollama error on doc 13: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:45,285 WARNING [models]   Ollama error on doc 14: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:45,321 WARNING [models]   Ollama error on doc 15: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:45,356 WARNING [models]   Ollama error on doc 16: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:45,390 WARNING [models]   Ollama error on doc 17: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:45,425 WARNING [models]   Ollama error on doc 18: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:45,459 WARNING [models]   Ollama error on doc 19: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:45,494 WARNING [models]   Ollama error on doc 20: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:45,529 WARNING [models]   Ollama error on doc 21: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:45,563 WARNING [models]   Ollama error on doc 22: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:45,598 WARNING [models]   Ollama error on doc 23: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:45,632 WARNING [models]   Ollama error on doc 24: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:45,667 WARNING [models]   Ollama error on doc 25: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:45,701 WARNING [models]   Ollama error on doc 26: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:45,736 WARNING [models]   Ollama error on doc 27: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:45,770 WARNING [models]   Ollama error on doc 28: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:45,804 WARNING [models]   Ollama error on doc 29: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:45,839 WARNING [models]   Ollama error on doc 30: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:45,876 WARNING [models]   Ollama error on doc 31: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:45,915 WARNING [models]   Ollama error on doc 32: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:45,955 WARNING [models]   Ollama error on doc 33: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:45,994 WARNING [models]   Ollama error on doc 34: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:46,033 WARNING [models]   Ollama error on doc 35: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:46,072 WARNING [models]   Ollama error on doc 36: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:46,110 WARNING [models]   Ollama error on doc 37: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:46,149 WARNING [models]   Ollama error on doc 38: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:46,188 WARNING [models]   Ollama error on doc 39: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:46,226 WARNING [models]   Ollama error on doc 40: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:46,265 WARNING [models]   Ollama error on doc 41: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:46,303 WARNING [models]   Ollama error on doc 42: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:46,342 WARNING [models]   Ollama error on doc 43: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:46,381 WARNING [models]   Ollama error on doc 44: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:46,419 WARNING [models]   Ollama error on doc 45: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:46,458 WARNING [models]   Ollama error on doc 46: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:46,497 WARNING [models]   Ollama error on doc 47: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:46,536 WARNING [models]   Ollama error on doc 48: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:46,572 WARNING [models]   Ollama error on doc 49: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:46,573 INFO [models]   [mistral] 50 / 445 …
+2026-06-12 13:30:46,607 WARNING [models]   Ollama error on doc 50: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:46,641 WARNING [models]   Ollama error on doc 51: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:46,676 WARNING [models]   Ollama error on doc 52: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:46,710 WARNING [models]   Ollama error on doc 53: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:46,745 WARNING [models]   Ollama error on doc 54: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:46,780 WARNING [models]   Ollama error on doc 55: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:46,814 WARNING [models]   Ollama error on doc 56: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:46,848 WARNING [models]   Ollama error on doc 57: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:46,883 WARNING [models]   Ollama error on doc 58: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:46,918 WARNING [models]   Ollama error on doc 59: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:46,952 WARNING [models]   Ollama error on doc 60: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:46,987 WARNING [models]   Ollama error on doc 61: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:47,021 WARNING [models]   Ollama error on doc 62: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:47,056 WARNING [models]   Ollama error on doc 63: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:47,090 WARNING [models]   Ollama error on doc 64: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:47,125 WARNING [models]   Ollama error on doc 65: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:47,159 WARNING [models]   Ollama error on doc 66: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:47,194 WARNING [models]   Ollama error on doc 67: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:47,229 WARNING [models]   Ollama error on doc 68: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:47,263 WARNING [models]   Ollama error on doc 69: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:47,298 WARNING [models]   Ollama error on doc 70: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:47,332 WARNING [models]   Ollama error on doc 71: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:47,367 WARNING [models]   Ollama error on doc 72: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:47,402 WARNING [models]   Ollama error on doc 73: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:47,436 WARNING [models]   Ollama error on doc 74: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:47,471 WARNING [models]   Ollama error on doc 75: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:47,506 WARNING [models]   Ollama error on doc 76: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:47,541 WARNING [models]   Ollama error on doc 77: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:47,575 WARNING [models]   Ollama error on doc 78: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:47,610 WARNING [models]   Ollama error on doc 79: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:47,645 WARNING [models]   Ollama error on doc 80: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:47,679 WARNING [models]   Ollama error on doc 81: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:47,714 WARNING [models]   Ollama error on doc 82: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:47,749 WARNING [models]   Ollama error on doc 83: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:47,784 WARNING [models]   Ollama error on doc 84: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:47,819 WARNING [models]   Ollama error on doc 85: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:47,853 WARNING [models]   Ollama error on doc 86: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:47,888 WARNING [models]   Ollama error on doc 87: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:47,923 WARNING [models]   Ollama error on doc 88: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:47,957 WARNING [models]   Ollama error on doc 89: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:47,992 WARNING [models]   Ollama error on doc 90: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:48,027 WARNING [models]   Ollama error on doc 91: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:48,062 WARNING [models]   Ollama error on doc 92: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:48,096 WARNING [models]   Ollama error on doc 93: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:48,131 WARNING [models]   Ollama error on doc 94: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:48,166 WARNING [models]   Ollama error on doc 95: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:48,201 WARNING [models]   Ollama error on doc 96: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:48,235 WARNING [models]   Ollama error on doc 97: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:48,270 WARNING [models]   Ollama error on doc 98: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:48,305 WARNING [models]   Ollama error on doc 99: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:48,305 INFO [models]   [mistral] 100 / 445 …
+2026-06-12 13:30:48,340 WARNING [models]   Ollama error on doc 100: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:48,374 WARNING [models]   Ollama error on doc 101: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:48,409 WARNING [models]   Ollama error on doc 102: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:48,444 WARNING [models]   Ollama error on doc 103: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:48,479 WARNING [models]   Ollama error on doc 104: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:48,514 WARNING [models]   Ollama error on doc 105: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:48,549 WARNING [models]   Ollama error on doc 106: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:48,583 WARNING [models]   Ollama error on doc 107: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:48,618 WARNING [models]   Ollama error on doc 108: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:48,652 WARNING [models]   Ollama error on doc 109: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:48,687 WARNING [models]   Ollama error on doc 110: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:48,722 WARNING [models]   Ollama error on doc 111: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:48,756 WARNING [models]   Ollama error on doc 112: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:48,791 WARNING [models]   Ollama error on doc 113: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:48,825 WARNING [models]   Ollama error on doc 114: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:48,861 WARNING [models]   Ollama error on doc 115: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:48,895 WARNING [models]   Ollama error on doc 116: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:48,930 WARNING [models]   Ollama error on doc 117: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:48,964 WARNING [models]   Ollama error on doc 118: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:48,999 WARNING [models]   Ollama error on doc 119: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:49,034 WARNING [models]   Ollama error on doc 120: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:49,068 WARNING [models]   Ollama error on doc 121: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:49,103 WARNING [models]   Ollama error on doc 122: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:49,137 WARNING [models]   Ollama error on doc 123: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:49,172 WARNING [models]   Ollama error on doc 124: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:49,206 WARNING [models]   Ollama error on doc 125: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:49,241 WARNING [models]   Ollama error on doc 126: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:49,276 WARNING [models]   Ollama error on doc 127: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:49,310 WARNING [models]   Ollama error on doc 128: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:49,345 WARNING [models]   Ollama error on doc 129: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:49,380 WARNING [models]   Ollama error on doc 130: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:49,414 WARNING [models]   Ollama error on doc 131: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:49,449 WARNING [models]   Ollama error on doc 132: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:49,484 WARNING [models]   Ollama error on doc 133: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:49,519 WARNING [models]   Ollama error on doc 134: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:49,553 WARNING [models]   Ollama error on doc 135: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:49,588 WARNING [models]   Ollama error on doc 136: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:49,623 WARNING [models]   Ollama error on doc 137: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:49,657 WARNING [models]   Ollama error on doc 138: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:49,692 WARNING [models]   Ollama error on doc 139: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:49,727 WARNING [models]   Ollama error on doc 140: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:49,762 WARNING [models]   Ollama error on doc 141: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:49,797 WARNING [models]   Ollama error on doc 142: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:49,832 WARNING [models]   Ollama error on doc 143: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:49,866 WARNING [models]   Ollama error on doc 144: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:49,901 WARNING [models]   Ollama error on doc 145: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:49,936 WARNING [models]   Ollama error on doc 146: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:49,971 WARNING [models]   Ollama error on doc 147: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:50,006 WARNING [models]   Ollama error on doc 148: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:50,040 WARNING [models]   Ollama error on doc 149: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:50,040 INFO [models]   [mistral] 150 / 445 …
+2026-06-12 13:30:50,075 WARNING [models]   Ollama error on doc 150: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:50,110 WARNING [models]   Ollama error on doc 151: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:50,145 WARNING [models]   Ollama error on doc 152: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:50,179 WARNING [models]   Ollama error on doc 153: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:50,214 WARNING [models]   Ollama error on doc 154: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:50,249 WARNING [models]   Ollama error on doc 155: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:50,283 WARNING [models]   Ollama error on doc 156: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:50,318 WARNING [models]   Ollama error on doc 157: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:50,352 WARNING [models]   Ollama error on doc 158: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:50,387 WARNING [models]   Ollama error on doc 159: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:50,422 WARNING [models]   Ollama error on doc 160: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:50,456 WARNING [models]   Ollama error on doc 161: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:50,491 WARNING [models]   Ollama error on doc 162: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:50,526 WARNING [models]   Ollama error on doc 163: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:50,561 WARNING [models]   Ollama error on doc 164: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:50,595 WARNING [models]   Ollama error on doc 165: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:50,630 WARNING [models]   Ollama error on doc 166: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:50,664 WARNING [models]   Ollama error on doc 167: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:50,699 WARNING [models]   Ollama error on doc 168: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:50,733 WARNING [models]   Ollama error on doc 169: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:50,768 WARNING [models]   Ollama error on doc 170: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:50,802 WARNING [models]   Ollama error on doc 171: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:50,837 WARNING [models]   Ollama error on doc 172: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:50,872 WARNING [models]   Ollama error on doc 173: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:50,906 WARNING [models]   Ollama error on doc 174: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:50,941 WARNING [models]   Ollama error on doc 175: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:50,976 WARNING [models]   Ollama error on doc 176: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:51,011 WARNING [models]   Ollama error on doc 177: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:51,045 WARNING [models]   Ollama error on doc 178: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:51,080 WARNING [models]   Ollama error on doc 179: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:51,114 WARNING [models]   Ollama error on doc 180: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:51,149 WARNING [models]   Ollama error on doc 181: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:51,183 WARNING [models]   Ollama error on doc 182: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:51,218 WARNING [models]   Ollama error on doc 183: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:51,252 WARNING [models]   Ollama error on doc 184: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:51,287 WARNING [models]   Ollama error on doc 185: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:51,322 WARNING [models]   Ollama error on doc 186: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:51,356 WARNING [models]   Ollama error on doc 187: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:51,391 WARNING [models]   Ollama error on doc 188: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:51,426 WARNING [models]   Ollama error on doc 189: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:51,460 WARNING [models]   Ollama error on doc 190: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:51,495 WARNING [models]   Ollama error on doc 191: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:51,529 WARNING [models]   Ollama error on doc 192: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:51,564 WARNING [models]   Ollama error on doc 193: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:51,599 WARNING [models]   Ollama error on doc 194: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:51,634 WARNING [models]   Ollama error on doc 195: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:51,668 WARNING [models]   Ollama error on doc 196: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:51,703 WARNING [models]   Ollama error on doc 197: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:51,738 WARNING [models]   Ollama error on doc 198: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:51,773 WARNING [models]   Ollama error on doc 199: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:51,773 INFO [models]   [mistral] 200 / 445 …
+2026-06-12 13:30:51,807 WARNING [models]   Ollama error on doc 200: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:51,842 WARNING [models]   Ollama error on doc 201: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:51,877 WARNING [models]   Ollama error on doc 202: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:51,911 WARNING [models]   Ollama error on doc 203: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:51,947 WARNING [models]   Ollama error on doc 204: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:51,981 WARNING [models]   Ollama error on doc 205: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:52,016 WARNING [models]   Ollama error on doc 206: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:52,051 WARNING [models]   Ollama error on doc 207: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:52,085 WARNING [models]   Ollama error on doc 208: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:52,120 WARNING [models]   Ollama error on doc 209: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:52,154 WARNING [models]   Ollama error on doc 210: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:52,189 WARNING [models]   Ollama error on doc 211: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:52,224 WARNING [models]   Ollama error on doc 212: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:52,258 WARNING [models]   Ollama error on doc 213: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:52,293 WARNING [models]   Ollama error on doc 214: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:52,327 WARNING [models]   Ollama error on doc 215: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:52,362 WARNING [models]   Ollama error on doc 216: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:52,396 WARNING [models]   Ollama error on doc 217: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:52,430 WARNING [models]   Ollama error on doc 218: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:52,465 WARNING [models]   Ollama error on doc 219: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:52,499 WARNING [models]   Ollama error on doc 220: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:52,534 WARNING [models]   Ollama error on doc 221: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:52,568 WARNING [models]   Ollama error on doc 222: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:52,603 WARNING [models]   Ollama error on doc 223: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:52,637 WARNING [models]   Ollama error on doc 224: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:52,672 WARNING [models]   Ollama error on doc 225: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:52,706 WARNING [models]   Ollama error on doc 226: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:52,741 WARNING [models]   Ollama error on doc 227: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:52,775 WARNING [models]   Ollama error on doc 228: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:52,810 WARNING [models]   Ollama error on doc 229: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:52,844 WARNING [models]   Ollama error on doc 230: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:52,879 WARNING [models]   Ollama error on doc 231: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:52,916 WARNING [models]   Ollama error on doc 232: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:52,950 WARNING [models]   Ollama error on doc 233: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:52,984 WARNING [models]   Ollama error on doc 234: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:53,019 WARNING [models]   Ollama error on doc 235: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:53,053 WARNING [models]   Ollama error on doc 236: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:53,088 WARNING [models]   Ollama error on doc 237: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:53,122 WARNING [models]   Ollama error on doc 238: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:53,157 WARNING [models]   Ollama error on doc 239: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:53,191 WARNING [models]   Ollama error on doc 240: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:53,226 WARNING [models]   Ollama error on doc 241: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:53,260 WARNING [models]   Ollama error on doc 242: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:53,295 WARNING [models]   Ollama error on doc 243: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:53,330 WARNING [models]   Ollama error on doc 244: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:53,364 WARNING [models]   Ollama error on doc 245: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:53,399 WARNING [models]   Ollama error on doc 246: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:53,434 WARNING [models]   Ollama error on doc 247: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:53,469 WARNING [models]   Ollama error on doc 248: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:53,503 WARNING [models]   Ollama error on doc 249: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:53,503 INFO [models]   [mistral] 250 / 445 …
+2026-06-12 13:30:53,538 WARNING [models]   Ollama error on doc 250: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:53,573 WARNING [models]   Ollama error on doc 251: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:53,608 WARNING [models]   Ollama error on doc 252: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:53,642 WARNING [models]   Ollama error on doc 253: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:53,677 WARNING [models]   Ollama error on doc 254: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:53,712 WARNING [models]   Ollama error on doc 255: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:53,746 WARNING [models]   Ollama error on doc 256: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:53,781 WARNING [models]   Ollama error on doc 257: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:53,816 WARNING [models]   Ollama error on doc 258: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:53,851 WARNING [models]   Ollama error on doc 259: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:53,886 WARNING [models]   Ollama error on doc 260: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:53,921 WARNING [models]   Ollama error on doc 261: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:53,955 WARNING [models]   Ollama error on doc 262: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:53,990 WARNING [models]   Ollama error on doc 263: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:54,025 WARNING [models]   Ollama error on doc 264: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:54,060 WARNING [models]   Ollama error on doc 265: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:54,094 WARNING [models]   Ollama error on doc 266: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:54,129 WARNING [models]   Ollama error on doc 267: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:54,163 WARNING [models]   Ollama error on doc 268: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:54,198 WARNING [models]   Ollama error on doc 269: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:54,233 WARNING [models]   Ollama error on doc 270: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:54,267 WARNING [models]   Ollama error on doc 271: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:54,301 WARNING [models]   Ollama error on doc 272: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:54,336 WARNING [models]   Ollama error on doc 273: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:54,371 WARNING [models]   Ollama error on doc 274: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:54,405 WARNING [models]   Ollama error on doc 275: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:54,440 WARNING [models]   Ollama error on doc 276: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:54,474 WARNING [models]   Ollama error on doc 277: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:54,509 WARNING [models]   Ollama error on doc 278: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:54,543 WARNING [models]   Ollama error on doc 279: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:54,577 WARNING [models]   Ollama error on doc 280: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:54,612 WARNING [models]   Ollama error on doc 281: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:54,646 WARNING [models]   Ollama error on doc 282: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:54,680 WARNING [models]   Ollama error on doc 283: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:54,714 WARNING [models]   Ollama error on doc 284: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:54,749 WARNING [models]   Ollama error on doc 285: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:54,783 WARNING [models]   Ollama error on doc 286: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:54,818 WARNING [models]   Ollama error on doc 287: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:54,852 WARNING [models]   Ollama error on doc 288: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:54,887 WARNING [models]   Ollama error on doc 289: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:54,921 WARNING [models]   Ollama error on doc 290: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:54,955 WARNING [models]   Ollama error on doc 291: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:54,990 WARNING [models]   Ollama error on doc 292: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:55,024 WARNING [models]   Ollama error on doc 293: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:55,058 WARNING [models]   Ollama error on doc 294: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:55,093 WARNING [models]   Ollama error on doc 295: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:55,127 WARNING [models]   Ollama error on doc 296: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:55,161 WARNING [models]   Ollama error on doc 297: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:55,195 WARNING [models]   Ollama error on doc 298: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:55,230 WARNING [models]   Ollama error on doc 299: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:55,230 INFO [models]   [mistral] 300 / 445 …
+2026-06-12 13:30:55,264 WARNING [models]   Ollama error on doc 300: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:55,298 WARNING [models]   Ollama error on doc 301: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:55,332 WARNING [models]   Ollama error on doc 302: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:55,367 WARNING [models]   Ollama error on doc 303: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:55,401 WARNING [models]   Ollama error on doc 304: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:55,435 WARNING [models]   Ollama error on doc 305: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:55,470 WARNING [models]   Ollama error on doc 306: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:55,504 WARNING [models]   Ollama error on doc 307: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:55,538 WARNING [models]   Ollama error on doc 308: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:55,573 WARNING [models]   Ollama error on doc 309: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:55,607 WARNING [models]   Ollama error on doc 310: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:55,641 WARNING [models]   Ollama error on doc 311: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:55,676 WARNING [models]   Ollama error on doc 312: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:55,710 WARNING [models]   Ollama error on doc 313: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:55,744 WARNING [models]   Ollama error on doc 314: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:55,779 WARNING [models]   Ollama error on doc 315: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:55,813 WARNING [models]   Ollama error on doc 316: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:55,848 WARNING [models]   Ollama error on doc 317: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:55,882 WARNING [models]   Ollama error on doc 318: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:55,917 WARNING [models]   Ollama error on doc 319: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:55,951 WARNING [models]   Ollama error on doc 320: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:55,985 WARNING [models]   Ollama error on doc 321: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:56,020 WARNING [models]   Ollama error on doc 322: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:56,054 WARNING [models]   Ollama error on doc 323: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:56,088 WARNING [models]   Ollama error on doc 324: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:56,123 WARNING [models]   Ollama error on doc 325: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:56,157 WARNING [models]   Ollama error on doc 326: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:56,192 WARNING [models]   Ollama error on doc 327: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:56,226 WARNING [models]   Ollama error on doc 328: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:56,261 WARNING [models]   Ollama error on doc 329: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:56,295 WARNING [models]   Ollama error on doc 330: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:56,330 WARNING [models]   Ollama error on doc 331: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:56,364 WARNING [models]   Ollama error on doc 332: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:56,399 WARNING [models]   Ollama error on doc 333: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:56,433 WARNING [models]   Ollama error on doc 334: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:56,468 WARNING [models]   Ollama error on doc 335: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:56,502 WARNING [models]   Ollama error on doc 336: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:56,537 WARNING [models]   Ollama error on doc 337: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:56,572 WARNING [models]   Ollama error on doc 338: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:56,606 WARNING [models]   Ollama error on doc 339: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:56,641 WARNING [models]   Ollama error on doc 340: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:56,675 WARNING [models]   Ollama error on doc 341: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:56,709 WARNING [models]   Ollama error on doc 342: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:56,744 WARNING [models]   Ollama error on doc 343: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:56,778 WARNING [models]   Ollama error on doc 344: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:56,817 WARNING [models]   Ollama error on doc 345: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:56,857 WARNING [models]   Ollama error on doc 346: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:56,895 WARNING [models]   Ollama error on doc 347: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:56,934 WARNING [models]   Ollama error on doc 348: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:56,973 WARNING [models]   Ollama error on doc 349: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:56,973 INFO [models]   [mistral] 350 / 445 …
+2026-06-12 13:30:57,010 WARNING [models]   Ollama error on doc 350: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:57,048 WARNING [models]   Ollama error on doc 351: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:57,085 WARNING [models]   Ollama error on doc 352: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:57,123 WARNING [models]   Ollama error on doc 353: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:57,160 WARNING [models]   Ollama error on doc 354: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:57,197 WARNING [models]   Ollama error on doc 355: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:57,235 WARNING [models]   Ollama error on doc 356: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:57,273 WARNING [models]   Ollama error on doc 357: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:57,310 WARNING [models]   Ollama error on doc 358: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:57,348 WARNING [models]   Ollama error on doc 359: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:57,385 WARNING [models]   Ollama error on doc 360: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:57,422 WARNING [models]   Ollama error on doc 361: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:57,458 WARNING [models]   Ollama error on doc 362: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:57,495 WARNING [models]   Ollama error on doc 363: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:57,531 WARNING [models]   Ollama error on doc 364: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:57,568 WARNING [models]   Ollama error on doc 365: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:57,604 WARNING [models]   Ollama error on doc 366: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:57,641 WARNING [models]   Ollama error on doc 367: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:57,677 WARNING [models]   Ollama error on doc 368: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:57,714 WARNING [models]   Ollama error on doc 369: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:57,750 WARNING [models]   Ollama error on doc 370: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:57,786 WARNING [models]   Ollama error on doc 371: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:57,823 WARNING [models]   Ollama error on doc 372: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:57,859 WARNING [models]   Ollama error on doc 373: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:57,895 WARNING [models]   Ollama error on doc 374: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:57,932 WARNING [models]   Ollama error on doc 375: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:57,968 WARNING [models]   Ollama error on doc 376: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:58,005 WARNING [models]   Ollama error on doc 377: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:58,041 WARNING [models]   Ollama error on doc 378: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:58,078 WARNING [models]   Ollama error on doc 379: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:58,114 WARNING [models]   Ollama error on doc 380: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:58,151 WARNING [models]   Ollama error on doc 381: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:58,187 WARNING [models]   Ollama error on doc 382: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:58,224 WARNING [models]   Ollama error on doc 383: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:58,261 WARNING [models]   Ollama error on doc 384: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:58,297 WARNING [models]   Ollama error on doc 385: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:58,334 WARNING [models]   Ollama error on doc 386: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:58,369 WARNING [models]   Ollama error on doc 387: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:58,404 WARNING [models]   Ollama error on doc 388: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:58,438 WARNING [models]   Ollama error on doc 389: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:58,473 WARNING [models]   Ollama error on doc 390: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:58,507 WARNING [models]   Ollama error on doc 391: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:58,541 WARNING [models]   Ollama error on doc 392: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:58,576 WARNING [models]   Ollama error on doc 393: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:58,611 WARNING [models]   Ollama error on doc 394: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:58,646 WARNING [models]   Ollama error on doc 395: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:58,680 WARNING [models]   Ollama error on doc 396: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:58,715 WARNING [models]   Ollama error on doc 397: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:58,749 WARNING [models]   Ollama error on doc 398: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:58,784 WARNING [models]   Ollama error on doc 399: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:58,784 INFO [models]   [mistral] 400 / 445 …
+2026-06-12 13:30:58,819 WARNING [models]   Ollama error on doc 400: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:58,853 WARNING [models]   Ollama error on doc 401: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:58,888 WARNING [models]   Ollama error on doc 402: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:58,922 WARNING [models]   Ollama error on doc 403: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:58,957 WARNING [models]   Ollama error on doc 404: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:58,991 WARNING [models]   Ollama error on doc 405: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:59,026 WARNING [models]   Ollama error on doc 406: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:59,060 WARNING [models]   Ollama error on doc 407: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:59,094 WARNING [models]   Ollama error on doc 408: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:59,129 WARNING [models]   Ollama error on doc 409: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:59,163 WARNING [models]   Ollama error on doc 410: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:59,197 WARNING [models]   Ollama error on doc 411: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:59,232 WARNING [models]   Ollama error on doc 412: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:59,267 WARNING [models]   Ollama error on doc 413: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:59,301 WARNING [models]   Ollama error on doc 414: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:59,336 WARNING [models]   Ollama error on doc 415: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:59,370 WARNING [models]   Ollama error on doc 416: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:59,404 WARNING [models]   Ollama error on doc 417: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:59,440 WARNING [models]   Ollama error on doc 418: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:59,474 WARNING [models]   Ollama error on doc 419: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:59,509 WARNING [models]   Ollama error on doc 420: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:59,543 WARNING [models]   Ollama error on doc 421: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:59,578 WARNING [models]   Ollama error on doc 422: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:59,613 WARNING [models]   Ollama error on doc 423: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:59,647 WARNING [models]   Ollama error on doc 424: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:59,682 WARNING [models]   Ollama error on doc 425: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:59,716 WARNING [models]   Ollama error on doc 426: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:59,751 WARNING [models]   Ollama error on doc 427: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:59,785 WARNING [models]   Ollama error on doc 428: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:59,820 WARNING [models]   Ollama error on doc 429: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:59,855 WARNING [models]   Ollama error on doc 430: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:59,889 WARNING [models]   Ollama error on doc 431: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:59,924 WARNING [models]   Ollama error on doc 432: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:59,958 WARNING [models]   Ollama error on doc 433: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:30:59,993 WARNING [models]   Ollama error on doc 434: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:31:00,027 WARNING [models]   Ollama error on doc 435: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:31:00,062 WARNING [models]   Ollama error on doc 436: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:31:00,096 WARNING [models]   Ollama error on doc 437: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:31:00,131 WARNING [models]   Ollama error on doc 438: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:31:00,166 WARNING [models]   Ollama error on doc 439: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:31:00,200 WARNING [models]   Ollama error on doc 440: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:31:00,235 WARNING [models]   Ollama error on doc 441: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:31:00,270 WARNING [models]   Ollama error on doc 442: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:31:00,304 WARNING [models]   Ollama error on doc 443: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:31:00,339 WARNING [models]   Ollama error on doc 444: sequence item 0: expected str instance, numpy.int64 found
+2026-06-12 13:31:00,339 INFO [metrics] inference_test took 15.5745 s
+2026-06-12 13:31:00,351 INFO [optimized_pipeline] Total: 1664.8 s
+2026-06-12 13:31:00,355 INFO [metrics] Results saved → /home/ma480128/HPAI/text_classification/results/results_optimized.txt
+
+real	27m47.063s
+user	14m28.627s
+sys	0m2.939s
