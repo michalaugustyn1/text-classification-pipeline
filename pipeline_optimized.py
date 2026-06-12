@@ -90,6 +90,8 @@ class XGBoostModelOpt:
     def predict_proba(self, X): return self.clf.predict_proba(X)
 
 
+NEEDS_DENSE = {"random_forest", "naive_bayes", "knn", "mlp"}
+
 OPTIMIZED_MODELS = {
     "logistic_regression": lambda: LogisticRegression(
         C=1.0, max_iter=1000, solver="saga", multi_class="auto",
@@ -128,14 +130,18 @@ def run_combination(feat_name, model_name, Xtr, Xv, Xt,
     result = {"feature": feat_name, "model": model_name,
               "feature_fit_transform_time": feat_time}
     model = OPTIMIZED_MODELS[model_name]()
+    def to_dense(M):
+        return M.toarray() if sp.issparse(M) else M
+
     if isinstance(model, XGBoostModelOpt):
         with timed("train", result):
-            model.fit(Xtr.toarray() if sp.issparse(Xtr) else Xtr, y_train,
-                      X_val=Xv.toarray() if sp.issparse(Xv) else Xv, y_val=y_val)
+            model.fit(to_dense(Xtr), y_train,
+                      X_val=to_dense(Xv), y_val=y_val)
     else:
-        with timed("train", result): model.fit(Xtr, y_train)
+        Xtr_ = to_dense(Xtr) if model_name in NEEDS_DENSE else Xtr
+        with timed("train", result): model.fit(Xtr_, y_train)
     with timed("inference_test", result):
-        Xt_ = Xt.toarray() if (sp.issparse(Xt) and model_name in ("knn", "mlp")) else Xt
+        Xt_ = to_dense(Xt) if model_name in NEEDS_DENSE else Xt
         y_pred = model.predict(Xt_)
     m = evaluate(y_test, y_pred, le.classes_)
     result.update({"test_accuracy": m["accuracy"], "test_f1_macro": m["f1_macro"],

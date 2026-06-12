@@ -8,6 +8,7 @@ from config import (
     NB_PARAMS, KNN_PARAMS, MLP_PARAMS, RANDOM_SEED,
     LLM_SAMPLE_SIZE, LLM_TIMEOUT,
     OLLAMA_BASE_URL, OLLAMA_LLAMA_MODEL, OLLAMA_MISTRAL_MODEL,
+    LABEL_NAMES,
 )
 
 logger = logging.getLogger(__name__)
@@ -285,8 +286,9 @@ class OllamaClassifier:
         self.name        = model_name.replace(":", "_")
 
     def fit(self, X, y, label_encoder=None):
-        self.class_names = (list(label_encoder.classes_) if label_encoder
-                            else [str(c) for c in sorted(set(y))])
+        raw = list(label_encoder.classes_) if label_encoder else sorted(set(y))
+        self.class_names = [str(LABEL_NAMES.get(int(str(c)), str(c))) if str(c).isdigit() else str(c)
+                            for c in raw]
         if not _check_ollama(self.base_url):
             raise RuntimeError(
                 f"Ollama not reachable at {self.base_url}.\n"
