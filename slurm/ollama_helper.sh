@@ -10,9 +10,21 @@ ollama_start() {
     local PORT=$(( 11500 + (SLURM_JOB_ID % 500) ))
     export OLLAMA_HOST="http://localhost:$PORT"
     export OLLAMA_PORT="$PORT"
-    local NV_FLAG=""
-    nvidia-smi &>/dev/null 2>&1 && NV_FLAG="--nv"
-    apptainer run $NV_FLAG \
+    local NV_FLAGS=""
+    if nvidia-smi &>/dev/null 2>&1; then
+        # Try --nvccli first (requires nvidia-container-cli; better passthrough on newer Apptainer).
+        # Fall back to --nv + explicit device binds if nvccli is unavailable.
+        if apptainer exec --nvccli "$_OLLAMA_SIF" true &>/dev/null 2>&1; then
+            NV_FLAGS="--nvccli"
+        else
+            NV_FLAGS="--nv"
+            for dev in /dev/nvidia0 /dev/nvidiactl /dev/nvidia-uvm /dev/nvidia-modeset; do
+                [[ -e "$dev" ]] && NV_FLAGS="$NV_FLAGS --bind $dev:$dev"
+            done
+        fi
+        echo "GPU passthrough flags: $NV_FLAGS" >&2
+    fi
+    apptainer run $NV_FLAGS \
         --bind "$MODELS_DIR:$MODELS_DIR" \
         --env "OLLAMA_HOST=0.0.0.0:$PORT" \
         --env "OLLAMA_MODELS=$MODELS_DIR" \
