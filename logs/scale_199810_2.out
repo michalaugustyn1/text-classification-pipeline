@@ -1,0 +1,11 @@
+ERROR: Unable to locate a modulefile for 'python/3.10'
+ERROR: Unable to locate a modulefile for 'gcc/11.2'
+ERROR: Unable to locate a modulefile for 'cuda/11.8'
+ERROR: Unable to locate a modulefile for 'rapids/24.06'
+[GIN] 2026/06/12 - 01:40:14 | 200 |    9.191165ms |             ::1 | GET      "/api/tags"
+Ollama ready (2s)
+[GIN] 2026/06/12 - 02:09:38 | 200 |    4.166303ms |             ::1 | GET      "/api/tags"
+[GIN] 2026/06/12 - 02:16:18 | 200 |         6m39s |             ::1 | POST     "/api/chat"
+[GIN] 2026/06/12 - 02:16:36 | 200 |    4.222881ms |             ::1 | GET      "/api/tags"
+[GIN] 2026/06/12 - 02:23:16 | 200 |         6m40s |             ::1 | POST     "/api/chat"
+Finished n_jobs=4: Fri 12 Jun 02:23:34 CEST 2026

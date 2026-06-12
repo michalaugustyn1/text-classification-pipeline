@@ -1,0 +1,8 @@
+ERROR: Unable to locate a modulefile for 'gcc/11.2'
+[GIN] 2026/06/11 - 23:46:08 | 200 |   10.659766ms |             ::1 | GET      "/api/tags"
+[GIN] 2026/06/11 - 23:46:08 | 200 |     4.95687ms |             ::1 | GET      "/api/tags"
+[GIN] 2026/06/11 - 23:46:08 | 200 |      62.612µs |             ::1 | HEAD     "/"
+[GIN] 2026/06/11 - 23:46:09 | 200 |  790.332615ms |             ::1 | POST     "/api/pull"
+[GIN] 2026/06/11 - 23:46:13 | 200 |      34.717µs |             ::1 | HEAD     "/"
+[GIN] 2026/06/11 - 23:46:14 | 200 |   785.00852ms |             ::1 | POST     "/api/pull"
+Finished: Thu 11 Jun 23:46:18 CEST 2026

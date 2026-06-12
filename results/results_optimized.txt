@@ -1,0 +1,40 @@
+total_time: 1676.0174
+
+feature	model	feature_fit_transform_time	train_time	inference_test_time	test_accuracy	test_f1_macro	test_f1_weighted	error
+bow	logistic_regression	0.026245	22.470284	0.002896	0.966292	0.965180	0.966213	
+bow	random_forest							setting an array element with a sequence.
+bow	xgboost	0.026245	228.231562	0.025808	0.242697	0.102211	0.110762	
+bow	svm	0.026245	4.905990	0.004770	0.970787	0.969982	0.970732	
+bow	naive_bayes							setting an array element with a sequence.
+bow	knn							setting an array element with a sequence.
+bow	mlp							setting an array element with a sequence.
+tfidf	logistic_regression	0.062891	1.928672	0.001323	0.977528	0.977221	0.977568	
+tfidf	random_forest							setting an array element with a sequence.
+tfidf	xgboost	0.062891	298.610395	0.022357	0.231461	0.097630	0.106131	
+tfidf	svm	0.062891	0.426233	0.004465	0.979775	0.979596	0.979720	
+tfidf	naive_bayes							setting an array element with a sequence.
+tfidf	knn							setting an array element with a sequence.
+tfidf	mlp							setting an array element with a sequence.
+ngram	logistic_regression	0.047695	0.276198	0.000677	0.952809	0.951693	0.952565	
+ngram	random_forest							setting an array element with a sequence.
+ngram	xgboost	0.047695	257.187326	0.023156	0.173034	0.059004	0.051048	
+ngram	svm	0.047695	0.306118	0.003364	0.970787	0.970520	0.970870	
+ngram	naive_bayes							setting an array element with a sequence.
+ngram	knn							setting an array element with a sequence.
+ngram	mlp							setting an array element with a sequence.
+word2vec	logistic_regression	0.011463	2.192208	0.000370	0.910112	0.907552	0.910218	
+word2vec	random_forest	0.011463	2.756211	0.034519	0.887640	0.884433	0.887805	
+word2vec	xgboost	0.011463	5.053462	0.006589	0.892135	0.890421	0.892347	
+word2vec	svm	0.011463	0.527755	0.002540	0.901124	0.897831	0.901153	
+word2vec	naive_bayes	0.011463	0.005484	0.006019	0.782022	0.755442	0.764482	
+word2vec	knn	0.011463	0.000696	0.042107	0.880899	0.877009	0.880668	
+word2vec	mlp	0.011463	0.641325	0.001306	0.851685	0.847588	0.852020	
+doc2vec	logistic_regression	0.034461	8.236656	0.000341	0.950562	0.950448	0.950414	
+doc2vec	random_forest	0.034461	2.793652	0.035724	0.939326	0.938401	0.939442	
+doc2vec	xgboost	0.034461	5.167886	0.006975	0.925843	0.924828	0.925644	
+doc2vec	svm	0.034461	0.575033	0.002608	0.937079	0.935928	0.937073	
+doc2vec	naive_bayes	0.034461	0.002028	0.006460	0.833708	0.817882	0.824066	
+doc2vec	knn	0.034461	0.000769	0.043872	0.946067	0.944489	0.946069	
+doc2vec	mlp	0.034461	0.489692	0.001300	0.943820	0.942973	0.943652	
+raw_text	llama		399.839946	16.418716	0.188764	0.063516	0.059948	
+raw_text	mistral		399.384008	16.639857	0.188764	0.063516	0.059948	
