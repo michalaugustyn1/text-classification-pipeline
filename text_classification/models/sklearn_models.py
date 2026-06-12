@@ -42,7 +42,8 @@ logger.info("Models: %s", "cuML (GPU)" if USE_GPU else "scikit-learn (CPU)")
 
 def _to_cupy(X):
     import cupy as cp
-    return cp.array(np.array(X, dtype=np.float32))
+    arr = X.toarray() if sp.issparse(X) else np.asarray(X, dtype=np.float32)
+    return cp.array(arr if arr.dtype == np.float32 else arr.astype(np.float32))
 
 
 def _to_numpy(X):

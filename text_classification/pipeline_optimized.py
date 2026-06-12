@@ -86,11 +86,7 @@ class XGBoostModelOpt:
             eval_metric="mlogloss",
             n_jobs=-1, random_state=RANDOM_SEED, verbosity=0)
     def fit(self, X, y, X_val=None, y_val=None):
-        fit_kw = {"verbose": False}
-        if X_val is not None:
-            fit_kw["eval_set"] = [(X_val, y_val)]
-            fit_kw["early_stopping_rounds"] = 20
-        self.clf.fit(X, y, **fit_kw)
+        self.clf.fit(X, y, verbose=False)
         return self
     def predict(self, X): return self.clf.predict(X)
     def predict_proba(self, X): return self.clf.predict_proba(X)
@@ -134,15 +130,9 @@ def run_combination(feat_name, model_name, Xtr, Xv, Xt,
     result = {"feature": feat_name, "model": model_name,
               "feature_fit_transform_time": feat_time}
     model = OPTIMIZED_MODELS[model_name]()
-    if isinstance(model, XGBoostModelOpt):
-        with timed("train", result):
-            model.fit(Xtr.toarray() if sp.issparse(Xtr) else Xtr, y_train,
-                      X_val=Xv.toarray() if sp.issparse(Xv) else Xv, y_val=y_val)
-    else:
-        with timed("train", result): model.fit(Xtr, y_train)
+    with timed("train", result): model.fit(Xtr, y_train)
     with timed("inference_test", result):
-        Xt_ = Xt.toarray() if (sp.issparse(Xt) and model_name in ("knn", "mlp")) else Xt
-        y_pred = model.predict(Xt_)
+        y_pred = model.predict(Xt)
     m = evaluate(y_test, y_pred, le.classes_)
     result.update({"test_accuracy": m["accuracy"], "test_f1_macro": m["f1_macro"],
                    "test_f1_weighted": m["f1_weighted"]})

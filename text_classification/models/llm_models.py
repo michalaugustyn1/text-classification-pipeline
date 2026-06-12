@@ -30,8 +30,8 @@ _PROMPT_TEMPLATE = (
 
 def build_prompt(text: str, class_names: List[str]) -> str:
     return _PROMPT_TEMPLATE.format(
-        classes=", ".join(class_names),
-        text=" ".join(text.split()[:256]))
+        classes=", ".join(str(c) for c in class_names),
+        text=" ".join(str(t) for t in str(text).split()[:256]))
 
 
 def parse_prediction(raw: str, class_names: List[str]) -> str:
@@ -69,7 +69,7 @@ class OllamaClassifier:
 
     def fit(self, X, y, label_encoder=None):
         raw = list(label_encoder.classes_) if label_encoder else sorted(set(y))
-        self.class_names = [LABEL_NAMES.get(int(c), str(c)) if str(c).isdigit() else str(c)
+        self.class_names = [str(LABEL_NAMES.get(int(str(c)), str(c))) if str(c).isdigit() else str(c)
                             for c in raw]
         if not check_ollama_server(self.base_url):
             raise RuntimeError(
