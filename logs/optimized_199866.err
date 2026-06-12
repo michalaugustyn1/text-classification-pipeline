@@ -1,0 +1,66 @@
+WARNING: Environment variable OLLAMA_HOST already has value [0.0.0.0:11866], will not forward new value [http://localhost:11866] from parent process environment
+INFO:    underlay of /etc/localtime required more than 50 (76) bind mounts
+INFO:    underlay of /usr/bin/nvidia-smi required more than 50 (277) bind mounts
+time=2026-06-12T13:03:07.055+02:00 level=INFO source=routes.go:1919 msg="server config" env="map[CUDA_VISIBLE_DEVICES:0 GGML_VK_VISIBLE_DEVICES: GPU_DEVICE_ORDINAL:0 HIP_VISIBLE_DEVICES: HSA_OVERRIDE_GFX_VERSION: HTTPS_PROXY: HTTP_PROXY: LLAMA_ARG_FIT: LLAMA_ARG_FIT_TARGET: NO_PROXY: OLLAMA_CONTEXT_LENGTH:0 OLLAMA_DEBUG:INFO OLLAMA_DEBUG_LOG_REQUESTS:false OLLAMA_EDITOR: OLLAMA_FLASH_ATTENTION:false OLLAMA_GO_TEMPLATE:true OLLAMA_GPU_OVERHEAD:0 OLLAMA_HOST:http://0.0.0.0:11866 OLLAMA_IGPU_ENABLE: OLLAMA_KEEP_ALIVE:5m0s OLLAMA_KV_CACHE_TYPE: OLLAMA_LLM_LIBRARY: OLLAMA_LOAD_TIMEOUT:5m0s OLLAMA_MAX_LOADED_MODELS:0 OLLAMA_MAX_QUEUE:512 OLLAMA_MAX_TRANSFER_STREAMS:4 OLLAMA_MODELS:/home/ma480128/.ollama_models OLLAMA_NOHISTORY:false OLLAMA_NOPRUNE:false OLLAMA_NO_CLOUD:false OLLAMA_NUM_PARALLEL:1 OLLAMA_ORIGINS:[http://localhost https://localhost http://localhost:* https://localhost:* http://127.0.0.1 https://127.0.0.1 http://127.0.0.1:* https://127.0.0.1:* http://0.0.0.0 https://0.0.0.0 http://0.0.0.0:* https://0.0.0.0:* app://* file://* tauri://* vscode-webview://* vscode-file://*] OLLAMA_REMOTES:[ollama.com] OLLAMA_SCHED_SPREAD:false OLLAMA_VULKAN:true ROCR_VISIBLE_DEVICES:0 http_proxy: https_proxy: no_proxy:]"
+time=2026-06-12T13:03:07.056+02:00 level=INFO source=routes.go:1921 msg="Ollama cloud disabled: false"
+time=2026-06-12T13:03:07.064+02:00 level=INFO source=images.go:864 msg="total blobs: 10"
+time=2026-06-12T13:03:07.066+02:00 level=INFO source=images.go:871 msg="total unused blobs removed: 0"
+time=2026-06-12T13:03:07.070+02:00 level=INFO source=routes.go:1981 msg="Listening on [::]:11866 (version 0.30.6)"
+time=2026-06-12T13:03:07.099+02:00 level=INFO source=model_list_cache.go:111 msg="model list cache hydration complete" models=2 failures=0 elapsed=10.421497ms
+time=2026-06-12T13:03:07.101+02:00 level=INFO source=runner.go:60 msg="discovering available GPUs..."
+time=2026-06-12T13:03:07.102+02:00 level=WARN source=runner.go:713 msg="user overrode visible devices" CUDA_VISIBLE_DEVICES=0
+time=2026-06-12T13:03:07.102+02:00 level=WARN source=runner.go:713 msg="user overrode visible devices" ROCR_VISIBLE_DEVICES=0
+time=2026-06-12T13:03:07.102+02:00 level=WARN source=runner.go:713 msg="user overrode visible devices" GPU_DEVICE_ORDINAL=0
+time=2026-06-12T13:03:07.102+02:00 level=WARN source=runner.go:717 msg="if GPUs are not correctly discovered, unset and try again"
+time=2026-06-12T13:03:07.733+02:00 level=INFO source=model_recommendations.go:177 msg="model recommendations cache sleep scheduled" wait=3h42m8.34603495s consecutive_failures=0
+time=2026-06-12T13:03:10.778+02:00 level=WARN source=cuda_compat.go:38 msg="NVIDIA driver too old" device="NVIDIA TITAN X (Pascal)" compute=6.1 driver=535 required_driver="570 or newer"
+time=2026-06-12T13:03:13.517+02:00 level=INFO source=types.go:50 msg="inference compute" id=cpu library=cpu compute="" name=cpu description=cpu libdirs=ollama driver="" pci_id="" type="" total="755.8 GiB" available="732.4 GiB"
+time=2026-06-12T13:03:13.517+02:00 level=INFO source=routes.go:2031 msg="vram-based default context" total_vram="0 B" default_num_ctx=4096
+2026-06-12 13:03:15,151 INFO [data_utils] Loading '/home/ma480128/HPAI/text_classification/data/train_data.txt'  sep=','  header=True
+2026-06-12 13:03:15,203 INFO [data_utils] Raw shape: (2225, 2)  columns: ['Text', 'Label']
+2026-06-12 13:03:15,203 INFO [data_utils] Columns — text: 'Text'  label: 'Label'
+2026-06-12 13:03:15,591 INFO [data_utils] Loaded 2225 samples, 5 classes: [0, 1, 2, 3, 4]
+2026-06-12 13:03:15,595 INFO [data_utils] Split — train:1557  val:223  test:445
+2026-06-12 13:03:15,596 INFO [optimized_pipeline] Cache hit → /lu/tetyda/home/ma480128/HPAI/text_classification/saved_models/feature_cache/bow_5ec0212482f8.pkl
+2026-06-12 13:03:15,643 INFO [optimized_pipeline] === bow × logistic_regression ===
+/home/ma480128/miniconda3/envs/myenv/lib/python3.10/site-packages/sklearn/linear_model/_sag.py:350: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+2026-06-12 13:03:36,544 INFO [metrics] train took 20.9001 s
+2026-06-12 13:03:36,547 INFO [metrics] inference_test took 0.0025 s
+2026-06-12 13:03:36,560 INFO [optimized_pipeline] [bow × logistic_regression]  acc=0.9663  f1=0.9652  train=20.90s
+2026-06-12 13:03:36,560 INFO [optimized_pipeline] === bow × random_forest ===
+2026-06-12 13:03:36,639 ERROR [optimized_pipeline] FAILED [bow × random_forest]: setting an array element with a sequence.
+2026-06-12 13:03:36,639 INFO [optimized_pipeline] === bow × xgboost ===
+2026-06-12 13:07:23,107 INFO [metrics] train took 226.4299 s
+2026-06-12 13:07:23,133 INFO [metrics] inference_test took 0.0258 s
+2026-06-12 13:07:23,148 INFO [optimized_pipeline] [bow × xgboost]  acc=0.2427  f1=0.1022  train=226.43s
+2026-06-12 13:07:23,175 INFO [optimized_pipeline] === bow × svm ===
+/home/ma480128/miniconda3/envs/myenv/lib/python3.10/site-packages/sklearn/svm/_classes.py:32: FutureWarning: The default value of `dual` will change from `True` to `'auto'` in 1.5. Set the value of `dual` explicitly to suppress the warning.
+  warnings.warn(
+/home/ma480128/miniconda3/envs/myenv/lib/python3.10/site-packages/sklearn/svm/_base.py:1250: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+/home/ma480128/miniconda3/envs/myenv/lib/python3.10/site-packages/sklearn/svm/_classes.py:32: FutureWarning: The default value of `dual` will change from `True` to `'auto'` in 1.5. Set the value of `dual` explicitly to suppress the warning.
+  warnings.warn(
+/home/ma480128/miniconda3/envs/myenv/lib/python3.10/site-packages/sklearn/svm/_base.py:1250: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+/home/ma480128/miniconda3/envs/myenv/lib/python3.10/site-packages/sklearn/svm/_classes.py:32: FutureWarning: The default value of `dual` will change from `True` to `'auto'` in 1.5. Set the value of `dual` explicitly to suppress the warning.
+  warnings.warn(
+/home/ma480128/miniconda3/envs/myenv/lib/python3.10/site-packages/sklearn/svm/_base.py:1250: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+2026-06-12 13:07:28,154 INFO [metrics] train took 4.9785 s
+2026-06-12 13:07:28,159 INFO [metrics] inference_test took 0.0043 s
+2026-06-12 13:07:28,171 INFO [optimized_pipeline] [bow × svm]  acc=0.9708  f1=0.9700  train=4.98s
+2026-06-12 13:07:28,171 INFO [optimized_pipeline] === bow × naive_bayes ===
+2026-06-12 13:07:28,171 ERROR [optimized_pipeline] FAILED [bow × naive_bayes]: setting an array element with a sequence.
+2026-06-12 13:07:28,171 INFO [optimized_pipeline] === bow × knn ===
+2026-06-12 13:07:28,186 ERROR [optimized_pipeline] FAILED [bow × knn]: setting an array element with a sequence.
+2026-06-12 13:07:28,186 INFO [optimized_pipeline] === bow × mlp ===
+2026-06-12 13:07:28,194 ERROR [optimized_pipeline] FAILED [bow × mlp]: setting an array element with a sequence.
+2026-06-12 13:07:28,195 INFO [optimized_pipeline] Cache hit → /lu/tetyda/home/ma480128/HPAI/text_classification/saved_models/feature_cache/tfidf_48d62083f0a5.pkl
+2026-06-12 13:07:28,299 INFO [optimized_pipeline] === tfidf × logistic_regression ===
+2026-06-12 13:07:30,231 INFO [metrics] train took 1.9310 s
+2026-06-12 13:07:30,232 INFO [metrics] inference_test took 0.0013 s
+2026-06-12 13:07:30,244 INFO [optimized_pipeline] [tfidf × logistic_regression]  acc=0.9775  f1=0.9772  train=1.93s
+2026-06-12 13:07:30,244 INFO [optimized_pipeline] === tfidf × random_forest ===
+2026-06-12 13:07:30,245 ERROR [optimized_pipeline] FAILED [tfidf × random_forest]: setting an array element with a sequence.
+2026-06-12 13:07:30,245 INFO [optimized_pipeline] === tfidf × xgboost ===
