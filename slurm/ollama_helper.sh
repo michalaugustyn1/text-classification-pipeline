@@ -67,9 +67,12 @@ ollama_start() {
             # ── Native binary: inherits SLURM cgroup GPU access directly ──────
             # SLURM's CUDA_VISIBLE_DEVICES is correct for native processes;
             # no remapping needed. nvidia-modprobe -u ensures UVM is initialised.
+            # Unset ROCm/Intel overrides — they cause spurious Ollama warnings.
             echo "GPU mode: native binary ($NATIVE)" >&2
             command -v nvidia-modprobe &>/dev/null && { nvidia-modprobe -u 2>/dev/null || true; }
-            OLLAMA_HOST="0.0.0.0:$PORT" OLLAMA_MODELS="$MODELS_DIR" "$NATIVE" serve &
+            env ROCR_VISIBLE_DEVICES= GPU_DEVICE_ORDINAL= HIP_VISIBLE_DEVICES= \
+                OLLAMA_HOST="0.0.0.0:$PORT" OLLAMA_MODELS="$MODELS_DIR" \
+                "$NATIVE" serve &
 
         else
             # ── Container + --nv fallback ─────────────────────────────────────
@@ -93,6 +96,9 @@ ollama_start() {
                 --env "OLLAMA_HOST=0.0.0.0:$PORT" \
                 --env "OLLAMA_MODELS=$MODELS_DIR" \
                 "${CV_ENV[@]}" \
+                --env "ROCR_VISIBLE_DEVICES=" \
+                --env "GPU_DEVICE_ORDINAL=" \
+                --env "HIP_VISIBLE_DEVICES=" \
                 "$_OLLAMA_SIF" ollama serve &
         fi
     fi
