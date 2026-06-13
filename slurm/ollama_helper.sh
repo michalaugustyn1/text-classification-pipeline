@@ -22,23 +22,13 @@ _build_nv_flags() {
 
     FLAGS="--nv"
 
-    # Explicit GPU device nodes
+    # Explicit GPU device nodes (belt-and-suspenders alongside --nv).
     for dev in /dev/nvidia0 /dev/nvidiactl /dev/nvidia-uvm /dev/nvidia-modeset; do
         [[ -e "$dev" ]] && FLAGS="$FLAGS --bind $dev:$dev"
     done
-
-    # Explicit CUDA driver library — Apptainer's --nv sometimes fails to
-    # locate libcuda.so.1 when it lives in a non-standard path on the host.
-    local CUDA_LIB
-    CUDA_LIB=$(ldconfig -p 2>/dev/null | awk '/libcuda\.so\.1/{print $NF}' | head -1)
-    if [[ -z "$CUDA_LIB" ]]; then
-        CUDA_LIB=$(find /usr/lib /usr/lib64 /usr/local/lib /opt \
-                        -name "libcuda.so.1" -maxdepth 6 2>/dev/null | head -1)
-    fi
-    if [[ -n "$CUDA_LIB" ]]; then
-        local CUDA_DIR; CUDA_DIR="$(dirname "$CUDA_LIB")"
-        FLAGS="$FLAGS --bind $CUDA_DIR:$CUDA_DIR"
-    fi
+    # Note: do NOT bind the libcuda directory — --nv handles libcuda.so.1,
+    # and binding /lib64 would overwrite the container's glibc causing
+    # relocation errors.
 
     echo "$FLAGS"
 }

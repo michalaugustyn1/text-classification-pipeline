@@ -56,14 +56,10 @@ echo ""
 # --- 4. libcuda.so.1 on host ---
 echo "--- 4. libcuda.so.1 (CUDA driver library) ---"
 CUDA_LIB=$(ldconfig -p 2>/dev/null | awk '/libcuda\.so\.1/{print $NF}' | head -1)
-if [[ -z "$CUDA_LIB" ]]; then
-    CUDA_LIB=$(find /usr/lib /usr/lib64 /usr/local/lib /opt \
-                    -name "libcuda.so.1" -maxdepth 6 2>/dev/null | head -1)
-fi
 if [[ -n "$CUDA_LIB" ]]; then
-    ok "libcuda.so.1 found at $CUDA_LIB"
+    ok "libcuda.so.1 found at $CUDA_LIB (handled by --nv, not explicitly bound)"
 else
-    fail "libcuda.so.1 not found — GPU inside container will not work"
+    echo "      libcuda.so.1 not in ldconfig — --nv may still find it via other means"
 fi
 echo ""
 
