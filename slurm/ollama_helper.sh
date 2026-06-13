@@ -46,19 +46,19 @@ ollama_start() {
     if ! nvidia-smi &>/dev/null 2>&1; then
         # ── No GPU: container CPU mode ────────────────────────────────────────
         echo "No GPU detected — container CPU mode" >&2
+        SINGULARITYENV_OLLAMA_HOST="0.0.0.0:$PORT" \
+        SINGULARITYENV_OLLAMA_MODELS="$MODELS_DIR" \
         singularity exec \
             --bind "$MODELS_DIR:$MODELS_DIR" \
-            --env "OLLAMA_HOST=0.0.0.0:$PORT" \
-            --env "OLLAMA_MODELS=$MODELS_DIR" \
             "$_OLLAMA_SIF" ollama serve &
 
     elif singularity exec --nvccli "$_OLLAMA_SIF" true &>/dev/null 2>&1; then
         # ── Container + --nvccli (nvidia-container-toolkit installed) ─────────
         echo "GPU mode: container --nvccli" >&2
+        SINGULARITYENV_OLLAMA_HOST="0.0.0.0:$PORT" \
+        SINGULARITYENV_OLLAMA_MODELS="$MODELS_DIR" \
         singularity exec --nvccli \
             --bind "$MODELS_DIR:$MODELS_DIR" \
-            --env "OLLAMA_HOST=0.0.0.0:$PORT" \
-            --env "OLLAMA_MODELS=$MODELS_DIR" \
             "$_OLLAMA_SIF" ollama serve &
 
     else
@@ -90,15 +90,14 @@ ollama_start() {
             local CUDA_LIB; CUDA_LIB=$(ldconfig -p 2>/dev/null | awk '/libcuda\.so\.1/{print $NF}' | head -1)
             [[ -n "$CUDA_LIB" ]] && NV_FLAGS="$NV_FLAGS --bind $CUDA_LIB:/usr/lib/x86_64-linux-gnu/libcuda.so.1"
             local NV_ENV=(); [[ -n "$PHY_MINOR" ]] && NV_ENV=(NVIDIA_VISIBLE_DEVICES="$PHY_MINOR")
-            local CV_ENV=(); [[ -n "$PHY_MINOR" ]] && CV_ENV=(--env "CUDA_VISIBLE_DEVICES=$PHY_MINOR")
-            env "${NV_ENV[@]}" singularity exec $NV_FLAGS \
+            local CV_ENV=(); [[ -n "$PHY_MINOR" ]] && CV_ENV=(SINGULARITYENV_CUDA_VISIBLE_DEVICES="$PHY_MINOR")
+            SINGULARITYENV_OLLAMA_HOST="0.0.0.0:$PORT" \
+            SINGULARITYENV_OLLAMA_MODELS="$MODELS_DIR" \
+            SINGULARITYENV_ROCR_VISIBLE_DEVICES="" \
+            SINGULARITYENV_GPU_DEVICE_ORDINAL="" \
+            SINGULARITYENV_HIP_VISIBLE_DEVICES="" \
+            env "${NV_ENV[@]}" "${CV_ENV[@]}" singularity exec $NV_FLAGS \
                 --bind "$MODELS_DIR:$MODELS_DIR" \
-                --env "OLLAMA_HOST=0.0.0.0:$PORT" \
-                --env "OLLAMA_MODELS=$MODELS_DIR" \
-                "${CV_ENV[@]}" \
-                --env "ROCR_VISIBLE_DEVICES=" \
-                --env "GPU_DEVICE_ORDINAL=" \
-                --env "HIP_VISIBLE_DEVICES=" \
                 "$_OLLAMA_SIF" ollama serve &
         fi
     fi
