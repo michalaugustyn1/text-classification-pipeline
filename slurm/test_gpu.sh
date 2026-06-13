@@ -15,7 +15,7 @@ source ~/HPAI/text_classification/slurm/ollama_helper.sh
 SIF_PATH=~/HPAI/text_classification/apptainer/ollama.sif
 MODELS_DIR="$(cat ~/HPAI/text_classification/apptainer/.models_dir 2>/dev/null \
               || echo "${SCRATCH:-$HOME}/.ollama_models")"
-OLLAMA_PORT=11499
+# OLLAMA_PORT is set by ollama_start via SLURM_JOB_ID; read it back after startup.
 
 PASS=0; FAIL=0
 ok()   { echo "[PASS] $*"; (( PASS++ )); }
@@ -131,74 +131,34 @@ except Exception as e:
 ' 2>/dev/null
 echo ""
 
-# --- 8. Ollama server with _build_nv_flags ---
+# --- 8. Ollama server startup (via ollama_start) ---
 echo "--- 8. Ollama server startup ---"
+echo "  Native binary: ${_NATIVE_OLLAMA:-$(_native_ollama)}"
+echo "  --nvccli available: $(apptainer exec --nvccli "$SIF_PATH" true &>/dev/null 2>&1 && echo yes || echo no)"
 if [[ ! -f "$SIF_PATH" ]]; then
     fail "Skipping — SIF not found"
 else
-    NV_FLAGS="$(_build_nv_flags "$SIF_PATH")"
-    NV_ENV=()
-    CONTAINER_ENV=()
-    if [[ -n "$NV_FLAGS" ]]; then
-        PHY_MINOR="$(_physical_gpu_minor)"
-        if [[ -n "$PHY_MINOR" ]]; then
-            NV_ENV+=(NVIDIA_VISIBLE_DEVICES="$PHY_MINOR")
-            CONTAINER_ENV+=(--env "CUDA_VISIBLE_DEVICES=$PHY_MINOR")
-            echo "  Physical GPU: /dev/nvidia${PHY_MINOR} (CUDA_VISIBLE_DEVICES=$PHY_MINOR inside container)"
-        fi
-        # Force NVIDIA UVM driver initialization on the host — cuInit inside
-        # the container fails if the setuid nvidia-modprobe hasn't run yet.
-        if command -v nvidia-modprobe &>/dev/null; then
-            nvidia-modprobe -u 2>/dev/null || true
-            echo "  nvidia-modprobe -u: done"
-        fi
-        CUDA_LIB=$(ldconfig -p 2>/dev/null | awk '/libcuda\.so\.1/{print $NF}' | head -1)
-        [[ -n "$CUDA_LIB" ]] && NV_FLAGS="$NV_FLAGS --bind $CUDA_LIB:/usr/lib/x86_64-linux-gnu/libcuda.so.1"
-    fi
-    echo "  Using flags: ${NV_FLAGS:-none (CPU-only)}"
-
-    env "${NV_ENV[@]}" apptainer exec $NV_FLAGS \
-        --bind "$MODELS_DIR:$MODELS_DIR" \
-        --env "OLLAMA_HOST=0.0.0.0:$OLLAMA_PORT" \
-        --env "OLLAMA_MODELS=$MODELS_DIR" \
-        "${CONTAINER_ENV[@]}" \
-        "$SIF_PATH" ollama serve &
-    SERVER_PID=$!
-    trap "kill $SERVER_PID 2>/dev/null; wait $SERVER_PID 2>/dev/null" EXIT
-
-    echo "  Waiting for server..."
-    READY=0
-    for i in $(seq 1 30); do
-        curl -sf "http://localhost:$OLLAMA_PORT/api/tags" >/dev/null 2>&1 && { READY=1; break; }
-        kill -0 "$SERVER_PID" 2>/dev/null || { fail "Ollama server died during startup"; break; }
-        sleep 1
-    done
-
-    if [[ $READY -eq 1 ]]; then
-        ok "Ollama server is up"
+    if ollama_start 2>&1 | sed 's/^/  /'; then
+        ok "Ollama server is up (port $OLLAMA_PORT)"
 
         # --- 9. GPU vs CPU backend ---
         echo ""
         echo "--- 9. Ollama compute backend ---"
         sleep 2
-        # Trigger a model load to force backend selection to appear in logs
         curl -sf -X POST "http://localhost:$OLLAMA_PORT/api/chat" \
             -H "Content-Type: application/json" \
             -d '{"model":"llama3","messages":[{"role":"user","content":"hi"}],"options":{"num_predict":1},"stream":false}' \
             >/dev/null 2>&1 || true
         sleep 1
-        # The compute backend is logged to stderr by Ollama — check via /api/ps
         PS_OUT=$(curl -sf "http://localhost:$OLLAMA_PORT/api/ps" 2>/dev/null || echo "")
         if echo "$PS_OUT" | grep -q '"library":"cuda"'; then
             ok "Ollama is using CUDA (GPU)"
         elif echo "$PS_OUT" | grep -q '"library":"cpu"'; then
-            fail "Ollama fell back to CPU (cuInit=100: CUDA_ERROR_NO_DEVICE)"
-            echo "  Root cause: Apptainer --nv binds device files but not cgroup device"
-            echo "  permissions. cuInit() needs write-access set up by nvidia-container-toolkit."
-            echo "  Fix: ask HPC admin to enable --nvccli (nvidia-container-toolkit) for Apptainer."
-            echo "  CPU inference works correctly in the meantime."
+            fail "Ollama fell back to CPU"
+            echo "  To enable GPU: install native binary: curl -L https://ollama.com/download/ollama-linux-amd64.tgz | tar xz -C ~/bin/"
+            echo "  Or ask HPC admin to install nvidia-container-toolkit (--nvccli)."
         else
-            echo "  /api/ps response: $PS_OUT"
+            echo "  /api/ps: $PS_OUT"
         fi
 
         # --- 10. Quick inference ---
@@ -221,7 +181,7 @@ else
             echo "  llama3 not pulled yet — run: sbatch slurm/run_setup.sh"
         fi
     else
-        fail "Ollama server did not become ready within 30s"
+        fail "Ollama server did not become ready"
     fi
 fi
 
