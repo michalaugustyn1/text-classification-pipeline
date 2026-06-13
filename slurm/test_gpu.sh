@@ -2,7 +2,6 @@
 #SBATCH --job-name=tc_test_gpu
 ##SBATCH --account=g103-501
 #SBATCH --nodes=1
-#SBATCH --gres=gpu:1
 #SBATCH --mem=8G
 #SBATCH --time=00:15:00
 #SBATCH --output=logs/test_gpu_%j.out
