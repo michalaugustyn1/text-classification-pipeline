@@ -3,56 +3,45 @@
 #SBATCH --account=g103-2499
 #SBATCH --nodes=1
 #SBATCH --gres=gpu:1
-#SBATCH --mem=32G
+#SBATCH --mem=64G
 #SBATCH --time=02:00:00
 #SBATCH --output=logs/setup_%j.out
 #SBATCH --error=logs/setup_%j.err
 
 mkdir -p logs
 
-SIF_PATH=~/HPAI/text_classification/apptainer/ollama.sif
-DEF_PATH=~/HPAI/text_classification/apptainer/ollama.def
-MODELS_DIR="${SCRATCH:-$HOME}/.ollama_models"
-OLLAMA_PORT=11435
-
 module purge
 module load cuda 2>/dev/null || true
+module load python 2>/dev/null || true
 
-if [[ ! -f "$SIF_PATH" ]]; then
-    mkdir -p "$(dirname "$SIF_PATH")"
-    singularity build "$SIF_PATH" "$DEF_PATH"
-fi
+source ~/miniconda3/bin/activate
+conda activate myenv
 
-mkdir -p "$MODELS_DIR"
-echo "$MODELS_DIR" > ~/HPAI/text_classification/apptainer/.models_dir
+export HF_HOME=~/HPAI/text_classification/rysy/hf_cache
+mkdir -p "$HF_HOME"
 
-NV_FLAGS=""; nvidia-smi &>/dev/null && NV_FLAGS="--nv"
-singularity exec $NV_FLAGS \
-    --bind "$MODELS_DIR:$MODELS_DIR" \
-    "$SIF_PATH" \
-    bash -c "export OLLAMA_HOST='0.0.0.0:${OLLAMA_PORT}' OLLAMA_MODELS='${MODELS_DIR}'; exec ollama serve" &
+# HF_TOKEN must be set in the environment for the gated Llama3 model.
+# Run: export HF_TOKEN=<your_token>  before submitting, or add it to ~/.bashrc
+[[ -z "${HF_TOKEN:-}" ]] && echo "WARNING: HF_TOKEN not set — Llama3 download will fail" >&2
 
-SERVER_PID=$!
-trap "kill $SERVER_PID 2>/dev/null; wait $SERVER_PID 2>/dev/null" EXIT
+python - <<'EOF'
+import os, torch
+from transformers import AutoTokenizer, AutoModelForCausalLM
 
-for i in $(seq 1 90); do
-    curl -sf "http://localhost:$OLLAMA_PORT/api/tags" >/dev/null 2>&1 && break
-    kill -0 "$SERVER_PID" 2>/dev/null || { echo "ERROR: Ollama server died." >&2; exit 1; }
-    sleep 1
-done
-curl -sf "http://localhost:$OLLAMA_PORT/api/tags" >/dev/null 2>&1 \
-    || { echo "ERROR: Server not ready after 90s." >&2; exit 1; }
+token = os.environ.get("HF_TOKEN")
 
-pull_model() {
-    local model="$1"
-    singularity exec $NV_FLAGS \
-        --bind "$MODELS_DIR:$MODELS_DIR" \
-        "$SIF_PATH" \
-        bash -c "export OLLAMA_HOST='localhost:${OLLAMA_PORT}' OLLAMA_MODELS='${MODELS_DIR}'; ollama pull '${model}'"
-}
-
-pull_model "llama3"
-pull_model "mistral"
-[[ -n "${EXTRA_MODEL:-}" ]] && pull_model "$EXTRA_MODEL"
+for model_id in [
+    "mistralai/Mistral-7B-Instruct-v0.2",
+    "meta-llama/Meta-Llama-3-8B-Instruct",
+]:
+    print(f"Downloading {model_id} ...", flush=True)
+    try:
+        AutoTokenizer.from_pretrained(model_id, token=token)
+        AutoModelForCausalLM.from_pretrained(
+            model_id, torch_dtype=torch.float16, token=token)
+        print(f"  OK: {model_id}", flush=True)
+    except Exception as e:
+        print(f"  FAILED: {model_id}: {e}", flush=True)
+EOF
 
 echo "Finished: $(date)"

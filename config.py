@@ -42,11 +42,10 @@ MLP_PARAMS = {"hidden_layer_sizes": (256, 128), "activation": "relu",
 # BBC News label mapping (sunilthite Kaggle dataset: labels stored as 0–4)
 LABEL_NAMES = {0: "business", 1: "entertainment", 2: "politics", 3: "sport", 4: "tech"}
 
-LLM_SAMPLE_SIZE      = 500
-LLM_TIMEOUT          = 120
-OLLAMA_BASE_URL      = "http://localhost:11434"
-OLLAMA_LLAMA_MODEL   = "llama3"
-OLLAMA_MISTRAL_MODEL = "mistral"
+LLM_SAMPLE_SIZE  = 500
+HF_LLAMA_MODEL   = "meta-llama/Meta-Llama-3-8B-Instruct"
+HF_MISTRAL_MODEL = "mistralai/Mistral-7B-Instruct-v0.2"
+HF_BATCH_SIZE    = 4
 
 N_JOBS_FEATURES = -1
 N_JOBS_MODELS   = -1

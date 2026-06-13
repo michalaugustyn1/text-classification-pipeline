@@ -19,9 +19,7 @@ module load openmpi 2>/dev/null || true
 source ~/miniconda3/bin/activate
 conda activate myenv
 export PYTHONPATH=~/HPAI/text_classification
-
-source ~/HPAI/text_classification/rysy/ollama_helper.sh
-ollama_start
+export HF_HOME=~/HPAI/text_classification/rysy/hf_cache
 
 time srun python ~/HPAI/text_classification/pipeline_mpi.py \
     --data ~/HPAI/text_classification/data/train_data.txt \

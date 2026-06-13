@@ -17,10 +17,8 @@ module load python 2>/dev/null || true
 source ~/miniconda3/bin/activate
 conda activate myenv
 export PYTHONPATH=~/HPAI/text_classification
+export HF_HOME=~/HPAI/text_classification/rysy/hf_cache
 export OMP_NUM_THREADS=2
-
-source ~/HPAI/text_classification/rysy/ollama_helper.sh
-ollama_start
 
 time python ~/HPAI/text_classification/pipeline_parallel.py \
     --data       ~/HPAI/text_classification/data/train_data.txt \

@@ -1,13 +1,11 @@
 import logging
 import os
-import urllib.request
 import numpy as np
 from typing import List, Optional
 from config import (
     LR_PARAMS, RF_PARAMS, XGB_PARAMS, SVM_PARAMS,
     NB_PARAMS, KNN_PARAMS, MLP_PARAMS, RANDOM_SEED,
-    LLM_SAMPLE_SIZE, LLM_TIMEOUT,
-    OLLAMA_BASE_URL, OLLAMA_LLAMA_MODEL, OLLAMA_MISTRAL_MODEL,
+    LLM_SAMPLE_SIZE, HF_LLAMA_MODEL, HF_MISTRAL_MODEL, HF_BATCH_SIZE,
     LABEL_NAMES,
 )
 
@@ -235,10 +233,6 @@ ALL_SKLEARN_MODELS = {
 }
 
 
-_env_host = os.environ.get("OLLAMA_HOST", "")
-if _env_host:
-    OLLAMA_BASE_URL = _env_host if _env_host.startswith("http") else f"http://{_env_host}"
-
 _PROMPT = (
     "Classify the following document into exactly one of these categories: {classes}.\n\n"
     "Document:\n{text}\n\n"
@@ -264,55 +258,92 @@ def _parse_pred(raw, class_names):
     return class_names[0]
 
 
-def _check_ollama(base_url):
-    try:
-        urllib.request.urlopen(f"{base_url}/api/tags", timeout=5)
-        return True
-    except Exception:
-        return False
-
-
-class OllamaClassifier:
-    def __init__(self, model_name: str,
+class HFClassifier:
+    def __init__(self, model_id: str,
                  sample_size: int = LLM_SAMPLE_SIZE,
-                 timeout: int = LLM_TIMEOUT,
-                 seed: int = RANDOM_SEED):
-        self.model_name  = model_name
+                 seed: int = RANDOM_SEED,
+                 batch_size: int = HF_BATCH_SIZE):
+        self.model_id    = model_id
         self.sample_size = sample_size
-        self.timeout     = timeout
         self.seed        = seed
-        self.base_url    = OLLAMA_BASE_URL
+        self.batch_size  = batch_size
         self.class_names: Optional[List[str]] = None
-        self.name        = model_name.replace(":", "_")
+        self.name        = model_id.split("/")[-1].lower()
+        self._tokenizer  = None
+        self._model      = None
+
+    def _load(self):
+        if self._model is not None:
+            return
+        import torch
+        from transformers import AutoTokenizer, AutoModelForCausalLM
+        token = os.environ.get("HF_TOKEN")
+        self._tokenizer = AutoTokenizer.from_pretrained(
+            self.model_id, token=token, padding_side="left")
+        if self._tokenizer.pad_token_id is None:
+            self._tokenizer.pad_token_id = self._tokenizer.eos_token_id
+        self._model = AutoModelForCausalLM.from_pretrained(
+            self.model_id, torch_dtype=torch.float16,
+            device_map="auto", token=token)
+        self._model.eval()
+        logger.info("Loaded %s on %s", self.model_id,
+                    next(self._model.parameters()).device)
+
+    def unload(self):
+        if self._model is not None:
+            import torch, gc
+            del self._model, self._tokenizer
+            self._model = self._tokenizer = None
+            gc.collect()
+            torch.cuda.empty_cache()
+            logger.info("Unloaded %s", self.model_id)
+
+    def __del__(self):
+        try:
+            self.unload()
+        except Exception:
+            pass
 
     def fit(self, X, y, label_encoder=None):
         raw = list(label_encoder.classes_) if label_encoder else sorted(set(y))
-        self.class_names = [str(LABEL_NAMES.get(int(str(c)), str(c))) if str(c).isdigit() else str(c)
-                            for c in raw]
-        if not _check_ollama(self.base_url):
-            raise RuntimeError(
-                f"Ollama not reachable at {self.base_url}.\n"
-                "Start with: ollama serve  or  bash apptainer/build_and_pull.sh")
-        import ollama
-        try:
-            ollama.Client(host=self.base_url).chat(
-                model=self.model_name,
-                messages=[{"role": "user", "content": "Hi"}],
-                options={"num_predict": 3})
-        except Exception as exc:
-            raise RuntimeError(
-                f"Could not reach '{self.model_name}' — run: bash apptainer/build_and_pull.sh\n"
-                f"Error: {exc}") from exc
-        logger.info("'%s' ready. %d classes.", self.model_name, len(self.class_names))
+        self.class_names = [
+            str(LABEL_NAMES.get(int(str(c)), str(c))) if str(c).isdigit() else str(c)
+            for c in raw
+        ]
+        self._load()
+        logger.info("'%s' ready. %d classes.", self.model_id, len(self.class_names))
         return self
 
-    def _classify_one(self, text):
-        import ollama
-        resp = ollama.Client(host=self.base_url).chat(
-            model=self.model_name,
-            messages=[{"role": "user", "content": _build_prompt(text, self.class_names)}],
-            options={"temperature": 0, "num_predict": 20, "seed": self.seed})
-        return _parse_pred(resp["message"]["content"], self.class_names)
+    def _infer_batch(self, texts):
+        import torch
+        token_ids_list = [
+            self._tokenizer.apply_chat_template(
+                [{"role": "user", "content": _build_prompt(t, self.class_names)}],
+                add_generation_prompt=True, return_tensors="pt"
+            ).squeeze(0)
+            for t in texts
+        ]
+        max_len = max(x.shape[0] for x in token_ids_list)
+        pad_id  = self._tokenizer.pad_token_id
+        input_ids = torch.full((len(token_ids_list), max_len), pad_id, dtype=torch.long)
+        attn_mask = torch.zeros_like(input_ids)
+        for i, ids in enumerate(token_ids_list):
+            offset = max_len - ids.shape[0]
+            input_ids[i, offset:] = ids
+            attn_mask[i, offset:] = 1
+        input_ids = input_ids.to(self._model.device)
+        attn_mask = attn_mask.to(self._model.device)
+        with torch.no_grad():
+            out = self._model.generate(
+                input_ids=input_ids, attention_mask=attn_mask,
+                max_new_tokens=20, do_sample=False,
+                pad_token_id=self._tokenizer.pad_token_id)
+        return [
+            _parse_pred(
+                self._tokenizer.decode(row[max_len:], skip_special_tokens=True),
+                self.class_names)
+            for row in out
+        ]
 
     def predict(self, X) -> np.ndarray:
         if self.class_names is None:
@@ -323,13 +354,17 @@ class OllamaClassifier:
             indices = rng.choice(indices, size=self.sample_size, replace=False)
             logger.warning("LLM eval sampled to %d / %d.", self.sample_size, len(X))
         pred_names = np.array([self.class_names[0]] * len(X), dtype=object)
-        for k, idx in enumerate(indices):
-            if k % 50 == 0:
-                logger.info("  [%s] %d / %d …", self.model_name, k, len(indices))
+        for start in range(0, len(indices), self.batch_size):
+            batch_idx = indices[start:start + self.batch_size]
+            if start % 50 == 0:
+                logger.info("  [%s] %d / %d …", self.name, start, len(indices))
             try:
-                pred_names[idx] = self._classify_one(X[idx])
+                for idx, pred in zip(batch_idx,
+                                     self._infer_batch([X[i] for i in batch_idx])):
+                    pred_names[idx] = pred
             except Exception as exc:
-                logger.warning("  Ollama error on doc %d: %s", idx, exc)
+                logger.warning("  HF error on batch %d: %s", start, exc)
+        self.unload()
         return np.array(
             [self.class_names.index(p) if p in self.class_names else 0
              for p in pred_names], dtype=int)
@@ -341,15 +376,15 @@ class OllamaClassifier:
         return proba
 
 
-class LlamaClassifier(OllamaClassifier):
+class LlamaClassifier(HFClassifier):
     def __init__(self, **kwargs):
-        super().__init__(model_name=OLLAMA_LLAMA_MODEL, **kwargs)
+        super().__init__(model_id=HF_LLAMA_MODEL, **kwargs)
         self.name = "llama3"
 
 
-class MistralClassifier(OllamaClassifier):
+class MistralClassifier(HFClassifier):
     def __init__(self, **kwargs):
-        super().__init__(model_name=OLLAMA_MISTRAL_MODEL, **kwargs)
+        super().__init__(model_id=HF_MISTRAL_MODEL, **kwargs)
         self.name = "mistral"
 
 
