@@ -82,11 +82,17 @@ ollama_start() {
         echo "No GPU detected — running CPU-only" >&2
     fi
 
-    env "${NV_ENV[@]}" apptainer run $NV_FLAGS \
+    # Use exec so CUDA_VISIBLE_DEVICES is unset INSIDE the container before
+    # Ollama starts. SLURM's inherited CUDA_VISIBLE_DEVICES=0 can cause
+    # cuInit to return CUDA_ERROR_NO_DEVICE (100) inside the container namespace
+    # even when the device files are correct. Ollama's own warning message
+    # says: "if GPUs are not correctly discovered, unset and try again."
+    env "${NV_ENV[@]}" apptainer exec $NV_FLAGS \
         --bind "$MODELS_DIR:$MODELS_DIR" \
         --env "OLLAMA_HOST=0.0.0.0:$PORT" \
         --env "OLLAMA_MODELS=$MODELS_DIR" \
-        "$_OLLAMA_SIF" &
+        "$_OLLAMA_SIF" \
+        bash -c 'unset CUDA_VISIBLE_DEVICES; exec ollama serve' &
     _OLLAMA_SERVER_PID=$!
     trap ollama_stop EXIT
     for i in $(seq 1 60); do

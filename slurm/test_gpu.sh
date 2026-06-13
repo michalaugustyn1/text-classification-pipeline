@@ -149,11 +149,15 @@ else
     fi
     echo "  Using flags: ${NV_FLAGS:-none (CPU-only)}"
 
-    env "${NV_ENV[@]}" apptainer run $NV_FLAGS \
+    # Unset CUDA_VISIBLE_DEVICES inside the container before starting Ollama.
+    # SLURM's inherited value can cause cuInit CUDA_ERROR_NO_DEVICE (100)
+    # in the container namespace. This is Ollama's own suggested fix.
+    env "${NV_ENV[@]}" apptainer exec $NV_FLAGS \
         --bind "$MODELS_DIR:$MODELS_DIR" \
         --env "OLLAMA_HOST=0.0.0.0:$OLLAMA_PORT" \
         --env "OLLAMA_MODELS=$MODELS_DIR" \
-        "$SIF_PATH" &
+        "$SIF_PATH" \
+        bash -c 'unset CUDA_VISIBLE_DEVICES; exec ollama serve' &
     SERVER_PID=$!
     trap "kill $SERVER_PID 2>/dev/null; wait $SERVER_PID 2>/dev/null" EXIT
 
