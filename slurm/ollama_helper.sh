@@ -41,12 +41,24 @@ ollama_start() {
     export OLLAMA_HOST="http://localhost:$PORT"
     export OLLAMA_PORT="$PORT"
     local NV_FLAGS; NV_FLAGS="$(_build_nv_flags "$_OLLAMA_SIF")"
-    [[ -n "$NV_FLAGS" ]] && echo "GPU passthrough flags: $NV_FLAGS" >&2 \
-                         || echo "No GPU detected — running CPU-only" >&2
+    local CUDA_ENV=()
+    if [[ -n "$NV_FLAGS" ]]; then
+        # --nv binds libnvidia-ml.so (nvidia-smi) but may not expose libcuda.so.1
+        # to Ollama's dlopen. Bind the single file and add its dir to LD_LIBRARY_PATH.
+        local CUDA_LIB; CUDA_LIB=$(ldconfig -p 2>/dev/null | awk '/libcuda\.so\.1/{print $NF}' | head -1)
+        if [[ -n "$CUDA_LIB" ]]; then
+            NV_FLAGS="$NV_FLAGS --bind $CUDA_LIB:$CUDA_LIB"
+            CUDA_ENV=(--env "LD_LIBRARY_PATH=$(dirname "$CUDA_LIB")")
+        fi
+        echo "GPU passthrough flags: $NV_FLAGS" >&2
+    else
+        echo "No GPU detected — running CPU-only" >&2
+    fi
     apptainer run $NV_FLAGS \
         --bind "$MODELS_DIR:$MODELS_DIR" \
         --env "OLLAMA_HOST=0.0.0.0:$PORT" \
         --env "OLLAMA_MODELS=$MODELS_DIR" \
+        "${CUDA_ENV[@]}" \
         "$_OLLAMA_SIF" &
     _OLLAMA_SERVER_PID=$!
     trap ollama_stop EXIT
