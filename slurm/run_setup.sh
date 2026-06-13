@@ -30,11 +30,10 @@ source ~/HPAI/text_classification/slurm/ollama_helper.sh
 NV_FLAGS="$(_build_nv_flags "$SIF_PATH")"
 echo "GPU passthrough flags: ${NV_FLAGS:-none (CPU-only)}" >&2
 
-OLLAMA_HOST="0.0.0.0:$OLLAMA_PORT" \
-OLLAMA_MODELS="$MODELS_DIR" \
 singularity exec $NV_FLAGS \
     --bind "$MODELS_DIR:$MODELS_DIR" \
-    "$SIF_PATH" ollama serve &
+    "$SIF_PATH" \
+    bash -c "export OLLAMA_HOST='0.0.0.0:${OLLAMA_PORT}' OLLAMA_MODELS='${MODELS_DIR}'; exec ollama serve" &
 
 SERVER_PID=$!
 trap "kill $SERVER_PID 2>/dev/null; wait $SERVER_PID 2>/dev/null" EXIT
@@ -49,11 +48,11 @@ curl -sf "http://localhost:$OLLAMA_PORT/api/tags" >/dev/null 2>&1 \
     || { echo "ERROR: Server not ready after 90 s." >&2; exit 1; }
 
 pull_model() {
-    OLLAMA_HOST="localhost:$OLLAMA_PORT" \
-    OLLAMA_MODELS="$MODELS_DIR" \
+    local model="$1"
     singularity exec $NV_FLAGS \
         --bind "$MODELS_DIR:$MODELS_DIR" \
-        "$SIF_PATH" ollama pull "$1"
+        "$SIF_PATH" \
+        bash -c "export OLLAMA_HOST='localhost:${OLLAMA_PORT}' OLLAMA_MODELS='${MODELS_DIR}'; ollama pull '${model}'"
 }
 
 pull_model "llama3"

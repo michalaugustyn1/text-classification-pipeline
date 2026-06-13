@@ -46,20 +46,18 @@ ollama_start() {
     if ! nvidia-smi &>/dev/null 2>&1; then
         # ── No GPU: container CPU mode ────────────────────────────────────────
         echo "No GPU detected — container CPU mode" >&2
-        OLLAMA_HOST="0.0.0.0:$PORT" \
-        OLLAMA_MODELS="$MODELS_DIR" \
         singularity exec \
             --bind "$MODELS_DIR:$MODELS_DIR" \
-            "$_OLLAMA_SIF" ollama serve &
+            "$_OLLAMA_SIF" \
+            bash -c "export OLLAMA_HOST='0.0.0.0:${PORT}' OLLAMA_MODELS='${MODELS_DIR}'; exec ollama serve" &
 
     elif singularity exec --nvccli "$_OLLAMA_SIF" true &>/dev/null 2>&1; then
         # ── Container + --nvccli (nvidia-container-toolkit installed) ─────────
         echo "GPU mode: container --nvccli" >&2
-        OLLAMA_HOST="0.0.0.0:$PORT" \
-        OLLAMA_MODELS="$MODELS_DIR" \
         singularity exec --nvccli \
             --bind "$MODELS_DIR:$MODELS_DIR" \
-            "$_OLLAMA_SIF" ollama serve &
+            "$_OLLAMA_SIF" \
+            bash -c "export OLLAMA_HOST='0.0.0.0:${PORT}' OLLAMA_MODELS='${MODELS_DIR}'; exec ollama serve" &
 
     else
         local NATIVE; NATIVE=$(_native_ollama)
@@ -90,15 +88,12 @@ ollama_start() {
             local CUDA_LIB; CUDA_LIB=$(ldconfig -p 2>/dev/null | awk '/libcuda\.so\.1/{print $NF}' | head -1)
             [[ -n "$CUDA_LIB" ]] && NV_FLAGS="$NV_FLAGS --bind $CUDA_LIB:/usr/lib/x86_64-linux-gnu/libcuda.so.1"
             local NV_ENV=(); [[ -n "$PHY_MINOR" ]] && NV_ENV=(NVIDIA_VISIBLE_DEVICES="$PHY_MINOR")
-            local CV_ENV=(); [[ -n "$PHY_MINOR" ]] && CV_ENV=(CUDA_VISIBLE_DEVICES="$PHY_MINOR")
-            OLLAMA_HOST="0.0.0.0:$PORT" \
-            OLLAMA_MODELS="$MODELS_DIR" \
-            ROCR_VISIBLE_DEVICES="" \
-            GPU_DEVICE_ORDINAL="" \
-            HIP_VISIBLE_DEVICES="" \
-            env "${NV_ENV[@]}" "${CV_ENV[@]}" singularity exec $NV_FLAGS \
+            local inner="export OLLAMA_HOST='0.0.0.0:${PORT}' OLLAMA_MODELS='${MODELS_DIR}' ROCR_VISIBLE_DEVICES='' GPU_DEVICE_ORDINAL='' HIP_VISIBLE_DEVICES=''"
+            [[ -n "$PHY_MINOR" ]] && inner+=" CUDA_VISIBLE_DEVICES='${PHY_MINOR}'"
+            inner+="; exec ollama serve"
+            env "${NV_ENV[@]}" singularity exec $NV_FLAGS \
                 --bind "$MODELS_DIR:$MODELS_DIR" \
-                "$_OLLAMA_SIF" ollama serve &
+                "$_OLLAMA_SIF" bash -c "$inner" &
         fi
     fi
 
