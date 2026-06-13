@@ -1,6 +1,6 @@
 #!/bin/bash
-_OLLAMA_SIF=~/HPAI/text_classification/singularity/ollama.sif
-_OLLAMA_MODELS_FILE=~/HPAI/text_classification/singularity/.models_dir
+_OLLAMA_SIF=~/HPAI/text_classification/apptainer/ollama.sif
+_OLLAMA_MODELS_FILE=~/HPAI/text_classification/apptainer/.models_dir
 _OLLAMA_SERVER_PID=""
 
 _physical_gpu_minor() {
