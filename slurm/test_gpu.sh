@@ -138,26 +138,31 @@ if [[ ! -f "$SIF_PATH" ]]; then
 else
     NV_FLAGS="$(_build_nv_flags "$SIF_PATH")"
     NV_ENV=()
+    CONTAINER_ENV=()
     if [[ -n "$NV_FLAGS" ]]; then
         PHY_MINOR="$(_physical_gpu_minor)"
         if [[ -n "$PHY_MINOR" ]]; then
             NV_ENV+=(NVIDIA_VISIBLE_DEVICES="$PHY_MINOR")
-            echo "  Physical GPU: /dev/nvidia${PHY_MINOR} → NVIDIA_VISIBLE_DEVICES=${PHY_MINOR}"
+            CONTAINER_ENV+=(--env "CUDA_VISIBLE_DEVICES=$PHY_MINOR")
+            echo "  Physical GPU: /dev/nvidia${PHY_MINOR} (CUDA_VISIBLE_DEVICES=$PHY_MINOR inside container)"
+        fi
+        # Force NVIDIA UVM driver initialization on the host — cuInit inside
+        # the container fails if the setuid nvidia-modprobe hasn't run yet.
+        if command -v nvidia-modprobe &>/dev/null; then
+            nvidia-modprobe -u 2>/dev/null || true
+            echo "  nvidia-modprobe -u: done"
         fi
         CUDA_LIB=$(ldconfig -p 2>/dev/null | awk '/libcuda\.so\.1/{print $NF}' | head -1)
         [[ -n "$CUDA_LIB" ]] && NV_FLAGS="$NV_FLAGS --bind $CUDA_LIB:/usr/lib/x86_64-linux-gnu/libcuda.so.1"
     fi
     echo "  Using flags: ${NV_FLAGS:-none (CPU-only)}"
 
-    # Unset CUDA_VISIBLE_DEVICES inside the container before starting Ollama.
-    # SLURM's inherited value can cause cuInit CUDA_ERROR_NO_DEVICE (100)
-    # in the container namespace. This is Ollama's own suggested fix.
     env "${NV_ENV[@]}" apptainer exec $NV_FLAGS \
         --bind "$MODELS_DIR:$MODELS_DIR" \
         --env "OLLAMA_HOST=0.0.0.0:$OLLAMA_PORT" \
         --env "OLLAMA_MODELS=$MODELS_DIR" \
-        "$SIF_PATH" \
-        bash -c 'unset CUDA_VISIBLE_DEVICES; exec ollama serve' &
+        "${CONTAINER_ENV[@]}" \
+        "$SIF_PATH" ollama serve &
     SERVER_PID=$!
     trap "kill $SERVER_PID 2>/dev/null; wait $SERVER_PID 2>/dev/null" EXIT
 
