@@ -24,15 +24,9 @@ fi
 mkdir -p "$MODELS_DIR"
 echo "$MODELS_DIR" > ~/HPAI/text_classification/apptainer/.models_dir
 
-NV_FLAGS="--nv"
-if apptainer exec --nvccli "$SIF_PATH" true &>/dev/null 2>&1; then
-    NV_FLAGS="--nvccli"
-else
-    for dev in /dev/nvidia0 /dev/nvidiactl /dev/nvidia-uvm /dev/nvidia-modeset; do
-        [[ -e "$dev" ]] && NV_FLAGS="$NV_FLAGS --bind $dev:$dev"
-    done
-fi
-echo "GPU passthrough flags: $NV_FLAGS" >&2
+source ~/HPAI/text_classification/slurm/ollama_helper.sh
+NV_FLAGS="$(_build_nv_flags "$SIF_PATH")"
+echo "GPU passthrough flags: ${NV_FLAGS:-none (CPU-only)}" >&2
 
 apptainer run $NV_FLAGS \
     --bind "$MODELS_DIR:$MODELS_DIR" \

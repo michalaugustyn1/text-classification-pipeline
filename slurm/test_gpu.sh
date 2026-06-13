@@ -10,8 +10,11 @@
 
 mkdir -p logs
 
+source ~/HPAI/text_classification/slurm/ollama_helper.sh
+
 SIF_PATH=~/HPAI/text_classification/apptainer/ollama.sif
-MODELS_DIR="$(cat ~/HPAI/text_classification/apptainer/.models_dir 2>/dev/null || echo "${SCRATCH:-$HOME}/.ollama_models")"
+MODELS_DIR="$(cat ~/HPAI/text_classification/apptainer/.models_dir 2>/dev/null \
+              || echo "${SCRATCH:-$HOME}/.ollama_models")"
 OLLAMA_PORT=11499
 
 PASS=0; FAIL=0
@@ -24,7 +27,7 @@ echo " $(date)"
 echo "========================================"
 echo ""
 
-# --- 1. Host GPU ---
+# --- 1. Host nvidia-smi ---
 echo "--- 1. Host nvidia-smi ---"
 if nvidia-smi; then
     ok "nvidia-smi"
@@ -38,23 +41,34 @@ echo "--- 2. SLURM GPU env vars ---"
 echo "  CUDA_VISIBLE_DEVICES = ${CUDA_VISIBLE_DEVICES:-<unset>}"
 echo "  ROCR_VISIBLE_DEVICES = ${ROCR_VISIBLE_DEVICES:-<unset>}"
 echo "  GPU_DEVICE_ORDINAL   = ${GPU_DEVICE_ORDINAL:-<unset>}"
-[[ -n "${CUDA_VISIBLE_DEVICES:-}" ]] && ok "CUDA_VISIBLE_DEVICES is set" \
-                                     || fail "CUDA_VISIBLE_DEVICES not set — GPU may not be allocated"
+[[ -n "${CUDA_VISIBLE_DEVICES:-}" ]] \
+    && ok "CUDA_VISIBLE_DEVICES is set" \
+    || fail "CUDA_VISIBLE_DEVICES not set — GPU may not be allocated"
 echo ""
 
-# --- 3. NVIDIA devices ---
+# --- 3. /dev/nvidia* devices ---
 echo "--- 3. /dev/nvidia* devices ---"
 for dev in /dev/nvidia0 /dev/nvidiactl /dev/nvidia-uvm /dev/nvidia-modeset; do
-    if [[ -e "$dev" ]]; then
-        ok "$dev exists"
-    else
-        echo "      $dev missing (may be optional)"
-    fi
+    [[ -e "$dev" ]] && ok "$dev exists" || echo "      $dev missing (may be optional)"
 done
 echo ""
 
-# --- 4. Apptainer .sif ---
-echo "--- 4. Apptainer image ---"
+# --- 4. libcuda.so.1 on host ---
+echo "--- 4. libcuda.so.1 (CUDA driver library) ---"
+CUDA_LIB=$(ldconfig -p 2>/dev/null | awk '/libcuda\.so\.1/{print $NF}' | head -1)
+if [[ -z "$CUDA_LIB" ]]; then
+    CUDA_LIB=$(find /usr/lib /usr/lib64 /usr/local/lib /opt \
+                    -name "libcuda.so.1" -maxdepth 6 2>/dev/null | head -1)
+fi
+if [[ -n "$CUDA_LIB" ]]; then
+    ok "libcuda.so.1 found at $CUDA_LIB"
+else
+    fail "libcuda.so.1 not found — GPU inside container will not work"
+fi
+echo ""
+
+# --- 5. Apptainer .sif ---
+echo "--- 5. Apptainer image ---"
 if [[ -f "$SIF_PATH" ]]; then
     ok "SIF found: $SIF_PATH ($(du -sh "$SIF_PATH" | cut -f1))"
 else
@@ -62,40 +76,33 @@ else
 fi
 echo ""
 
-# --- 5. nvidia-smi inside container with --nv ---
-echo "--- 5. nvidia-smi inside container (--nv) ---"
+# --- 6. nvidia-smi inside container (--nv) ---
+echo "--- 6. nvidia-smi inside container (--nv) ---"
 if apptainer exec --nv "$SIF_PATH" nvidia-smi 2>&1; then
     ok "--nv passthrough works"
-    NV_FLAGS="--nv"
 else
     fail "--nv passthrough failed"
-    NV_FLAGS=""
 fi
 echo ""
 
-# --- 6. nvidia-smi inside container with --nvccli ---
-echo "--- 6. nvidia-smi inside container (--nvccli) ---"
+# --- 7. nvidia-smi inside container (--nvccli) ---
+echo "--- 7. nvidia-smi inside container (--nvccli) ---"
 if apptainer exec --nvccli "$SIF_PATH" nvidia-smi 2>&1; then
     ok "--nvccli passthrough works"
-    NV_FLAGS="--nvccli"
 else
-    echo "      --nvccli not available or failed (not fatal)"
+    echo "      --nvccli not available (not fatal)"
 fi
 echo ""
 
-# --- 7. Ollama server starts with GPU ---
-echo "--- 7. Ollama server startup ---"
-if [[ -z "$NV_FLAGS" ]]; then
-    echo "      Skipping — no GPU passthrough method worked"
-    fail "Ollama GPU startup (skipped)"
+# --- 8. Ollama server with _build_nv_flags ---
+echo "--- 8. Ollama server startup ---"
+if [[ ! -f "$SIF_PATH" ]]; then
+    fail "Skipping — SIF not found"
 else
-    # Build device bind flags (fallback if --nv needs explicit binds)
-    DEV_BINDS=""
-    for dev in /dev/nvidia0 /dev/nvidiactl /dev/nvidia-uvm /dev/nvidia-modeset; do
-        [[ -e "$dev" ]] && DEV_BINDS="$DEV_BINDS --bind $dev:$dev"
-    done
+    NV_FLAGS="$(_build_nv_flags "$SIF_PATH")"
+    echo "  Using flags: ${NV_FLAGS:-none (CPU-only)}"
 
-    apptainer run $NV_FLAGS $DEV_BINDS \
+    apptainer run $NV_FLAGS \
         --bind "$MODELS_DIR:$MODELS_DIR" \
         --env "OLLAMA_HOST=0.0.0.0:$OLLAMA_PORT" \
         --env "OLLAMA_MODELS=$MODELS_DIR" \
@@ -103,7 +110,7 @@ else
     SERVER_PID=$!
     trap "kill $SERVER_PID 2>/dev/null; wait $SERVER_PID 2>/dev/null" EXIT
 
-    echo "  Waiting for Ollama server..."
+    echo "  Waiting for server..."
     READY=0
     for i in $(seq 1 30); do
         curl -sf "http://localhost:$OLLAMA_PORT/api/tags" >/dev/null 2>&1 && { READY=1; break; }
@@ -114,38 +121,45 @@ else
     if [[ $READY -eq 1 ]]; then
         ok "Ollama server is up"
 
-        # --- 8. Check GPU vs CPU in Ollama logs ---
+        # --- 9. GPU vs CPU backend ---
         echo ""
-        echo "--- 8. Ollama compute backend ---"
-        # Give it a moment to finish logging startup
+        echo "--- 9. Ollama compute backend ---"
         sleep 2
-        COMPUTE=$(curl -sf "http://localhost:$OLLAMA_PORT/api/ps" 2>/dev/null || echo "")
-        if kill -0 "$SERVER_PID" 2>/dev/null; then
-            # Check running process output for GPU markers
-            PROC_OUT=$(ls /proc/$SERVER_PID/fd 2>/dev/null | wc -l)
-            echo "  Server PID $SERVER_PID is running"
-            # Infer from env: if CUDA_VISIBLE_DEVICES is set and --nv worked, likely GPU
-            if [[ "$NV_FLAGS" != "" ]]; then
-                ok "GPU passthrough flags were applied ($NV_FLAGS) — check logs for 'library=cuda' to confirm"
-            fi
+        # Trigger a model load to force backend selection to appear in logs
+        curl -sf -X POST "http://localhost:$OLLAMA_PORT/api/chat" \
+            -H "Content-Type: application/json" \
+            -d '{"model":"llama3","messages":[{"role":"user","content":"hi"}],"options":{"num_predict":1},"stream":false}' \
+            >/dev/null 2>&1 || true
+        sleep 1
+        # The compute backend is logged to stderr by Ollama — check via /api/ps
+        PS_OUT=$(curl -sf "http://localhost:$OLLAMA_PORT/api/ps" 2>/dev/null || echo "")
+        if echo "$PS_OUT" | grep -q '"library":"cuda"'; then
+            ok "Ollama is using CUDA (GPU)"
+        elif echo "$PS_OUT" | grep -q '"library":"cpu"'; then
+            fail "Ollama fell back to CPU — GPU passthrough not working"
+        else
+            echo "  /api/ps response: $PS_OUT"
+            echo "  (check logs/test_gpu_${SLURM_JOB_ID}.err for 'inference compute' line)"
         fi
 
-        # --- 9. Quick inference test ---
+        # --- 10. Quick inference ---
         echo ""
-        echo "--- 9. Quick inference (llama3) ---"
+        echo "--- 10. Quick inference (llama3) ---"
         if curl -sf "http://localhost:$OLLAMA_PORT/api/tags" | grep -q "llama3"; then
             RESPONSE=$(curl -sf -X POST "http://localhost:$OLLAMA_PORT/api/chat" \
                 -H "Content-Type: application/json" \
                 -d '{"model":"llama3","messages":[{"role":"user","content":"Reply with just the word: ok"}],"options":{"num_predict":5},"stream":false}' \
                 2>&1)
-            if echo "$RESPONSE" | grep -qi "ok\|message"; then
-                ok "llama3 inference responded"
-                echo "  Response: $(echo "$RESPONSE" | python3 -c 'import sys,json; d=json.load(sys.stdin); print(d["message"]["content"])' 2>/dev/null || echo "$RESPONSE" | head -c 200)"
+            CONTENT=$(echo "$RESPONSE" | python3 -c \
+                'import sys,json; print(json.load(sys.stdin)["message"]["content"])' 2>/dev/null \
+                || echo "$RESPONSE")
+            if echo "$CONTENT" | grep -qi "ok"; then
+                ok "llama3 inference responded: $CONTENT"
             else
-                fail "llama3 inference gave unexpected response: $RESPONSE"
+                fail "Unexpected response: $CONTENT"
             fi
         else
-            echo "      llama3 not pulled yet — skipping inference test (run: sbatch slurm/run_setup.sh)"
+            echo "  llama3 not pulled yet — run: sbatch slurm/run_setup.sh"
         fi
     else
         fail "Ollama server did not become ready within 30s"
@@ -154,6 +168,6 @@ fi
 
 echo ""
 echo "========================================"
-echo " Results: $PASS passed, $FAIL failed"
+printf " Results: %d passed, %d failed\n" "$PASS" "$FAIL"
 echo "========================================"
 [[ $FAIL -eq 0 ]] && exit 0 || exit 1
