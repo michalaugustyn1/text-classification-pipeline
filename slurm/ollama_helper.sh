@@ -38,16 +38,18 @@ ollama_start() {
     export OLLAMA_HOST="http://localhost:$PORT"
     export OLLAMA_PORT="$PORT"
     local NV_FLAGS; NV_FLAGS="$(_build_nv_flags "$_OLLAMA_SIF")"
-    local CUDA_ENV=()
+    local EXTRA_ENV=()
     if [[ -n "$NV_FLAGS" ]]; then
-        # --nv binds libnvidia-ml.so (nvidia-smi) but Ollama's CUDA detection
-        # scans specific paths inside the container. Bind libcuda.so.1 directly
-        # to /usr/lib/x86_64-linux-gnu/ — a path Ollama explicitly searches
-        # and that is guaranteed to exist inside the Ubuntu-based container.
+        # --nv binds libnvidia-ml.so but Ollama's Go-level CUDA detection often
+        # fails in Apptainer. Bind libcuda.so.1 to a path Ollama searches and
+        # set OLLAMA_LLM_LIBRARY=cuda_v12 to skip Ollama's Go detection entirely,
+        # directly launching the CUDA 12 llama-server binary which does its own
+        # cuInit() against the bound driver library and device nodes.
         local CUDA_LIB; CUDA_LIB=$(ldconfig -p 2>/dev/null | awk '/libcuda\.so\.1/{print $NF}' | head -1)
         if [[ -n "$CUDA_LIB" ]]; then
             NV_FLAGS="$NV_FLAGS --bind $CUDA_LIB:/usr/lib/x86_64-linux-gnu/libcuda.so.1"
         fi
+        EXTRA_ENV=(--env "OLLAMA_LLM_LIBRARY=cuda_v12")
         echo "GPU passthrough flags: $NV_FLAGS" >&2
     else
         echo "No GPU detected — running CPU-only" >&2
@@ -56,7 +58,7 @@ ollama_start() {
         --bind "$MODELS_DIR:$MODELS_DIR" \
         --env "OLLAMA_HOST=0.0.0.0:$PORT" \
         --env "OLLAMA_MODELS=$MODELS_DIR" \
-        "${CUDA_ENV[@]}" \
+        "${EXTRA_ENV[@]}" \
         "$_OLLAMA_SIF" &
     _OLLAMA_SERVER_PID=$!
     trap ollama_stop EXIT

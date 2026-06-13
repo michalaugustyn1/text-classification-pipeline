@@ -96,19 +96,27 @@ if [[ ! -f "$SIF_PATH" ]]; then
     fail "Skipping — SIF not found"
 else
     NV_FLAGS="$(_build_nv_flags "$SIF_PATH")"
+    EXTRA_ENV=()
     if [[ -n "$NV_FLAGS" ]]; then
         CUDA_LIB=$(ldconfig -p 2>/dev/null | awk '/libcuda\.so\.1/{print $NF}' | head -1)
         if [[ -n "$CUDA_LIB" ]]; then
             NV_FLAGS="$NV_FLAGS --bind $CUDA_LIB:/usr/lib/x86_64-linux-gnu/libcuda.so.1"
             echo "  libcuda.so.1 → bound from $CUDA_LIB"
         fi
+        EXTRA_ENV=(--env "OLLAMA_LLM_LIBRARY=cuda_v12")
+        echo "  OLLAMA_LLM_LIBRARY=cuda_v12 (bypass Go CUDA detection)"
     fi
     echo "  Using flags: ${NV_FLAGS:-none (CPU-only)}"
+
+    # Show what CUDA variants exist in the container
+    echo "  Ollama CUDA variants in container:"
+    apptainer exec --nv "$SIF_PATH" ls /usr/lib/ollama/ 2>/dev/null | tr '\n' ' ' && echo
 
     apptainer run $NV_FLAGS \
         --bind "$MODELS_DIR:$MODELS_DIR" \
         --env "OLLAMA_HOST=0.0.0.0:$OLLAMA_PORT" \
         --env "OLLAMA_MODELS=$MODELS_DIR" \
+        "${EXTRA_ENV[@]}" \
         "$SIF_PATH" &
     SERVER_PID=$!
     trap "kill $SERVER_PID 2>/dev/null; wait $SERVER_PID 2>/dev/null" EXIT
