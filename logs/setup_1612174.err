@@ -1,0 +1,3 @@
+GPU passthrough flags: none (CPU-only)
+/var/spool/slurmd/job1612174/slurm_script: line 31: apptainer: command not found
+ERROR: Ollama server died.

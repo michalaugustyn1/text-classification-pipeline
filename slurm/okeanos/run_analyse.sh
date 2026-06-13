@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH --job-name=tc_analyse
-##SBATCH --account=g103-501
+#SBATCH --account=g103-2499
 #SBATCH --nodes=1
 #SBATCH --mem=8G
 #SBATCH --time=00:30:00

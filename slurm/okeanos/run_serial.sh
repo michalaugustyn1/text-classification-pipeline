@@ -1,11 +1,12 @@
 #!/bin/bash
-#SBATCH --job-name=tc_optimized
-##SBATCH --account=g103-501
+#SBATCH --job-name=tc_serial
+#SBATCH --account=g103-2499
 #SBATCH --nodes=1
-#SBATCH --mem=64G
+#SBATCH --gres=gpu:1
+#SBATCH --mem=32G
 #SBATCH --time=08:00:00
-#SBATCH --output=logs/optimized_%j.out
-#SBATCH --error=logs/optimized_%j.err
+#SBATCH --output=logs/serial_%j.out
+#SBATCH --error=logs/serial_%j.err
 
 mkdir -p logs results
 
@@ -22,7 +23,7 @@ export PYTHONPATH=~/HPAI/text_classification
 source ~/HPAI/text_classification/slurm/ollama_helper.sh
 ollama_start
 
-time python ~/HPAI/text_classification/pipeline_optimized.py \
+time python ~/HPAI/text_classification/pipeline_serial.py \
     --data ~/HPAI/text_classification/data/train_data.txt \
     --out  ~/HPAI/text_classification/results/ \
     --llm

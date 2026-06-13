@@ -1,0 +1,8 @@
+common/singularity/3.5.3(10):ERROR:151: Module 'common/singularity/3.5.3' depends on one of the module(s) 'common/go/1.13.12'
+common/singularity/3.5.3(10):ERROR:102: Tcl command execution failed: prereq common/go/1.13.12
+
+/var/spool/slurmd/job1612183/slurm_script: line 22: singularity: command not found
+/var/spool/slurmd/job1612183/slurm_script: line 26: /home/ma480128/HPAI/text_classification/singularity/.models_dir: No such file or directory
+GPU passthrough flags: none (CPU-only)
+/var/spool/slurmd/job1612183/slurm_script: line 32: singularity: command not found
+ERROR: Ollama server died.

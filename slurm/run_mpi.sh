@@ -1,9 +1,8 @@
 #!/bin/bash
 #SBATCH --job-name=tc_mpi
-#SBATCH --account=g103-2499
+##SBATCH --account=g103-501
 #SBATCH --nodes=4
 #SBATCH --ntasks-per-node=9
-#SBATCH --gres=gpu:1
 #SBATCH --mem-per-cpu=4G
 #SBATCH --time=03:00:00
 #SBATCH --output=logs/mpi_%j.out

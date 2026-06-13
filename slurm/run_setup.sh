@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH --job-name=tc_setup
-#SBATCH --account=g103-2499
+##SBATCH --account=g103-501
 #SBATCH --nodes=1
 #SBATCH --mem=16G
 #SBATCH --time=04:00:00
@@ -16,9 +16,11 @@ OLLAMA_PORT=11435
 
 module purge
 module load gcc/11.2 2>/dev/null || true
+module load common/go/1.13.12
+module load common/singularity
 
 if [[ ! -f "$SIF_PATH" ]]; then
-    apptainer build "$SIF_PATH" "$DEF_PATH"
+    singularity build "$SIF_PATH" "$DEF_PATH"
 fi
 
 mkdir -p "$MODELS_DIR"
@@ -28,7 +30,7 @@ source ~/HPAI/text_classification/slurm/ollama_helper.sh
 NV_FLAGS="$(_build_nv_flags "$SIF_PATH")"
 echo "GPU passthrough flags: ${NV_FLAGS:-none (CPU-only)}" >&2
 
-apptainer run $NV_FLAGS \
+singularity run $NV_FLAGS \
     --bind "$MODELS_DIR:$MODELS_DIR" \
     --env "OLLAMA_HOST=0.0.0.0:$OLLAMA_PORT" \
     --env "OLLAMA_MODELS=$MODELS_DIR" \
@@ -47,7 +49,7 @@ curl -sf "http://localhost:$OLLAMA_PORT/api/tags" >/dev/null 2>&1 \
     || { echo "ERROR: Server not ready after 90 s." >&2; exit 1; }
 
 pull_model() {
-    apptainer exec $NV_FLAGS \
+    singularity exec $NV_FLAGS \
         --bind "$MODELS_DIR:$MODELS_DIR" \
         --env "OLLAMA_HOST=localhost:$OLLAMA_PORT" \
         --env "OLLAMA_MODELS=$MODELS_DIR" \

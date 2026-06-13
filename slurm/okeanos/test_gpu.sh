@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH --job-name=tc_test_gpu
-##SBATCH --account=g103-501
+#SBATCH --account=g103-2499
 #SBATCH --nodes=1
 #SBATCH --gres=gpu:1
 #SBATCH --mem=8G

@@ -1,7 +1,8 @@
 #!/bin/bash
 #SBATCH --job-name=tc_optimized
-##SBATCH --account=g103-501
+#SBATCH --account=g103-2499
 #SBATCH --nodes=1
+#SBATCH --gres=gpu:1
 #SBATCH --mem=64G
 #SBATCH --time=08:00:00
 #SBATCH --output=logs/optimized_%j.out

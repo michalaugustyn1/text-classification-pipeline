@@ -1,8 +1,7 @@
 #!/bin/bash
 #SBATCH --job-name=tc_serial
-#SBATCH --account=g103-2499
+##SBATCH --account=g103-501
 #SBATCH --nodes=1
-#SBATCH --gres=gpu:1
 #SBATCH --mem=32G
 #SBATCH --time=08:00:00
 #SBATCH --output=logs/serial_%j.out
