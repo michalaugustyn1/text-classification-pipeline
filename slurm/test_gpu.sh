@@ -138,7 +138,8 @@ echo "  --nvccli available: $(apptainer exec --nvccli "$SIF_PATH" true &>/dev/nu
 if [[ ! -f "$SIF_PATH" ]]; then
     fail "Skipping — SIF not found"
 else
-    if ollama_start 2>&1 | sed 's/^/  /'; then
+    ollama_start
+    if [[ $? -eq 0 ]]; then
         ok "Ollama server is up (port $OLLAMA_PORT)"
 
         # --- 9. GPU vs CPU backend ---
@@ -155,8 +156,8 @@ else
             ok "Ollama is using CUDA (GPU)"
         elif echo "$PS_OUT" | grep -q '"library":"cpu"'; then
             fail "Ollama fell back to CPU"
-            echo "  To enable GPU: install native binary: curl -L https://ollama.com/download/ollama-linux-amd64.tgz | tar xz -C ~/bin/"
-            echo "  Or ask HPC admin to install nvidia-container-toolkit (--nvccli)."
+            echo "  Options: (1) ask HPC admin for nvidia-container-toolkit (--nvccli)"
+            echo "           (2) conda env + llama-cpp-python with CUDA (bypasses container entirely)"
         else
             echo "  /api/ps: $PS_OUT"
         fi
