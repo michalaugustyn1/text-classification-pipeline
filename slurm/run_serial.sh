@@ -1,9 +1,9 @@
 #!/bin/bash
 #SBATCH --job-name=tc_serial
-##SBATCH --account=g103-501
+#SBATCH --account=g103-2501
 #SBATCH --nodes=1
 #SBATCH --mem=32G
-#SBATCH --time=08:00:00
+#SBATCH --time=2-00:00:00
 #SBATCH --output=logs/serial_%j.out
 #SBATCH --error=logs/serial_%j.err
 

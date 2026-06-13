@@ -1,9 +1,9 @@
 #!/bin/bash
 #SBATCH --job-name=tc_scale
-##SBATCH --account=g103-501
+#SBATCH --account=g103-2501
 #SBATCH --nodes=1
 #SBATCH --mem=128G
-#SBATCH --time=06:00:00
+#SBATCH --time=12:00:00
 #SBATCH --array=0-5
 #SBATCH --output=logs/scale_%A_%a.out
 #SBATCH --error=logs/scale_%A_%a.err

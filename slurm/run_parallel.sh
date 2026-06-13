@@ -1,9 +1,9 @@
 #!/bin/bash
 #SBATCH --job-name=tc_parallel
-##SBATCH --account=g103-501
+#SBATCH --account=g103-2501
 #SBATCH --nodes=1
 #SBATCH --mem=128G
-#SBATCH --time=04:00:00
+#SBATCH --time=12:00:00
 #SBATCH --output=logs/parallel_%j.out
 #SBATCH --error=logs/parallel_%j.err
 

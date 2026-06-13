@@ -1,9 +1,9 @@
 #!/bin/bash
 #SBATCH --job-name=tc_optimized
-##SBATCH --account=g103-501
+#SBATCH --account=g103-2501
 #SBATCH --nodes=1
 #SBATCH --mem=64G
-#SBATCH --time=08:00:00
+#SBATCH --time=1-00:00:00
 #SBATCH --output=logs/optimized_%j.out
 #SBATCH --error=logs/optimized_%j.err
 

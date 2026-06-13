@@ -1,10 +1,10 @@
 #!/bin/bash
 #SBATCH --job-name=tc_mpi_scale
-##SBATCH --account=g103-501
+#SBATCH --account=g103-2501
 #SBATCH --nodes=8
 #SBATCH --ntasks-per-node=9
 #SBATCH --mem-per-cpu=4G
-#SBATCH --time=06:00:00
+#SBATCH --time=1-00:00:00
 #SBATCH --output=logs/mpi_scale_%j.out
 #SBATCH --error=logs/mpi_scale_%j.err
 

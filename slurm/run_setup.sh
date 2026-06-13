@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH --job-name=tc_setup
-##SBATCH --account=g103-501
+#SBATCH --account=g103-2501
 #SBATCH --nodes=1
 #SBATCH --mem=16G
 #SBATCH --time=04:00:00
@@ -16,8 +16,8 @@ OLLAMA_PORT=11435
 
 module purge
 module load gcc/11.2 2>/dev/null || true
-module load common/go/1.13.12
-module load common/singularity
+module load common/go/1.13.12 2>/dev/null || true
+module load common/singularity 2>/dev/null || true
 
 if [[ ! -f "$SIF_PATH" ]]; then
     singularity build "$SIF_PATH" "$DEF_PATH"
@@ -30,11 +30,11 @@ source ~/HPAI/text_classification/slurm/ollama_helper.sh
 NV_FLAGS="$(_build_nv_flags "$SIF_PATH")"
 echo "GPU passthrough flags: ${NV_FLAGS:-none (CPU-only)}" >&2
 
-singularity run $NV_FLAGS \
+singularity exec $NV_FLAGS \
     --bind "$MODELS_DIR:$MODELS_DIR" \
     --env "OLLAMA_HOST=0.0.0.0:$OLLAMA_PORT" \
     --env "OLLAMA_MODELS=$MODELS_DIR" \
-    "$SIF_PATH" &
+    "$SIF_PATH" ollama serve &
 
 SERVER_PID=$!
 trap "kill $SERVER_PID 2>/dev/null; wait $SERVER_PID 2>/dev/null" EXIT
