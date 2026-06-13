@@ -141,8 +141,8 @@ else
             NV_FLAGS="$NV_FLAGS --bind $CUDA_LIB:/usr/lib/x86_64-linux-gnu/libcuda.so.1"
             echo "  libcuda.so.1 → bound from $CUDA_LIB"
         fi
-        EXTRA_ENV=(--env "OLLAMA_LLM_LIBRARY=cuda_v12" --env "OLLAMA_DEBUG=1")
-        echo "  OLLAMA_LLM_LIBRARY=cuda_v12 + OLLAMA_DEBUG=1"
+        EXTRA_ENV=()
+        echo "  NOTE: --nvccli unavailable; cuInit will likely fail (cgroup device perms)"
     fi
     echo "  Using flags: ${NV_FLAGS:-none (CPU-only)}"
 
@@ -181,10 +181,13 @@ else
         if echo "$PS_OUT" | grep -q '"library":"cuda"'; then
             ok "Ollama is using CUDA (GPU)"
         elif echo "$PS_OUT" | grep -q '"library":"cpu"'; then
-            fail "Ollama fell back to CPU — GPU passthrough not working"
+            fail "Ollama fell back to CPU (cuInit=100: CUDA_ERROR_NO_DEVICE)"
+            echo "  Root cause: Apptainer --nv binds device files but not cgroup device"
+            echo "  permissions. cuInit() needs write-access set up by nvidia-container-toolkit."
+            echo "  Fix: ask HPC admin to enable --nvccli (nvidia-container-toolkit) for Apptainer."
+            echo "  CPU inference works correctly in the meantime."
         else
             echo "  /api/ps response: $PS_OUT"
-            echo "  (check logs/test_gpu_${SLURM_JOB_ID}.err for 'inference compute' line)"
         fi
 
         # --- 10. Quick inference ---
