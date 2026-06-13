@@ -57,7 +57,7 @@ echo ""
 echo "--- 4. libcuda.so.1 (CUDA driver library) ---"
 CUDA_LIB=$(ldconfig -p 2>/dev/null | awk '/libcuda\.so\.1/{print $NF}' | head -1)
 if [[ -n "$CUDA_LIB" ]]; then
-    ok "libcuda.so.1 found at $CUDA_LIB (handled by --nv, not explicitly bound)"
+    ok "libcuda.so.1 found at $CUDA_LIB (will be bound into container)"
 else
     echo "      libcuda.so.1 not in ldconfig — --nv may still find it via other means"
 fi
@@ -96,22 +96,19 @@ if [[ ! -f "$SIF_PATH" ]]; then
     fail "Skipping — SIF not found"
 else
     NV_FLAGS="$(_build_nv_flags "$SIF_PATH")"
-    CUDA_ENV=()
     if [[ -n "$NV_FLAGS" ]]; then
         CUDA_LIB=$(ldconfig -p 2>/dev/null | awk '/libcuda\.so\.1/{print $NF}' | head -1)
         if [[ -n "$CUDA_LIB" ]]; then
-            NV_FLAGS="$NV_FLAGS --bind $CUDA_LIB:$CUDA_LIB"
-            CUDA_ENV=(--env "LD_LIBRARY_PATH=$(dirname "$CUDA_LIB")")
+            NV_FLAGS="$NV_FLAGS --bind $CUDA_LIB:/usr/lib/x86_64-linux-gnu/libcuda.so.1"
+            echo "  libcuda.so.1 → bound from $CUDA_LIB"
         fi
     fi
     echo "  Using flags: ${NV_FLAGS:-none (CPU-only)}"
-    [[ ${#CUDA_ENV[@]} -gt 0 ]] && echo "  LD_LIBRARY_PATH: $(dirname "$CUDA_LIB")"
 
     apptainer run $NV_FLAGS \
         --bind "$MODELS_DIR:$MODELS_DIR" \
         --env "OLLAMA_HOST=0.0.0.0:$OLLAMA_PORT" \
         --env "OLLAMA_MODELS=$MODELS_DIR" \
-        "${CUDA_ENV[@]}" \
         "$SIF_PATH" &
     SERVER_PID=$!
     trap "kill $SERVER_PID 2>/dev/null; wait $SERVER_PID 2>/dev/null" EXIT

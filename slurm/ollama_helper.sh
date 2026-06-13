@@ -26,9 +26,6 @@ _build_nv_flags() {
     for dev in /dev/nvidia0 /dev/nvidiactl /dev/nvidia-uvm /dev/nvidia-modeset; do
         [[ -e "$dev" ]] && FLAGS="$FLAGS --bind $dev:$dev"
     done
-    # Note: do NOT bind the libcuda directory — --nv handles libcuda.so.1,
-    # and binding /lib64 would overwrite the container's glibc causing
-    # relocation errors.
 
     echo "$FLAGS"
 }
@@ -43,12 +40,13 @@ ollama_start() {
     local NV_FLAGS; NV_FLAGS="$(_build_nv_flags "$_OLLAMA_SIF")"
     local CUDA_ENV=()
     if [[ -n "$NV_FLAGS" ]]; then
-        # --nv binds libnvidia-ml.so (nvidia-smi) but may not expose libcuda.so.1
-        # to Ollama's dlopen. Bind the single file and add its dir to LD_LIBRARY_PATH.
+        # --nv binds libnvidia-ml.so (nvidia-smi) but Ollama's CUDA detection
+        # scans specific paths inside the container. Bind libcuda.so.1 directly
+        # to /usr/lib/x86_64-linux-gnu/ — a path Ollama explicitly searches
+        # and that is guaranteed to exist inside the Ubuntu-based container.
         local CUDA_LIB; CUDA_LIB=$(ldconfig -p 2>/dev/null | awk '/libcuda\.so\.1/{print $NF}' | head -1)
         if [[ -n "$CUDA_LIB" ]]; then
-            NV_FLAGS="$NV_FLAGS --bind $CUDA_LIB:$CUDA_LIB"
-            CUDA_ENV=(--env "LD_LIBRARY_PATH=$(dirname "$CUDA_LIB")")
+            NV_FLAGS="$NV_FLAGS --bind $CUDA_LIB:/usr/lib/x86_64-linux-gnu/libcuda.so.1"
         fi
         echo "GPU passthrough flags: $NV_FLAGS" >&2
     else
