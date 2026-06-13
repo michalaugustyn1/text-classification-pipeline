@@ -14,6 +14,8 @@ module load python/3.10 2>/dev/null || true
 module load gcc/11.2 2>/dev/null || true
 module load cuda/11.8 2>/dev/null || true
 module load rapids/24.06 2>/dev/null || true
+module load common/go/1.13.12 2>/dev/null || true
+module load common/singularity 2>/dev/null || true
 
 source ~/miniconda3/bin/activate
 conda activate myenv
