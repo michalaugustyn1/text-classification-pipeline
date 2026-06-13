@@ -15,18 +15,18 @@ _physical_gpu_minor() {
     [[ -n "$IDX" ]] && echo "$((IDX - 1))"
 }
 
-# --nvccli requires nvidia-container-toolkit on the host; falls back to --nv.
+# Return the path to a native ollama binary installed outside the container.
+_native_ollama() {
+    for c in "$HOME/bin/ollama" "$HOME/.local/bin/ollama"; do
+        [[ -x "$c" ]] && echo "$c" && return
+    done
+}
+
+# Used by test_gpu.sh to probe flags; --nvccli requires nvidia-container-toolkit.
 _build_nv_flags() {
     local SIF="$1"
-
-    if ! nvidia-smi &>/dev/null 2>&1; then
-        echo ""; return
-    fi
-
-    if apptainer exec --nvccli "$SIF" true &>/dev/null 2>&1; then
-        echo "--nvccli"; return
-    fi
-
+    if ! nvidia-smi &>/dev/null 2>&1; then echo ""; return; fi
+    if apptainer exec --nvccli "$SIF" true &>/dev/null 2>&1; then echo "--nvccli"; return; fi
     local FLAGS="--nv"
     for dev in /dev/nvidiactl /dev/nvidia-uvm /dev/nvidia-uvm-tools \
                /dev/nvidia-modeset /dev/nvidia-caps; do
@@ -36,53 +36,67 @@ _build_nv_flags() {
 }
 
 ollama_start() {
-    [[ -f "$_OLLAMA_SIF" ]]         || { echo "ERROR: $_OLLAMA_SIF not found. Run: bash apptainer/build_and_pull.sh" >&2; exit 1; }
-    [[ -f "$_OLLAMA_MODELS_FILE" ]] || { echo "ERROR: $_OLLAMA_MODELS_FILE not found. Run: bash apptainer/build_and_pull.sh" >&2; exit 1; }
+    [[ -f "$_OLLAMA_SIF" ]]         || { echo "ERROR: $_OLLAMA_SIF not found." >&2; exit 1; }
+    [[ -f "$_OLLAMA_MODELS_FILE" ]] || { echo "ERROR: $_OLLAMA_MODELS_FILE not found." >&2; exit 1; }
     local MODELS_DIR; MODELS_DIR="$(cat "$_OLLAMA_MODELS_FILE")"
     local PORT=$(( 11500 + (SLURM_JOB_ID % 500) ))
     export OLLAMA_HOST="http://localhost:$PORT"
     export OLLAMA_PORT="$PORT"
 
-    local NV_FLAGS; NV_FLAGS="$(_build_nv_flags "$_OLLAMA_SIF")"
-    local NV_ENV=()
+    if ! nvidia-smi &>/dev/null 2>&1; then
+        # ── No GPU: container CPU mode ────────────────────────────────────────
+        echo "No GPU detected — container CPU mode" >&2
+        apptainer exec \
+            --bind "$MODELS_DIR:$MODELS_DIR" \
+            --env "OLLAMA_HOST=0.0.0.0:$PORT" \
+            --env "OLLAMA_MODELS=$MODELS_DIR" \
+            "$_OLLAMA_SIF" ollama serve &
 
-    local CONTAINER_ENV=()
-    if [[ -n "$NV_FLAGS" ]]; then
-        local PHY_MINOR; PHY_MINOR=$(_physical_gpu_minor)
-        if [[ -n "$PHY_MINOR" ]]; then
-            echo "GPU: physical /dev/nvidia${PHY_MINOR}" >&2
-            # Pass physical minor as CUDA_VISIBLE_DEVICES inside the container.
-            # SLURM's value is a logical remapping (always 0); we need the
-            # physical index so CUDA opens the device the cgroup actually permits.
-            # Also pass NVIDIA_VISIBLE_DEVICES for Apptainer --nv device selection.
-            NV_ENV+=(NVIDIA_VISIBLE_DEVICES="$PHY_MINOR")
-            CONTAINER_ENV+=(--env "CUDA_VISIBLE_DEVICES=$PHY_MINOR")
-        fi
+    elif apptainer exec --nvccli "$_OLLAMA_SIF" true &>/dev/null 2>&1; then
+        # ── Container + --nvccli (nvidia-container-toolkit installed) ─────────
+        echo "GPU mode: container --nvccli" >&2
+        apptainer exec --nvccli \
+            --bind "$MODELS_DIR:$MODELS_DIR" \
+            --env "OLLAMA_HOST=0.0.0.0:$PORT" \
+            --env "OLLAMA_MODELS=$MODELS_DIR" \
+            "$_OLLAMA_SIF" ollama serve &
 
-        # Trigger NVIDIA UVM driver initialization on the HOST before entering
-        # the container. Inside the container the setuid nvidia-modprobe binary
-        # cannot escalate privileges, so cuInit fails if UVM isn't already up.
-        if command -v nvidia-modprobe &>/dev/null; then
-            nvidia-modprobe -u 2>/dev/null || true
-            echo "nvidia-modprobe -u: done" >&2
-        fi
-
-        # Bind the driver library to a path Ollama's CUDA detection scans.
-        local CUDA_LIB; CUDA_LIB=$(ldconfig -p 2>/dev/null | awk '/libcuda\.so\.1/{print $NF}' | head -1)
-        [[ -n "$CUDA_LIB" ]] && NV_FLAGS="$NV_FLAGS --bind $CUDA_LIB:/usr/lib/x86_64-linux-gnu/libcuda.so.1"
-        echo "GPU passthrough flags: $NV_FLAGS" >&2
     else
-        echo "No GPU detected — running CPU-only" >&2
-        # Silence SLURM's ROCm/Intel visible-device overrides (no GPU, so no warns).
-        CONTAINER_ENV+=(--env "ROCR_VISIBLE_DEVICES=" --env "GPU_DEVICE_ORDINAL=")
+        local NATIVE; NATIVE=$(_native_ollama)
+        if [[ -n "$NATIVE" ]]; then
+            # ── Native binary: inherits SLURM cgroup GPU access directly ──────
+            # SLURM's CUDA_VISIBLE_DEVICES is correct for native processes;
+            # no remapping needed. nvidia-modprobe -u ensures UVM is initialised.
+            echo "GPU mode: native binary ($NATIVE)" >&2
+            command -v nvidia-modprobe &>/dev/null && { nvidia-modprobe -u 2>/dev/null || true; }
+            OLLAMA_HOST="0.0.0.0:$PORT" OLLAMA_MODELS="$MODELS_DIR" "$NATIVE" serve &
+
+        else
+            # ── Container + --nv fallback ─────────────────────────────────────
+            # cuInit will likely fail (no cgroup device setup without --nvccli).
+            # To enable GPU: install ~/bin/ollama (native) or ask HPC admin for
+            # nvidia-container-toolkit so --nvccli works.
+            echo "GPU mode: container --nv (likely CPU — install ~/bin/ollama for GPU)" >&2
+            local PHY_MINOR; PHY_MINOR=$(_physical_gpu_minor)
+            command -v nvidia-modprobe &>/dev/null && { nvidia-modprobe -u 2>/dev/null || true; }
+            local NV_FLAGS="--nv"
+            for dev in /dev/nvidiactl /dev/nvidia-uvm /dev/nvidia-uvm-tools \
+                       /dev/nvidia-modeset /dev/nvidia-caps; do
+                [[ -e "$dev" ]] && NV_FLAGS="$NV_FLAGS --bind $dev:$dev"
+            done
+            local CUDA_LIB; CUDA_LIB=$(ldconfig -p 2>/dev/null | awk '/libcuda\.so\.1/{print $NF}' | head -1)
+            [[ -n "$CUDA_LIB" ]] && NV_FLAGS="$NV_FLAGS --bind $CUDA_LIB:/usr/lib/x86_64-linux-gnu/libcuda.so.1"
+            local NV_ENV=(); [[ -n "$PHY_MINOR" ]] && NV_ENV=(NVIDIA_VISIBLE_DEVICES="$PHY_MINOR")
+            local CV_ENV=(); [[ -n "$PHY_MINOR" ]] && CV_ENV=(--env "CUDA_VISIBLE_DEVICES=$PHY_MINOR")
+            env "${NV_ENV[@]}" apptainer exec $NV_FLAGS \
+                --bind "$MODELS_DIR:$MODELS_DIR" \
+                --env "OLLAMA_HOST=0.0.0.0:$PORT" \
+                --env "OLLAMA_MODELS=$MODELS_DIR" \
+                "${CV_ENV[@]}" \
+                "$_OLLAMA_SIF" ollama serve &
+        fi
     fi
 
-    env "${NV_ENV[@]}" apptainer exec $NV_FLAGS \
-        --bind "$MODELS_DIR:$MODELS_DIR" \
-        --env "OLLAMA_HOST=0.0.0.0:$PORT" \
-        --env "OLLAMA_MODELS=$MODELS_DIR" \
-        "${CONTAINER_ENV[@]}" \
-        "$_OLLAMA_SIF" ollama serve &
     _OLLAMA_SERVER_PID=$!
     trap ollama_stop EXIT
     for i in $(seq 1 60); do
