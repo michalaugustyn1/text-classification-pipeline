@@ -97,34 +97,37 @@ else
 fi
 echo ""
 
-# --- 7.5. --nv library passthrough + cuInit test ---
-echo "--- 7.5. --nv passthrough contents + cuInit test ---"
+# --- 7.5. Physical GPU identification + cuInit test ---
+echo "--- 7.5. Physical GPU index + cuInit test ---"
+DIAG_ALLOC_BUS=$(nvidia-smi --query-gpu=gpu_bus_id --format=csv,noheader 2>/dev/null | head -1)
+DIAG_PCI="0000:$(echo "${DIAG_ALLOC_BUS#00000000:}" | tr '[:upper:]' '[:lower:]')"
+DIAG_PHY_MINOR=$(grep -i "DeviceMinor" "/proc/driver/nvidia/gpus/${DIAG_PCI}/information" 2>/dev/null | awk '{print $NF}')
+if [[ -z "$DIAG_PHY_MINOR" ]]; then
+    DIAG_IDX=$(CUDA_VISIBLE_DEVICES="" nvidia-smi --query-gpu=gpu_bus_id --format=csv,noheader 2>/dev/null \
+               | grep -in "$DIAG_ALLOC_BUS" | cut -d: -f1 | head -1)
+    DIAG_PHY_MINOR=$((DIAG_IDX - 1))
+fi
+echo "  Allocated GPU bus ID: ${DIAG_ALLOC_BUS:-not found}"
+echo "  Physical /dev/nvidia minor: ${DIAG_PHY_MINOR:-unknown}"
+[[ -n "$DIAG_PHY_MINOR" ]] && ok "Physical GPU is /dev/nvidia${DIAG_PHY_MINOR}" \
+                             || echo "      Could not determine physical GPU device"
+
 DIAG_CUDA_LIB=$(ldconfig -p 2>/dev/null | awk '/libcuda\.so\.1/{print $NF}' | head -1)
 DIAG_BIND=${DIAG_CUDA_LIB:+--bind $DIAG_CUDA_LIB:/usr/lib/x86_64-linux-gnu/libcuda.so.1}
-apptainer exec --nv $DIAG_BIND "$SIF_PATH" bash -c '
-echo "  LD_LIBRARY_PATH: $LD_LIBRARY_PATH"
-echo "  /.singularity.d/libs/ (cuda entries):"
-ls /.singularity.d/libs/ 2>/dev/null | grep -i cuda || echo "    (none)"
-echo "  libcuda search:"
-for d in /.singularity.d/libs /usr/lib/x86_64-linux-gnu /usr/lib64 /lib64 /usr/local/cuda/lib64; do
-    [[ -e "$d/libcuda.so.1" ]] && echo "    FOUND: $d/libcuda.so.1 ($(stat -c%s $d/libcuda.so.1) bytes)"
-done
-echo "  /dev/nvidia* devices inside container:"
-ls /dev/nvidia* 2>/dev/null | tr "\n" " " && echo
-echo "  cuInit test (python3):"
+DIAG_GPU_ENV=${DIAG_PHY_MINOR:+NVIDIA_VISIBLE_DEVICES=$DIAG_PHY_MINOR}
+echo "  Testing cuInit with NVIDIA_VISIBLE_DEVICES=${DIAG_PHY_MINOR:-<not set>}:"
+env $DIAG_GPU_ENV apptainer exec --nv $DIAG_BIND "$SIF_PATH" bash -c '
+echo "  /dev/nvidia* inside container:"
+ls /dev/nvidia[0-9]* 2>/dev/null | tr "\n" " " && echo
 python3 -c "
-import ctypes, sys
-for path in [\"libcuda.so.1\", \"/usr/lib/x86_64-linux-gnu/libcuda.so.1\", \"/.singularity.d/libs/libcuda.so.1\"]:
-    try:
-        lib = ctypes.CDLL(path, mode=ctypes.RTLD_GLOBAL)
-        ret = lib.cuInit(ctypes.c_uint(0))
-        print(f\"  cuInit({path}) = {ret}  (0=SUCCESS)\")
-        break
-    except Exception as e:
-        print(f\"  {path}: {e}\")
+import ctypes
+try:
+    lib = ctypes.CDLL(\"libcuda.so.1\", mode=ctypes.RTLD_GLOBAL)
+    ret = lib.cuInit(ctypes.c_uint(0))
+    print(f\"  cuInit = {ret}  (0=SUCCESS, 100=NO_DEVICE)\")
+except Exception as e:
+    print(f\"  cuInit test failed: {e}\")
 " 2>/dev/null || echo "    (python3 not available)"
-echo "  /usr/lib/ollama/cuda_v12/ contents:"
-ls /usr/lib/ollama/cuda_v12/ 2>/dev/null | grep -E "(cuda|ggml)" | head -10 | sed "s/^/    /"
 ' 2>/dev/null
 echo ""
 
@@ -134,23 +137,22 @@ if [[ ! -f "$SIF_PATH" ]]; then
     fail "Skipping — SIF not found"
 else
     NV_FLAGS="$(_build_nv_flags "$SIF_PATH")"
-    EXTRA_ENV=()
+    NV_ENV=()
     if [[ -n "$NV_FLAGS" ]]; then
-        CUDA_LIB=$(ldconfig -p 2>/dev/null | awk '/libcuda\.so\.1/{print $NF}' | head -1)
-        if [[ -n "$CUDA_LIB" ]]; then
-            NV_FLAGS="$NV_FLAGS --bind $CUDA_LIB:/usr/lib/x86_64-linux-gnu/libcuda.so.1"
-            echo "  libcuda.so.1 → bound from $CUDA_LIB"
+        PHY_MINOR="$(_physical_gpu_minor)"
+        if [[ -n "$PHY_MINOR" ]]; then
+            NV_ENV+=(NVIDIA_VISIBLE_DEVICES="$PHY_MINOR")
+            echo "  Physical GPU: /dev/nvidia${PHY_MINOR} → NVIDIA_VISIBLE_DEVICES=${PHY_MINOR}"
         fi
-        EXTRA_ENV=()
-        echo "  NOTE: --nvccli unavailable; cuInit will likely fail (cgroup device perms)"
+        CUDA_LIB=$(ldconfig -p 2>/dev/null | awk '/libcuda\.so\.1/{print $NF}' | head -1)
+        [[ -n "$CUDA_LIB" ]] && NV_FLAGS="$NV_FLAGS --bind $CUDA_LIB:/usr/lib/x86_64-linux-gnu/libcuda.so.1"
     fi
     echo "  Using flags: ${NV_FLAGS:-none (CPU-only)}"
 
-    apptainer run $NV_FLAGS \
+    env "${NV_ENV[@]}" apptainer run $NV_FLAGS \
         --bind "$MODELS_DIR:$MODELS_DIR" \
         --env "OLLAMA_HOST=0.0.0.0:$OLLAMA_PORT" \
         --env "OLLAMA_MODELS=$MODELS_DIR" \
-        "${EXTRA_ENV[@]}" \
         "$SIF_PATH" &
     SERVER_PID=$!
     trap "kill $SERVER_PID 2>/dev/null; wait $SERVER_PID 2>/dev/null" EXIT
