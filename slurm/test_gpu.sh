@@ -48,8 +48,15 @@ echo ""
 
 # --- 3. /dev/nvidia* devices ---
 echo "--- 3. /dev/nvidia* devices ---"
-for dev in /dev/nvidia0 /dev/nvidiactl /dev/nvidia-uvm /dev/nvidia-modeset; do
-    [[ -e "$dev" ]] && ok "$dev exists" || echo "      $dev missing (may be optional)"
+for dev in /dev/nvidia0 /dev/nvidiactl /dev/nvidia-uvm /dev/nvidia-uvm-tools \
+           /dev/nvidia-modeset /dev/nvidia-caps; do
+    if [[ -e "$dev" ]]; then
+        ok "$dev exists"
+    elif [[ "$dev" == /dev/nvidia0 || "$dev" == /dev/nvidiactl || "$dev" == /dev/nvidia-uvm ]]; then
+        fail "$dev missing (required)"
+    else
+        echo "      $dev missing (optional)"
+    fi
 done
 echo ""
 
@@ -90,6 +97,37 @@ else
 fi
 echo ""
 
+# --- 7.5. --nv library passthrough + cuInit test ---
+echo "--- 7.5. --nv passthrough contents + cuInit test ---"
+DIAG_CUDA_LIB=$(ldconfig -p 2>/dev/null | awk '/libcuda\.so\.1/{print $NF}' | head -1)
+DIAG_BIND=${DIAG_CUDA_LIB:+--bind $DIAG_CUDA_LIB:/usr/lib/x86_64-linux-gnu/libcuda.so.1}
+apptainer exec --nv $DIAG_BIND "$SIF_PATH" bash -c '
+echo "  LD_LIBRARY_PATH: $LD_LIBRARY_PATH"
+echo "  /.singularity.d/libs/ (cuda entries):"
+ls /.singularity.d/libs/ 2>/dev/null | grep -i cuda || echo "    (none)"
+echo "  libcuda search:"
+for d in /.singularity.d/libs /usr/lib/x86_64-linux-gnu /usr/lib64 /lib64 /usr/local/cuda/lib64; do
+    [[ -e "$d/libcuda.so.1" ]] && echo "    FOUND: $d/libcuda.so.1 ($(stat -c%s $d/libcuda.so.1) bytes)"
+done
+echo "  /dev/nvidia* devices inside container:"
+ls /dev/nvidia* 2>/dev/null | tr "\n" " " && echo
+echo "  cuInit test (python3):"
+python3 -c "
+import ctypes, sys
+for path in [\"libcuda.so.1\", \"/usr/lib/x86_64-linux-gnu/libcuda.so.1\", \"/.singularity.d/libs/libcuda.so.1\"]:
+    try:
+        lib = ctypes.CDLL(path, mode=ctypes.RTLD_GLOBAL)
+        ret = lib.cuInit(ctypes.c_uint(0))
+        print(f\"  cuInit({path}) = {ret}  (0=SUCCESS)\")
+        break
+    except Exception as e:
+        print(f\"  {path}: {e}\")
+" 2>/dev/null || echo "    (python3 not available)"
+echo "  /usr/lib/ollama/cuda_v12/ contents:"
+ls /usr/lib/ollama/cuda_v12/ 2>/dev/null | grep -E "(cuda|ggml)" | head -10 | sed "s/^/    /"
+' 2>/dev/null
+echo ""
+
 # --- 8. Ollama server with _build_nv_flags ---
 echo "--- 8. Ollama server startup ---"
 if [[ ! -f "$SIF_PATH" ]]; then
@@ -103,14 +141,10 @@ else
             NV_FLAGS="$NV_FLAGS --bind $CUDA_LIB:/usr/lib/x86_64-linux-gnu/libcuda.so.1"
             echo "  libcuda.so.1 → bound from $CUDA_LIB"
         fi
-        EXTRA_ENV=(--env "OLLAMA_LLM_LIBRARY=cuda_v12")
-        echo "  OLLAMA_LLM_LIBRARY=cuda_v12 (bypass Go CUDA detection)"
+        EXTRA_ENV=(--env "OLLAMA_LLM_LIBRARY=cuda_v12" --env "OLLAMA_DEBUG=1")
+        echo "  OLLAMA_LLM_LIBRARY=cuda_v12 + OLLAMA_DEBUG=1"
     fi
     echo "  Using flags: ${NV_FLAGS:-none (CPU-only)}"
-
-    # Show what CUDA variants exist in the container
-    echo "  Ollama CUDA variants in container:"
-    apptainer exec --nv "$SIF_PATH" ls /usr/lib/ollama/ 2>/dev/null | tr '\n' ' ' && echo
 
     apptainer run $NV_FLAGS \
         --bind "$MODELS_DIR:$MODELS_DIR" \

@@ -23,7 +23,8 @@ _build_nv_flags() {
     FLAGS="--nv"
 
     # Explicit GPU device nodes (belt-and-suspenders alongside --nv).
-    for dev in /dev/nvidia0 /dev/nvidiactl /dev/nvidia-uvm /dev/nvidia-modeset; do
+    for dev in /dev/nvidia0 /dev/nvidiactl /dev/nvidia-uvm /dev/nvidia-uvm-tools \
+               /dev/nvidia-modeset /dev/nvidia-caps; do
         [[ -e "$dev" ]] && FLAGS="$FLAGS --bind $dev:$dev"
     done
 
