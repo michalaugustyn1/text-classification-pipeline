@@ -4,7 +4,7 @@
 #SBATCH --nodes=1
 #SBATCH --gres=gpu:1
 #SBATCH --mem=128G
-#SBATCH --time=01:00:00
+#SBATCH --time=02:00:00
 #SBATCH --output=logs/parallel_%j.out
 #SBATCH --error=logs/parallel_%j.err
 
@@ -18,6 +18,7 @@ source ~/miniconda3/bin/activate
 conda activate myenv
 export PYTHONPATH=~/HPAI/text_classification
 export HF_HOME=~/HPAI/text_classification/rysy/hf_cache
+export FORCE_CPU=1
 export OMP_NUM_THREADS=2
 
 time python ~/HPAI/text_classification/pipeline_parallel.py \

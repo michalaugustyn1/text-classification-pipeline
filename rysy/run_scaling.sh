@@ -19,6 +19,7 @@ source ~/miniconda3/bin/activate
 conda activate myenv
 export PYTHONPATH=~/HPAI/text_classification
 export HF_HOME=~/HPAI/text_classification/rysy/hf_cache
+export FORCE_CPU=1
 
 N_JOBS_ARR=(1 2 4 8 16 32)
 N_JOBS=${N_JOBS_ARR[$SLURM_ARRAY_TASK_ID]}
