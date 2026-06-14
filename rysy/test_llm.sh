@@ -75,6 +75,8 @@ for text in test_texts:
     print(f"  Label: {resp!r}")
 
 print("\n--- Classification test (batched, left-pad with eos) ---")
+if tokenizer.pad_token_id is None:
+    tokenizer.pad_token_id = tokenizer.eos_token_id
 def make_input_ids(text):
     msgs = [{"role": "user", "content":
         f"Classify the following document into exactly one of these categories: {', '.join(classes)}.\n\n"
