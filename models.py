@@ -375,7 +375,7 @@ class HFClassifier:
                                      self._infer_batch([X[i] for i in batch_idx])):
                     pred_names[idx] = pred
             except Exception as exc:
-                logger.warning("  HF error on batch %d: %s", start, exc)
+                logger.warning("  HF error on batch %d: %s", start, exc, exc_info=True)
         self.unload()
         return np.array(
             [self.class_names.index(p) if p in self.class_names else 0
