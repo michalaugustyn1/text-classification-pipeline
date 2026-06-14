@@ -1,3 +1,4 @@
+import os
 import numpy as np
 
 def _try_cupy():
@@ -9,8 +10,9 @@ def _try_cupy():
         return None
 
 _cp = _try_cupy()
+_FORCE_CPU = os.environ.get("FORCE_CPU", "0") == "1"
 
-if _cp is not None:
+if _cp is not None and not _FORCE_CPU:
     xp      = _cp
     USE_GPU = True
 else:

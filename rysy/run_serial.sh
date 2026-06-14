@@ -18,6 +18,7 @@ source ~/miniconda3/bin/activate
 conda activate myenv
 export PYTHONPATH=~/HPAI/text_classification
 export HF_HOME=~/HPAI/text_classification/rysy/hf_cache
+export FORCE_CPU=1
 
 time python ~/HPAI/text_classification/pipeline_serial.py \
     --data ~/HPAI/text_classification/data/train_data.txt \

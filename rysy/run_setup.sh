@@ -20,8 +20,6 @@ conda activate myenv
 export HF_HOME=~/HPAI/text_classification/rysy/hf_cache
 mkdir -p "$HF_HOME"
 
-# HF_TOKEN must be set in the environment for the gated Llama3 model.
-# Run: export HF_TOKEN=<your_token>  before submitting, or add it to ~/.bashrc
 [[ -z "${HF_TOKEN:-}" ]] && echo "WARNING: HF_TOKEN not set — Llama3 download will fail" >&2
 
 python - <<'EOF'

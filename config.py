@@ -39,7 +39,6 @@ MLP_PARAMS = {"hidden_layer_sizes": (256, 128), "activation": "relu",
                "max_iter": 300, "random_state": RANDOM_SEED,
                "early_stopping": True, "validation_fraction": 0.1}
 
-# BBC News label mapping (sunilthite Kaggle dataset: labels stored as 0–4)
 LABEL_NAMES = {0: "politics", 1: "sport", 2: "tech", 3: "entertainment", 4: "business"}
 
 LLM_SAMPLE_SIZE  = 500

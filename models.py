@@ -30,7 +30,7 @@ def _import_cuml():
 
 
 _CUML   = _import_cuml()
-USE_GPU = _CUML is not None and _gpu_available()
+USE_GPU = _CUML is not None and _gpu_available() and os.environ.get("FORCE_CPU", "0") != "1"
 
 logger.info("Models: %s", "cuML (GPU)" if USE_GPU else "scikit-learn (CPU)")
 
