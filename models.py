@@ -38,11 +38,19 @@ logger.info("Models: %s", "cuML (GPU)" if USE_GPU else "scikit-learn (CPU)")
 def _to_dense(X):
     if hasattr(X, 'toarray'):
         return X.toarray().astype(np.float32)
+    try:
+        import cupy as cp
+        if isinstance(X, cp.ndarray):
+            return cp.asnumpy(X).astype(np.float32)
+    except ImportError:
+        pass
     return np.asarray(X, dtype=np.float32)
 
 
 def _to_cupy(X):
     import cupy as cp
+    if isinstance(X, cp.ndarray):
+        return X.astype(cp.float32)
     return cp.array(_to_dense(X))
 
 
