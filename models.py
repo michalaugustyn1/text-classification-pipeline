@@ -35,9 +35,15 @@ USE_GPU = _CUML is not None and _gpu_available()
 logger.info("Models: %s", "cuML (GPU)" if USE_GPU else "scikit-learn (CPU)")
 
 
+def _to_dense(X):
+    if hasattr(X, 'toarray'):
+        return X.toarray().astype(np.float32)
+    return np.asarray(X, dtype=np.float32)
+
+
 def _to_cupy(X):
     import cupy as cp
-    return cp.array(np.array(X, dtype=np.float32))
+    return cp.array(_to_dense(X))
 
 
 def _to_numpy(X):
@@ -64,13 +70,13 @@ class LogisticRegressionModel:
             self.clf = LogisticRegression(**params)
 
     def fit(self, X, y):
-        self.clf.fit(_to_cupy(X) if USE_GPU else np.array(X), y); return self
+        self.clf.fit(_to_cupy(X) if USE_GPU else _to_dense(X), y); return self
 
     def predict(self, X):
-        return _to_numpy(self.clf.predict(_to_cupy(X) if USE_GPU else np.array(X)))
+        return _to_numpy(self.clf.predict(_to_cupy(X) if USE_GPU else _to_dense(X)))
 
     def predict_proba(self, X):
-        return _to_numpy(self.clf.predict_proba(_to_cupy(X) if USE_GPU else np.array(X)))
+        return _to_numpy(self.clf.predict_proba(_to_cupy(X) if USE_GPU else _to_dense(X)))
 
 
 class RandomForestModel:
@@ -89,15 +95,13 @@ class RandomForestModel:
             self.clf = RandomForestClassifier(**params)
 
     def fit(self, X, y):
-        self.clf.fit(_to_cupy(X) if USE_GPU else np.array(X, dtype=np.float32), y); return self
+        self.clf.fit(_to_cupy(X) if USE_GPU else _to_dense(X), y); return self
 
     def predict(self, X):
-        return _to_numpy(self.clf.predict(
-            _to_cupy(X) if USE_GPU else np.array(X, dtype=np.float32)))
+        return _to_numpy(self.clf.predict(_to_cupy(X) if USE_GPU else _to_dense(X)))
 
     def predict_proba(self, X):
-        return _to_numpy(self.clf.predict_proba(
-            _to_cupy(X) if USE_GPU else np.array(X, dtype=np.float32)))
+        return _to_numpy(self.clf.predict_proba(_to_cupy(X) if USE_GPU else _to_dense(X)))
 
 
 class XGBoostModel:
@@ -138,13 +142,13 @@ class SVMModel:
             self.clf = SVC(**params)
 
     def fit(self, X, y):
-        self.clf.fit(_to_cupy(X) if USE_GPU else np.array(X), y); return self
+        self.clf.fit(_to_cupy(X) if USE_GPU else _to_dense(X), y); return self
 
     def predict(self, X):
-        return _to_numpy(self.clf.predict(_to_cupy(X) if USE_GPU else np.array(X)))
+        return _to_numpy(self.clf.predict(_to_cupy(X) if USE_GPU else _to_dense(X)))
 
     def predict_proba(self, X):
-        return _to_numpy(self.clf.predict_proba(_to_cupy(X) if USE_GPU else np.array(X)))
+        return _to_numpy(self.clf.predict_proba(_to_cupy(X) if USE_GPU else _to_dense(X)))
 
 
 class NaiveBayesModel:
@@ -156,7 +160,7 @@ class NaiveBayesModel:
         self.clf = None
 
     def _nn(self, X):
-        X = np.array(X, dtype=np.float32)
+        X = _to_dense(X)
         mn = X.min()
         return X - mn if mn < 0 else X
 
@@ -195,13 +199,13 @@ class KNNModel:
             self.clf = KNeighborsClassifier(**params)
 
     def fit(self, X, y):
-        self.clf.fit(_to_cupy(X) if USE_GPU else np.array(X), y); return self
+        self.clf.fit(_to_cupy(X) if USE_GPU else _to_dense(X), y); return self
 
     def predict(self, X):
-        return _to_numpy(self.clf.predict(_to_cupy(X) if USE_GPU else np.array(X)))
+        return _to_numpy(self.clf.predict(_to_cupy(X) if USE_GPU else _to_dense(X)))
 
     def predict_proba(self, X):
-        return _to_numpy(self.clf.predict_proba(_to_cupy(X) if USE_GPU else np.array(X)))
+        return _to_numpy(self.clf.predict_proba(_to_cupy(X) if USE_GPU else _to_dense(X)))
 
 
 class MLPModel:
@@ -213,13 +217,13 @@ class MLPModel:
         self.clf = MLPClassifier(**{**MLP_PARAMS, **kwargs})
 
     def fit(self, X, y):
-        self.clf.fit(np.array(X), y); return self
+        self.clf.fit(_to_dense(X), y); return self
 
     def predict(self, X):
-        return self.clf.predict(np.array(X))
+        return self.clf.predict(_to_dense(X))
 
     def predict_proba(self, X):
-        return self.clf.predict_proba(np.array(X))
+        return self.clf.predict_proba(_to_dense(X))
 
 
 ALL_SKLEARN_MODELS = {
