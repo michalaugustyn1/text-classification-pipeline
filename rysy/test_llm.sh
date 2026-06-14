@@ -52,8 +52,8 @@ response = tokenizer.decode(out[0][input_ids.shape[-1]:], skip_special_tokens=Tr
 print(f"Response: {response!r}")
 print("OK")
 
-# Classification smoke test
-print("\n--- Classification test ---")
+# Classification smoke test — single and batched
+print("\n--- Classification test (single) ---")
 classes = ["business", "entertainment", "politics", "sport", "tech"]
 test_texts = [
     "Manchester United beat Arsenal 2-1 in last night's Premier League clash.",
@@ -73,6 +73,37 @@ for text in test_texts:
     resp = tokenizer.decode(out2[0][inp_ids.shape[-1]:], skip_special_tokens=True)
     print(f"  Text : {text[:60]}...")
     print(f"  Label: {resp!r}")
+
+print("\n--- Classification test (batched, left-pad with eos) ---")
+def make_input_ids(text):
+    msgs = [{"role": "user", "content":
+        f"Classify the following document into exactly one of these categories: {', '.join(classes)}.\n\n"
+        f"Document:\n{text}\n\n"
+        f"Rules:\n- Reply with ONLY the category name.\n"
+        f"- Do not add any explanation, punctuation, or extra words.\nCategory:"}]
+    out = tokenizer.apply_chat_template(msgs, add_generation_prompt=True, return_tensors="pt")
+    t = out.input_ids if hasattr(out, 'input_ids') else out
+    return t.squeeze(0)
+
+id_list = [make_input_ids(t) for t in test_texts]
+max_len = max(x.shape[0] for x in id_list)
+pad_id = tokenizer.pad_token_id
+input_ids = torch.full((len(id_list), max_len), pad_id, dtype=torch.long)
+attn_mask = torch.zeros_like(input_ids)
+for i, ids in enumerate(id_list):
+    offset = max_len - ids.shape[0]
+    input_ids[i, offset:] = ids
+    attn_mask[i, offset:] = 1
+input_ids = input_ids.to(model.device)
+attn_mask = attn_mask.to(model.device)
+with torch.no_grad():
+    out_batch = model.generate(input_ids=input_ids, attention_mask=attn_mask,
+                               max_new_tokens=20, do_sample=False,
+                               pad_token_id=pad_id)
+for i, text in enumerate(test_texts):
+    raw = tokenizer.decode(out_batch[i][max_len:], skip_special_tokens=True)
+    print(f"  Text : {text[:60]}...")
+    print(f"  Label: {raw!r}")
 EOF
 
 echo "Finished: $(date)"
