@@ -1,0 +1,7 @@
+ERROR: Unable to locate a modulefile for 'cuda'
+ERROR: Unable to locate a modulefile for 'python'
+Downloading mistralai/Mistral-7B-Instruct-v0.2 ...
+  OK: mistralai/Mistral-7B-Instruct-v0.2
+Downloading meta-llama/Meta-Llama-3-8B-Instruct ...
+  OK: meta-llama/Meta-Llama-3-8B-Instruct
+Finished: Sun 14 Jun 17:14:26 CEST 2026

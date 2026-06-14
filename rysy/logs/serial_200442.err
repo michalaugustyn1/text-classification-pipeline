@@ -1,0 +1,794 @@
+2026-06-14 17:21:10,116 INFO [data_utils] Loading '/home/ma480128/HPAI/text_classification/data/train_data.txt'  sep=','  header=True
+2026-06-14 17:21:10,297 INFO [data_utils] Raw shape: (2225, 2)  columns: ['Text', 'Label']
+2026-06-14 17:21:10,297 INFO [data_utils] Columns — text: 'Text'  label: 'Label'
+2026-06-14 17:21:10,766 INFO [data_utils] Loaded 2225 samples, 5 classes: [0, 1, 2, 3, 4]
+2026-06-14 17:21:10,772 INFO [data_utils] Split — train:1557  val:223  test:445
+2026-06-14 17:21:10,772 INFO [serial_pipeline] === bow × logistic_regression ===
+2026-06-14 17:21:11,472 INFO [metrics] feature_fit_transform took 0.6635 s
+2026-06-14 17:21:11,560 INFO [metrics] feature_transform_val took 0.0874 s
+2026-06-14 17:21:11,722 INFO [metrics] feature_transform_test took 0.1621 s
+/home/ma480128/miniconda3/envs/myenv/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:1272: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.8. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+2026-06-14 17:21:28,685 INFO [metrics] train took 16.4208 s
+2026-06-14 17:21:28,707 INFO [metrics] inference_val took 0.0198 s
+2026-06-14 17:21:28,745 INFO [metrics] inference_test took 0.0377 s
+2026-06-14 17:21:28,770 INFO [serial_pipeline] [bow × logistic_regression]  acc=0.9596  f1=0.9585  feat=0.66s  train=16.42s  inf=0.0377s
+2026-06-14 17:21:28,774 INFO [serial_pipeline] === bow × random_forest ===
+2026-06-14 17:21:29,380 INFO [metrics] feature_fit_transform took 0.6065 s
+2026-06-14 17:21:29,465 INFO [metrics] feature_transform_val took 0.0847 s
+2026-06-14 17:21:29,630 INFO [metrics] feature_transform_test took 0.1643 s
+2026-06-14 17:21:36,626 INFO [metrics] train took 6.1952 s
+2026-06-14 17:21:36,655 INFO [metrics] inference_val took 0.0289 s
+2026-06-14 17:21:36,697 INFO [metrics] inference_test took 0.0421 s
+2026-06-14 17:21:36,721 INFO [serial_pipeline] [bow × random_forest]  acc=0.9573  f1=0.9558  feat=0.61s  train=6.20s  inf=0.0421s
+2026-06-14 17:21:36,723 INFO [serial_pipeline] === bow × xgboost ===
+2026-06-14 17:21:37,283 INFO [metrics] feature_fit_transform took 0.5602 s
+2026-06-14 17:21:37,360 INFO [metrics] feature_transform_val took 0.0768 s
+2026-06-14 17:21:37,512 INFO [metrics] feature_transform_test took 0.1518 s
+2026-06-14 17:23:00,998 INFO [metrics] train took 83.0844 s
+2026-06-14 17:23:01,030 INFO [metrics] inference_val took 0.0311 s
+2026-06-14 17:23:01,086 INFO [metrics] inference_test took 0.0557 s
+2026-06-14 17:23:01,112 INFO [serial_pipeline] [bow × xgboost]  acc=0.9528  f1=0.9509  feat=0.56s  train=83.08s  inf=0.0557s
+2026-06-14 17:23:01,115 INFO [serial_pipeline] === bow × svm ===
+2026-06-14 17:23:01,707 INFO [metrics] feature_fit_transform took 0.5915 s
+2026-06-14 17:23:01,782 INFO [metrics] feature_transform_val took 0.0752 s
+2026-06-14 17:23:01,934 INFO [metrics] feature_transform_test took 0.1516 s
+2026-06-14 17:24:28,219 INFO [metrics] train took 86.2847 s
+2026-06-14 17:24:30,605 INFO [metrics] inference_val took 2.3833 s
+2026-06-14 17:24:35,384 INFO [metrics] inference_test took 4.7790 s
+2026-06-14 17:24:35,409 INFO [serial_pipeline] [bow × svm]  acc=0.9573  f1=0.9564  feat=0.59s  train=86.28s  inf=4.7790s
+2026-06-14 17:24:35,412 INFO [serial_pipeline] === bow × naive_bayes ===
+2026-06-14 17:24:36,005 INFO [metrics] feature_fit_transform took 0.5928 s
+2026-06-14 17:24:36,080 INFO [metrics] feature_transform_val took 0.0751 s
+2026-06-14 17:24:36,230 INFO [metrics] feature_transform_test took 0.1494 s
+2026-06-14 17:24:36,407 INFO [metrics] train took 0.1773 s
+2026-06-14 17:24:36,428 INFO [metrics] inference_val took 0.0209 s
+2026-06-14 17:24:36,471 INFO [metrics] inference_test took 0.0423 s
+2026-06-14 17:24:36,494 INFO [serial_pipeline] [bow × naive_bayes]  acc=0.9730  f1=0.9724  feat=0.59s  train=0.18s  inf=0.0423s
+2026-06-14 17:24:36,496 INFO [serial_pipeline] === bow × knn ===
+2026-06-14 17:24:37,086 INFO [metrics] feature_fit_transform took 0.5900 s
+2026-06-14 17:24:37,161 INFO [metrics] feature_transform_val took 0.0750 s
+2026-06-14 17:24:37,312 INFO [metrics] feature_transform_test took 0.1505 s
+2026-06-14 17:24:37,327 INFO [metrics] train took 0.0146 s
+2026-06-14 17:24:37,603 INFO [metrics] inference_val took 0.2760 s
+2026-06-14 17:24:38,008 INFO [metrics] inference_test took 0.4050 s
+2026-06-14 17:24:38,032 INFO [serial_pipeline] [bow × knn]  acc=0.7820  f1=0.7793  feat=0.59s  train=0.01s  inf=0.4050s
+2026-06-14 17:24:38,033 INFO [serial_pipeline] === bow × mlp ===
+2026-06-14 17:24:38,628 INFO [metrics] feature_fit_transform took 0.5949 s
+2026-06-14 17:24:38,704 INFO [metrics] feature_transform_val took 0.0755 s
+2026-06-14 17:24:38,855 INFO [metrics] feature_transform_test took 0.1512 s
+2026-06-14 17:24:52,364 INFO [metrics] train took 13.4701 s
+2026-06-14 17:24:52,390 INFO [metrics] inference_val took 0.0253 s
+2026-06-14 17:24:52,435 INFO [metrics] inference_test took 0.0445 s
+2026-06-14 17:24:52,458 INFO [serial_pipeline] [bow × mlp]  acc=0.9708  f1=0.9692  feat=0.59s  train=13.47s  inf=0.0445s
+2026-06-14 17:24:52,461 INFO [serial_pipeline] === tfidf × logistic_regression ===
+2026-06-14 17:24:54,272 INFO [metrics] feature_fit_transform took 1.8108 s
+2026-06-14 17:24:54,413 INFO [metrics] feature_transform_val took 0.1404 s
+2026-06-14 17:24:54,687 INFO [metrics] feature_transform_test took 0.2739 s
+/home/ma480128/miniconda3/envs/myenv/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:1272: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.8. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+2026-06-14 17:24:57,221 INFO [metrics] train took 2.5344 s
+2026-06-14 17:24:57,240 INFO [metrics] inference_val took 0.0179 s
+2026-06-14 17:24:57,276 INFO [metrics] inference_test took 0.0363 s
+2026-06-14 17:24:57,299 INFO [serial_pipeline] [tfidf × logistic_regression]  acc=0.9708  f1=0.9697  feat=1.81s  train=2.53s  inf=0.0363s
+2026-06-14 17:24:57,302 INFO [serial_pipeline] === tfidf × random_forest ===
+2026-06-14 17:24:59,077 INFO [metrics] feature_fit_transform took 1.7745 s
+2026-06-14 17:24:59,217 INFO [metrics] feature_transform_val took 0.1400 s
+2026-06-14 17:24:59,492 INFO [metrics] feature_transform_test took 0.2742 s
+2026-06-14 17:25:06,289 INFO [metrics] train took 6.7972 s
+2026-06-14 17:25:06,315 INFO [metrics] inference_val took 0.0255 s
+2026-06-14 17:25:06,356 INFO [metrics] inference_test took 0.0408 s
+2026-06-14 17:25:06,379 INFO [serial_pipeline] [tfidf × random_forest]  acc=0.9483  f1=0.9472  feat=1.77s  train=6.80s  inf=0.0408s
+2026-06-14 17:25:06,382 INFO [serial_pipeline] === tfidf × xgboost ===
+2026-06-14 17:25:08,197 INFO [metrics] feature_fit_transform took 1.8147 s
+2026-06-14 17:25:08,339 INFO [metrics] feature_transform_val took 0.1414 s
+2026-06-14 17:25:08,615 INFO [metrics] feature_transform_test took 0.2766 s
+2026-06-14 17:29:43,740 INFO [metrics] train took 275.1242 s
+2026-06-14 17:29:43,775 INFO [metrics] inference_val took 0.0298 s
+2026-06-14 17:29:43,830 INFO [metrics] inference_test took 0.0556 s
+2026-06-14 17:29:43,855 INFO [serial_pipeline] [tfidf × xgboost]  acc=0.9348  f1=0.9338  feat=1.81s  train=275.12s  inf=0.0556s
+2026-06-14 17:29:43,913 INFO [serial_pipeline] === tfidf × svm ===
+2026-06-14 17:29:45,728 INFO [metrics] feature_fit_transform took 1.8151 s
+2026-06-14 17:29:45,869 INFO [metrics] feature_transform_val took 0.1403 s
+2026-06-14 17:29:46,143 INFO [metrics] feature_transform_test took 0.2741 s
+2026-06-14 17:33:03,894 INFO [metrics] train took 197.7501 s
+2026-06-14 17:33:07,350 INFO [metrics] inference_val took 3.4508 s
+2026-06-14 17:33:14,238 INFO [metrics] inference_test took 6.8884 s
+2026-06-14 17:33:14,262 INFO [serial_pipeline] [tfidf × svm]  acc=0.9820  f1=0.9814  feat=1.82s  train=197.75s  inf=6.8884s
+2026-06-14 17:33:14,270 INFO [serial_pipeline] === tfidf × naive_bayes ===
+2026-06-14 17:33:16,119 INFO [metrics] feature_fit_transform took 1.8483 s
+2026-06-14 17:33:16,260 INFO [metrics] feature_transform_val took 0.1412 s
+2026-06-14 17:33:16,534 INFO [metrics] feature_transform_test took 0.2739 s
+2026-06-14 17:33:16,710 INFO [metrics] train took 0.1753 s
+2026-06-14 17:33:16,732 INFO [metrics] inference_val took 0.0214 s
+2026-06-14 17:33:16,775 INFO [metrics] inference_test took 0.0435 s
+2026-06-14 17:33:16,799 INFO [serial_pipeline] [tfidf × naive_bayes]  acc=0.9753  f1=0.9744  feat=1.85s  train=0.18s  inf=0.0435s
+2026-06-14 17:33:16,803 INFO [serial_pipeline] === tfidf × knn ===
+2026-06-14 17:33:18,609 INFO [metrics] feature_fit_transform took 1.8060 s
+2026-06-14 17:33:18,749 INFO [metrics] feature_transform_val took 0.1403 s
+2026-06-14 17:33:19,024 INFO [metrics] feature_transform_test took 0.2740 s
+2026-06-14 17:33:19,039 INFO [metrics] train took 0.0148 s
+2026-06-14 17:33:19,311 INFO [metrics] inference_val took 0.2719 s
+2026-06-14 17:33:19,721 INFO [metrics] inference_test took 0.4094 s
+2026-06-14 17:33:19,744 INFO [serial_pipeline] [tfidf × knn]  acc=0.9528  f1=0.9514  feat=1.81s  train=0.01s  inf=0.4094s
+2026-06-14 17:33:19,747 INFO [serial_pipeline] === tfidf × mlp ===
+2026-06-14 17:33:21,556 INFO [metrics] feature_fit_transform took 1.8087 s
+2026-06-14 17:33:21,697 INFO [metrics] feature_transform_val took 0.1404 s
+2026-06-14 17:33:21,972 INFO [metrics] feature_transform_test took 0.2744 s
+2026-06-14 17:33:40,571 INFO [metrics] train took 18.5988 s
+2026-06-14 17:33:40,601 INFO [metrics] inference_val took 0.0253 s
+2026-06-14 17:33:40,646 INFO [metrics] inference_test took 0.0449 s
+2026-06-14 17:33:40,669 INFO [serial_pipeline] [tfidf × mlp]  acc=0.9775  f1=0.9764  feat=1.81s  train=18.60s  inf=0.0449s
+2026-06-14 17:33:40,673 INFO [serial_pipeline] === ngram × logistic_regression ===
+2026-06-14 17:33:44,293 INFO [metrics] feature_fit_transform took 3.6200 s
+2026-06-14 17:33:44,464 INFO [metrics] feature_transform_val took 0.1665 s
+2026-06-14 17:33:44,781 INFO [metrics] feature_transform_test took 0.3166 s
+/home/ma480128/miniconda3/envs/myenv/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:1272: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.8. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+2026-06-14 17:33:47,878 INFO [metrics] train took 3.0957 s
+2026-06-14 17:33:47,897 INFO [metrics] inference_val took 0.0193 s
+2026-06-14 17:33:47,935 INFO [metrics] inference_test took 0.0372 s
+2026-06-14 17:33:47,958 INFO [serial_pipeline] [ngram × logistic_regression]  acc=0.9573  f1=0.9560  feat=3.62s  train=3.10s  inf=0.0372s
+2026-06-14 17:33:47,973 INFO [serial_pipeline] === ngram × random_forest ===
+2026-06-14 17:33:51,593 INFO [metrics] feature_fit_transform took 3.6199 s
+2026-06-14 17:33:51,762 INFO [metrics] feature_transform_val took 0.1681 s
+2026-06-14 17:33:52,079 INFO [metrics] feature_transform_test took 0.3171 s
+2026-06-14 17:34:01,643 INFO [metrics] train took 9.5637 s
+2026-06-14 17:34:01,679 INFO [metrics] inference_val took 0.0308 s
+2026-06-14 17:34:01,730 INFO [metrics] inference_test took 0.0506 s
+2026-06-14 17:34:01,752 INFO [serial_pipeline] [ngram × random_forest]  acc=0.8652  f1=0.8615  feat=3.62s  train=9.56s  inf=0.0506s
+2026-06-14 17:34:01,760 INFO [serial_pipeline] === ngram × xgboost ===
+2026-06-14 17:34:05,363 INFO [metrics] feature_fit_transform took 3.6027 s
+2026-06-14 17:34:05,531 INFO [metrics] feature_transform_val took 0.1674 s
+2026-06-14 17:34:05,848 INFO [metrics] feature_transform_test took 0.3166 s
+2026-06-14 17:37:40,673 INFO [metrics] train took 214.8247 s
+2026-06-14 17:37:40,708 INFO [metrics] inference_val took 0.0309 s
+2026-06-14 17:37:40,768 INFO [metrics] inference_test took 0.0590 s
+2026-06-14 17:37:40,794 INFO [serial_pipeline] [ngram × xgboost]  acc=0.8719  f1=0.8685  feat=3.60s  train=214.82s  inf=0.0590s
+2026-06-14 17:37:40,809 INFO [serial_pipeline] === ngram × svm ===
+2026-06-14 17:37:44,484 INFO [metrics] feature_fit_transform took 3.6743 s
+2026-06-14 17:37:44,648 INFO [metrics] feature_transform_val took 0.1635 s
+2026-06-14 17:37:44,953 INFO [metrics] feature_transform_test took 0.3056 s
+2026-06-14 17:41:27,404 INFO [metrics] train took 222.4504 s
+2026-06-14 17:41:31,358 INFO [metrics] inference_val took 3.9485 s
+2026-06-14 17:41:39,242 INFO [metrics] inference_test took 7.8834 s
+2026-06-14 17:41:39,266 INFO [serial_pipeline] [ngram × svm]  acc=0.9663  f1=0.9653  feat=3.67s  train=222.45s  inf=7.8834s
+2026-06-14 17:41:39,276 INFO [serial_pipeline] === ngram × naive_bayes ===
+2026-06-14 17:41:42,901 INFO [metrics] feature_fit_transform took 3.6245 s
+2026-06-14 17:41:43,065 INFO [metrics] feature_transform_val took 0.1638 s
+2026-06-14 17:41:43,374 INFO [metrics] feature_transform_test took 0.3086 s
+2026-06-14 17:41:43,541 INFO [metrics] train took 0.1667 s
+2026-06-14 17:41:43,561 INFO [metrics] inference_val took 0.0204 s
+2026-06-14 17:41:43,603 INFO [metrics] inference_test took 0.0415 s
+2026-06-14 17:41:43,626 INFO [serial_pipeline] [ngram × naive_bayes]  acc=0.9506  f1=0.9489  feat=3.62s  train=0.17s  inf=0.0415s
+2026-06-14 17:41:43,633 INFO [serial_pipeline] === ngram × knn ===
+2026-06-14 17:41:47,478 INFO [metrics] feature_fit_transform took 3.8446 s
+2026-06-14 17:41:47,647 INFO [metrics] feature_transform_val took 0.1694 s
+2026-06-14 17:41:47,976 INFO [metrics] feature_transform_test took 0.3287 s
+2026-06-14 17:41:47,990 INFO [metrics] train took 0.0139 s
+2026-06-14 17:41:48,250 INFO [metrics] inference_val took 0.2591 s
+2026-06-14 17:41:48,635 INFO [metrics] inference_test took 0.3846 s
+2026-06-14 17:41:48,657 INFO [serial_pipeline] [ngram × knn]  acc=0.9213  f1=0.9181  feat=3.84s  train=0.01s  inf=0.3846s
+2026-06-14 17:41:48,665 INFO [serial_pipeline] === ngram × mlp ===
+2026-06-14 17:41:52,329 INFO [metrics] feature_fit_transform took 3.6646 s
+2026-06-14 17:41:52,496 INFO [metrics] feature_transform_val took 0.1661 s
+2026-06-14 17:41:52,807 INFO [metrics] feature_transform_test took 0.3104 s
+2026-06-14 17:42:12,991 INFO [metrics] train took 20.1843 s
+2026-06-14 17:42:13,016 INFO [metrics] inference_val took 0.0249 s
+2026-06-14 17:42:13,061 INFO [metrics] inference_test took 0.0445 s
+2026-06-14 17:42:13,084 INFO [serial_pipeline] [ngram × mlp]  acc=0.9573  f1=0.9565  feat=3.66s  train=20.18s  inf=0.0445s
+2026-06-14 17:42:13,091 INFO [serial_pipeline] === word2vec × logistic_regression ===
+2026-06-14 17:42:14,222 INFO [gensim.models.word2vec] collecting all words and their counts
+2026-06-14 17:42:14,223 INFO [gensim.models.word2vec] PROGRESS: at sentence #0, processed 0 words, keeping 0 word types
+2026-06-14 17:42:14,340 INFO [gensim.models.word2vec] collected 41262 word types from a corpus of 608516 raw words and 1557 sentences
+2026-06-14 17:42:14,341 INFO [gensim.models.word2vec] Creating a fresh vocabulary
+2026-06-14 17:42:14,416 INFO [gensim.utils] Word2Vec lifecycle event {'msg': 'effective_min_count=2 retains 22590 unique words (54.75% of original 41262, drops 18672)', 'datetime': '2026-06-14T17:42:14.414282', 'gensim': '4.4.0', 'python': '3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]', 'platform': 'Linux-3.10.0-1160.90.1.el7.x86_64-x86_64-with-glibc2.17', 'event': 'prepare_vocab'}
+2026-06-14 17:42:14,416 INFO [gensim.utils] Word2Vec lifecycle event {'msg': 'effective_min_count=2 leaves 589844 word corpus (96.93% of original 608516, drops 18672)', 'datetime': '2026-06-14T17:42:14.416952', 'gensim': '4.4.0', 'python': '3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]', 'platform': 'Linux-3.10.0-1160.90.1.el7.x86_64-x86_64-with-glibc2.17', 'event': 'prepare_vocab'}
+2026-06-14 17:42:14,548 INFO [gensim.models.word2vec] deleting the raw counts dictionary of 41262 items
+2026-06-14 17:42:14,549 INFO [gensim.models.word2vec] sample=0.001 downsamples 40 most-common words
+2026-06-14 17:42:14,549 INFO [gensim.utils] Word2Vec lifecycle event {'msg': 'downsampling leaves estimated 465481.1286641292 word corpus (78.9%% of prior 589844)', 'datetime': '2026-06-14T17:42:14.549485', 'gensim': '4.4.0', 'python': '3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]', 'platform': 'Linux-3.10.0-1160.90.1.el7.x86_64-x86_64-with-glibc2.17', 'event': 'prepare_vocab'}
+2026-06-14 17:42:14,788 INFO [gensim.models.word2vec] estimated required memory for 22590 words and 100 dimensions: 29367000 bytes
+2026-06-14 17:42:14,788 INFO [gensim.models.word2vec] resetting layer weights
+2026-06-14 17:42:14,817 INFO [gensim.utils] Word2Vec lifecycle event {'update': False, 'trim_rule': 'None', 'datetime': '2026-06-14T17:42:14.817560', 'gensim': '4.4.0', 'python': '3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]', 'platform': 'Linux-3.10.0-1160.90.1.el7.x86_64-x86_64-with-glibc2.17', 'event': 'build_vocab'}
+2026-06-14 17:42:14,817 INFO [gensim.utils] Word2Vec lifecycle event {'msg': 'training model with 4 workers on 22590 vocabulary and 100 features, using sg=0 hs=0 sample=0.001 negative=5 window=5 shrink_windows=True', 'datetime': '2026-06-14T17:42:14.817821', 'gensim': '4.4.0', 'python': '3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]', 'platform': 'Linux-3.10.0-1160.90.1.el7.x86_64-x86_64-with-glibc2.17', 'event': 'train'}
+2026-06-14 17:42:15,755 INFO [gensim.models.word2vec] EPOCH 0: training on 608516 raw words (465547 effective words) took 0.9s, 499384 effective words/s
+2026-06-14 17:42:16,688 INFO [gensim.models.word2vec] EPOCH 1: training on 608516 raw words (465368 effective words) took 0.9s, 499589 effective words/s
+2026-06-14 17:42:17,621 INFO [gensim.models.word2vec] EPOCH 2: training on 608516 raw words (465514 effective words) took 0.9s, 499270 effective words/s
+2026-06-14 17:42:18,554 INFO [gensim.models.word2vec] EPOCH 3: training on 608516 raw words (465445 effective words) took 0.9s, 499752 effective words/s
+2026-06-14 17:42:19,484 INFO [gensim.models.word2vec] EPOCH 4: training on 608516 raw words (465435 effective words) took 0.9s, 500998 effective words/s
+2026-06-14 17:42:20,417 INFO [gensim.models.word2vec] EPOCH 5: training on 608516 raw words (465399 effective words) took 0.9s, 499285 effective words/s
+2026-06-14 17:42:21,348 INFO [gensim.models.word2vec] EPOCH 6: training on 608516 raw words (465352 effective words) took 0.9s, 500379 effective words/s
+2026-06-14 17:42:22,280 INFO [gensim.models.word2vec] EPOCH 7: training on 608516 raw words (465349 effective words) took 0.9s, 500067 effective words/s
+2026-06-14 17:42:23,213 INFO [gensim.models.word2vec] EPOCH 8: training on 608516 raw words (465785 effective words) took 0.9s, 499941 effective words/s
+2026-06-14 17:42:24,146 INFO [gensim.models.word2vec] EPOCH 9: training on 608516 raw words (465603 effective words) took 0.9s, 499450 effective words/s
+2026-06-14 17:42:24,147 INFO [gensim.utils] Word2Vec lifecycle event {'msg': 'training on 6085160 raw words (4654797 effective words) took 9.3s, 498954 effective words/s', 'datetime': '2026-06-14T17:42:24.147028', 'gensim': '4.4.0', 'python': '3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]', 'platform': 'Linux-3.10.0-1160.90.1.el7.x86_64-x86_64-with-glibc2.17', 'event': 'train'}
+2026-06-14 17:42:24,147 INFO [gensim.utils] Word2Vec lifecycle event {'params': 'Word2Vec<vocab=22590, vector_size=100, alpha=0.025>', 'datetime': '2026-06-14T17:42:24.147152', 'gensim': '4.4.0', 'python': '3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]', 'platform': 'Linux-3.10.0-1160.90.1.el7.x86_64-x86_64-with-glibc2.17', 'event': 'created'}
+2026-06-14 17:42:24,157 INFO [features] Word2Vec vocab size: 22590
+2026-06-14 17:42:25,378 INFO [metrics] feature_fit_transform took 12.2863 s
+2026-06-14 17:42:25,550 INFO [metrics] feature_transform_val took 0.1718 s
+2026-06-14 17:42:25,874 INFO [metrics] feature_transform_test took 0.3237 s
+/home/ma480128/miniconda3/envs/myenv/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:1272: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.8. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+2026-06-14 17:42:25,972 INFO [metrics] train took 0.0979 s
+2026-06-14 17:42:25,973 INFO [metrics] inference_val took 0.0004 s
+2026-06-14 17:42:25,973 INFO [metrics] inference_test took 0.0003 s
+2026-06-14 17:42:25,995 INFO [serial_pipeline] [word2vec × logistic_regression]  acc=0.9101  f1=0.9078  feat=12.29s  train=0.10s  inf=0.0003s
+2026-06-14 17:42:25,997 INFO [serial_pipeline] === word2vec × random_forest ===
+2026-06-14 17:42:26,036 INFO [gensim.models.word2vec] collecting all words and their counts
+2026-06-14 17:42:26,037 INFO [gensim.models.word2vec] PROGRESS: at sentence #0, processed 0 words, keeping 0 word types
+2026-06-14 17:42:26,146 INFO [gensim.models.word2vec] collected 41262 word types from a corpus of 608516 raw words and 1557 sentences
+2026-06-14 17:42:26,146 INFO [gensim.models.word2vec] Creating a fresh vocabulary
+2026-06-14 17:42:26,220 INFO [gensim.utils] Word2Vec lifecycle event {'msg': 'effective_min_count=2 retains 22590 unique words (54.75% of original 41262, drops 18672)', 'datetime': '2026-06-14T17:42:26.220228', 'gensim': '4.4.0', 'python': '3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]', 'platform': 'Linux-3.10.0-1160.90.1.el7.x86_64-x86_64-with-glibc2.17', 'event': 'prepare_vocab'}
+2026-06-14 17:42:26,220 INFO [gensim.utils] Word2Vec lifecycle event {'msg': 'effective_min_count=2 leaves 589844 word corpus (96.93% of original 608516, drops 18672)', 'datetime': '2026-06-14T17:42:26.220466', 'gensim': '4.4.0', 'python': '3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]', 'platform': 'Linux-3.10.0-1160.90.1.el7.x86_64-x86_64-with-glibc2.17', 'event': 'prepare_vocab'}
+2026-06-14 17:42:26,348 INFO [gensim.models.word2vec] deleting the raw counts dictionary of 41262 items
+2026-06-14 17:42:26,349 INFO [gensim.models.word2vec] sample=0.001 downsamples 40 most-common words
+2026-06-14 17:42:26,349 INFO [gensim.utils] Word2Vec lifecycle event {'msg': 'downsampling leaves estimated 465481.1286641292 word corpus (78.9%% of prior 589844)', 'datetime': '2026-06-14T17:42:26.349915', 'gensim': '4.4.0', 'python': '3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]', 'platform': 'Linux-3.10.0-1160.90.1.el7.x86_64-x86_64-with-glibc2.17', 'event': 'prepare_vocab'}
+2026-06-14 17:42:26,587 INFO [gensim.models.word2vec] estimated required memory for 22590 words and 100 dimensions: 29367000 bytes
+2026-06-14 17:42:26,587 INFO [gensim.models.word2vec] resetting layer weights
+2026-06-14 17:42:26,597 INFO [gensim.utils] Word2Vec lifecycle event {'update': False, 'trim_rule': 'None', 'datetime': '2026-06-14T17:42:26.597575', 'gensim': '4.4.0', 'python': '3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]', 'platform': 'Linux-3.10.0-1160.90.1.el7.x86_64-x86_64-with-glibc2.17', 'event': 'build_vocab'}
+2026-06-14 17:42:26,597 INFO [gensim.utils] Word2Vec lifecycle event {'msg': 'training model with 4 workers on 22590 vocabulary and 100 features, using sg=0 hs=0 sample=0.001 negative=5 window=5 shrink_windows=True', 'datetime': '2026-06-14T17:42:26.597845', 'gensim': '4.4.0', 'python': '3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]', 'platform': 'Linux-3.10.0-1160.90.1.el7.x86_64-x86_64-with-glibc2.17', 'event': 'train'}
+2026-06-14 17:42:27,537 INFO [gensim.models.word2vec] EPOCH 0: training on 608516 raw words (465331 effective words) took 0.9s, 495763 effective words/s
+2026-06-14 17:42:28,476 INFO [gensim.models.word2vec] EPOCH 1: training on 608516 raw words (465513 effective words) took 0.9s, 496261 effective words/s
+2026-06-14 17:42:29,414 INFO [gensim.models.word2vec] EPOCH 2: training on 608516 raw words (465583 effective words) took 0.9s, 496888 effective words/s
+2026-06-14 17:42:30,353 INFO [gensim.models.word2vec] EPOCH 3: training on 608516 raw words (465618 effective words) took 0.9s, 496467 effective words/s
+2026-06-14 17:42:31,297 INFO [gensim.models.word2vec] EPOCH 4: training on 608516 raw words (465523 effective words) took 0.9s, 494140 effective words/s
+2026-06-14 17:42:32,237 INFO [gensim.models.word2vec] EPOCH 5: training on 608516 raw words (465709 effective words) took 0.9s, 495522 effective words/s
+2026-06-14 17:42:33,179 INFO [gensim.models.word2vec] EPOCH 6: training on 608516 raw words (465431 effective words) took 0.9s, 495025 effective words/s
+2026-06-14 17:42:34,124 INFO [gensim.models.word2vec] EPOCH 7: training on 608516 raw words (465638 effective words) took 0.9s, 493315 effective words/s
+2026-06-14 17:42:35,065 INFO [gensim.models.word2vec] EPOCH 8: training on 608516 raw words (465260 effective words) took 0.9s, 494752 effective words/s
+2026-06-14 17:42:36,002 INFO [gensim.models.word2vec] EPOCH 9: training on 608516 raw words (465164 effective words) took 0.9s, 497071 effective words/s
+2026-06-14 17:42:36,003 INFO [gensim.utils] Word2Vec lifecycle event {'msg': 'training on 6085160 raw words (4654770 effective words) took 9.4s, 494919 effective words/s', 'datetime': '2026-06-14T17:42:36.003046', 'gensim': '4.4.0', 'python': '3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]', 'platform': 'Linux-3.10.0-1160.90.1.el7.x86_64-x86_64-with-glibc2.17', 'event': 'train'}
+2026-06-14 17:42:36,003 INFO [gensim.utils] Word2Vec lifecycle event {'params': 'Word2Vec<vocab=22590, vector_size=100, alpha=0.025>', 'datetime': '2026-06-14T17:42:36.003176', 'gensim': '4.4.0', 'python': '3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]', 'platform': 'Linux-3.10.0-1160.90.1.el7.x86_64-x86_64-with-glibc2.17', 'event': 'created'}
+2026-06-14 17:42:36,013 INFO [features] Word2Vec vocab size: 22590
+2026-06-14 17:42:37,224 INFO [metrics] feature_fit_transform took 11.2262 s
+2026-06-14 17:42:37,398 INFO [metrics] feature_transform_val took 0.1743 s
+2026-06-14 17:42:37,723 INFO [metrics] feature_transform_test took 0.3251 s
+2026-06-14 17:42:40,581 INFO [metrics] train took 2.8570 s
+2026-06-14 17:42:40,597 INFO [metrics] inference_val took 0.0160 s
+2026-06-14 17:42:40,617 INFO [metrics] inference_test took 0.0202 s
+2026-06-14 17:42:40,639 INFO [serial_pipeline] [word2vec × random_forest]  acc=0.8944  f1=0.8917  feat=11.23s  train=2.86s  inf=0.0202s
+2026-06-14 17:42:40,641 INFO [serial_pipeline] === word2vec × xgboost ===
+2026-06-14 17:42:40,684 INFO [gensim.models.word2vec] collecting all words and their counts
+2026-06-14 17:42:40,684 INFO [gensim.models.word2vec] PROGRESS: at sentence #0, processed 0 words, keeping 0 word types
+2026-06-14 17:42:40,794 INFO [gensim.models.word2vec] collected 41262 word types from a corpus of 608516 raw words and 1557 sentences
+2026-06-14 17:42:40,794 INFO [gensim.models.word2vec] Creating a fresh vocabulary
+2026-06-14 17:42:40,869 INFO [gensim.utils] Word2Vec lifecycle event {'msg': 'effective_min_count=2 retains 22590 unique words (54.75% of original 41262, drops 18672)', 'datetime': '2026-06-14T17:42:40.869231', 'gensim': '4.4.0', 'python': '3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]', 'platform': 'Linux-3.10.0-1160.90.1.el7.x86_64-x86_64-with-glibc2.17', 'event': 'prepare_vocab'}
+2026-06-14 17:42:40,869 INFO [gensim.utils] Word2Vec lifecycle event {'msg': 'effective_min_count=2 leaves 589844 word corpus (96.93% of original 608516, drops 18672)', 'datetime': '2026-06-14T17:42:40.869508', 'gensim': '4.4.0', 'python': '3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]', 'platform': 'Linux-3.10.0-1160.90.1.el7.x86_64-x86_64-with-glibc2.17', 'event': 'prepare_vocab'}
+2026-06-14 17:42:40,997 INFO [gensim.models.word2vec] deleting the raw counts dictionary of 41262 items
+2026-06-14 17:42:40,998 INFO [gensim.models.word2vec] sample=0.001 downsamples 40 most-common words
+2026-06-14 17:42:40,998 INFO [gensim.utils] Word2Vec lifecycle event {'msg': 'downsampling leaves estimated 465481.1286641292 word corpus (78.9%% of prior 589844)', 'datetime': '2026-06-14T17:42:40.998458', 'gensim': '4.4.0', 'python': '3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]', 'platform': 'Linux-3.10.0-1160.90.1.el7.x86_64-x86_64-with-glibc2.17', 'event': 'prepare_vocab'}
+2026-06-14 17:42:41,236 INFO [gensim.models.word2vec] estimated required memory for 22590 words and 100 dimensions: 29367000 bytes
+2026-06-14 17:42:41,236 INFO [gensim.models.word2vec] resetting layer weights
+2026-06-14 17:42:41,247 INFO [gensim.utils] Word2Vec lifecycle event {'update': False, 'trim_rule': 'None', 'datetime': '2026-06-14T17:42:41.247033', 'gensim': '4.4.0', 'python': '3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]', 'platform': 'Linux-3.10.0-1160.90.1.el7.x86_64-x86_64-with-glibc2.17', 'event': 'build_vocab'}
+2026-06-14 17:42:41,247 INFO [gensim.utils] Word2Vec lifecycle event {'msg': 'training model with 4 workers on 22590 vocabulary and 100 features, using sg=0 hs=0 sample=0.001 negative=5 window=5 shrink_windows=True', 'datetime': '2026-06-14T17:42:41.247334', 'gensim': '4.4.0', 'python': '3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]', 'platform': 'Linux-3.10.0-1160.90.1.el7.x86_64-x86_64-with-glibc2.17', 'event': 'train'}
+2026-06-14 17:42:42,179 INFO [gensim.models.word2vec] EPOCH 0: training on 608516 raw words (465229 effective words) took 0.9s, 499668 effective words/s
+2026-06-14 17:42:43,114 INFO [gensim.models.word2vec] EPOCH 1: training on 608516 raw words (465418 effective words) took 0.9s, 498294 effective words/s
+2026-06-14 17:42:44,049 INFO [gensim.models.word2vec] EPOCH 2: training on 608516 raw words (465281 effective words) took 0.9s, 498102 effective words/s
+2026-06-14 17:42:44,985 INFO [gensim.models.word2vec] EPOCH 3: training on 608516 raw words (465867 effective words) took 0.9s, 498359 effective words/s
+2026-06-14 17:42:45,918 INFO [gensim.models.word2vec] EPOCH 4: training on 608516 raw words (465116 effective words) took 0.9s, 499080 effective words/s
+2026-06-14 17:42:46,852 INFO [gensim.models.word2vec] EPOCH 5: training on 608516 raw words (465710 effective words) took 0.9s, 499305 effective words/s
+2026-06-14 17:42:47,789 INFO [gensim.models.word2vec] EPOCH 6: training on 608516 raw words (465442 effective words) took 0.9s, 497245 effective words/s
+2026-06-14 17:42:48,728 INFO [gensim.models.word2vec] EPOCH 7: training on 608516 raw words (465616 effective words) took 0.9s, 496798 effective words/s
+2026-06-14 17:42:49,661 INFO [gensim.models.word2vec] EPOCH 8: training on 608516 raw words (465453 effective words) took 0.9s, 499315 effective words/s
+2026-06-14 17:42:50,598 INFO [gensim.models.word2vec] EPOCH 9: training on 608516 raw words (465415 effective words) took 0.9s, 497036 effective words/s
+2026-06-14 17:42:50,599 INFO [gensim.utils] Word2Vec lifecycle event {'msg': 'training on 6085160 raw words (4654547 effective words) took 9.4s, 497718 effective words/s', 'datetime': '2026-06-14T17:42:50.599197', 'gensim': '4.4.0', 'python': '3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]', 'platform': 'Linux-3.10.0-1160.90.1.el7.x86_64-x86_64-with-glibc2.17', 'event': 'train'}
+2026-06-14 17:42:50,599 INFO [gensim.utils] Word2Vec lifecycle event {'params': 'Word2Vec<vocab=22590, vector_size=100, alpha=0.025>', 'datetime': '2026-06-14T17:42:50.599311', 'gensim': '4.4.0', 'python': '3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]', 'platform': 'Linux-3.10.0-1160.90.1.el7.x86_64-x86_64-with-glibc2.17', 'event': 'created'}
+2026-06-14 17:42:50,609 INFO [features] Word2Vec vocab size: 22590
+2026-06-14 17:42:51,821 INFO [metrics] feature_fit_transform took 11.1791 s
+2026-06-14 17:42:51,995 INFO [metrics] feature_transform_val took 0.1746 s
+2026-06-14 17:42:52,322 INFO [metrics] feature_transform_test took 0.3259 s
+2026-06-14 17:42:59,213 INFO [metrics] train took 6.8912 s
+2026-06-14 17:42:59,220 INFO [metrics] inference_val took 0.0068 s
+2026-06-14 17:42:59,232 INFO [metrics] inference_test took 0.0118 s
+2026-06-14 17:42:59,255 INFO [serial_pipeline] [word2vec × xgboost]  acc=0.9124  f1=0.9090  feat=11.18s  train=6.89s  inf=0.0118s
+2026-06-14 17:42:59,257 INFO [serial_pipeline] === word2vec × svm ===
+2026-06-14 17:42:59,297 INFO [gensim.models.word2vec] collecting all words and their counts
+2026-06-14 17:42:59,298 INFO [gensim.models.word2vec] PROGRESS: at sentence #0, processed 0 words, keeping 0 word types
+2026-06-14 17:42:59,408 INFO [gensim.models.word2vec] collected 41262 word types from a corpus of 608516 raw words and 1557 sentences
+2026-06-14 17:42:59,408 INFO [gensim.models.word2vec] Creating a fresh vocabulary
+2026-06-14 17:42:59,482 INFO [gensim.utils] Word2Vec lifecycle event {'msg': 'effective_min_count=2 retains 22590 unique words (54.75% of original 41262, drops 18672)', 'datetime': '2026-06-14T17:42:59.482366', 'gensim': '4.4.0', 'python': '3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]', 'platform': 'Linux-3.10.0-1160.90.1.el7.x86_64-x86_64-with-glibc2.17', 'event': 'prepare_vocab'}
+2026-06-14 17:42:59,482 INFO [gensim.utils] Word2Vec lifecycle event {'msg': 'effective_min_count=2 leaves 589844 word corpus (96.93% of original 608516, drops 18672)', 'datetime': '2026-06-14T17:42:59.482659', 'gensim': '4.4.0', 'python': '3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]', 'platform': 'Linux-3.10.0-1160.90.1.el7.x86_64-x86_64-with-glibc2.17', 'event': 'prepare_vocab'}
+2026-06-14 17:42:59,614 INFO [gensim.models.word2vec] deleting the raw counts dictionary of 41262 items
+2026-06-14 17:42:59,614 INFO [gensim.models.word2vec] sample=0.001 downsamples 40 most-common words
+2026-06-14 17:42:59,615 INFO [gensim.utils] Word2Vec lifecycle event {'msg': 'downsampling leaves estimated 465481.1286641292 word corpus (78.9%% of prior 589844)', 'datetime': '2026-06-14T17:42:59.615128', 'gensim': '4.4.0', 'python': '3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]', 'platform': 'Linux-3.10.0-1160.90.1.el7.x86_64-x86_64-with-glibc2.17', 'event': 'prepare_vocab'}
+2026-06-14 17:42:59,854 INFO [gensim.models.word2vec] estimated required memory for 22590 words and 100 dimensions: 29367000 bytes
+2026-06-14 17:42:59,854 INFO [gensim.models.word2vec] resetting layer weights
+2026-06-14 17:42:59,865 INFO [gensim.utils] Word2Vec lifecycle event {'update': False, 'trim_rule': 'None', 'datetime': '2026-06-14T17:42:59.864983', 'gensim': '4.4.0', 'python': '3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]', 'platform': 'Linux-3.10.0-1160.90.1.el7.x86_64-x86_64-with-glibc2.17', 'event': 'build_vocab'}
+2026-06-14 17:42:59,865 INFO [gensim.utils] Word2Vec lifecycle event {'msg': 'training model with 4 workers on 22590 vocabulary and 100 features, using sg=0 hs=0 sample=0.001 negative=5 window=5 shrink_windows=True', 'datetime': '2026-06-14T17:42:59.865250', 'gensim': '4.4.0', 'python': '3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]', 'platform': 'Linux-3.10.0-1160.90.1.el7.x86_64-x86_64-with-glibc2.17', 'event': 'train'}
+2026-06-14 17:43:00,802 INFO [gensim.models.word2vec] EPOCH 0: training on 608516 raw words (465432 effective words) took 0.9s, 497380 effective words/s
+2026-06-14 17:43:01,740 INFO [gensim.models.word2vec] EPOCH 1: training on 608516 raw words (465478 effective words) took 0.9s, 496400 effective words/s
+2026-06-14 17:43:02,680 INFO [gensim.models.word2vec] EPOCH 2: training on 608516 raw words (465503 effective words) took 0.9s, 495771 effective words/s
+2026-06-14 17:43:03,618 INFO [gensim.models.word2vec] EPOCH 3: training on 608516 raw words (466058 effective words) took 0.9s, 497791 effective words/s
+2026-06-14 17:43:04,553 INFO [gensim.models.word2vec] EPOCH 4: training on 608516 raw words (465454 effective words) took 0.9s, 498142 effective words/s
+2026-06-14 17:43:05,488 INFO [gensim.models.word2vec] EPOCH 5: training on 608516 raw words (465289 effective words) took 0.9s, 498510 effective words/s
+2026-06-14 17:43:06,437 INFO [gensim.models.word2vec] EPOCH 6: training on 608516 raw words (465710 effective words) took 0.9s, 491355 effective words/s
+2026-06-14 17:43:07,369 INFO [gensim.models.word2vec] EPOCH 7: training on 608516 raw words (465847 effective words) took 0.9s, 500431 effective words/s
+2026-06-14 17:43:08,304 INFO [gensim.models.word2vec] EPOCH 8: training on 608516 raw words (465750 effective words) took 0.9s, 498752 effective words/s
+2026-06-14 17:43:09,269 INFO [gensim.models.word2vec] EPOCH 9: training on 608516 raw words (465373 effective words) took 1.0s, 482748 effective words/s
+2026-06-14 17:43:09,269 INFO [gensim.utils] Word2Vec lifecycle event {'msg': 'training on 6085160 raw words (4655894 effective words) took 9.4s, 495072 effective words/s', 'datetime': '2026-06-14T17:43:09.269820', 'gensim': '4.4.0', 'python': '3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]', 'platform': 'Linux-3.10.0-1160.90.1.el7.x86_64-x86_64-with-glibc2.17', 'event': 'train'}
+2026-06-14 17:43:09,269 INFO [gensim.utils] Word2Vec lifecycle event {'params': 'Word2Vec<vocab=22590, vector_size=100, alpha=0.025>', 'datetime': '2026-06-14T17:43:09.269950', 'gensim': '4.4.0', 'python': '3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]', 'platform': 'Linux-3.10.0-1160.90.1.el7.x86_64-x86_64-with-glibc2.17', 'event': 'created'}
+2026-06-14 17:43:09,280 INFO [features] Word2Vec vocab size: 22590
+2026-06-14 17:43:10,549 INFO [metrics] feature_fit_transform took 11.2921 s
+2026-06-14 17:43:10,733 INFO [metrics] feature_transform_val took 0.1841 s
+2026-06-14 17:43:11,080 INFO [metrics] feature_transform_test took 0.3461 s
+2026-06-14 17:43:11,239 INFO [metrics] train took 0.1591 s
+2026-06-14 17:43:11,244 INFO [metrics] inference_val took 0.0049 s
+2026-06-14 17:43:11,254 INFO [metrics] inference_test took 0.0092 s
+2026-06-14 17:43:11,277 INFO [serial_pipeline] [word2vec × svm]  acc=0.9146  f1=0.9119  feat=11.29s  train=0.16s  inf=0.0092s
+2026-06-14 17:43:11,279 INFO [serial_pipeline] === word2vec × naive_bayes ===
+2026-06-14 17:43:11,323 INFO [gensim.models.word2vec] collecting all words and their counts
+2026-06-14 17:43:11,324 INFO [gensim.models.word2vec] PROGRESS: at sentence #0, processed 0 words, keeping 0 word types
+2026-06-14 17:43:11,446 INFO [gensim.models.word2vec] collected 41262 word types from a corpus of 608516 raw words and 1557 sentences
+2026-06-14 17:43:11,446 INFO [gensim.models.word2vec] Creating a fresh vocabulary
+2026-06-14 17:43:11,525 INFO [gensim.utils] Word2Vec lifecycle event {'msg': 'effective_min_count=2 retains 22590 unique words (54.75% of original 41262, drops 18672)', 'datetime': '2026-06-14T17:43:11.525599', 'gensim': '4.4.0', 'python': '3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]', 'platform': 'Linux-3.10.0-1160.90.1.el7.x86_64-x86_64-with-glibc2.17', 'event': 'prepare_vocab'}
+2026-06-14 17:43:11,525 INFO [gensim.utils] Word2Vec lifecycle event {'msg': 'effective_min_count=2 leaves 589844 word corpus (96.93% of original 608516, drops 18672)', 'datetime': '2026-06-14T17:43:11.525925', 'gensim': '4.4.0', 'python': '3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]', 'platform': 'Linux-3.10.0-1160.90.1.el7.x86_64-x86_64-with-glibc2.17', 'event': 'prepare_vocab'}
+2026-06-14 17:43:11,659 INFO [gensim.models.word2vec] deleting the raw counts dictionary of 41262 items
+2026-06-14 17:43:11,660 INFO [gensim.models.word2vec] sample=0.001 downsamples 40 most-common words
+2026-06-14 17:43:11,660 INFO [gensim.utils] Word2Vec lifecycle event {'msg': 'downsampling leaves estimated 465481.1286641292 word corpus (78.9%% of prior 589844)', 'datetime': '2026-06-14T17:43:11.660467', 'gensim': '4.4.0', 'python': '3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]', 'platform': 'Linux-3.10.0-1160.90.1.el7.x86_64-x86_64-with-glibc2.17', 'event': 'prepare_vocab'}
+2026-06-14 17:43:11,903 INFO [gensim.models.word2vec] estimated required memory for 22590 words and 100 dimensions: 29367000 bytes
+2026-06-14 17:43:11,903 INFO [gensim.models.word2vec] resetting layer weights
+2026-06-14 17:43:11,915 INFO [gensim.utils] Word2Vec lifecycle event {'update': False, 'trim_rule': 'None', 'datetime': '2026-06-14T17:43:11.914951', 'gensim': '4.4.0', 'python': '3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]', 'platform': 'Linux-3.10.0-1160.90.1.el7.x86_64-x86_64-with-glibc2.17', 'event': 'build_vocab'}
+2026-06-14 17:43:11,915 INFO [gensim.utils] Word2Vec lifecycle event {'msg': 'training model with 4 workers on 22590 vocabulary and 100 features, using sg=0 hs=0 sample=0.001 negative=5 window=5 shrink_windows=True', 'datetime': '2026-06-14T17:43:11.915280', 'gensim': '4.4.0', 'python': '3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]', 'platform': 'Linux-3.10.0-1160.90.1.el7.x86_64-x86_64-with-glibc2.17', 'event': 'train'}
+2026-06-14 17:43:12,927 INFO [gensim.models.word2vec] EPOCH 0 - PROGRESS: at 90.37% examples, 418731 words/s, in_qsize 6, out_qsize 0
+2026-06-14 17:43:12,970 INFO [gensim.models.word2vec] EPOCH 0: training on 608516 raw words (465378 effective words) took 1.1s, 441385 effective words/s
+2026-06-14 17:43:13,988 INFO [gensim.models.word2vec] EPOCH 1 - PROGRESS: at 90.37% examples, 416405 words/s, in_qsize 6, out_qsize 0
+2026-06-14 17:43:14,029 INFO [gensim.models.word2vec] EPOCH 1: training on 608516 raw words (465098 effective words) took 1.1s, 439772 effective words/s
+2026-06-14 17:43:15,050 INFO [gensim.models.word2vec] EPOCH 2 - PROGRESS: at 90.37% examples, 415212 words/s, in_qsize 6, out_qsize 0
+2026-06-14 17:43:15,093 INFO [gensim.models.word2vec] EPOCH 2: training on 608516 raw words (465300 effective words) took 1.1s, 437916 effective words/s
+2026-06-14 17:43:16,112 INFO [gensim.models.word2vec] EPOCH 3 - PROGRESS: at 90.37% examples, 415723 words/s, in_qsize 6, out_qsize 0
+2026-06-14 17:43:16,155 INFO [gensim.models.word2vec] EPOCH 3: training on 608516 raw words (465151 effective words) took 1.1s, 438494 effective words/s
+2026-06-14 17:43:17,175 INFO [gensim.models.word2vec] EPOCH 4 - PROGRESS: at 90.37% examples, 415449 words/s, in_qsize 4, out_qsize 2
+2026-06-14 17:43:17,219 INFO [gensim.models.word2vec] EPOCH 4: training on 608516 raw words (465475 effective words) took 1.1s, 437810 effective words/s
+2026-06-14 17:43:18,243 INFO [gensim.models.word2vec] EPOCH 5 - PROGRESS: at 90.37% examples, 413935 words/s, in_qsize 5, out_qsize 1
+2026-06-14 17:43:18,286 INFO [gensim.models.word2vec] EPOCH 5: training on 608516 raw words (465401 effective words) took 1.1s, 436562 effective words/s
+2026-06-14 17:43:19,306 INFO [gensim.models.word2vec] EPOCH 6 - PROGRESS: at 90.30% examples, 415455 words/s, in_qsize 6, out_qsize 0
+2026-06-14 17:43:19,349 INFO [gensim.models.word2vec] EPOCH 6: training on 608516 raw words (465071 effective words) took 1.1s, 438333 effective words/s
+2026-06-14 17:43:20,368 INFO [gensim.models.word2vec] EPOCH 7 - PROGRESS: at 90.37% examples, 415870 words/s, in_qsize 6, out_qsize 0
+2026-06-14 17:43:20,410 INFO [gensim.models.word2vec] EPOCH 7: training on 608516 raw words (465548 effective words) took 1.1s, 439059 effective words/s
+2026-06-14 17:43:21,431 INFO [gensim.models.word2vec] EPOCH 8 - PROGRESS: at 90.37% examples, 415166 words/s, in_qsize 6, out_qsize 0
+2026-06-14 17:43:21,474 INFO [gensim.models.word2vec] EPOCH 8: training on 608516 raw words (465288 effective words) took 1.1s, 437888 effective words/s
+2026-06-14 17:43:22,490 INFO [gensim.models.word2vec] EPOCH 9 - PROGRESS: at 90.37% examples, 417342 words/s, in_qsize 6, out_qsize 0
+2026-06-14 17:43:22,541 INFO [gensim.models.word2vec] EPOCH 9: training on 608516 raw words (465385 effective words) took 1.1s, 436616 effective words/s
+2026-06-14 17:43:22,541 INFO [gensim.utils] Word2Vec lifecycle event {'msg': 'training on 6085160 raw words (4653095 effective words) took 10.6s, 437878 effective words/s', 'datetime': '2026-06-14T17:43:22.541852', 'gensim': '4.4.0', 'python': '3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]', 'platform': 'Linux-3.10.0-1160.90.1.el7.x86_64-x86_64-with-glibc2.17', 'event': 'train'}
+2026-06-14 17:43:22,541 INFO [gensim.utils] Word2Vec lifecycle event {'params': 'Word2Vec<vocab=22590, vector_size=100, alpha=0.025>', 'datetime': '2026-06-14T17:43:22.541971', 'gensim': '4.4.0', 'python': '3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]', 'platform': 'Linux-3.10.0-1160.90.1.el7.x86_64-x86_64-with-glibc2.17', 'event': 'created'}
+2026-06-14 17:43:22,552 INFO [features] Word2Vec vocab size: 22590
+2026-06-14 17:43:23,841 INFO [metrics] feature_fit_transform took 12.5623 s
+2026-06-14 17:43:24,028 INFO [metrics] feature_transform_val took 0.1861 s
+2026-06-14 17:43:24,377 INFO [metrics] feature_transform_test took 0.3483 s
+2026-06-14 17:43:24,381 INFO [metrics] train took 0.0037 s
+2026-06-14 17:43:24,381 INFO [metrics] inference_val took 0.0003 s
+2026-06-14 17:43:24,382 INFO [metrics] inference_test took 0.0004 s
+2026-06-14 17:43:24,405 INFO [serial_pipeline] [word2vec × naive_bayes]  acc=0.7663  f1=0.7288  feat=12.56s  train=0.00s  inf=0.0004s
+2026-06-14 17:43:24,407 INFO [serial_pipeline] === word2vec × knn ===
+2026-06-14 17:43:24,453 INFO [gensim.models.word2vec] collecting all words and their counts
+2026-06-14 17:43:24,453 INFO [gensim.models.word2vec] PROGRESS: at sentence #0, processed 0 words, keeping 0 word types
+2026-06-14 17:43:24,578 INFO [gensim.models.word2vec] collected 41262 word types from a corpus of 608516 raw words and 1557 sentences
+2026-06-14 17:43:24,578 INFO [gensim.models.word2vec] Creating a fresh vocabulary
+2026-06-14 17:43:24,658 INFO [gensim.utils] Word2Vec lifecycle event {'msg': 'effective_min_count=2 retains 22590 unique words (54.75% of original 41262, drops 18672)', 'datetime': '2026-06-14T17:43:24.658834', 'gensim': '4.4.0', 'python': '3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]', 'platform': 'Linux-3.10.0-1160.90.1.el7.x86_64-x86_64-with-glibc2.17', 'event': 'prepare_vocab'}
+2026-06-14 17:43:24,659 INFO [gensim.utils] Word2Vec lifecycle event {'msg': 'effective_min_count=2 leaves 589844 word corpus (96.93% of original 608516, drops 18672)', 'datetime': '2026-06-14T17:43:24.659147', 'gensim': '4.4.0', 'python': '3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]', 'platform': 'Linux-3.10.0-1160.90.1.el7.x86_64-x86_64-with-glibc2.17', 'event': 'prepare_vocab'}
+2026-06-14 17:43:24,791 INFO [gensim.models.word2vec] deleting the raw counts dictionary of 41262 items
+2026-06-14 17:43:24,791 INFO [gensim.models.word2vec] sample=0.001 downsamples 40 most-common words
+2026-06-14 17:43:24,792 INFO [gensim.utils] Word2Vec lifecycle event {'msg': 'downsampling leaves estimated 465481.1286641292 word corpus (78.9%% of prior 589844)', 'datetime': '2026-06-14T17:43:24.792095', 'gensim': '4.4.0', 'python': '3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]', 'platform': 'Linux-3.10.0-1160.90.1.el7.x86_64-x86_64-with-glibc2.17', 'event': 'prepare_vocab'}
+2026-06-14 17:43:25,037 INFO [gensim.models.word2vec] estimated required memory for 22590 words and 100 dimensions: 29367000 bytes
+2026-06-14 17:43:25,037 INFO [gensim.models.word2vec] resetting layer weights
+2026-06-14 17:43:25,048 INFO [gensim.utils] Word2Vec lifecycle event {'update': False, 'trim_rule': 'None', 'datetime': '2026-06-14T17:43:25.048633', 'gensim': '4.4.0', 'python': '3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]', 'platform': 'Linux-3.10.0-1160.90.1.el7.x86_64-x86_64-with-glibc2.17', 'event': 'build_vocab'}
+2026-06-14 17:43:25,048 INFO [gensim.utils] Word2Vec lifecycle event {'msg': 'training model with 4 workers on 22590 vocabulary and 100 features, using sg=0 hs=0 sample=0.001 negative=5 window=5 shrink_windows=True', 'datetime': '2026-06-14T17:43:25.048944', 'gensim': '4.4.0', 'python': '3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]', 'platform': 'Linux-3.10.0-1160.90.1.el7.x86_64-x86_64-with-glibc2.17', 'event': 'train'}
+2026-06-14 17:43:26,059 INFO [gensim.models.word2vec] EPOCH 0 - PROGRESS: at 90.37% examples, 419144 words/s, in_qsize 6, out_qsize 0
+2026-06-14 17:43:26,102 INFO [gensim.models.word2vec] EPOCH 0: training on 608516 raw words (465195 effective words) took 1.1s, 442124 effective words/s
+2026-06-14 17:43:27,114 INFO [gensim.models.word2vec] EPOCH 1 - PROGRESS: at 90.37% examples, 418634 words/s, in_qsize 6, out_qsize 0
+2026-06-14 17:43:27,157 INFO [gensim.models.word2vec] EPOCH 1: training on 608516 raw words (465441 effective words) took 1.1s, 441674 effective words/s
+2026-06-14 17:43:28,176 INFO [gensim.models.word2vec] EPOCH 2 - PROGRESS: at 90.30% examples, 415851 words/s, in_qsize 5, out_qsize 1
+2026-06-14 17:43:28,210 INFO [gensim.models.word2vec] EPOCH 2: training on 608516 raw words (465295 effective words) took 1.1s, 442401 effective words/s
+2026-06-14 17:43:29,218 INFO [gensim.models.word2vec] EPOCH 3 - PROGRESS: at 90.37% examples, 420335 words/s, in_qsize 6, out_qsize 0
+2026-06-14 17:43:29,265 INFO [gensim.models.word2vec] EPOCH 3: training on 608516 raw words (465281 effective words) took 1.1s, 441403 effective words/s
+2026-06-14 17:43:30,285 INFO [gensim.models.word2vec] EPOCH 4 - PROGRESS: at 90.37% examples, 415393 words/s, in_qsize 6, out_qsize 0
+2026-06-14 17:43:30,314 INFO [gensim.models.word2vec] EPOCH 4: training on 608516 raw words (465213 effective words) took 1.0s, 443908 effective words/s
+2026-06-14 17:43:31,328 INFO [gensim.models.word2vec] EPOCH 5 - PROGRESS: at 90.37% examples, 418329 words/s, in_qsize 6, out_qsize 0
+2026-06-14 17:43:31,370 INFO [gensim.models.word2vec] EPOCH 5: training on 608516 raw words (465799 effective words) took 1.1s, 441686 effective words/s
+2026-06-14 17:43:32,382 INFO [gensim.models.word2vec] EPOCH 6 - PROGRESS: at 90.30% examples, 419216 words/s, in_qsize 6, out_qsize 0
+2026-06-14 17:43:32,423 INFO [gensim.models.word2vec] EPOCH 6: training on 608516 raw words (465791 effective words) took 1.1s, 442768 effective words/s
+2026-06-14 17:43:33,462 INFO [gensim.models.word2vec] EPOCH 7 - PROGRESS: at 90.37% examples, 408040 words/s, in_qsize 4, out_qsize 2
+2026-06-14 17:43:33,495 INFO [gensim.models.word2vec] EPOCH 7: training on 608516 raw words (465312 effective words) took 1.1s, 434747 effective words/s
+2026-06-14 17:43:34,536 INFO [gensim.models.word2vec] EPOCH 8 - PROGRESS: at 90.37% examples, 407125 words/s, in_qsize 5, out_qsize 1
+2026-06-14 17:43:34,577 INFO [gensim.models.word2vec] EPOCH 8: training on 608516 raw words (465536 effective words) took 1.1s, 430724 effective words/s
+2026-06-14 17:43:35,612 INFO [gensim.models.word2vec] EPOCH 9 - PROGRESS: at 90.37% examples, 409156 words/s, in_qsize 4, out_qsize 2
+2026-06-14 17:43:35,649 INFO [gensim.models.word2vec] EPOCH 9: training on 608516 raw words (465189 effective words) took 1.1s, 434167 effective words/s
+2026-06-14 17:43:35,650 INFO [gensim.utils] Word2Vec lifecycle event {'msg': 'training on 6085160 raw words (4654052 effective words) took 10.6s, 439013 effective words/s', 'datetime': '2026-06-14T17:43:35.650205', 'gensim': '4.4.0', 'python': '3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]', 'platform': 'Linux-3.10.0-1160.90.1.el7.x86_64-x86_64-with-glibc2.17', 'event': 'train'}
+2026-06-14 17:43:35,650 INFO [gensim.utils] Word2Vec lifecycle event {'params': 'Word2Vec<vocab=22590, vector_size=100, alpha=0.025>', 'datetime': '2026-06-14T17:43:35.650335', 'gensim': '4.4.0', 'python': '3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]', 'platform': 'Linux-3.10.0-1160.90.1.el7.x86_64-x86_64-with-glibc2.17', 'event': 'created'}
+2026-06-14 17:43:35,660 INFO [features] Word2Vec vocab size: 22590
+2026-06-14 17:43:36,955 INFO [metrics] feature_fit_transform took 12.5482 s
+2026-06-14 17:43:37,143 INFO [metrics] feature_transform_val took 0.1871 s
+2026-06-14 17:43:37,495 INFO [metrics] feature_transform_test took 0.3522 s
+2026-06-14 17:43:37,500 INFO [metrics] train took 0.0012 s
+2026-06-14 17:43:37,518 INFO [metrics] inference_val took 0.0179 s
+2026-06-14 17:43:37,550 INFO [metrics] inference_test took 0.0309 s
+2026-06-14 17:43:37,573 INFO [serial_pipeline] [word2vec × knn]  acc=0.8764  f1=0.8728  feat=12.55s  train=0.00s  inf=0.0309s
+2026-06-14 17:43:37,575 INFO [serial_pipeline] === word2vec × mlp ===
+2026-06-14 17:43:37,621 INFO [gensim.models.word2vec] collecting all words and their counts
+2026-06-14 17:43:37,622 INFO [gensim.models.word2vec] PROGRESS: at sentence #0, processed 0 words, keeping 0 word types
+2026-06-14 17:43:37,748 INFO [gensim.models.word2vec] collected 41262 word types from a corpus of 608516 raw words and 1557 sentences
+2026-06-14 17:43:37,748 INFO [gensim.models.word2vec] Creating a fresh vocabulary
+2026-06-14 17:43:37,828 INFO [gensim.utils] Word2Vec lifecycle event {'msg': 'effective_min_count=2 retains 22590 unique words (54.75% of original 41262, drops 18672)', 'datetime': '2026-06-14T17:43:37.828007', 'gensim': '4.4.0', 'python': '3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]', 'platform': 'Linux-3.10.0-1160.90.1.el7.x86_64-x86_64-with-glibc2.17', 'event': 'prepare_vocab'}
+2026-06-14 17:43:37,828 INFO [gensim.utils] Word2Vec lifecycle event {'msg': 'effective_min_count=2 leaves 589844 word corpus (96.93% of original 608516, drops 18672)', 'datetime': '2026-06-14T17:43:37.828318', 'gensim': '4.4.0', 'python': '3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]', 'platform': 'Linux-3.10.0-1160.90.1.el7.x86_64-x86_64-with-glibc2.17', 'event': 'prepare_vocab'}
+2026-06-14 17:43:37,960 INFO [gensim.models.word2vec] deleting the raw counts dictionary of 41262 items
+2026-06-14 17:43:37,961 INFO [gensim.models.word2vec] sample=0.001 downsamples 40 most-common words
+2026-06-14 17:43:37,962 INFO [gensim.utils] Word2Vec lifecycle event {'msg': 'downsampling leaves estimated 465481.1286641292 word corpus (78.9%% of prior 589844)', 'datetime': '2026-06-14T17:43:37.962064', 'gensim': '4.4.0', 'python': '3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]', 'platform': 'Linux-3.10.0-1160.90.1.el7.x86_64-x86_64-with-glibc2.17', 'event': 'prepare_vocab'}
+2026-06-14 17:43:38,200 INFO [gensim.models.word2vec] estimated required memory for 22590 words and 100 dimensions: 29367000 bytes
+2026-06-14 17:43:38,201 INFO [gensim.models.word2vec] resetting layer weights
+2026-06-14 17:43:38,212 INFO [gensim.utils] Word2Vec lifecycle event {'update': False, 'trim_rule': 'None', 'datetime': '2026-06-14T17:43:38.212777', 'gensim': '4.4.0', 'python': '3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]', 'platform': 'Linux-3.10.0-1160.90.1.el7.x86_64-x86_64-with-glibc2.17', 'event': 'build_vocab'}
+2026-06-14 17:43:38,213 INFO [gensim.utils] Word2Vec lifecycle event {'msg': 'training model with 4 workers on 22590 vocabulary and 100 features, using sg=0 hs=0 sample=0.001 negative=5 window=5 shrink_windows=True', 'datetime': '2026-06-14T17:43:38.213126', 'gensim': '4.4.0', 'python': '3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]', 'platform': 'Linux-3.10.0-1160.90.1.el7.x86_64-x86_64-with-glibc2.17', 'event': 'train'}
+2026-06-14 17:43:39,206 INFO [gensim.models.word2vec] EPOCH 0: training on 608516 raw words (465458 effective words) took 1.0s, 469139 effective words/s
+2026-06-14 17:43:40,224 INFO [gensim.models.word2vec] EPOCH 1 - PROGRESS: at 97.24% examples, 445191 words/s, in_qsize 2, out_qsize 0
+2026-06-14 17:43:40,226 INFO [gensim.models.word2vec] EPOCH 1: training on 608516 raw words (464978 effective words) took 1.0s, 456219 effective words/s
+2026-06-14 17:43:41,164 INFO [gensim.models.word2vec] EPOCH 2: training on 608516 raw words (465374 effective words) took 0.9s, 496652 effective words/s
+2026-06-14 17:43:42,099 INFO [gensim.models.word2vec] EPOCH 3: training on 608516 raw words (465415 effective words) took 0.9s, 498510 effective words/s
+2026-06-14 17:43:43,069 INFO [gensim.models.word2vec] EPOCH 4: training on 608516 raw words (465533 effective words) took 1.0s, 480807 effective words/s
+2026-06-14 17:43:44,038 INFO [gensim.models.word2vec] EPOCH 5: training on 608516 raw words (465498 effective words) took 1.0s, 480553 effective words/s
+2026-06-14 17:43:45,016 INFO [gensim.models.word2vec] EPOCH 6: training on 608516 raw words (465448 effective words) took 1.0s, 476511 effective words/s
+2026-06-14 17:43:46,005 INFO [gensim.models.word2vec] EPOCH 7: training on 608516 raw words (465337 effective words) took 1.0s, 473052 effective words/s
+2026-06-14 17:43:46,956 INFO [gensim.models.word2vec] EPOCH 8: training on 608516 raw words (465665 effective words) took 0.9s, 490561 effective words/s
+2026-06-14 17:43:47,930 INFO [gensim.models.word2vec] EPOCH 9: training on 608516 raw words (465395 effective words) took 1.0s, 479982 effective words/s
+2026-06-14 17:43:47,930 INFO [gensim.utils] Word2Vec lifecycle event {'msg': 'training on 6085160 raw words (4654101 effective words) took 9.7s, 478934 effective words/s', 'datetime': '2026-06-14T17:43:47.930849', 'gensim': '4.4.0', 'python': '3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]', 'platform': 'Linux-3.10.0-1160.90.1.el7.x86_64-x86_64-with-glibc2.17', 'event': 'train'}
+2026-06-14 17:43:47,930 INFO [gensim.utils] Word2Vec lifecycle event {'params': 'Word2Vec<vocab=22590, vector_size=100, alpha=0.025>', 'datetime': '2026-06-14T17:43:47.930975', 'gensim': '4.4.0', 'python': '3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]', 'platform': 'Linux-3.10.0-1160.90.1.el7.x86_64-x86_64-with-glibc2.17', 'event': 'created'}
+2026-06-14 17:43:47,941 INFO [features] Word2Vec vocab size: 22590
+2026-06-14 17:43:49,191 INFO [metrics] feature_fit_transform took 11.6158 s
+2026-06-14 17:43:49,371 INFO [metrics] feature_transform_val took 0.1798 s
+2026-06-14 17:43:49,714 INFO [metrics] feature_transform_test took 0.3383 s
+2026-06-14 17:43:50,441 INFO [metrics] train took 0.7269 s
+2026-06-14 17:43:50,442 INFO [metrics] inference_val took 0.0007 s
+2026-06-14 17:43:50,443 INFO [metrics] inference_test took 0.0010 s
+2026-06-14 17:43:50,466 INFO [serial_pipeline] [word2vec × mlp]  acc=0.8652  f1=0.8622  feat=11.62s  train=0.73s  inf=0.0010s
+2026-06-14 17:43:50,468 INFO [serial_pipeline] === doc2vec × logistic_regression ===
+2026-06-14 17:43:50,522 INFO [gensim.models.doc2vec] collecting all words and their counts
+2026-06-14 17:43:50,522 INFO [gensim.models.doc2vec] PROGRESS: at example #0, processed 0 words (0 words/s), 0 word types, 0 tags
+2026-06-14 17:43:50,644 INFO [gensim.models.doc2vec] collected 41262 word types and 1557 unique tags from a corpus of 1557 examples and 608516 words
+2026-06-14 17:43:50,644 INFO [gensim.models.word2vec] Creating a fresh vocabulary
+2026-06-14 17:43:50,718 INFO [gensim.utils] Doc2Vec lifecycle event {'msg': 'effective_min_count=2 retains 22590 unique words (54.75% of original 41262, drops 18672)', 'datetime': '2026-06-14T17:43:50.718290', 'gensim': '4.4.0', 'python': '3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]', 'platform': 'Linux-3.10.0-1160.90.1.el7.x86_64-x86_64-with-glibc2.17', 'event': 'prepare_vocab'}
+2026-06-14 17:43:50,718 INFO [gensim.utils] Doc2Vec lifecycle event {'msg': 'effective_min_count=2 leaves 589844 word corpus (96.93% of original 608516, drops 18672)', 'datetime': '2026-06-14T17:43:50.718553', 'gensim': '4.4.0', 'python': '3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]', 'platform': 'Linux-3.10.0-1160.90.1.el7.x86_64-x86_64-with-glibc2.17', 'event': 'prepare_vocab'}
+2026-06-14 17:43:50,849 INFO [gensim.models.word2vec] deleting the raw counts dictionary of 41262 items
+2026-06-14 17:43:50,850 INFO [gensim.models.word2vec] sample=0.001 downsamples 40 most-common words
+2026-06-14 17:43:50,850 INFO [gensim.utils] Doc2Vec lifecycle event {'msg': 'downsampling leaves estimated 465481.1286641292 word corpus (78.9%% of prior 589844)', 'datetime': '2026-06-14T17:43:50.850914', 'gensim': '4.4.0', 'python': '3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]', 'platform': 'Linux-3.10.0-1160.90.1.el7.x86_64-x86_64-with-glibc2.17', 'event': 'prepare_vocab'}
+2026-06-14 17:43:51,093 INFO [gensim.models.word2vec] estimated required memory for 22590 words and 100 dimensions: 30301200 bytes
+2026-06-14 17:43:51,093 INFO [gensim.models.word2vec] resetting layer weights
+2026-06-14 17:43:51,105 INFO [gensim.utils] Doc2Vec lifecycle event {'msg': 'training model with 4 workers on 22590 vocabulary and 100 features, using sg=0 hs=0 sample=0.001 negative=5 window=5 shrink_windows=True', 'datetime': '2026-06-14T17:43:51.105753', 'gensim': '4.4.0', 'python': '3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]', 'platform': 'Linux-3.10.0-1160.90.1.el7.x86_64-x86_64-with-glibc2.17', 'event': 'train'}
+2026-06-14 17:43:52,126 INFO [gensim.models.word2vec] EPOCH 0 - PROGRESS: at 90.37% examples, 417247 words/s, in_qsize 6, out_qsize 0
+2026-06-14 17:43:52,179 INFO [gensim.models.word2vec] EPOCH 0: training on 608516 raw words (467532 effective words) took 1.1s, 436072 effective words/s
+2026-06-14 17:43:53,182 INFO [gensim.models.word2vec] EPOCH 1 - PROGRESS: at 90.37% examples, 424004 words/s, in_qsize 6, out_qsize 0
+2026-06-14 17:43:53,247 INFO [gensim.models.word2vec] EPOCH 1: training on 608516 raw words (467101 effective words) took 1.1s, 437509 effective words/s
+2026-06-14 17:43:54,265 INFO [gensim.models.word2vec] EPOCH 2 - PROGRESS: at 90.37% examples, 418079 words/s, in_qsize 6, out_qsize 0
+2026-06-14 17:43:54,326 INFO [gensim.models.word2vec] EPOCH 2: training on 608516 raw words (466901 effective words) took 1.1s, 433337 effective words/s
+2026-06-14 17:43:55,345 INFO [gensim.models.word2vec] EPOCH 3 - PROGRESS: at 90.30% examples, 417401 words/s, in_qsize 6, out_qsize 0
+2026-06-14 17:43:55,399 INFO [gensim.models.word2vec] EPOCH 3: training on 608516 raw words (466803 effective words) took 1.1s, 435553 effective words/s
+2026-06-14 17:43:56,424 INFO [gensim.models.word2vec] EPOCH 4 - PROGRESS: at 90.37% examples, 415001 words/s, in_qsize 6, out_qsize 0
+2026-06-14 17:43:56,479 INFO [gensim.models.word2vec] EPOCH 4: training on 608516 raw words (467236 effective words) took 1.1s, 433155 effective words/s
+2026-06-14 17:43:57,489 INFO [gensim.models.word2vec] EPOCH 5 - PROGRESS: at 90.37% examples, 420650 words/s, in_qsize 6, out_qsize 0
+2026-06-14 17:43:57,558 INFO [gensim.models.word2vec] EPOCH 5: training on 608516 raw words (466603 effective words) took 1.1s, 433020 effective words/s
+2026-06-14 17:43:58,561 INFO [gensim.models.word2vec] EPOCH 6 - PROGRESS: at 90.37% examples, 423592 words/s, in_qsize 6, out_qsize 0
+2026-06-14 17:43:58,635 INFO [gensim.models.word2vec] EPOCH 6: training on 608516 raw words (467018 effective words) took 1.1s, 433876 effective words/s
+2026-06-14 17:43:59,640 INFO [gensim.models.word2vec] EPOCH 7 - PROGRESS: at 92.16% examples, 430675 words/s, in_qsize 5, out_qsize 0
+2026-06-14 17:43:59,697 INFO [gensim.models.word2vec] EPOCH 7: training on 608516 raw words (466780 effective words) took 1.1s, 440220 effective words/s
+2026-06-14 17:44:00,704 INFO [gensim.models.word2vec] EPOCH 8 - PROGRESS: at 90.37% examples, 422279 words/s, in_qsize 6, out_qsize 0
+2026-06-14 17:44:00,775 INFO [gensim.models.word2vec] EPOCH 8: training on 608516 raw words (467238 effective words) took 1.1s, 433966 effective words/s
+2026-06-14 17:44:01,777 INFO [gensim.models.word2vec] EPOCH 9 - PROGRESS: at 90.37% examples, 424485 words/s, in_qsize 6, out_qsize 0
+2026-06-14 17:44:01,846 INFO [gensim.models.word2vec] EPOCH 9: training on 608516 raw words (467158 effective words) took 1.1s, 436568 effective words/s
+2026-06-14 17:44:01,846 INFO [gensim.utils] Doc2Vec lifecycle event {'msg': 'training on 6085160 raw words (4670370 effective words) took 10.7s, 434833 effective words/s', 'datetime': '2026-06-14T17:44:01.846604', 'gensim': '4.4.0', 'python': '3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]', 'platform': 'Linux-3.10.0-1160.90.1.el7.x86_64-x86_64-with-glibc2.17', 'event': 'train'}
+2026-06-14 17:44:01,846 INFO [gensim.utils] Doc2Vec lifecycle event {'params': 'Doc2Vec<dm/m,d100,n5,w5,mc2,s0.001,t4>', 'datetime': '2026-06-14T17:44:01.846740', 'gensim': '4.4.0', 'python': '3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]', 'platform': 'Linux-3.10.0-1160.90.1.el7.x86_64-x86_64-with-glibc2.17', 'event': 'created'}
+2026-06-14 17:44:01,846 INFO [features] Doc2Vec vocab size: 22590
+2026-06-14 17:44:10,575 INFO [metrics] feature_fit_transform took 20.1073 s
+2026-06-14 17:44:11,801 INFO [metrics] feature_transform_val took 1.2253 s
+2026-06-14 17:44:14,126 INFO [metrics] feature_transform_test took 2.3243 s
+/home/ma480128/miniconda3/envs/myenv/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:1272: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.8. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+2026-06-14 17:44:14,184 INFO [metrics] train took 0.0584 s
+2026-06-14 17:44:14,185 INFO [metrics] inference_val took 0.0004 s
+2026-06-14 17:44:14,185 INFO [metrics] inference_test took 0.0003 s
+2026-06-14 17:44:14,208 INFO [serial_pipeline] [doc2vec × logistic_regression]  acc=0.9393  f1=0.9395  feat=20.11s  train=0.06s  inf=0.0003s
+2026-06-14 17:44:14,211 INFO [serial_pipeline] === doc2vec × random_forest ===
+2026-06-14 17:44:14,259 INFO [gensim.models.doc2vec] collecting all words and their counts
+2026-06-14 17:44:14,259 INFO [gensim.models.doc2vec] PROGRESS: at example #0, processed 0 words (0 words/s), 0 word types, 0 tags
+2026-06-14 17:44:14,382 INFO [gensim.models.doc2vec] collected 41262 word types and 1557 unique tags from a corpus of 1557 examples and 608516 words
+2026-06-14 17:44:14,382 INFO [gensim.models.word2vec] Creating a fresh vocabulary
+2026-06-14 17:44:14,458 INFO [gensim.utils] Doc2Vec lifecycle event {'msg': 'effective_min_count=2 retains 22590 unique words (54.75% of original 41262, drops 18672)', 'datetime': '2026-06-14T17:44:14.458401', 'gensim': '4.4.0', 'python': '3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]', 'platform': 'Linux-3.10.0-1160.90.1.el7.x86_64-x86_64-with-glibc2.17', 'event': 'prepare_vocab'}
+2026-06-14 17:44:14,458 INFO [gensim.utils] Doc2Vec lifecycle event {'msg': 'effective_min_count=2 leaves 589844 word corpus (96.93% of original 608516, drops 18672)', 'datetime': '2026-06-14T17:44:14.458695', 'gensim': '4.4.0', 'python': '3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]', 'platform': 'Linux-3.10.0-1160.90.1.el7.x86_64-x86_64-with-glibc2.17', 'event': 'prepare_vocab'}
+2026-06-14 17:44:14,589 INFO [gensim.models.word2vec] deleting the raw counts dictionary of 41262 items
+2026-06-14 17:44:14,589 INFO [gensim.models.word2vec] sample=0.001 downsamples 40 most-common words
+2026-06-14 17:44:14,590 INFO [gensim.utils] Doc2Vec lifecycle event {'msg': 'downsampling leaves estimated 465481.1286641292 word corpus (78.9%% of prior 589844)', 'datetime': '2026-06-14T17:44:14.590177', 'gensim': '4.4.0', 'python': '3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]', 'platform': 'Linux-3.10.0-1160.90.1.el7.x86_64-x86_64-with-glibc2.17', 'event': 'prepare_vocab'}
+2026-06-14 17:44:14,833 INFO [gensim.models.word2vec] estimated required memory for 22590 words and 100 dimensions: 30301200 bytes
+2026-06-14 17:44:14,833 INFO [gensim.models.word2vec] resetting layer weights
+2026-06-14 17:44:14,846 INFO [gensim.utils] Doc2Vec lifecycle event {'msg': 'training model with 4 workers on 22590 vocabulary and 100 features, using sg=0 hs=0 sample=0.001 negative=5 window=5 shrink_windows=True', 'datetime': '2026-06-14T17:44:14.845972', 'gensim': '4.4.0', 'python': '3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]', 'platform': 'Linux-3.10.0-1160.90.1.el7.x86_64-x86_64-with-glibc2.17', 'event': 'train'}
+2026-06-14 17:44:15,872 INFO [gensim.models.word2vec] EPOCH 0 - PROGRESS: at 92.16% examples, 422720 words/s, in_qsize 5, out_qsize 0
+2026-06-14 17:44:15,919 INFO [gensim.models.word2vec] EPOCH 0: training on 608516 raw words (467144 effective words) took 1.1s, 436599 effective words/s
+2026-06-14 17:44:16,931 INFO [gensim.models.word2vec] EPOCH 1 - PROGRESS: at 90.30% examples, 419860 words/s, in_qsize 6, out_qsize 0
+2026-06-14 17:44:16,983 INFO [gensim.models.word2vec] EPOCH 1: training on 608516 raw words (466758 effective words) took 1.1s, 439068 effective words/s
+2026-06-14 17:44:17,994 INFO [gensim.models.word2vec] EPOCH 2 - PROGRESS: at 90.37% examples, 420768 words/s, in_qsize 6, out_qsize 0
+2026-06-14 17:44:18,058 INFO [gensim.models.word2vec] EPOCH 2: training on 608516 raw words (466977 effective words) took 1.1s, 434845 effective words/s
+2026-06-14 17:44:19,073 INFO [gensim.models.word2vec] EPOCH 3 - PROGRESS: at 90.37% examples, 419354 words/s, in_qsize 6, out_qsize 0
+2026-06-14 17:44:19,129 INFO [gensim.models.word2vec] EPOCH 3: training on 608516 raw words (467040 effective words) took 1.1s, 436917 effective words/s
+2026-06-14 17:44:20,141 INFO [gensim.models.word2vec] EPOCH 4 - PROGRESS: at 90.37% examples, 419642 words/s, in_qsize 6, out_qsize 0
+2026-06-14 17:44:20,201 INFO [gensim.models.word2vec] EPOCH 4: training on 608516 raw words (466684 effective words) took 1.1s, 435615 effective words/s
+2026-06-14 17:44:21,209 INFO [gensim.models.word2vec] EPOCH 5 - PROGRESS: at 90.37% examples, 421771 words/s, in_qsize 6, out_qsize 0
+2026-06-14 17:44:21,263 INFO [gensim.models.word2vec] EPOCH 5: training on 608516 raw words (466859 effective words) took 1.1s, 440316 effective words/s
+2026-06-14 17:44:22,266 INFO [gensim.models.word2vec] EPOCH 6 - PROGRESS: at 90.30% examples, 424076 words/s, in_qsize 6, out_qsize 0
+2026-06-14 17:44:22,339 INFO [gensim.models.word2vec] EPOCH 6: training on 608516 raw words (466984 effective words) took 1.1s, 434277 effective words/s
+2026-06-14 17:44:23,348 INFO [gensim.models.word2vec] EPOCH 7 - PROGRESS: at 90.37% examples, 421277 words/s, in_qsize 6, out_qsize 0
+2026-06-14 17:44:23,409 INFO [gensim.models.word2vec] EPOCH 7: training on 608516 raw words (466962 effective words) took 1.1s, 436853 effective words/s
+2026-06-14 17:44:24,428 INFO [gensim.models.word2vec] EPOCH 8 - PROGRESS: at 90.37% examples, 417632 words/s, in_qsize 6, out_qsize 0
+2026-06-14 17:44:24,483 INFO [gensim.models.word2vec] EPOCH 8: training on 608516 raw words (467360 effective words) took 1.1s, 435569 effective words/s
+2026-06-14 17:44:25,500 INFO [gensim.models.word2vec] EPOCH 9 - PROGRESS: at 90.37% examples, 418282 words/s, in_qsize 6, out_qsize 0
+2026-06-14 17:44:25,559 INFO [gensim.models.word2vec] EPOCH 9: training on 608516 raw words (466976 effective words) took 1.1s, 434791 effective words/s
+2026-06-14 17:44:25,559 INFO [gensim.utils] Doc2Vec lifecycle event {'msg': 'training on 6085160 raw words (4669744 effective words) took 10.7s, 435890 effective words/s', 'datetime': '2026-06-14T17:44:25.559350', 'gensim': '4.4.0', 'python': '3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]', 'platform': 'Linux-3.10.0-1160.90.1.el7.x86_64-x86_64-with-glibc2.17', 'event': 'train'}
+2026-06-14 17:44:25,559 INFO [gensim.utils] Doc2Vec lifecycle event {'params': 'Doc2Vec<dm/m,d100,n5,w5,mc2,s0.001,t4>', 'datetime': '2026-06-14T17:44:25.559479', 'gensim': '4.4.0', 'python': '3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]', 'platform': 'Linux-3.10.0-1160.90.1.el7.x86_64-x86_64-with-glibc2.17', 'event': 'created'}
+2026-06-14 17:44:25,559 INFO [features] Doc2Vec vocab size: 22590
+2026-06-14 17:44:34,344 INFO [metrics] feature_fit_transform took 20.1328 s
+2026-06-14 17:44:35,567 INFO [metrics] feature_transform_val took 1.2228 s
+2026-06-14 17:44:37,886 INFO [metrics] feature_transform_test took 2.3186 s
+2026-06-14 17:44:40,791 INFO [metrics] train took 2.9051 s
+2026-06-14 17:44:40,808 INFO [metrics] inference_val took 0.0162 s
+2026-06-14 17:44:40,828 INFO [metrics] inference_test took 0.0201 s
+2026-06-14 17:44:40,851 INFO [serial_pipeline] [doc2vec × random_forest]  acc=0.9393  f1=0.9387  feat=20.13s  train=2.91s  inf=0.0201s
+2026-06-14 17:44:40,856 INFO [serial_pipeline] === doc2vec × xgboost ===
+2026-06-14 17:44:40,907 INFO [gensim.models.doc2vec] collecting all words and their counts
+2026-06-14 17:44:40,907 INFO [gensim.models.doc2vec] PROGRESS: at example #0, processed 0 words (0 words/s), 0 word types, 0 tags
+2026-06-14 17:44:41,029 INFO [gensim.models.doc2vec] collected 41262 word types and 1557 unique tags from a corpus of 1557 examples and 608516 words
+2026-06-14 17:44:41,029 INFO [gensim.models.word2vec] Creating a fresh vocabulary
+2026-06-14 17:44:41,107 INFO [gensim.utils] Doc2Vec lifecycle event {'msg': 'effective_min_count=2 retains 22590 unique words (54.75% of original 41262, drops 18672)', 'datetime': '2026-06-14T17:44:41.106975', 'gensim': '4.4.0', 'python': '3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]', 'platform': 'Linux-3.10.0-1160.90.1.el7.x86_64-x86_64-with-glibc2.17', 'event': 'prepare_vocab'}
+2026-06-14 17:44:41,107 INFO [gensim.utils] Doc2Vec lifecycle event {'msg': 'effective_min_count=2 leaves 589844 word corpus (96.93% of original 608516, drops 18672)', 'datetime': '2026-06-14T17:44:41.107321', 'gensim': '4.4.0', 'python': '3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]', 'platform': 'Linux-3.10.0-1160.90.1.el7.x86_64-x86_64-with-glibc2.17', 'event': 'prepare_vocab'}
+2026-06-14 17:44:41,236 INFO [gensim.models.word2vec] deleting the raw counts dictionary of 41262 items
+2026-06-14 17:44:41,237 INFO [gensim.models.word2vec] sample=0.001 downsamples 40 most-common words
+2026-06-14 17:44:41,237 INFO [gensim.utils] Doc2Vec lifecycle event {'msg': 'downsampling leaves estimated 465481.1286641292 word corpus (78.9%% of prior 589844)', 'datetime': '2026-06-14T17:44:41.237775', 'gensim': '4.4.0', 'python': '3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]', 'platform': 'Linux-3.10.0-1160.90.1.el7.x86_64-x86_64-with-glibc2.17', 'event': 'prepare_vocab'}
+2026-06-14 17:44:41,478 INFO [gensim.models.word2vec] estimated required memory for 22590 words and 100 dimensions: 30301200 bytes
+2026-06-14 17:44:41,479 INFO [gensim.models.word2vec] resetting layer weights
+2026-06-14 17:44:41,491 INFO [gensim.utils] Doc2Vec lifecycle event {'msg': 'training model with 4 workers on 22590 vocabulary and 100 features, using sg=0 hs=0 sample=0.001 negative=5 window=5 shrink_windows=True', 'datetime': '2026-06-14T17:44:41.491019', 'gensim': '4.4.0', 'python': '3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]', 'platform': 'Linux-3.10.0-1160.90.1.el7.x86_64-x86_64-with-glibc2.17', 'event': 'train'}
+2026-06-14 17:44:42,494 INFO [gensim.models.word2vec] EPOCH 0 - PROGRESS: at 92.16% examples, 431363 words/s, in_qsize 5, out_qsize 0
+2026-06-14 17:44:42,536 INFO [gensim.models.word2vec] EPOCH 0: training on 608516 raw words (467092 effective words) took 1.0s, 447143 effective words/s
+2026-06-14 17:44:43,544 INFO [gensim.models.word2vec] EPOCH 1 - PROGRESS: at 90.37% examples, 421684 words/s, in_qsize 6, out_qsize 0
+2026-06-14 17:44:43,599 INFO [gensim.models.word2vec] EPOCH 1: training on 608516 raw words (466683 effective words) took 1.1s, 439594 effective words/s
+2026-06-14 17:44:44,624 INFO [gensim.models.word2vec] EPOCH 2 - PROGRESS: at 90.30% examples, 415667 words/s, in_qsize 6, out_qsize 0
+2026-06-14 17:44:44,677 INFO [gensim.models.word2vec] EPOCH 2: training on 608516 raw words (467523 effective words) took 1.1s, 434222 effective words/s
+2026-06-14 17:44:45,683 INFO [gensim.models.word2vec] EPOCH 3 - PROGRESS: at 90.37% examples, 422788 words/s, in_qsize 6, out_qsize 0
+2026-06-14 17:44:45,747 INFO [gensim.models.word2vec] EPOCH 3: training on 608516 raw words (466932 effective words) took 1.1s, 436839 effective words/s
+2026-06-14 17:44:46,759 INFO [gensim.models.word2vec] EPOCH 4 - PROGRESS: at 92.16% examples, 427734 words/s, in_qsize 5, out_qsize 0
+2026-06-14 17:44:46,819 INFO [gensim.models.word2vec] EPOCH 4: training on 608516 raw words (467069 effective words) took 1.1s, 436271 effective words/s
+2026-06-14 17:44:47,841 INFO [gensim.models.word2vec] EPOCH 5 - PROGRESS: at 92.16% examples, 423227 words/s, in_qsize 5, out_qsize 0
+2026-06-14 17:44:47,890 INFO [gensim.models.word2vec] EPOCH 5: training on 608516 raw words (466831 effective words) took 1.1s, 436186 effective words/s
+2026-06-14 17:44:48,911 INFO [gensim.models.word2vec] EPOCH 6 - PROGRESS: at 90.30% examples, 416522 words/s, in_qsize 6, out_qsize 0
+2026-06-14 17:44:48,963 INFO [gensim.models.word2vec] EPOCH 6: training on 608516 raw words (466837 effective words) took 1.1s, 435679 effective words/s
+2026-06-14 17:44:49,978 INFO [gensim.models.word2vec] EPOCH 7 - PROGRESS: at 90.30% examples, 418717 words/s, in_qsize 6, out_qsize 0
+2026-06-14 17:44:50,038 INFO [gensim.models.word2vec] EPOCH 7: training on 608516 raw words (466754 effective words) took 1.1s, 434650 effective words/s
+2026-06-14 17:44:51,043 INFO [gensim.models.word2vec] EPOCH 8 - PROGRESS: at 90.37% examples, 423330 words/s, in_qsize 6, out_qsize 0
+2026-06-14 17:44:51,105 INFO [gensim.models.word2vec] EPOCH 8: training on 608516 raw words (467151 effective words) took 1.1s, 438479 effective words/s
+2026-06-14 17:44:52,112 INFO [gensim.models.word2vec] EPOCH 9 - PROGRESS: at 90.37% examples, 422447 words/s, in_qsize 6, out_qsize 0
+2026-06-14 17:44:52,171 INFO [gensim.models.word2vec] EPOCH 9: training on 608516 raw words (467065 effective words) took 1.1s, 438719 effective words/s
+2026-06-14 17:44:52,171 INFO [gensim.utils] Doc2Vec lifecycle event {'msg': 'training on 6085160 raw words (4669937 effective words) took 10.7s, 437258 effective words/s', 'datetime': '2026-06-14T17:44:52.171307', 'gensim': '4.4.0', 'python': '3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]', 'platform': 'Linux-3.10.0-1160.90.1.el7.x86_64-x86_64-with-glibc2.17', 'event': 'train'}
+2026-06-14 17:44:52,171 INFO [gensim.utils] Doc2Vec lifecycle event {'params': 'Doc2Vec<dm/m,d100,n5,w5,mc2,s0.001,t4>', 'datetime': '2026-06-14T17:44:52.171438', 'gensim': '4.4.0', 'python': '3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]', 'platform': 'Linux-3.10.0-1160.90.1.el7.x86_64-x86_64-with-glibc2.17', 'event': 'created'}
+2026-06-14 17:44:52,171 INFO [features] Doc2Vec vocab size: 22590
+2026-06-14 17:45:00,869 INFO [metrics] feature_fit_transform took 20.0127 s
+2026-06-14 17:45:02,099 INFO [metrics] feature_transform_val took 1.2302 s
+2026-06-14 17:45:04,434 INFO [metrics] feature_transform_test took 2.3349 s
+2026-06-14 17:45:10,570 INFO [metrics] train took 6.1354 s
+2026-06-14 17:45:10,576 INFO [metrics] inference_val took 0.0057 s
+2026-06-14 17:45:10,585 INFO [metrics] inference_test took 0.0094 s
+2026-06-14 17:45:10,608 INFO [serial_pipeline] [doc2vec × xgboost]  acc=0.9371  f1=0.9362  feat=20.01s  train=6.14s  inf=0.0094s
+2026-06-14 17:45:10,611 INFO [serial_pipeline] === doc2vec × svm ===
+2026-06-14 17:45:10,659 INFO [gensim.models.doc2vec] collecting all words and their counts
+2026-06-14 17:45:10,659 INFO [gensim.models.doc2vec] PROGRESS: at example #0, processed 0 words (0 words/s), 0 word types, 0 tags
+2026-06-14 17:45:10,781 INFO [gensim.models.doc2vec] collected 41262 word types and 1557 unique tags from a corpus of 1557 examples and 608516 words
+2026-06-14 17:45:10,781 INFO [gensim.models.word2vec] Creating a fresh vocabulary
+2026-06-14 17:45:10,856 INFO [gensim.utils] Doc2Vec lifecycle event {'msg': 'effective_min_count=2 retains 22590 unique words (54.75% of original 41262, drops 18672)', 'datetime': '2026-06-14T17:45:10.856253', 'gensim': '4.4.0', 'python': '3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]', 'platform': 'Linux-3.10.0-1160.90.1.el7.x86_64-x86_64-with-glibc2.17', 'event': 'prepare_vocab'}
+2026-06-14 17:45:10,856 INFO [gensim.utils] Doc2Vec lifecycle event {'msg': 'effective_min_count=2 leaves 589844 word corpus (96.93% of original 608516, drops 18672)', 'datetime': '2026-06-14T17:45:10.856521', 'gensim': '4.4.0', 'python': '3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]', 'platform': 'Linux-3.10.0-1160.90.1.el7.x86_64-x86_64-with-glibc2.17', 'event': 'prepare_vocab'}
+2026-06-14 17:45:10,986 INFO [gensim.models.word2vec] deleting the raw counts dictionary of 41262 items
+2026-06-14 17:45:10,987 INFO [gensim.models.word2vec] sample=0.001 downsamples 40 most-common words
+2026-06-14 17:45:10,987 INFO [gensim.utils] Doc2Vec lifecycle event {'msg': 'downsampling leaves estimated 465481.1286641292 word corpus (78.9%% of prior 589844)', 'datetime': '2026-06-14T17:45:10.987490', 'gensim': '4.4.0', 'python': '3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]', 'platform': 'Linux-3.10.0-1160.90.1.el7.x86_64-x86_64-with-glibc2.17', 'event': 'prepare_vocab'}
+2026-06-14 17:45:11,230 INFO [gensim.models.word2vec] estimated required memory for 22590 words and 100 dimensions: 30301200 bytes
+2026-06-14 17:45:11,230 INFO [gensim.models.word2vec] resetting layer weights
+2026-06-14 17:45:11,242 INFO [gensim.utils] Doc2Vec lifecycle event {'msg': 'training model with 4 workers on 22590 vocabulary and 100 features, using sg=0 hs=0 sample=0.001 negative=5 window=5 shrink_windows=True', 'datetime': '2026-06-14T17:45:11.242104', 'gensim': '4.4.0', 'python': '3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]', 'platform': 'Linux-3.10.0-1160.90.1.el7.x86_64-x86_64-with-glibc2.17', 'event': 'train'}
+2026-06-14 17:45:12,260 INFO [gensim.models.word2vec] EPOCH 0 - PROGRESS: at 90.37% examples, 417469 words/s, in_qsize 6, out_qsize 0
+2026-06-14 17:45:12,314 INFO [gensim.models.word2vec] EPOCH 0: training on 608516 raw words (466844 effective words) took 1.1s, 435645 effective words/s
+2026-06-14 17:45:13,320 INFO [gensim.models.word2vec] EPOCH 1 - PROGRESS: at 90.37% examples, 422637 words/s, in_qsize 6, out_qsize 0
+2026-06-14 17:45:13,386 INFO [gensim.models.word2vec] EPOCH 1: training on 608516 raw words (466779 effective words) took 1.1s, 436135 effective words/s
+2026-06-14 17:45:14,401 INFO [gensim.models.word2vec] EPOCH 2 - PROGRESS: at 90.30% examples, 418981 words/s, in_qsize 6, out_qsize 0
+2026-06-14 17:45:14,456 INFO [gensim.models.word2vec] EPOCH 2: training on 608516 raw words (467058 effective words) took 1.1s, 437005 effective words/s
+2026-06-14 17:45:15,479 INFO [gensim.models.word2vec] EPOCH 3 - PROGRESS: at 90.37% examples, 415982 words/s, in_qsize 6, out_qsize 0
+2026-06-14 17:45:15,534 INFO [gensim.models.word2vec] EPOCH 3: training on 608516 raw words (467251 effective words) took 1.1s, 433806 effective words/s
+2026-06-14 17:45:16,560 INFO [gensim.models.word2vec] EPOCH 4 - PROGRESS: at 92.10% examples, 422068 words/s, in_qsize 5, out_qsize 0
+2026-06-14 17:45:16,604 INFO [gensim.models.word2vec] EPOCH 4: training on 608516 raw words (467275 effective words) took 1.1s, 437190 effective words/s
+2026-06-14 17:45:17,614 INFO [gensim.models.word2vec] EPOCH 5 - PROGRESS: at 90.37% examples, 421491 words/s, in_qsize 6, out_qsize 0
+2026-06-14 17:45:17,673 INFO [gensim.models.word2vec] EPOCH 5: training on 608516 raw words (467442 effective words) took 1.1s, 437898 effective words/s
+2026-06-14 17:45:18,677 INFO [gensim.models.word2vec] EPOCH 6 - PROGRESS: at 90.37% examples, 423530 words/s, in_qsize 6, out_qsize 0
+2026-06-14 17:45:18,738 INFO [gensim.models.word2vec] EPOCH 6: training on 608516 raw words (467174 effective words) took 1.1s, 439085 effective words/s
+2026-06-14 17:45:19,750 INFO [gensim.models.word2vec] EPOCH 7 - PROGRESS: at 90.37% examples, 420106 words/s, in_qsize 6, out_qsize 0
+2026-06-14 17:45:19,806 INFO [gensim.models.word2vec] EPOCH 7: training on 608516 raw words (466672 effective words) took 1.1s, 437467 effective words/s
+2026-06-14 17:45:20,815 INFO [gensim.models.word2vec] EPOCH 8 - PROGRESS: at 90.37% examples, 421204 words/s, in_qsize 6, out_qsize 0
+2026-06-14 17:45:20,871 INFO [gensim.models.word2vec] EPOCH 8: training on 608516 raw words (466801 effective words) took 1.1s, 438688 effective words/s
+2026-06-14 17:45:21,880 INFO [gensim.models.word2vec] EPOCH 9 - PROGRESS: at 90.37% examples, 421431 words/s, in_qsize 6, out_qsize 0
+2026-06-14 17:45:21,943 INFO [gensim.models.word2vec] EPOCH 9: training on 608516 raw words (467005 effective words) took 1.1s, 436333 effective words/s
+2026-06-14 17:45:21,943 INFO [gensim.utils] Doc2Vec lifecycle event {'msg': 'training on 6085160 raw words (4670301 effective words) took 10.7s, 436432 effective words/s', 'datetime': '2026-06-14T17:45:21.943431', 'gensim': '4.4.0', 'python': '3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]', 'platform': 'Linux-3.10.0-1160.90.1.el7.x86_64-x86_64-with-glibc2.17', 'event': 'train'}
+2026-06-14 17:45:21,943 INFO [gensim.utils] Doc2Vec lifecycle event {'params': 'Doc2Vec<dm/m,d100,n5,w5,mc2,s0.001,t4>', 'datetime': '2026-06-14T17:45:21.943556', 'gensim': '4.4.0', 'python': '3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]', 'platform': 'Linux-3.10.0-1160.90.1.el7.x86_64-x86_64-with-glibc2.17', 'event': 'created'}
+2026-06-14 17:45:21,943 INFO [features] Doc2Vec vocab size: 22590
+2026-06-14 17:45:30,741 INFO [metrics] feature_fit_transform took 20.1304 s
+2026-06-14 17:45:31,964 INFO [metrics] feature_transform_val took 1.2222 s
+2026-06-14 17:45:34,334 INFO [metrics] feature_transform_test took 2.3695 s
+2026-06-14 17:45:34,475 INFO [metrics] train took 0.1409 s
+2026-06-14 17:45:34,478 INFO [metrics] inference_val took 0.0029 s
+2026-06-14 17:45:34,484 INFO [metrics] inference_test took 0.0051 s
+2026-06-14 17:45:34,507 INFO [serial_pipeline] [doc2vec × svm]  acc=0.9348  f1=0.9341  feat=20.13s  train=0.14s  inf=0.0051s
+2026-06-14 17:45:34,510 INFO [serial_pipeline] === doc2vec × naive_bayes ===
+2026-06-14 17:45:34,650 INFO [gensim.models.doc2vec] collecting all words and their counts
+2026-06-14 17:45:34,650 INFO [gensim.models.doc2vec] PROGRESS: at example #0, processed 0 words (0 words/s), 0 word types, 0 tags
+2026-06-14 17:45:34,780 INFO [gensim.models.doc2vec] collected 41262 word types and 1557 unique tags from a corpus of 1557 examples and 608516 words
+2026-06-14 17:45:34,780 INFO [gensim.models.word2vec] Creating a fresh vocabulary
+2026-06-14 17:45:34,859 INFO [gensim.utils] Doc2Vec lifecycle event {'msg': 'effective_min_count=2 retains 22590 unique words (54.75% of original 41262, drops 18672)', 'datetime': '2026-06-14T17:45:34.859724', 'gensim': '4.4.0', 'python': '3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]', 'platform': 'Linux-3.10.0-1160.90.1.el7.x86_64-x86_64-with-glibc2.17', 'event': 'prepare_vocab'}
+2026-06-14 17:45:34,860 INFO [gensim.utils] Doc2Vec lifecycle event {'msg': 'effective_min_count=2 leaves 589844 word corpus (96.93% of original 608516, drops 18672)', 'datetime': '2026-06-14T17:45:34.860014', 'gensim': '4.4.0', 'python': '3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]', 'platform': 'Linux-3.10.0-1160.90.1.el7.x86_64-x86_64-with-glibc2.17', 'event': 'prepare_vocab'}
+2026-06-14 17:45:34,995 INFO [gensim.models.word2vec] deleting the raw counts dictionary of 41262 items
+2026-06-14 17:45:34,996 INFO [gensim.models.word2vec] sample=0.001 downsamples 40 most-common words
+2026-06-14 17:45:34,997 INFO [gensim.utils] Doc2Vec lifecycle event {'msg': 'downsampling leaves estimated 465481.1286641292 word corpus (78.9%% of prior 589844)', 'datetime': '2026-06-14T17:45:34.996995', 'gensim': '4.4.0', 'python': '3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]', 'platform': 'Linux-3.10.0-1160.90.1.el7.x86_64-x86_64-with-glibc2.17', 'event': 'prepare_vocab'}
+2026-06-14 17:45:35,239 INFO [gensim.models.word2vec] estimated required memory for 22590 words and 100 dimensions: 30301200 bytes
+2026-06-14 17:45:35,239 INFO [gensim.models.word2vec] resetting layer weights
+2026-06-14 17:45:35,251 INFO [gensim.utils] Doc2Vec lifecycle event {'msg': 'training model with 4 workers on 22590 vocabulary and 100 features, using sg=0 hs=0 sample=0.001 negative=5 window=5 shrink_windows=True', 'datetime': '2026-06-14T17:45:35.251471', 'gensim': '4.4.0', 'python': '3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]', 'platform': 'Linux-3.10.0-1160.90.1.el7.x86_64-x86_64-with-glibc2.17', 'event': 'train'}
+2026-06-14 17:45:36,289 INFO [gensim.models.word2vec] EPOCH 0 - PROGRESS: at 92.16% examples, 418039 words/s, in_qsize 5, out_qsize 0
+2026-06-14 17:45:36,337 INFO [gensim.models.word2vec] EPOCH 0: training on 608516 raw words (467331 effective words) took 1.1s, 431673 effective words/s
+2026-06-14 17:45:37,362 INFO [gensim.models.word2vec] EPOCH 1 - PROGRESS: at 84.52% examples, 385480 words/s, in_qsize 7, out_qsize 0
+2026-06-14 17:45:37,496 INFO [gensim.models.word2vec] EPOCH 1: training on 608516 raw words (466886 effective words) took 1.2s, 402977 effective words/s
+2026-06-14 17:45:38,504 INFO [gensim.models.word2vec] EPOCH 2 - PROGRESS: at 84.52% examples, 393020 words/s, in_qsize 7, out_qsize 0
+2026-06-14 17:45:38,642 INFO [gensim.models.word2vec] EPOCH 2: training on 608516 raw words (467409 effective words) took 1.1s, 408381 effective words/s
+2026-06-14 17:45:39,658 INFO [gensim.models.word2vec] EPOCH 3 - PROGRESS: at 84.52% examples, 389282 words/s, in_qsize 7, out_qsize 0
+2026-06-14 17:45:39,795 INFO [gensim.models.word2vec] EPOCH 3: training on 608516 raw words (466992 effective words) took 1.2s, 405515 effective words/s
+2026-06-14 17:45:40,798 INFO [gensim.models.word2vec] EPOCH 4 - PROGRESS: at 84.52% examples, 394096 words/s, in_qsize 7, out_qsize 0
+2026-06-14 17:45:40,931 INFO [gensim.models.word2vec] EPOCH 4: training on 608516 raw words (466869 effective words) took 1.1s, 411268 effective words/s
+2026-06-14 17:45:41,947 INFO [gensim.models.word2vec] EPOCH 5 - PROGRESS: at 84.52% examples, 389246 words/s, in_qsize 7, out_qsize 0
+2026-06-14 17:45:42,089 INFO [gensim.models.word2vec] EPOCH 5: training on 608516 raw words (466904 effective words) took 1.2s, 403783 effective words/s
+2026-06-14 17:45:43,116 INFO [gensim.models.word2vec] EPOCH 6 - PROGRESS: at 86.13% examples, 392339 words/s, in_qsize 7, out_qsize 0
+2026-06-14 17:45:43,238 INFO [gensim.models.word2vec] EPOCH 6: training on 608516 raw words (466900 effective words) took 1.1s, 406630 effective words/s
+2026-06-14 17:45:44,242 INFO [gensim.models.word2vec] EPOCH 7 - PROGRESS: at 84.52% examples, 393931 words/s, in_qsize 7, out_qsize 0
+2026-06-14 17:45:44,370 INFO [gensim.models.word2vec] EPOCH 7: training on 608516 raw words (467340 effective words) took 1.1s, 413411 effective words/s
+2026-06-14 17:45:45,382 INFO [gensim.models.word2vec] EPOCH 8 - PROGRESS: at 87.35% examples, 406769 words/s, in_qsize 7, out_qsize 0
+2026-06-14 17:45:45,495 INFO [gensim.models.word2vec] EPOCH 8: training on 608516 raw words (466590 effective words) took 1.1s, 416351 effective words/s
+2026-06-14 17:45:46,504 INFO [gensim.models.word2vec] EPOCH 9 - PROGRESS: at 85.74% examples, 399422 words/s, in_qsize 7, out_qsize 0
+2026-06-14 17:45:46,620 INFO [gensim.models.word2vec] EPOCH 9: training on 608516 raw words (467026 effective words) took 1.1s, 415900 effective words/s
+2026-06-14 17:45:46,620 INFO [gensim.utils] Doc2Vec lifecycle event {'msg': 'training on 6085160 raw words (4670247 effective words) took 11.4s, 410802 effective words/s', 'datetime': '2026-06-14T17:45:46.620295', 'gensim': '4.4.0', 'python': '3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]', 'platform': 'Linux-3.10.0-1160.90.1.el7.x86_64-x86_64-with-glibc2.17', 'event': 'train'}
+2026-06-14 17:45:46,620 INFO [gensim.utils] Doc2Vec lifecycle event {'params': 'Doc2Vec<dm/m,d100,n5,w5,mc2,s0.001,t4>', 'datetime': '2026-06-14T17:45:46.620422', 'gensim': '4.4.0', 'python': '3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]', 'platform': 'Linux-3.10.0-1160.90.1.el7.x86_64-x86_64-with-glibc2.17', 'event': 'created'}
+2026-06-14 17:45:46,620 INFO [features] Doc2Vec vocab size: 22590
+2026-06-14 17:45:55,548 INFO [metrics] feature_fit_transform took 21.0375 s
+2026-06-14 17:45:56,892 INFO [metrics] feature_transform_val took 1.3393 s
+2026-06-14 17:45:59,439 INFO [metrics] feature_transform_test took 2.5424 s
+2026-06-14 17:45:59,447 INFO [metrics] train took 0.0028 s
+2026-06-14 17:45:59,448 INFO [metrics] inference_val took 0.0003 s
+2026-06-14 17:45:59,448 INFO [metrics] inference_test took 0.0004 s
+2026-06-14 17:45:59,471 INFO [serial_pipeline] [doc2vec × naive_bayes]  acc=0.8427  f1=0.8234  feat=21.04s  train=0.00s  inf=0.0004s
+2026-06-14 17:45:59,473 INFO [serial_pipeline] === doc2vec × knn ===
+2026-06-14 17:45:59,522 INFO [gensim.models.doc2vec] collecting all words and their counts
+2026-06-14 17:45:59,522 INFO [gensim.models.doc2vec] PROGRESS: at example #0, processed 0 words (0 words/s), 0 word types, 0 tags
+2026-06-14 17:45:59,653 INFO [gensim.models.doc2vec] collected 41262 word types and 1557 unique tags from a corpus of 1557 examples and 608516 words
+2026-06-14 17:45:59,653 INFO [gensim.models.word2vec] Creating a fresh vocabulary
+2026-06-14 17:45:59,735 INFO [gensim.utils] Doc2Vec lifecycle event {'msg': 'effective_min_count=2 retains 22590 unique words (54.75% of original 41262, drops 18672)', 'datetime': '2026-06-14T17:45:59.735100', 'gensim': '4.4.0', 'python': '3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]', 'platform': 'Linux-3.10.0-1160.90.1.el7.x86_64-x86_64-with-glibc2.17', 'event': 'prepare_vocab'}
+2026-06-14 17:45:59,735 INFO [gensim.utils] Doc2Vec lifecycle event {'msg': 'effective_min_count=2 leaves 589844 word corpus (96.93% of original 608516, drops 18672)', 'datetime': '2026-06-14T17:45:59.735431', 'gensim': '4.4.0', 'python': '3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]', 'platform': 'Linux-3.10.0-1160.90.1.el7.x86_64-x86_64-with-glibc2.17', 'event': 'prepare_vocab'}
+2026-06-14 17:45:59,874 INFO [gensim.models.word2vec] deleting the raw counts dictionary of 41262 items
+2026-06-14 17:45:59,875 INFO [gensim.models.word2vec] sample=0.001 downsamples 40 most-common words
+2026-06-14 17:45:59,875 INFO [gensim.utils] Doc2Vec lifecycle event {'msg': 'downsampling leaves estimated 465481.1286641292 word corpus (78.9%% of prior 589844)', 'datetime': '2026-06-14T17:45:59.875821', 'gensim': '4.4.0', 'python': '3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]', 'platform': 'Linux-3.10.0-1160.90.1.el7.x86_64-x86_64-with-glibc2.17', 'event': 'prepare_vocab'}
+2026-06-14 17:46:00,121 INFO [gensim.models.word2vec] estimated required memory for 22590 words and 100 dimensions: 30301200 bytes
+2026-06-14 17:46:00,122 INFO [gensim.models.word2vec] resetting layer weights
+2026-06-14 17:46:00,134 INFO [gensim.utils] Doc2Vec lifecycle event {'msg': 'training model with 4 workers on 22590 vocabulary and 100 features, using sg=0 hs=0 sample=0.001 negative=5 window=5 shrink_windows=True', 'datetime': '2026-06-14T17:46:00.134409', 'gensim': '4.4.0', 'python': '3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]', 'platform': 'Linux-3.10.0-1160.90.1.el7.x86_64-x86_64-with-glibc2.17', 'event': 'train'}
+2026-06-14 17:46:01,179 INFO [gensim.models.word2vec] EPOCH 0 - PROGRESS: at 84.52% examples, 379517 words/s, in_qsize 7, out_qsize 0
+2026-06-14 17:46:01,327 INFO [gensim.models.word2vec] EPOCH 0: training on 608516 raw words (467178 effective words) took 1.2s, 392718 effective words/s
+2026-06-14 17:46:02,363 INFO [gensim.models.word2vec] EPOCH 1 - PROGRESS: at 84.52% examples, 382453 words/s, in_qsize 7, out_qsize 0
+2026-06-14 17:46:02,519 INFO [gensim.models.word2vec] EPOCH 1: training on 608516 raw words (467308 effective words) took 1.2s, 392645 effective words/s
+2026-06-14 17:46:03,568 INFO [gensim.models.word2vec] EPOCH 2 - PROGRESS: at 84.52% examples, 377181 words/s, in_qsize 7, out_qsize 0
+2026-06-14 17:46:03,708 INFO [gensim.models.word2vec] EPOCH 2: training on 608516 raw words (467336 effective words) took 1.2s, 393279 effective words/s
+2026-06-14 17:46:04,728 INFO [gensim.models.word2vec] EPOCH 3 - PROGRESS: at 84.52% examples, 388151 words/s, in_qsize 7, out_qsize 0
+2026-06-14 17:46:04,892 INFO [gensim.models.word2vec] EPOCH 3: training on 608516 raw words (467042 effective words) took 1.2s, 394851 effective words/s
+2026-06-14 17:46:05,920 INFO [gensim.models.word2vec] EPOCH 4 - PROGRESS: at 84.52% examples, 385080 words/s, in_qsize 7, out_qsize 0
+2026-06-14 17:46:06,064 INFO [gensim.models.word2vec] EPOCH 4: training on 608516 raw words (466995 effective words) took 1.2s, 399043 effective words/s
+2026-06-14 17:46:07,093 INFO [gensim.models.word2vec] EPOCH 5 - PROGRESS: at 84.52% examples, 384352 words/s, in_qsize 7, out_qsize 0
+2026-06-14 17:46:07,241 INFO [gensim.models.word2vec] EPOCH 5: training on 608516 raw words (467170 effective words) took 1.2s, 397297 effective words/s
+2026-06-14 17:46:08,243 INFO [gensim.models.word2vec] EPOCH 6 - PROGRESS: at 87.35% examples, 409326 words/s, in_qsize 7, out_qsize 0
+2026-06-14 17:46:08,366 INFO [gensim.models.word2vec] EPOCH 6: training on 608516 raw words (467076 effective words) took 1.1s, 415705 effective words/s
+2026-06-14 17:46:09,377 INFO [gensim.models.word2vec] EPOCH 7 - PROGRESS: at 85.74% examples, 398256 words/s, in_qsize 7, out_qsize 0
+2026-06-14 17:46:09,501 INFO [gensim.models.word2vec] EPOCH 7: training on 608516 raw words (467037 effective words) took 1.1s, 411731 effective words/s
+2026-06-14 17:46:10,520 INFO [gensim.models.word2vec] EPOCH 8 - PROGRESS: at 86.90% examples, 402801 words/s, in_qsize 7, out_qsize 0
+2026-06-14 17:46:10,630 INFO [gensim.models.word2vec] EPOCH 8: training on 608516 raw words (466922 effective words) took 1.1s, 413929 effective words/s
+2026-06-14 17:46:11,641 INFO [gensim.models.word2vec] EPOCH 9 - PROGRESS: at 88.50% examples, 413468 words/s, in_qsize 7, out_qsize 0
+2026-06-14 17:46:11,739 INFO [gensim.models.word2vec] EPOCH 9: training on 608516 raw words (467276 effective words) took 1.1s, 421759 effective words/s
+2026-06-14 17:46:11,740 INFO [gensim.utils] Doc2Vec lifecycle event {'msg': 'training on 6085160 raw words (4671340 effective words) took 11.6s, 402510 effective words/s', 'datetime': '2026-06-14T17:46:11.740252', 'gensim': '4.4.0', 'python': '3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]', 'platform': 'Linux-3.10.0-1160.90.1.el7.x86_64-x86_64-with-glibc2.17', 'event': 'train'}
+2026-06-14 17:46:11,740 INFO [gensim.utils] Doc2Vec lifecycle event {'params': 'Doc2Vec<dm/m,d100,n5,w5,mc2,s0.001,t4>', 'datetime': '2026-06-14T17:46:11.740384', 'gensim': '4.4.0', 'python': '3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]', 'platform': 'Linux-3.10.0-1160.90.1.el7.x86_64-x86_64-with-glibc2.17', 'event': 'created'}
+2026-06-14 17:46:11,740 INFO [features] Doc2Vec vocab size: 22590
+2026-06-14 17:46:20,564 INFO [metrics] feature_fit_transform took 21.0900 s
+2026-06-14 17:46:21,808 INFO [metrics] feature_transform_val took 1.2388 s
+2026-06-14 17:46:24,145 INFO [metrics] feature_transform_test took 2.3321 s
+2026-06-14 17:46:24,151 INFO [metrics] train took 0.0020 s
+2026-06-14 17:46:24,170 INFO [metrics] inference_val took 0.0184 s
+2026-06-14 17:46:24,201 INFO [metrics] inference_test took 0.0305 s
+2026-06-14 17:46:24,224 INFO [serial_pipeline] [doc2vec × knn]  acc=0.9371  f1=0.9353  feat=21.09s  train=0.00s  inf=0.0305s
+2026-06-14 17:46:24,228 INFO [serial_pipeline] === doc2vec × mlp ===
+2026-06-14 17:46:24,278 INFO [gensim.models.doc2vec] collecting all words and their counts
+2026-06-14 17:46:24,279 INFO [gensim.models.doc2vec] PROGRESS: at example #0, processed 0 words (0 words/s), 0 word types, 0 tags
+2026-06-14 17:46:24,401 INFO [gensim.models.doc2vec] collected 41262 word types and 1557 unique tags from a corpus of 1557 examples and 608516 words
+2026-06-14 17:46:24,402 INFO [gensim.models.word2vec] Creating a fresh vocabulary
+2026-06-14 17:46:24,478 INFO [gensim.utils] Doc2Vec lifecycle event {'msg': 'effective_min_count=2 retains 22590 unique words (54.75% of original 41262, drops 18672)', 'datetime': '2026-06-14T17:46:24.478202', 'gensim': '4.4.0', 'python': '3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]', 'platform': 'Linux-3.10.0-1160.90.1.el7.x86_64-x86_64-with-glibc2.17', 'event': 'prepare_vocab'}
+2026-06-14 17:46:24,478 INFO [gensim.utils] Doc2Vec lifecycle event {'msg': 'effective_min_count=2 leaves 589844 word corpus (96.93% of original 608516, drops 18672)', 'datetime': '2026-06-14T17:46:24.478513', 'gensim': '4.4.0', 'python': '3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]', 'platform': 'Linux-3.10.0-1160.90.1.el7.x86_64-x86_64-with-glibc2.17', 'event': 'prepare_vocab'}
+2026-06-14 17:46:24,608 INFO [gensim.models.word2vec] deleting the raw counts dictionary of 41262 items
+2026-06-14 17:46:24,609 INFO [gensim.models.word2vec] sample=0.001 downsamples 40 most-common words
+2026-06-14 17:46:24,609 INFO [gensim.utils] Doc2Vec lifecycle event {'msg': 'downsampling leaves estimated 465481.1286641292 word corpus (78.9%% of prior 589844)', 'datetime': '2026-06-14T17:46:24.609323', 'gensim': '4.4.0', 'python': '3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]', 'platform': 'Linux-3.10.0-1160.90.1.el7.x86_64-x86_64-with-glibc2.17', 'event': 'prepare_vocab'}
+2026-06-14 17:46:24,847 INFO [gensim.models.word2vec] estimated required memory for 22590 words and 100 dimensions: 30301200 bytes
+2026-06-14 17:46:24,847 INFO [gensim.models.word2vec] resetting layer weights
+2026-06-14 17:46:24,859 INFO [gensim.utils] Doc2Vec lifecycle event {'msg': 'training model with 4 workers on 22590 vocabulary and 100 features, using sg=0 hs=0 sample=0.001 negative=5 window=5 shrink_windows=True', 'datetime': '2026-06-14T17:46:24.859592', 'gensim': '4.4.0', 'python': '3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]', 'platform': 'Linux-3.10.0-1160.90.1.el7.x86_64-x86_64-with-glibc2.17', 'event': 'train'}
+2026-06-14 17:46:25,865 INFO [gensim.models.word2vec] EPOCH 0 - PROGRESS: at 90.37% examples, 424193 words/s, in_qsize 6, out_qsize 0
+2026-06-14 17:46:25,926 INFO [gensim.models.word2vec] EPOCH 0: training on 608516 raw words (467169 effective words) took 1.1s, 439220 effective words/s
+2026-06-14 17:46:26,936 INFO [gensim.models.word2vec] EPOCH 1 - PROGRESS: at 92.16% examples, 428916 words/s, in_qsize 5, out_qsize 0
+2026-06-14 17:46:26,992 INFO [gensim.models.word2vec] EPOCH 1: training on 608516 raw words (467125 effective words) took 1.1s, 438975 effective words/s
+2026-06-14 17:46:27,997 INFO [gensim.models.word2vec] EPOCH 2 - PROGRESS: at 90.37% examples, 423254 words/s, in_qsize 6, out_qsize 0
+2026-06-14 17:46:28,055 INFO [gensim.models.word2vec] EPOCH 2: training on 608516 raw words (467179 effective words) took 1.1s, 439999 effective words/s
+2026-06-14 17:46:29,065 INFO [gensim.models.word2vec] EPOCH 3 - PROGRESS: at 92.16% examples, 428532 words/s, in_qsize 5, out_qsize 0
+2026-06-14 17:46:29,108 INFO [gensim.models.word2vec] EPOCH 3: training on 608516 raw words (467133 effective words) took 1.1s, 443930 effective words/s
+2026-06-14 17:46:30,118 INFO [gensim.models.word2vec] EPOCH 4 - PROGRESS: at 90.37% examples, 421215 words/s, in_qsize 6, out_qsize 0
+2026-06-14 17:46:30,169 INFO [gensim.models.word2vec] EPOCH 4: training on 608516 raw words (467006 effective words) took 1.1s, 440527 effective words/s
+2026-06-14 17:46:31,176 INFO [gensim.models.word2vec] EPOCH 5 - PROGRESS: at 90.37% examples, 422494 words/s, in_qsize 6, out_qsize 0
+2026-06-14 17:46:31,230 INFO [gensim.models.word2vec] EPOCH 5: training on 608516 raw words (466960 effective words) took 1.1s, 440731 effective words/s
+2026-06-14 17:46:32,242 INFO [gensim.models.word2vec] EPOCH 6 - PROGRESS: at 90.30% examples, 420157 words/s, in_qsize 6, out_qsize 0
+2026-06-14 17:46:32,294 INFO [gensim.models.word2vec] EPOCH 6: training on 608516 raw words (466956 effective words) took 1.1s, 439565 effective words/s
+2026-06-14 17:46:33,303 INFO [gensim.models.word2vec] EPOCH 7 - PROGRESS: at 90.37% examples, 421318 words/s, in_qsize 6, out_qsize 0
+2026-06-14 17:46:33,360 INFO [gensim.models.word2vec] EPOCH 7: training on 608516 raw words (467156 effective words) took 1.1s, 438410 effective words/s
+2026-06-14 17:46:34,365 INFO [gensim.models.word2vec] EPOCH 8 - PROGRESS: at 90.37% examples, 422819 words/s, in_qsize 6, out_qsize 0
+2026-06-14 17:46:34,420 INFO [gensim.models.word2vec] EPOCH 8: training on 608516 raw words (466681 effective words) took 1.1s, 440806 effective words/s
+2026-06-14 17:46:35,424 INFO [gensim.models.word2vec] EPOCH 9 - PROGRESS: at 90.37% examples, 423771 words/s, in_qsize 6, out_qsize 0
+2026-06-14 17:46:35,482 INFO [gensim.models.word2vec] EPOCH 9: training on 608516 raw words (467128 effective words) took 1.1s, 440318 effective words/s
+2026-06-14 17:46:35,482 INFO [gensim.utils] Doc2Vec lifecycle event {'msg': 'training on 6085160 raw words (4670493 effective words) took 10.6s, 439655 effective words/s', 'datetime': '2026-06-14T17:46:35.482930', 'gensim': '4.4.0', 'python': '3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]', 'platform': 'Linux-3.10.0-1160.90.1.el7.x86_64-x86_64-with-glibc2.17', 'event': 'train'}
+2026-06-14 17:46:35,483 INFO [gensim.utils] Doc2Vec lifecycle event {'params': 'Doc2Vec<dm/m,d100,n5,w5,mc2,s0.001,t4>', 'datetime': '2026-06-14T17:46:35.483069', 'gensim': '4.4.0', 'python': '3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]', 'platform': 'Linux-3.10.0-1160.90.1.el7.x86_64-x86_64-with-glibc2.17', 'event': 'created'}
+2026-06-14 17:46:35,483 INFO [features] Doc2Vec vocab size: 22590
+2026-06-14 17:46:44,076 INFO [metrics] feature_fit_transform took 19.8485 s
+2026-06-14 17:46:45,300 INFO [metrics] feature_transform_val took 1.2183 s
+2026-06-14 17:46:47,612 INFO [metrics] feature_transform_test took 2.3117 s
+2026-06-14 17:46:47,946 INFO [metrics] train took 0.3295 s
+2026-06-14 17:46:47,947 INFO [metrics] inference_val took 0.0007 s
+2026-06-14 17:46:47,948 INFO [metrics] inference_test took 0.0010 s
+2026-06-14 17:46:47,970 INFO [serial_pipeline] [doc2vec × mlp]  acc=0.9348  f1=0.9348  feat=19.85s  train=0.33s  inf=0.0010s
+2026-06-14 17:46:47,973 INFO [serial_pipeline] === raw_text × llama ===
+2026-06-14 17:46:56,434 INFO [httpx] HTTP Request: HEAD https://huggingface.co/meta-llama/Meta-Llama-3-8B-Instruct/resolve/main/config.json "HTTP/1.1 200 OK"
+2026-06-14 17:46:56,638 INFO [httpx] HTTP Request: HEAD https://huggingface.co/meta-llama/Meta-Llama-3-8B-Instruct/resolve/main/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-14 17:46:56,785 INFO [httpx] HTTP Request: GET https://huggingface.co/api/models/meta-llama/Meta-Llama-3-8B-Instruct/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-14 17:46:56,926 INFO [httpx] HTTP Request: GET https://huggingface.co/api/models/meta-llama/Meta-Llama-3-8B-Instruct/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-14 17:46:58,586 INFO [httpx] HTTP Request: GET https://huggingface.co/api/models/meta-llama/Meta-Llama-3-8B-Instruct "HTTP/1.1 200 OK"
+2026-06-14 17:46:58,763 INFO [httpx] HTTP Request: HEAD https://huggingface.co/meta-llama/Meta-Llama-3-8B-Instruct/resolve/main/config.json "HTTP/1.1 200 OK"
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+Loading weights:   0%|          | 0/291 [00:00<?, ?it/s]Loading weights:   0%|          | 1/291 [00:03<18:08,  3.75s/it]Loading weights:   1%|          | 2/291 [00:40<1:51:03, 23.06s/it]Loading weights:  11%|█         | 31/291 [00:42<04:11,  1.03it/s] Loading weights:  11%|█         | 32/291 [00:43<04:15,  1.01it/s]Loading weights:  11%|█▏        | 33/291 [00:44<04:09,  1.03it/s]Loading weights:  13%|█▎        | 37/291 [00:44<03:11,  1.32it/s]Loading weights:  14%|█▎        | 40/291 [00:52<04:50,  1.16s/it]Loading weights:  14%|█▍        | 41/291 [00:53<04:35,  1.10s/it]Loading weights:  17%|█▋        | 49/291 [01:00<03:58,  1.01it/s]Loading weights:  18%|█▊        | 51/291 [01:02<03:55,  1.02it/s]Loading weights:  20%|█▉        | 58/291 [01:07<03:32,  1.10it/s]Loading weights:  21%|██        | 60/291 [01:09<03:22,  1.14it/s]Loading weights:  23%|██▎       | 67/291 [01:16<03:38,  1.02it/s]Loading weights:  24%|██▎       | 69/291 [01:17<03:13,  1.15it/s]Loading weights:  26%|██▌       | 76/291 [01:23<03:07,  1.15it/s]Loading weights:  30%|██▉       | 86/291 [01:23<01:38,  2.08it/s]Loading weights:  30%|███       | 88/291 [01:24<01:27,  2.31it/s]Loading weights:  31%|███       | 90/291 [01:26<01:46,  1.89it/s]Loading weights:  31%|███▏      | 91/291 [01:26<01:40,  1.99it/s]Loading weights:  32%|███▏      | 94/291 [01:33<03:18,  1.01s/it]Loading weights:  33%|███▎      | 95/291 [01:33<03:02,  1.07it/s]Loading weights:  33%|███▎      | 96/291 [01:35<03:20,  1.03s/it]Loading weights:  35%|███▌      | 103/291 [01:41<03:04,  1.02it/s]Loading weights:  36%|███▌      | 104/291 [01:42<02:51,  1.09it/s]Loading weights:  36%|███▌      | 105/291 [01:42<02:37,  1.18it/s]Loading weights:  38%|███▊      | 112/291 [01:50<02:56,  1.02it/s]Loading weights:  39%|███▉      | 113/291 [01:50<02:39,  1.12it/s]Loading weights:  42%|████▏     | 121/291 [01:56<02:20,  1.21it/s]Loading weights:  42%|████▏     | 122/291 [01:56<02:10,  1.29it/s]Loading weights:  42%|████▏     | 123/291 [01:59<02:36,  1.07it/s]Loading weights:  45%|████▍     | 130/291 [02:05<02:31,  1.06it/s]Loading weights:  45%|████▌     | 132/291 [02:05<02:06,  1.26it/s]Loading weights:  48%|████▊     | 139/291 [02:14<02:34,  1.02s/it]Loading weights:  48%|████▊     | 140/291 [02:14<02:21,  1.07it/s]Loading weights:  51%|█████     | 148/291 [02:21<02:07,  1.12it/s]Loading weights:  51%|█████     | 149/291 [02:23<02:21,  1.00it/s]Loading weights:  52%|█████▏    | 150/291 [02:23<02:07,  1.11it/s]Loading weights:  54%|█████▍    | 157/291 [02:30<02:05,  1.07it/s]Loading weights:  54%|█████▍    | 158/291 [02:30<01:55,  1.15it/s]Loading weights:  55%|█████▍    | 159/291 [02:33<02:17,  1.04s/it]Loading weights:  57%|█████▋    | 166/291 [02:39<02:04,  1.01it/s]Loading weights:  58%|█████▊    | 168/291 [02:40<01:43,  1.19it/s]Loading weights:  60%|██████    | 175/291 [02:48<01:59,  1.03s/it]Loading weights:  61%|██████    | 177/291 [02:48<01:39,  1.15it/s]Loading weights:  64%|██████▎   | 185/291 [02:50<00:56,  1.89it/s]Loading weights:  67%|██████▋   | 194/291 [02:50<00:30,  3.20it/s]Loading weights:  69%|██████▉   | 202/291 [02:51<00:21,  4.22it/s]Loading weights:  70%|███████   | 204/291 [02:51<00:18,  4.58it/s]Loading weights:  73%|███████▎  | 211/291 [02:51<00:13,  6.11it/s]Loading weights:  73%|███████▎  | 213/291 [02:52<00:12,  6.28it/s]Loading weights:  76%|███████▌  | 220/291 [02:52<00:09,  7.78it/s]Loading weights:  76%|███████▋  | 222/291 [02:52<00:08,  8.36it/s]Loading weights:  79%|███████▊  | 229/291 [02:53<00:06,  8.97it/s]Loading weights:  79%|███████▉  | 231/291 [02:53<00:06,  9.51it/s]Loading weights:  82%|████████▏ | 238/291 [02:54<00:04, 10.94it/s]Loading weights:  82%|████████▏ | 240/291 [02:54<00:04, 10.73it/s]Loading weights:  85%|████████▍ | 247/291 [02:55<00:03, 11.11it/s]Loading weights:  86%|████████▌ | 249/291 [02:55<00:03, 11.54it/s]Loading weights:  88%|████████▊ | 256/291 [02:55<00:03, 11.17it/s]Loading weights:  89%|████████▊ | 258/291 [02:55<00:02, 11.62it/s]Loading weights:  91%|█████████ | 265/291 [02:56<00:02, 11.61it/s]Loading weights:  92%|█████████▏| 267/291 [02:56<00:01, 12.29it/s]Loading weights:  94%|█████████▍| 274/291 [02:57<00:01, 11.46it/s]Loading weights:  95%|█████████▍| 276/291 [02:57<00:01, 11.69it/s]Loading weights:  97%|█████████▋| 283/291 [02:58<00:00, 11.67it/s]Loading weights: 100%|██████████| 291/291 [02:58<00:00,  1.63it/s]
+2026-06-14 17:50:06,631 INFO [httpx] HTTP Request: HEAD https://huggingface.co/meta-llama/Meta-Llama-3-8B-Instruct/resolve/main/generation_config.json "HTTP/1.1 200 OK"
+2026-06-14 17:50:06,643 INFO [models] Loaded meta-llama/Meta-Llama-3-8B-Instruct on cuda:0
+2026-06-14 17:50:06,644 INFO [models] 'meta-llama/Meta-Llama-3-8B-Instruct' ready. 5 classes.
+2026-06-14 17:50:06,644 INFO [metrics] train took 198.6706 s
+2026-06-14 17:50:06,644 INFO [models]   [llama3] 0 / 445 …
+[transformers] Ignoring clean_up_tokenization_spaces=True for BPE tokenizer TokenizersBackend. The clean_up_tokenization post-processing step is designed for WordPiece tokenizers and is destructive for BPE (it strips spaces before punctuation). Set clean_up_tokenization_spaces=False to suppress this warning, or set clean_up_tokenization_spaces_for_bpe_even_though_it_will_corrupt_output=True to force cleanup anyway.
+2026-06-14 17:50:21,393 INFO [models]   [llama3] 100 / 445 …
+2026-06-14 17:50:33,157 INFO [models]   [llama3] 200 / 445 …
+2026-06-14 17:50:44,770 INFO [models]   [llama3] 300 / 445 …
+2026-06-14 17:50:56,661 INFO [models]   [llama3] 400 / 445 …
+2026-06-14 17:51:02,599 INFO [models] Unloaded meta-llama/Meta-Llama-3-8B-Instruct
+2026-06-14 17:51:02,611 INFO [metrics] inference_test took 55.9671 s
+2026-06-14 17:51:02,623 INFO [serial_pipeline] === raw_text × mistral ===
+2026-06-14 17:51:02,783 INFO [httpx] HTTP Request: HEAD https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-14 17:51:02,802 INFO [httpx] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/mistralai/Mistral-7B-Instruct-v0.2/63a8b081895390a26e140280378bc85ec8bce07a/config.json "HTTP/1.1 200 OK"
+2026-06-14 17:51:02,950 INFO [httpx] HTTP Request: HEAD https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-14 17:51:02,968 INFO [httpx] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/mistralai/Mistral-7B-Instruct-v0.2/63a8b081895390a26e140280378bc85ec8bce07a/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-14 17:51:03,104 INFO [httpx] HTTP Request: HEAD https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-14 17:51:03,124 INFO [httpx] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/mistralai/Mistral-7B-Instruct-v0.2/63a8b081895390a26e140280378bc85ec8bce07a/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-14 17:51:03,261 INFO [httpx] HTTP Request: GET https://huggingface.co/api/models/mistralai/Mistral-7B-Instruct-v0.2/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-14 17:51:03,394 INFO [httpx] HTTP Request: GET https://huggingface.co/api/models/mistralai/Mistral-7B-Instruct-v0.2/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-14 17:51:03,930 INFO [httpx] HTTP Request: HEAD https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-14 17:51:03,950 INFO [httpx] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/mistralai/Mistral-7B-Instruct-v0.2/63a8b081895390a26e140280378bc85ec8bce07a/config.json "HTTP/1.1 200 OK"
+Loading weights:   0%|          | 0/291 [00:00<?, ?it/s]Loading weights:   0%|          | 1/291 [00:00<03:38,  1.33it/s]Loading weights:   1%|          | 2/291 [00:20<56:05, 11.64s/it]Loading weights:   5%|▍         | 14/291 [00:20<05:03,  1.10s/it]Loading weights:   5%|▌         | 16/291 [00:21<04:23,  1.04it/s]Loading weights:   6%|▌         | 18/291 [00:22<04:07,  1.10it/s]Loading weights:   8%|▊         | 22/291 [00:30<05:55,  1.32s/it]Loading weights:   8%|▊         | 24/291 [00:32<05:18,  1.19s/it]Loading weights:  11%|█         | 31/291 [00:38<04:35,  1.06s/it]Loading weights:  11%|█         | 32/291 [00:39<04:35,  1.06s/it]Loading weights:  14%|█▎        | 40/291 [00:48<04:22,  1.05s/it]Loading weights:  14%|█▍        | 42/291 [00:49<04:01,  1.03it/s]Loading weights:  17%|█▋        | 49/291 [00:55<03:54,  1.03it/s]Loading weights:  17%|█▋        | 50/291 [00:57<04:01,  1.00s/it]Loading weights:  20%|█▉        | 58/291 [01:04<03:43,  1.04it/s]Loading weights:  20%|██        | 59/291 [01:04<03:26,  1.12it/s]Loading weights:  21%|██        | 60/291 [01:05<03:25,  1.13it/s]Loading weights:  23%|██▎       | 67/291 [01:12<03:31,  1.06it/s]Loading weights:  23%|██▎       | 68/291 [01:13<03:33,  1.05it/s]Loading weights:  24%|██▎       | 69/291 [01:13<03:10,  1.17it/s]Loading weights:  26%|██▌       | 76/291 [01:21<03:29,  1.03it/s]Loading weights:  26%|██▋       | 77/291 [01:21<03:19,  1.08it/s]Loading weights:  27%|██▋       | 78/291 [01:23<03:24,  1.04it/s]Loading weights:  29%|██▉       | 85/291 [01:29<03:18,  1.04it/s]Loading weights:  30%|██▉       | 86/291 [01:30<03:15,  1.05it/s]Loading weights:  30%|██▉       | 87/291 [01:31<03:01,  1.13it/s]Loading weights:  33%|███▎      | 95/291 [01:34<02:06,  1.55it/s]Loading weights:  36%|███▌      | 104/291 [01:35<01:03,  2.93it/s]Loading weights:  36%|███▋      | 106/291 [01:35<00:56,  3.27it/s]Loading weights:  37%|███▋      | 108/291 [01:37<01:24,  2.18it/s]Loading weights:  38%|███▊      | 110/291 [01:37<01:10,  2.58it/s]Loading weights:  38%|███▊      | 112/291 [01:45<03:22,  1.13s/it]Loading weights:  39%|███▉      | 113/291 [01:46<03:04,  1.04s/it]Loading weights:  39%|███▉      | 114/291 [01:47<03:24,  1.16s/it]Loading weights:  42%|████▏     | 121/291 [01:54<02:57,  1.05s/it]Loading weights:  42%|████▏     | 122/291 [01:55<02:45,  1.02it/s]Loading weights:  42%|████▏     | 123/291 [01:55<02:30,  1.11it/s]Loading weights:  45%|████▍     | 130/291 [02:03<02:44,  1.02s/it]Loading weights:  45%|████▌     | 131/291 [02:03<02:27,  1.08it/s]Loading weights:  45%|████▌     | 132/291 [02:03<02:16,  1.16it/s]Loading weights:  48%|████▊     | 139/291 [02:10<02:17,  1.10it/s]Loading weights:  48%|████▊     | 140/291 [02:11<02:26,  1.03it/s]Loading weights:  51%|█████     | 148/291 [02:18<02:08,  1.12it/s]Loading weights:  51%|█████     | 149/291 [02:19<02:00,  1.18it/s]Loading weights:  52%|█████▏    | 150/291 [02:20<02:10,  1.08it/s]Loading weights:  54%|█████▍    | 157/291 [02:26<02:02,  1.10it/s]Loading weights:  54%|█████▍    | 158/291 [02:27<01:55,  1.15it/s]Loading weights:  55%|█████▍    | 159/291 [02:27<01:47,  1.23it/s]Loading weights:  57%|█████▋    | 166/291 [02:35<02:02,  1.02it/s]Loading weights:  60%|██████    | 175/291 [02:42<01:41,  1.14it/s]Loading weights:  60%|██████    | 176/291 [02:42<01:35,  1.20it/s]Loading weights:  61%|██████    | 177/291 [02:44<01:41,  1.12it/s]Loading weights:  63%|██████▎   | 184/291 [02:47<01:16,  1.40it/s]Loading weights:  64%|██████▎   | 185/291 [02:51<01:40,  1.06it/s]Loading weights:  64%|██████▍   | 186/291 [02:51<01:31,  1.15it/s]Loading weights:  66%|██████▋   | 193/291 [02:57<01:22,  1.18it/s]Loading weights:  67%|██████▋   | 194/291 [02:58<01:22,  1.18it/s]Loading weights:  67%|██████▋   | 195/291 [02:58<01:14,  1.29it/s]Loading weights:  70%|███████   | 204/291 [02:59<00:31,  2.78it/s]Loading weights:  73%|███████▎  | 211/291 [03:00<00:24,  3.27it/s]Loading weights:  73%|███████▎  | 213/291 [03:00<00:21,  3.67it/s]Loading weights:  76%|███████▌  | 220/291 [03:01<00:12,  5.62it/s]Loading weights:  76%|███████▋  | 222/291 [03:09<00:53,  1.29it/s]Loading weights:  79%|███████▊  | 229/291 [03:13<00:39,  1.56it/s]Loading weights:  79%|███████▉  | 230/291 [03:13<00:37,  1.61it/s]Loading weights:  79%|███████▉  | 231/291 [03:13<00:34,  1.73it/s]Loading weights:  81%|████████  | 235/291 [03:15<00:30,  1.83it/s]Loading weights:  82%|████████▏ | 238/291 [03:22<00:54,  1.02s/it]Loading weights:  82%|████████▏ | 239/291 [03:22<00:48,  1.08it/s]Loading weights:  82%|████████▏ | 240/291 [03:22<00:41,  1.23it/s]Loading weights:  85%|████████▍ | 247/291 [03:30<00:45,  1.03s/it]Loading weights:  85%|████████▌ | 248/291 [03:31<00:40,  1.05it/s]Loading weights:  86%|████████▌ | 249/291 [03:31<00:35,  1.17it/s]Loading weights:  88%|████████▊ | 256/291 [03:38<00:31,  1.11it/s]Loading weights:  88%|████████▊ | 257/291 [03:39<00:33,  1.00it/s]Loading weights:  89%|████████▊ | 258/291 [03:40<00:30,  1.10it/s]Loading weights:  91%|█████████ | 265/291 [03:46<00:24,  1.07it/s]Loading weights:  92%|█████████▏| 267/291 [03:48<00:22,  1.07it/s]Loading weights:  94%|█████████▍| 274/291 [03:54<00:14,  1.15it/s]Loading weights:  95%|█████████▍| 275/291 [03:54<00:13,  1.21it/s]Loading weights:  95%|█████████▍| 276/291 [03:55<00:11,  1.26it/s]Loading weights:  97%|█████████▋| 283/291 [04:01<00:06,  1.17it/s]Loading weights: 100%|██████████| 291/291 [04:01<00:00,  1.20it/s]
+2026-06-14 17:55:06,579 INFO [httpx] HTTP Request: HEAD https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.2/resolve/main/generation_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-14 17:55:06,603 INFO [httpx] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/mistralai/Mistral-7B-Instruct-v0.2/63a8b081895390a26e140280378bc85ec8bce07a/generation_config.json "HTTP/1.1 200 OK"
+2026-06-14 17:55:06,614 INFO [models] Loaded mistralai/Mistral-7B-Instruct-v0.2 on cuda:0
+2026-06-14 17:55:06,614 INFO [models] 'mistralai/Mistral-7B-Instruct-v0.2' ready. 5 classes.
+2026-06-14 17:55:06,614 INFO [metrics] train took 243.9906 s
+2026-06-14 17:55:06,615 INFO [models]   [mistral] 0 / 445 …
+2026-06-14 17:55:32,793 INFO [models]   [mistral] 100 / 445 …
+2026-06-14 17:56:05,852 INFO [models]   [mistral] 200 / 445 …
+2026-06-14 17:56:37,431 INFO [models]   [mistral] 300 / 445 …
+2026-06-14 17:57:07,253 INFO [models]   [mistral] 400 / 445 …
+2026-06-14 17:57:23,793 INFO [models] Unloaded mistralai/Mistral-7B-Instruct-v0.2
+2026-06-14 17:57:23,800 INFO [metrics] inference_test took 137.1853 s
+2026-06-14 17:57:23,813 INFO [serial_pipeline] Total: 2173.0 s
+2026-06-14 17:57:23,815 INFO [metrics] Results saved → /home/ma480128/HPAI/text_classification/rysy/results/results_serial.txt
+
+real	36m21.267s
+user	28m52.503s
+sys	2m55.080s

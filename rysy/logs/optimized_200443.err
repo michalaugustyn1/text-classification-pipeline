@@ -1,0 +1,217 @@
+2026-06-14 17:57:36,705 INFO [data_utils] Loading '/home/ma480128/HPAI/text_classification/data/train_data.txt'  sep=','  header=True
+2026-06-14 17:57:36,770 INFO [data_utils] Raw shape: (2225, 2)  columns: ['Text', 'Label']
+2026-06-14 17:57:36,770 INFO [data_utils] Columns — text: 'Text'  label: 'Label'
+2026-06-14 17:57:37,235 INFO [data_utils] Loaded 2225 samples, 5 classes: [0, 1, 2, 3, 4]
+2026-06-14 17:57:37,241 INFO [data_utils] Split — train:1557  val:223  test:445
+2026-06-14 17:57:37,242 INFO [optimized_pipeline] Cache hit → /lu/tetyda/home/ma480128/HPAI/text_classification/saved_models/feature_cache/bow_5ec0212482f8.pkl
+2026-06-14 17:57:37,291 INFO [optimized_pipeline] === bow × logistic_regression ===
+/home/ma480128/miniconda3/envs/myenv/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:1272: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.8. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+/home/ma480128/miniconda3/envs/myenv/lib/python3.10/site-packages/sklearn/linear_model/_sag.py:348: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+2026-06-14 17:57:49,189 INFO [metrics] train took 11.8981 s
+2026-06-14 17:57:49,193 INFO [metrics] inference_test took 0.0035 s
+2026-06-14 17:57:49,207 INFO [optimized_pipeline] [bow × logistic_regression]  acc=0.9663  f1=0.9652  train=11.90s
+2026-06-14 17:57:49,207 INFO [optimized_pipeline] === bow × random_forest ===
+2026-06-14 17:57:55,999 INFO [metrics] train took 6.6205 s
+2026-06-14 17:57:56,077 INFO [metrics] inference_test took 0.0767 s
+2026-06-14 17:57:56,089 INFO [optimized_pipeline] [bow × random_forest]  acc=0.9528  f1=0.9524  train=6.62s
+2026-06-14 17:57:56,091 INFO [optimized_pipeline] === bow × xgboost ===
+2026-06-14 18:00:33,753 INFO [metrics] train took 157.6197 s
+2026-06-14 18:00:33,780 INFO [metrics] inference_test took 0.0249 s
+2026-06-14 18:00:33,796 INFO [optimized_pipeline] [bow × xgboost]  acc=0.2427  f1=0.1022  train=157.62s
+2026-06-14 18:00:33,850 INFO [optimized_pipeline] === bow × svm ===
+/home/ma480128/miniconda3/envs/myenv/lib/python3.10/site-packages/sklearn/svm/_base.py:1250: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+/home/ma480128/miniconda3/envs/myenv/lib/python3.10/site-packages/sklearn/svm/_base.py:1250: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+/home/ma480128/miniconda3/envs/myenv/lib/python3.10/site-packages/sklearn/svm/_base.py:1250: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+2026-06-14 18:00:38,257 INFO [metrics] train took 4.4068 s
+2026-06-14 18:00:38,263 INFO [metrics] inference_test took 0.0053 s
+2026-06-14 18:00:38,274 INFO [optimized_pipeline] [bow × svm]  acc=0.9708  f1=0.9700  train=4.41s
+2026-06-14 18:00:38,277 INFO [optimized_pipeline] === bow × naive_bayes ===
+2026-06-14 18:00:38,607 INFO [metrics] train took 0.2584 s
+2026-06-14 18:00:38,695 INFO [metrics] inference_test took 0.0871 s
+2026-06-14 18:00:38,706 INFO [optimized_pipeline] [bow × naive_bayes]  acc=0.9730  f1=0.9724  train=0.26s
+2026-06-14 18:00:38,708 INFO [optimized_pipeline] === bow × knn ===
+2026-06-14 18:00:38,870 INFO [metrics] train took 0.0899 s
+2026-06-14 18:00:39,328 INFO [metrics] inference_test took 0.4577 s
+2026-06-14 18:00:39,340 INFO [optimized_pipeline] [bow × knn]  acc=0.7888  f1=0.7881  train=0.09s
+2026-06-14 18:00:39,342 INFO [optimized_pipeline] === bow × mlp ===
+2026-06-14 18:00:55,497 INFO [metrics] train took 16.0754 s
+2026-06-14 18:00:55,580 INFO [metrics] inference_test took 0.0801 s
+2026-06-14 18:00:55,592 INFO [optimized_pipeline] [bow × mlp]  acc=0.9708  f1=0.9700  train=16.08s
+2026-06-14 18:00:55,598 INFO [optimized_pipeline] Cache hit → /lu/tetyda/home/ma480128/HPAI/text_classification/saved_models/feature_cache/tfidf_48d62083f0a5.pkl
+2026-06-14 18:00:55,705 INFO [optimized_pipeline] === tfidf × logistic_regression ===
+/home/ma480128/miniconda3/envs/myenv/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:1272: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.8. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+2026-06-14 18:00:56,735 INFO [metrics] train took 1.0300 s
+2026-06-14 18:00:56,737 INFO [metrics] inference_test took 0.0013 s
+2026-06-14 18:00:56,748 INFO [optimized_pipeline] [tfidf × logistic_regression]  acc=0.9775  f1=0.9772  train=1.03s
+2026-06-14 18:00:56,748 INFO [optimized_pipeline] === tfidf × random_forest ===
+2026-06-14 18:01:03,817 INFO [metrics] train took 6.9940 s
+2026-06-14 18:01:03,890 INFO [metrics] inference_test took 0.0730 s
+2026-06-14 18:01:03,902 INFO [optimized_pipeline] [tfidf × random_forest]  acc=0.9461  f1=0.9452  train=6.99s
+2026-06-14 18:01:03,903 INFO [optimized_pipeline] === tfidf × xgboost ===
+2026-06-14 18:06:50,361 INFO [metrics] train took 346.4574 s
+2026-06-14 18:06:50,384 INFO [metrics] inference_test took 0.0185 s
+2026-06-14 18:06:50,397 INFO [optimized_pipeline] [tfidf × xgboost]  acc=0.2315  f1=0.0976  train=346.46s
+2026-06-14 18:06:50,398 INFO [optimized_pipeline] === tfidf × svm ===
+2026-06-14 18:06:50,765 INFO [metrics] train took 0.3669 s
+2026-06-14 18:06:50,771 INFO [metrics] inference_test took 0.0058 s
+2026-06-14 18:06:50,782 INFO [optimized_pipeline] [tfidf × svm]  acc=0.9798  f1=0.9796  train=0.37s
+2026-06-14 18:06:50,782 INFO [optimized_pipeline] === tfidf × naive_bayes ===
+2026-06-14 18:06:51,064 INFO [metrics] train took 0.2085 s
+2026-06-14 18:06:51,113 INFO [metrics] inference_test took 0.0489 s
+2026-06-14 18:06:51,126 INFO [optimized_pipeline] [tfidf × naive_bayes]  acc=0.9730  f1=0.9720  train=0.21s
+2026-06-14 18:06:51,127 INFO [optimized_pipeline] === tfidf × knn ===
+2026-06-14 18:06:51,237 INFO [metrics] train took 0.0501 s
+2026-06-14 18:06:51,647 INFO [metrics] inference_test took 0.4104 s
+2026-06-14 18:06:51,659 INFO [optimized_pipeline] [tfidf × knn]  acc=0.9596  f1=0.9585  train=0.05s
+2026-06-14 18:06:51,660 INFO [optimized_pipeline] === tfidf × mlp ===
+2026-06-14 18:07:08,615 INFO [metrics] train took 16.8813 s
+2026-06-14 18:07:08,683 INFO [metrics] inference_test took 0.0632 s
+2026-06-14 18:07:08,695 INFO [optimized_pipeline] [tfidf × mlp]  acc=0.9753  f1=0.9741  train=16.88s
+2026-06-14 18:07:08,699 INFO [optimized_pipeline] Cache hit → /lu/tetyda/home/ma480128/HPAI/text_classification/saved_models/feature_cache/ngram_40b6ec3aeed7.pkl
+2026-06-14 18:07:08,751 INFO [optimized_pipeline] === ngram × logistic_regression ===
+/home/ma480128/miniconda3/envs/myenv/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:1272: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.8. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+2026-06-14 18:07:08,912 INFO [metrics] train took 0.1606 s
+2026-06-14 18:07:08,913 INFO [metrics] inference_test took 0.0009 s
+2026-06-14 18:07:08,924 INFO [optimized_pipeline] [ngram × logistic_regression]  acc=0.9528  f1=0.9517  train=0.16s
+2026-06-14 18:07:08,925 INFO [optimized_pipeline] === ngram × random_forest ===
+2026-06-14 18:07:20,336 INFO [metrics] train took 11.3394 s
+2026-06-14 18:07:20,409 INFO [metrics] inference_test took 0.0732 s
+2026-06-14 18:07:20,421 INFO [optimized_pipeline] [ngram × random_forest]  acc=0.8809  f1=0.8782  train=11.34s
+2026-06-14 18:07:20,422 INFO [optimized_pipeline] === ngram × xgboost ===
+2026-06-14 18:12:17,240 INFO [metrics] train took 296.8173 s
+2026-06-14 18:12:17,262 INFO [metrics] inference_test took 0.0178 s
+2026-06-14 18:12:17,276 INFO [optimized_pipeline] [ngram × xgboost]  acc=0.1730  f1=0.0590  train=296.82s
+2026-06-14 18:12:17,276 INFO [optimized_pipeline] === ngram × svm ===
+2026-06-14 18:12:17,525 INFO [metrics] train took 0.2489 s
+2026-06-14 18:12:17,530 INFO [metrics] inference_test took 0.0043 s
+2026-06-14 18:12:17,541 INFO [optimized_pipeline] [ngram × svm]  acc=0.9708  f1=0.9705  train=0.25s
+2026-06-14 18:12:17,541 INFO [optimized_pipeline] === ngram × naive_bayes ===
+2026-06-14 18:12:17,939 INFO [metrics] train took 0.2733 s
+2026-06-14 18:12:17,988 INFO [metrics] inference_test took 0.0487 s
+2026-06-14 18:12:17,999 INFO [optimized_pipeline] [ngram × naive_bayes]  acc=0.9640  f1=0.9632  train=0.27s
+2026-06-14 18:12:17,999 INFO [optimized_pipeline] === ngram × knn ===
+2026-06-14 18:12:18,079 INFO [metrics] train took 0.0490 s
+2026-06-14 18:12:18,453 INFO [metrics] inference_test took 0.3742 s
+2026-06-14 18:12:18,510 INFO [optimized_pipeline] [ngram × knn]  acc=0.9416  f1=0.9404  train=0.05s
+2026-06-14 18:12:18,539 INFO [optimized_pipeline] === ngram × mlp ===
+2026-06-14 18:12:34,527 INFO [metrics] train took 15.9248 s
+2026-06-14 18:12:34,594 INFO [metrics] inference_test took 0.0625 s
+2026-06-14 18:12:34,607 INFO [optimized_pipeline] [ngram × mlp]  acc=0.9596  f1=0.9571  train=15.92s
+2026-06-14 18:12:34,610 INFO [optimized_pipeline] Cache hit → /lu/tetyda/home/ma480128/HPAI/text_classification/saved_models/feature_cache/word2vec_692ca5296e8e.pkl
+2026-06-14 18:12:34,652 INFO [optimized_pipeline] === word2vec × logistic_regression ===
+/home/ma480128/miniconda3/envs/myenv/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:1272: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.8. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+2026-06-14 18:12:35,799 INFO [metrics] train took 1.1469 s
+2026-06-14 18:12:35,800 INFO [metrics] inference_test took 0.0003 s
+2026-06-14 18:12:35,811 INFO [optimized_pipeline] [word2vec × logistic_regression]  acc=0.9101  f1=0.9076  train=1.15s
+2026-06-14 18:12:35,812 INFO [optimized_pipeline] === word2vec × random_forest ===
+2026-06-14 18:12:38,674 INFO [metrics] train took 2.8624 s
+2026-06-14 18:12:38,695 INFO [metrics] inference_test took 0.0208 s
+2026-06-14 18:12:38,707 INFO [optimized_pipeline] [word2vec × random_forest]  acc=0.8876  f1=0.8844  train=2.86s
+2026-06-14 18:12:38,707 INFO [optimized_pipeline] === word2vec × xgboost ===
+2026-06-14 18:12:44,461 INFO [metrics] train took 5.7533 s
+2026-06-14 18:12:44,474 INFO [metrics] inference_test took 0.0076 s
+2026-06-14 18:12:44,486 INFO [optimized_pipeline] [word2vec × xgboost]  acc=0.8921  f1=0.8904  train=5.75s
+2026-06-14 18:12:44,486 INFO [optimized_pipeline] === word2vec × svm ===
+2026-06-14 18:12:44,672 INFO [metrics] train took 0.1861 s
+2026-06-14 18:12:44,676 INFO [metrics] inference_test took 0.0033 s
+2026-06-14 18:12:44,687 INFO [optimized_pipeline] [word2vec × svm]  acc=0.9011  f1=0.8978  train=0.19s
+2026-06-14 18:12:44,687 INFO [optimized_pipeline] === word2vec × naive_bayes ===
+2026-06-14 18:12:44,689 INFO [metrics] train took 0.0020 s
+2026-06-14 18:12:44,690 INFO [metrics] inference_test took 0.0003 s
+2026-06-14 18:12:44,701 INFO [optimized_pipeline] [word2vec × naive_bayes]  acc=0.7820  f1=0.7554  train=0.00s
+2026-06-14 18:12:44,701 INFO [optimized_pipeline] === word2vec × knn ===
+2026-06-14 18:12:44,702 INFO [metrics] train took 0.0007 s
+2026-06-14 18:12:44,730 INFO [metrics] inference_test took 0.0282 s
+2026-06-14 18:12:44,741 INFO [optimized_pipeline] [word2vec × knn]  acc=0.8809  f1=0.8770  train=0.00s
+2026-06-14 18:12:44,741 INFO [optimized_pipeline] === word2vec × mlp ===
+2026-06-14 18:12:45,313 INFO [metrics] train took 0.5718 s
+2026-06-14 18:12:45,315 INFO [metrics] inference_test took 0.0010 s
+2026-06-14 18:12:45,326 INFO [optimized_pipeline] [word2vec × mlp]  acc=0.8517  f1=0.8476  train=0.57s
+2026-06-14 18:12:45,328 INFO [optimized_pipeline] Cache hit → /lu/tetyda/home/ma480128/HPAI/text_classification/saved_models/feature_cache/doc2vec_a24f1a2b855f.pkl
+2026-06-14 18:12:45,358 INFO [optimized_pipeline] === doc2vec × logistic_regression ===
+/home/ma480128/miniconda3/envs/myenv/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:1272: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.8. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+2026-06-14 18:12:49,543 INFO [metrics] train took 4.1850 s
+2026-06-14 18:12:49,544 INFO [metrics] inference_test took 0.0003 s
+2026-06-14 18:12:49,555 INFO [optimized_pipeline] [doc2vec × logistic_regression]  acc=0.9506  f1=0.9504  train=4.19s
+2026-06-14 18:12:49,555 INFO [optimized_pipeline] === doc2vec × random_forest ===
+2026-06-14 18:12:52,386 INFO [metrics] train took 2.8304 s
+2026-06-14 18:12:52,406 INFO [metrics] inference_test took 0.0199 s
+2026-06-14 18:12:52,417 INFO [optimized_pipeline] [doc2vec × random_forest]  acc=0.9393  f1=0.9384  train=2.83s
+2026-06-14 18:12:52,417 INFO [optimized_pipeline] === doc2vec × xgboost ===
+2026-06-14 18:12:57,858 INFO [metrics] train took 5.4405 s
+2026-06-14 18:12:57,866 INFO [metrics] inference_test took 0.0078 s
+2026-06-14 18:12:57,878 INFO [optimized_pipeline] [doc2vec × xgboost]  acc=0.9258  f1=0.9248  train=5.44s
+2026-06-14 18:12:57,878 INFO [optimized_pipeline] === doc2vec × svm ===
+2026-06-14 18:12:58,073 INFO [metrics] train took 0.1950 s
+2026-06-14 18:12:58,076 INFO [metrics] inference_test took 0.0032 s
+2026-06-14 18:12:58,088 INFO [optimized_pipeline] [doc2vec × svm]  acc=0.9371  f1=0.9359  train=0.20s
+2026-06-14 18:12:58,088 INFO [optimized_pipeline] === doc2vec × naive_bayes ===
+2026-06-14 18:12:58,090 INFO [metrics] train took 0.0019 s
+2026-06-14 18:12:58,090 INFO [metrics] inference_test took 0.0003 s
+2026-06-14 18:12:58,101 INFO [optimized_pipeline] [doc2vec × naive_bayes]  acc=0.8337  f1=0.8179  train=0.00s
+2026-06-14 18:12:58,102 INFO [optimized_pipeline] === doc2vec × knn ===
+2026-06-14 18:12:58,102 INFO [metrics] train took 0.0007 s
+2026-06-14 18:12:58,132 INFO [metrics] inference_test took 0.0294 s
+2026-06-14 18:12:58,143 INFO [optimized_pipeline] [doc2vec × knn]  acc=0.9461  f1=0.9445  train=0.00s
+2026-06-14 18:12:58,143 INFO [optimized_pipeline] === doc2vec × mlp ===
+2026-06-14 18:12:58,583 INFO [metrics] train took 0.4402 s
+2026-06-14 18:12:58,585 INFO [metrics] inference_test took 0.0010 s
+2026-06-14 18:12:58,596 INFO [optimized_pipeline] [doc2vec × mlp]  acc=0.9438  f1=0.9430  train=0.44s
+2026-06-14 18:13:07,409 INFO [httpx] HTTP Request: HEAD https://huggingface.co/meta-llama/Meta-Llama-3-8B-Instruct/resolve/main/config.json "HTTP/1.1 200 OK"
+2026-06-14 18:13:07,604 INFO [httpx] HTTP Request: HEAD https://huggingface.co/meta-llama/Meta-Llama-3-8B-Instruct/resolve/main/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-14 18:13:07,751 INFO [httpx] HTTP Request: GET https://huggingface.co/api/models/meta-llama/Meta-Llama-3-8B-Instruct/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-14 18:13:07,894 INFO [httpx] HTTP Request: GET https://huggingface.co/api/models/meta-llama/Meta-Llama-3-8B-Instruct/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-14 18:13:09,444 INFO [httpx] HTTP Request: GET https://huggingface.co/api/models/meta-llama/Meta-Llama-3-8B-Instruct "HTTP/1.1 200 OK"
+2026-06-14 18:13:09,625 INFO [httpx] HTTP Request: HEAD https://huggingface.co/meta-llama/Meta-Llama-3-8B-Instruct/resolve/main/config.json "HTTP/1.1 200 OK"
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+Loading weights:   0%|          | 0/291 [00:00<?, ?it/s]Loading weights:   0%|          | 1/291 [00:03<15:11,  3.14s/it]Loading weights:   1%|          | 2/291 [00:56<2:36:49, 32.56s/it]Loading weights:  17%|█▋        | 49/291 [01:03<03:51,  1.04it/s] Loading weights:  17%|█▋        | 50/291 [01:04<03:49,  1.05it/s]Loading weights:  18%|█▊        | 51/291 [01:04<03:44,  1.07it/s]Loading weights:  20%|█▉        | 58/291 [01:12<03:43,  1.04it/s]Loading weights:  20%|██        | 59/291 [01:12<03:40,  1.05it/s]Loading weights:  21%|██        | 60/291 [01:13<03:36,  1.07it/s]Loading weights:  23%|██▎       | 67/291 [01:16<02:43,  1.37it/s]Loading weights:  23%|██▎       | 68/291 [01:17<02:39,  1.40it/s]Loading weights:  24%|██▎       | 69/291 [01:17<02:34,  1.43it/s]Loading weights:  26%|██▋       | 77/291 [01:18<01:20,  2.67it/s]Loading weights:  27%|██▋       | 78/291 [01:18<01:15,  2.83it/s]Loading weights:  29%|██▉       | 85/291 [01:20<01:04,  3.21it/s]Loading weights:  30%|██▉       | 86/291 [01:20<01:00,  3.40it/s]Loading weights:  30%|██▉       | 87/291 [01:21<01:03,  3.19it/s]Loading weights:  32%|███▏      | 94/291 [01:22<00:54,  3.60it/s]Loading weights:  33%|███▎      | 95/291 [01:23<00:53,  3.70it/s]Loading weights:  35%|███▌      | 103/291 [01:27<01:12,  2.60it/s]Loading weights:  36%|███▌      | 104/291 [01:31<02:24,  1.29it/s]Loading weights:  38%|███▊      | 112/291 [01:36<02:00,  1.49it/s]Loading weights:  39%|███▉      | 113/291 [01:37<02:08,  1.38it/s]Loading weights:  39%|███▉      | 114/291 [01:37<01:56,  1.52it/s]Loading weights:  42%|████▏     | 121/291 [01:46<02:35,  1.10it/s]Loading weights:  42%|████▏     | 122/291 [01:46<02:28,  1.14it/s]Loading weights:  45%|████▍     | 130/291 [01:53<02:17,  1.17it/s]Loading weights:  45%|████▌     | 131/291 [01:54<02:29,  1.07it/s]Loading weights:  45%|████▌     | 132/291 [01:55<02:21,  1.12it/s]Loading weights:  48%|████▊     | 139/291 [02:01<02:17,  1.11it/s]Loading weights:  48%|████▊     | 140/291 [02:02<02:05,  1.20it/s]Loading weights:  48%|████▊     | 141/291 [02:03<02:20,  1.06it/s]Loading weights:  51%|█████     | 148/291 [02:10<02:18,  1.03it/s]Loading weights:  52%|█████▏    | 150/291 [02:10<01:53,  1.24it/s]Loading weights:  54%|█████▍    | 157/291 [02:19<02:10,  1.03it/s]Loading weights:  54%|█████▍    | 158/291 [02:19<02:04,  1.07it/s]Loading weights:  57%|█████▋    | 166/291 [02:21<01:13,  1.69it/s]Loading weights:  57%|█████▋    | 167/291 [02:22<01:18,  1.58it/s]Loading weights:  58%|█████▊    | 169/291 [02:22<01:03,  1.91it/s]Loading weights:  63%|██████▎   | 184/291 [02:23<00:22,  4.84it/s]Loading weights:  64%|██████▍   | 186/291 [02:24<00:22,  4.66it/s]Loading weights:  66%|██████▋   | 193/291 [02:24<00:14,  6.61it/s]Loading weights:  67%|██████▋   | 195/291 [02:24<00:13,  7.14it/s]Loading weights:  69%|██████▉   | 202/291 [02:25<00:11,  7.88it/s]Loading weights:  73%|███████▎  | 211/291 [02:25<00:08,  9.36it/s]Loading weights:  73%|███████▎  | 213/291 [02:26<00:07,  9.75it/s]Loading weights:  76%|███████▌  | 220/291 [02:26<00:06, 10.42it/s]Loading weights:  76%|███████▋  | 222/291 [02:26<00:06, 11.02it/s]Loading weights:  79%|███████▊  | 229/291 [02:27<00:05, 10.80it/s]Loading weights:  79%|███████▉  | 231/291 [02:27<00:05, 11.29it/s]Loading weights:  82%|████████▏ | 238/291 [02:28<00:04, 11.67it/s]Loading weights:  82%|████████▏ | 240/291 [02:28<00:04, 12.17it/s]Loading weights:  85%|████████▍ | 247/291 [02:28<00:03, 11.53it/s]Loading weights:  86%|████████▌ | 249/291 [02:29<00:03, 11.84it/s]Loading weights:  88%|████████▊ | 256/291 [02:29<00:02, 11.75it/s]Loading weights:  91%|█████████ | 265/291 [02:30<00:02, 10.62it/s]Loading weights:  94%|█████████▍| 274/291 [02:31<00:01, 12.56it/s]Loading weights:  95%|█████████▍| 276/291 [02:31<00:01, 11.88it/s]Loading weights:  97%|█████████▋| 283/291 [02:32<00:00, 10.89it/s]Loading weights: 100%|██████████| 291/291 [02:32<00:00,  1.91it/s]
+2026-06-14 18:15:50,058 INFO [httpx] HTTP Request: HEAD https://huggingface.co/meta-llama/Meta-Llama-3-8B-Instruct/resolve/main/generation_config.json "HTTP/1.1 200 OK"
+2026-06-14 18:15:50,070 INFO [models] Loaded meta-llama/Meta-Llama-3-8B-Instruct on cuda:0
+2026-06-14 18:15:50,070 INFO [models] 'meta-llama/Meta-Llama-3-8B-Instruct' ready. 5 classes.
+2026-06-14 18:15:50,070 INFO [metrics] train took 171.4744 s
+2026-06-14 18:15:50,071 INFO [models]   [llama3] 0 / 445 …
+[transformers] Ignoring clean_up_tokenization_spaces=True for BPE tokenizer TokenizersBackend. The clean_up_tokenization post-processing step is designed for WordPiece tokenizers and is destructive for BPE (it strips spaces before punctuation). Set clean_up_tokenization_spaces=False to suppress this warning, or set clean_up_tokenization_spaces_for_bpe_even_though_it_will_corrupt_output=True to force cleanup anyway.
+2026-06-14 18:16:02,109 INFO [models]   [llama3] 100 / 445 …
+2026-06-14 18:16:12,881 INFO [models]   [llama3] 200 / 445 …
+2026-06-14 18:16:23,560 INFO [models]   [llama3] 300 / 445 …
+2026-06-14 18:16:34,455 INFO [models]   [llama3] 400 / 445 …
+2026-06-14 18:16:40,879 INFO [models] Unloaded meta-llama/Meta-Llama-3-8B-Instruct
+2026-06-14 18:16:40,885 INFO [metrics] inference_test took 50.8143 s
+2026-06-14 18:16:41,058 INFO [httpx] HTTP Request: HEAD https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-14 18:16:41,085 INFO [httpx] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/mistralai/Mistral-7B-Instruct-v0.2/63a8b081895390a26e140280378bc85ec8bce07a/config.json "HTTP/1.1 200 OK"
+2026-06-14 18:16:41,233 INFO [httpx] HTTP Request: HEAD https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-14 18:16:41,253 INFO [httpx] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/mistralai/Mistral-7B-Instruct-v0.2/63a8b081895390a26e140280378bc85ec8bce07a/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-14 18:16:41,389 INFO [httpx] HTTP Request: HEAD https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-14 18:16:41,408 INFO [httpx] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/mistralai/Mistral-7B-Instruct-v0.2/63a8b081895390a26e140280378bc85ec8bce07a/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-14 18:16:41,546 INFO [httpx] HTTP Request: GET https://huggingface.co/api/models/mistralai/Mistral-7B-Instruct-v0.2/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-14 18:16:41,681 INFO [httpx] HTTP Request: GET https://huggingface.co/api/models/mistralai/Mistral-7B-Instruct-v0.2/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-14 18:16:42,160 INFO [httpx] HTTP Request: HEAD https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-14 18:16:42,179 INFO [httpx] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/mistralai/Mistral-7B-Instruct-v0.2/63a8b081895390a26e140280378bc85ec8bce07a/config.json "HTTP/1.1 200 OK"
+Loading weights:   0%|          | 0/291 [00:00<?, ?it/s]Loading weights:   0%|          | 1/291 [00:01<06:24,  1.33s/it]Loading weights:   1%|          | 2/291 [00:01<03:05,  1.56it/s]Loading weights:   4%|▍         | 13/291 [00:02<00:29,  9.44it/s]Loading weights:   5%|▌         | 15/291 [00:02<00:30,  9.19it/s]Loading weights:   8%|▊         | 22/291 [00:02<00:25, 10.56it/s]Loading weights:  11%|█         | 31/291 [00:03<00:23, 11.26it/s]Loading weights:  11%|█▏        | 33/291 [00:03<00:21, 11.87it/s]Loading weights:  14%|█▎        | 40/291 [00:04<00:20, 12.41it/s]Loading weights:  14%|█▍        | 42/291 [00:04<00:20, 12.13it/s]Loading weights:  17%|█▋        | 49/291 [00:04<00:19, 12.16it/s]Loading weights:  18%|█▊        | 51/291 [00:05<00:19, 12.47it/s]Loading weights:  20%|█▉        | 58/291 [00:05<00:19, 11.73it/s]Loading weights:  21%|██        | 60/291 [00:05<00:18, 12.42it/s]Loading weights:  23%|██▎       | 67/291 [00:06<00:17, 12.48it/s]Loading weights:  24%|██▎       | 69/291 [00:06<00:17, 12.71it/s]Loading weights:  26%|██▌       | 76/291 [00:07<00:18, 11.70it/s]Loading weights:  27%|██▋       | 78/291 [00:07<00:17, 12.06it/s]Loading weights:  29%|██▉       | 85/291 [00:07<00:16, 12.27it/s]Loading weights:  30%|██▉       | 87/291 [00:08<00:16, 12.19it/s]Loading weights:  32%|███▏      | 94/291 [00:08<00:16, 11.94it/s]Loading weights:  33%|███▎      | 96/291 [00:08<00:15, 12.64it/s]Loading weights:  35%|███▌      | 103/291 [00:09<00:16, 11.75it/s]Loading weights:  36%|███▌      | 105/291 [00:09<00:15, 12.15it/s]Loading weights:  38%|███▊      | 112/291 [00:10<00:15, 11.79it/s]Loading weights:  39%|███▉      | 114/291 [00:10<00:14, 12.17it/s]Loading weights:  42%|████▏     | 121/291 [00:10<00:14, 11.59it/s]Loading weights:  42%|████▏     | 123/291 [00:11<00:14, 11.67it/s]Loading weights:  45%|████▍     | 130/291 [00:11<00:13, 11.69it/s]Loading weights:  45%|████▌     | 132/291 [00:11<00:12, 12.31it/s]Loading weights:  48%|████▊     | 139/291 [00:12<00:14, 10.72it/s]Loading weights:  51%|█████     | 148/291 [00:13<00:11, 12.34it/s]Loading weights:  52%|█████▏    | 150/291 [00:13<00:11, 11.83it/s]Loading weights:  54%|█████▍    | 157/291 [00:13<00:11, 11.86it/s]Loading weights:  55%|█████▍    | 159/291 [00:14<00:10, 12.46it/s]Loading weights:  57%|█████▋    | 166/291 [00:14<00:10, 11.50it/s]Loading weights:  58%|█████▊    | 168/291 [00:14<00:10, 12.09it/s]Loading weights:  60%|██████    | 175/291 [00:15<00:09, 12.35it/s]Loading weights:  61%|██████    | 177/291 [00:15<00:09, 12.01it/s]Loading weights:  63%|██████▎   | 184/291 [00:16<00:09, 11.62it/s]Loading weights:  64%|██████▍   | 186/291 [00:16<00:08, 12.05it/s]Loading weights:  66%|██████▋   | 193/291 [00:16<00:08, 12.00it/s]Loading weights:  67%|██████▋   | 195/291 [00:17<00:07, 12.67it/s]Loading weights:  69%|██████▉   | 202/291 [00:17<00:07, 11.99it/s]Loading weights:  70%|███████   | 204/291 [00:17<00:07, 12.41it/s]Loading weights:  73%|███████▎  | 211/291 [00:18<00:06, 12.32it/s]Loading weights:  74%|███████▍  | 215/291 [00:18<00:05, 14.99it/s]Loading weights:  76%|███████▌  | 220/291 [00:19<00:06, 11.22it/s]Loading weights:  76%|███████▋  | 222/291 [00:19<00:05, 11.83it/s]Loading weights:  79%|███████▊  | 229/291 [00:19<00:05, 12.09it/s]Loading weights:  79%|███████▉  | 231/291 [00:20<00:04, 12.14it/s]Loading weights:  82%|████████▏ | 238/291 [00:20<00:04, 11.72it/s]Loading weights:  82%|████████▏ | 240/291 [00:20<00:04, 12.17it/s]Loading weights:  85%|████████▍ | 247/291 [00:21<00:03, 12.03it/s]Loading weights:  88%|████████▊ | 256/291 [00:22<00:02, 11.69it/s]Loading weights:  89%|████████▊ | 258/291 [00:22<00:02, 12.03it/s]Loading weights:  91%|█████████ | 265/291 [00:22<00:02, 12.40it/s]Loading weights:  92%|█████████▏| 267/291 [00:23<00:02, 11.71it/s]Loading weights:  94%|█████████▍| 274/291 [00:23<00:01, 11.93it/s]Loading weights:  95%|█████████▍| 276/291 [00:23<00:01, 11.83it/s]Loading weights:  97%|█████████▋| 283/291 [00:24<00:00, 11.87it/s]Loading weights: 100%|██████████| 291/291 [00:24<00:00, 11.89it/s]
+2026-06-14 18:17:08,566 INFO [httpx] HTTP Request: HEAD https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.2/resolve/main/generation_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-14 18:17:08,585 INFO [httpx] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/mistralai/Mistral-7B-Instruct-v0.2/63a8b081895390a26e140280378bc85ec8bce07a/generation_config.json "HTTP/1.1 200 OK"
+2026-06-14 18:17:08,596 INFO [models] Loaded mistralai/Mistral-7B-Instruct-v0.2 on cuda:0
+2026-06-14 18:17:08,596 INFO [models] 'mistralai/Mistral-7B-Instruct-v0.2' ready. 5 classes.
+2026-06-14 18:17:08,596 INFO [metrics] train took 27.6995 s
+2026-06-14 18:17:08,597 INFO [models]   [mistral] 0 / 445 …
+2026-06-14 18:17:30,322 INFO [models]   [mistral] 100 / 445 …
+2026-06-14 18:17:57,443 INFO [models]   [mistral] 200 / 445 …
+2026-06-14 18:18:23,335 INFO [models]   [mistral] 300 / 445 …
+2026-06-14 18:18:47,925 INFO [models]   [mistral] 400 / 445 …
+2026-06-14 18:19:01,465 INFO [models] Unloaded mistralai/Mistral-7B-Instruct-v0.2
+2026-06-14 18:19:01,468 INFO [metrics] inference_test took 112.8713 s
+2026-06-14 18:19:01,480 INFO [optimized_pipeline] Total: 1284.2 s
+2026-06-14 18:19:01,484 INFO [metrics] Results saved → /home/ma480128/HPAI/text_classification/rysy/results/results_optimized.txt
+
+real	21m29.622s
+user	18m7.285s
+sys	1m45.525s

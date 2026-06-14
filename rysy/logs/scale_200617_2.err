@@ -1,0 +1,13 @@
+2026-06-14 19:05:49,339 INFO [data_utils] Loading '/home/ma480128/HPAI/text_classification/data/train_data.txt'  sep=','  header=True
+2026-06-14 19:05:49,389 INFO [data_utils] Raw shape: (2225, 2)  columns: ['Text', 'Label']
+2026-06-14 19:05:49,389 INFO [data_utils] Columns — text: 'Text'  label: 'Label'
+2026-06-14 19:05:49,732 INFO [data_utils] Loaded 2225 samples, 5 classes: [0, 1, 2, 3, 4]
+2026-06-14 19:05:49,736 INFO [data_utils] Split — train:1557  val:223  test:445
+[Parallel(n_jobs=4)]: Using backend LokyBackend with 4 concurrent workers.
+[Parallel(n_jobs=4)]: Done   2 out of   5 | elapsed:   19.2s remaining:   28.8s
+[Parallel(n_jobs=4)]: Done   5 out of   5 | elapsed:   51.7s finished
+[Parallel(n_jobs=4)]: Using backend LokyBackend with 4 concurrent workers.
+/home/ma480128/miniconda3/envs/myenv/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:1272: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.8. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+[Parallel(n_jobs=4)]: Done   2 out of   7 | elapsed:   29.8s remaining:  1.2min
+[Parallel(n_jobs=4)]: Done   4 out of   7 | elapsed:  1.0min remaining:   46.9s
