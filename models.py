@@ -298,6 +298,7 @@ class HFClassifier:
             self.model_id, torch_dtype=torch.float16,
             device_map="auto", token=token)
         self._model.eval()
+        self._model.generation_config.max_length = None
         logger.info("Loaded %s on %s", self.model_id,
                     next(self._model.parameters()).device)
 
