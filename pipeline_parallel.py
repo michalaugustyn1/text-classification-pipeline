@@ -26,7 +26,7 @@ def extract_all_parallel(X_train, X_val, X_test, feature_names, n_jobs):
     t0 = time.perf_counter()
     results = joblib.Parallel(
         n_jobs=min(n_jobs if n_jobs > 0 else len(feature_names), len(feature_names)),
-        backend="multiprocessing", verbose=5)(
+        backend="loky", verbose=5)(
         joblib.delayed(_extract_one)(fn, X_train, X_val, X_test)
         for fn in feature_names)
     elapsed = time.perf_counter() - t0
