@@ -51,6 +51,28 @@ with torch.no_grad():
 response = tokenizer.decode(out[0][input_ids.shape[-1]:], skip_special_tokens=True)
 print(f"Response: {response!r}")
 print("OK")
+
+# Classification smoke test
+print("\n--- Classification test ---")
+classes = ["business", "entertainment", "politics", "sport", "tech"]
+test_texts = [
+    "Manchester United beat Arsenal 2-1 in last night's Premier League clash.",
+    "The Federal Reserve raised interest rates by 25 basis points amid inflation concerns.",
+]
+for text in test_texts:
+    msgs = [{"role": "user", "content":
+        f"Classify the following document into exactly one of these categories: {', '.join(classes)}.\n\n"
+        f"Document:\n{text}\n\n"
+        f"Rules:\n- Reply with ONLY the category name.\n"
+        f"- Do not add any explanation, punctuation, or extra words.\nCategory:"}]
+    inp = tokenizer.apply_chat_template(msgs, add_generation_prompt=True, return_tensors="pt")
+    inp_ids = (inp.input_ids if hasattr(inp, 'input_ids') else inp).to(model.device)
+    with torch.no_grad():
+        out2 = model.generate(inp_ids, max_new_tokens=10, do_sample=False,
+                              pad_token_id=tokenizer.eos_token_id)
+    resp = tokenizer.decode(out2[0][inp_ids.shape[-1]:], skip_special_tokens=True)
+    print(f"  Text : {text[:60]}...")
+    print(f"  Label: {resp!r}")
 EOF
 
 echo "Finished: $(date)"
