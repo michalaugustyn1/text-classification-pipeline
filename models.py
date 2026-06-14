@@ -328,13 +328,14 @@ class HFClassifier:
 
     def _infer_batch(self, texts):
         import torch
-        token_ids_list = [
-            self._tokenizer.apply_chat_template(
-                [{"role": "user", "content": _build_prompt(t, self.class_names)}],
-                add_generation_prompt=True, return_tensors="pt"
-            ).squeeze(0)
-            for t in texts
-        ]
+        def _apply_chat(text):
+            out = self._tokenizer.apply_chat_template(
+                [{"role": "user", "content": _build_prompt(text, self.class_names)}],
+                add_generation_prompt=True, return_tensors="pt")
+            t = out.input_ids if hasattr(out, 'input_ids') else out
+            return t.squeeze(0)
+
+        token_ids_list = [_apply_chat(t) for t in texts]
         max_len = max(x.shape[0] for x in token_ids_list)
         pad_id  = self._tokenizer.pad_token_id
         input_ids = torch.full((len(token_ids_list), max_len), pad_id, dtype=torch.long)

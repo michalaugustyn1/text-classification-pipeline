@@ -40,8 +40,9 @@ print(f"Loaded on {next(model.parameters()).device}")
 print(f"VRAM used: {torch.cuda.memory_allocated() / 1e9:.1f} GB")
 
 messages = [{"role": "user", "content": "Reply with exactly one word: hello"}]
-input_ids = tokenizer.apply_chat_template(
-    messages, add_generation_prompt=True, return_tensors="pt").to(model.device)
+out = tokenizer.apply_chat_template(
+    messages, add_generation_prompt=True, return_tensors="pt")
+input_ids = (out.input_ids if hasattr(out, 'input_ids') else out).to(model.device)
 
 print("\nRunning inference ...")
 with torch.no_grad():
