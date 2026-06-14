@@ -76,7 +76,7 @@ def main():
                     feat_name, model_name,
                     X_train, y_train, X_val, y_val, X_test, y_test, le))
             except Exception as exc:
-                logger.error("FAILED [%s × %s]: %s", feat_name, model_name, exc)
+                logger.error("FAILED [%s × %s]: %s", feat_name, model_name, exc, exc_info=True)
                 all_results.append({"feature": feat_name, "model": model_name, "error": str(exc)})
 
     if args.llm:
